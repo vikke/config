@@ -1,0 +1,44 @@
+[general]
+accounts = vikke.bsd@gmail.com,vikke@mars95.to
+maxsyncaccounts = 3
+
+################################################################
+[Account vikke.bsd@gmail.com]
+localrepository = Local_vikke.bsd@gmail.com
+remoterepository = Remote_vikke.bsd@gmail.com
+autorefresh = 5
+
+[Repository Local_vikke.bsd@gmail.com]
+type = Maildir
+localfolders = ~/Mail/vikke.bsd@gmail.com
+sep = /
+
+[Repository Remote_vikke.bsd@gmail.com]
+type = Gmail
+remoteuser = vikke.bsd@gmail.com
+remotepassfile = ~/.offlineimap/vikke.bsd@gmail.com_pass
+maxconnections = 3
+realdelete = no
+
+
+################################################################
+[Account vikke@mars95.to]
+localrepository = Local_vikke@mars95.to
+remoterepository = Remote_vikke@mars95.to
+autorefresh = 5
+
+[Repository Local_vikke@mars95.to]
+type = Maildir
+localfolders = ~/Mail/vikke@mars95.to
+sep = /
+
+[Repository Remote_vikke@mars95.to]
+type = IMAP
+remotehost=www.mars95.to
+remoteuser = vikke
+remotepassfile = ~/.offlineimap/vikke@mars95.to_pass
+ssl = yes
+
+maxconnections = 3
+
+
