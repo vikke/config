@@ -1,0 +1,14 @@
+#!/usr/bin/env sh
+
+
+for f in \
+	.vim \
+	.vimrc \
+	.gvimrc 
+do
+
+	rm -rf ~/${f}
+	ln -s ${PWD}/${f} ~/${f}
+
+done
+

@@ -1,0 +1,12 @@
+[submodule ".vim/bundle/lingr-vim"]
+	path = .vim/bundle/lingr-vim
+	url = git://github.com/tsukkee/lingr-vim.git
+[submodule ".vim/bundle/quickrun"]
+	path = .vim/bundle/quickrun
+	url = git://github.com/ujihisa/quickrun.git
+[submodule ".vim/bundle/unite.vim"]
+	path = .vim/bundle/unite.vim
+	url = git://github.com/Shougo/unite.vim.git
+[submodule ".vim/bundle/vim-ref"]
+	path = .vim/bundle/vim-ref
+	url = git://github.com/thinca/vim-ref.git
