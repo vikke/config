@@ -4,6 +4,8 @@
 for f in \
 	.bashrc \
 	.bash_profile \
+	.gnupg \
+	.ssh \
 	.mayu \
 	.Xmodmap \
 	.msmtprc \
