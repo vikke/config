@@ -3,3 +3,4 @@ tags-ja
 /.mutt/mail_alias
 /.mutt/mbmailboxes*
 /.mutt/accounts/*/casket
+/.vim/.netrwhist
