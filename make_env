@@ -4,6 +4,7 @@
 for f in \
 	.bashrc \
 	.bash_profile \
+	.mayu \
 	.Xmodmap \
 	.msmtprc \
 	.Xdefaults \

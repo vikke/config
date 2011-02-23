@@ -1,0 +1,79 @@
+include "109.mayu"
+
+keymap Global
+
+# ESCをF1に。F1と半角全角をESCに
+# key *F1 = *Esc
+key *半角/全角 = *Esc
+# key *Esc = *F1
+
+# 英数をCTRLに
+mod control += 英数
+key *英数 = *LeftControl
+
+# 左CRTLをCapsに
+# mod control -= LeftControl
+# key *LeftControl = *英数
+
+# 無変換をAltに
+# mod alt += !無変換
+mod alt += 無変換
+key *無変換 = *LeftAlt
+
+# 変換をSHIFTに
+#mod alt += 変換
+#key *変換 = *LeftShift
+
+# IMEのON/OFFをCtrl + Spaceで
+key M-space = $ToggleIME
+
+# alt + Capsでalt + tabの逆周り
+key M-C-英数 = S-M-Tab
+
+# 左ctrlをwindowsキーに
+mod windows += 変換
+key *変換 = *LeftWindows
+
+
+# 下2つはMS-IMEの時の設定
+# 最近はskkime使ってるんで、特にtabの設定は殺さにゃ。
+
+# カーソルキーマッピング
+#key *A-*S-C-H = *A-*S-Left
+#key *A-*S-C-J = *A-*S-Down
+#key *A-*S-C-K = *A-*S-Up
+#key *A-*S-C-L = *A-*S-Right 
+# IMEの操作
+# CTRLを押しながらで、文節選択
+# ALTを押しながらで、文節の長さ調節
+key IC-C-H = Left
+key IC-C-L = Right
+key IC-A-H = S-Left
+key IC-A-L = S-Right
+
+# IMEの変換中にTABで半角ローマ字
+#keyseq $hankakuAlpha = F9 F8
+#key IC-TAB = $hankakuAlpha
+
+
+
+
+
+# toggle test
+#key *L0-F8 = &Toggle(Lock0)
+#key L0-q = A
+#key ~L0-q = B
+
+# viエミュレータ
+# モードを2つつくって、escとiでモード切り替えをし、viチックに操作したいなー
+# とりあえず、挫折。近いうちに時間を取ってなんとかすんべ。
+#window vimode /:Edit$/ : Global = &Ignore
+#key *L0-半角/全角 = &Toggle(Lock0,on)
+#key L0-~S-I = &Toggle(Lock0,off)
+#key L0-~S-~C-~M-_0 = HOME
+#key L0-~S-~C-~M-J = Down
+#key L0-~S-~C-~M-K = Up
+#key L0-~S-~C-~M-H = Left
+#key L0-~S-~C-~M-L = Right
+#
+
