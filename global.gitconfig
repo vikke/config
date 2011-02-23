@@ -1,0 +1,6 @@
+[core]
+	excludesfile = /Users/vikke/.gitignore
+[user]
+	email = vikke.bsd@gmail.com
+[alias]
+	l = log --name-status

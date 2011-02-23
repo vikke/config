@@ -4,6 +4,8 @@
 for f in \
 	.bashrc \
 	.bash_profile \
+	.gitconfig \
+	.gitignore \
 	.gnupg \
 	.ssh \
 	.mayu \
@@ -27,3 +29,8 @@ do
 
 done
 
+
+rm ~/.gitignore
+ln -s ${PWD}/global.gitignore ~/.gitignore
+rm ~/.gitconfig
+ln -s ${PWD}/global.gitconfig ~/.gitconfig
