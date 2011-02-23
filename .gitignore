@@ -7,4 +7,5 @@ tags-ja
 /.gnupg/*.gpg
 /.gnupg/random_seed
 /.gnupg/.#*
+/.ssh/id_dsa_mars
 
