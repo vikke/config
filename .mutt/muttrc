@@ -1,0 +1,180 @@
+# plugin的な共通スクリプト読み込み。
+# 結果的には/etc/Muttrc.d/*.rcを読み込んでいる。
+source ~/.mutt/source-muttrc.d|
+
+# gpg関係 import
+source ~/.mutt/gpg.rc
+#source /opt/local/share/doc/mutt/samples/gpg.rc
+
+set tmpdir=~/tmpfs
+
+# 表示ヘッダ。
+ignore *
+unignore from to cc subject date message-id
+unignore X-Mailing-List X-ML-Name
+unignore user-agent x-mailer x-face
+
+# 要xface patch
+#set xface
+
+#set nohdrs
+my_hdr X-Face: `cat ~/.mutt/face.muttrc | tr -d ' \n' | sed -e 's/\([^0-9a-zA-Z]\)/\\\1/g'`
+
+# 文章作成時にheaderは表示しない
+set noedit_headers
+
+# 表示文字コード
+set charset="UTF-8"
+# 送信文字コード
+set send_charset="iso-2022-jp:UTF-8"
+# 文字コード指定がされていないメールの時の複合文字コード
+set assumed_charset="iso-2022-jp:euc-jp:shift_jis:utf-8"
+# 添付テキストファイルの文字コードを指定。
+set attach_charset="iso-2022-jp:euc-jp:shift_jis:utf-8"
+
+# 日本語ファイル名のファイルを添付する際に、ファイル名が変になるのに対応。
+# 要jp patch
+#set create_rfc2047_parameters
+#
+# msgidの生成をfromの文字列を利用して作成
+# 要jp patch
+#set msgid_use_from
+
+# ML用でsubjectの[hoge]を削除する。
+#set delete_prefix
+
+# pagerが最終行で表示が止まる
+set pager_stop
+# pagerのもう文字が無いところは~を表示するようにする(vi的な...)
+set tilde
+
+# pagerスクロール時の全画面との重複行数
+set pager_context=2
+# pagerと同時表示時のindexの表示行数
+set pager_index_lines=10
+
+# 一行ずつスクロールするようになる。
+set menu_scroll
+
+# quitする時に聞くようにする。
+set quit="ask-no"
+# 未読新着メールをOldにしない。
+set mark_old=no
+
+# header cache
+set header_cache="/Users/vikke/tmpfs/header_cache"
+
+# auto_view
+auto_view text/html
+
+# alias(メールアドレス帳)
+set alias_file="~/.mutt/mail_alias"
+source "~/.mutt/mail_alias"
+
+# 購読directory(未読数とかの管理対象)
+# folderを移動する毎に再読み込み
+# offlineimapで自動生成
+source "~/.mutt/mbmailboxes"
+
+# 既読メッセージを$mboxへ移動させるか？（させない）
+set nomove
+
+# forwardする時にinlineでは無くrfc822で添付する
+set mime_forward
+
+# 表示フォーマット
+set folder_format="%3C %t %N %f"
+set index_format="%4C %Z %{%Y/%m/%d %H:%M} %-15.15F %s"
+
+# sortをthread表示とする。
+set sort=threads
+# threadの判定にはreferencesかin-reply-toしか使わないようにする。
+# noだと同じsubjectの奴は勝手に繋げられちゃう。
+set strict_threads=yes
+
+# メール内のurlを抽出し、browserへ中継する
+macro pager U |urlview\n
+
+# 頭/末へのジャンプ
+bind index gg first-entry
+bind index G last-entry
+bind pager gg top
+bind pager G bottom
+
+# page単位でのジャンプ
+bind generic,index,pager \cb previous-page
+bind generic,index,pager \cf next-page
+
+# pagerではj,kは行スクロールに当てる。
+bind pager j next-line
+bind pager k previous-line
+
+# 逆方向検索をvimと同じように割り当て
+bind generic ? search-reverse
+# ?でhelpだったんだけど逆検索に振ったんで、Hをhelpに再割り当て
+bind generic H help
+
+# 全員へ返信
+bind pager,index R group-reply
+
+# マニュアル
+macro generic,index,pager <f1> "<shell-escape> w3m /opt/local/share/doc/mutt/index.html<Enter>" "show Mutt documentation"
+# smtp queue run & list
+macro generic,index,pager <f5> "<shell-escape> ~/bin/msmtp-runqueue.sh\n"	"queue run"
+macro generic,index,pager <f6> "<shell-escape> ~/bin/msmtp-listqueue.sh\n"	"queue list"
+
+
+# directory一覧再生成
+macro generic,index,pager xx "<shell-escape> ~/.mutt/bin/mkmbmailboxes\n\n" "restruct mbmailboxes"
+#macro generic,index,pager xz ":unmailboxes *\n:set my_tmpfolder=$folder\n:set folder=~/Mail\n:source ~/.mutt/mbmailboxes\n:set folder=$my_tmpfolder\n"
+macro generic,index,pager xz ":set my_tmpfolder=$folder\n:set ?my_tmpfolder:set folder=~/Mail\n"
+
+# sidebar関係 #########################################
+#set sidebar_visible=no
+#mailboxes =INBOX 
+#bind index \CP sidebar-prev
+#bind index \CN sidebar-next
+#bind index \CO sidebar-open
+#bind pager \CP sidebar-prev
+#bind pager \CN sidebar-next
+#bind pager \CO sidebar-open
+
+# タグを振ったヤツ
+color index red black ~T
+# フラグ(スター)が付いている奴
+color index yellow black ~F
+
+# pager
+color normal color7 color0
+color header yellow green "^X-Face:"
+color hdrdefault color0 green
+
+# multi account
+set envelope_from=yes
+
+# 各アカウントディレクトリの下に入ったら、個別設定ファイルを読む
+folder-hook "vikke\.bsd@gmail\.com" "source ~/.mutt/accounts/vikke.bsd@gmail.com/muttrc"
+folder-hook "vikke@mars95\.to" "source ~/.mutt/accounts/vikke@mars95.to/muttrc"
+
+# 移動先がアカウントディレクトリの直下の場合のみ、!へ強制移動させる。これをやらないと、INBOXでは無い為、メールが表示されない。
+# ちなみに上の各アカウント毎のfolder hookより後に実行される必要がある。folder-hookの優先度は記述順かな？そうでないとすると、たまたま動いている可能性有り。
+folder-hook "Mail/[^\/]+/*$" "push \"c!<enter>\""
+# 移動先にmuttのカレントディレクトリを移動させる。
+# これにより、現在見ているfolderをshell-escapeに渡せるようになる。
+# 要 http://www.df7cb.de/projects/mutt/chdir/patch-1.5.13.cb.chdir.1 
+#folder-hook "/Mail/" "cd ^"
+
+# online用のaccount-hook
+macro generic,pager <F9> ":source ~/.mutt/accounts/vikke@mars95.to/online_muttrc\n:exec change-folder\n!\n" "online vikke@mars95.to"
+macro generic,pager <F10> ":source ~/.mutt/accounts/vikke@mars95.to/muttrc\n:exec change-folder\n!\n" "offline vikke@mars95.to"
+
+# 削除にゴミ箱を使うように変更
+# local pcの場合は[Gmail]/Trashへ。courrier imapdの場合は[Gmail].Trashへ。
+# ゴミ箱内では本当に削除。
+folder-hook '/Mail/' "macro index,pager d \"<save-message>=\[Gmail\]/Trash<enter>\y"" 
+folder-hook "imap://localhost" "macro index,pager d \"<save-message>=[Gmail].Trash<enter>y\""
+folder-hook "\[Gmail\][\./]Trash" "macro index,pager d \"<delete-message>\""
+
+
+# 起動直後のdefault
+source "~/.mutt/accounts/vikke.bsd@gmail.com/muttrc"

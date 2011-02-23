@@ -1,0 +1,20 @@
+# S/MIME configuration
+set smime_ca_location=`for f in $HOME/.smime/ca-certificates.crt $HOME/.smime/ca-bundle.crt /etc/ssl/certs/ca-certificates.crt ; do if [ -f $f ] ; then echo $f ; exit ; fi ; done`
+set smime_certificates="~/.smime/certificates"
+set smime_keys="~/.smime/keys"
+set smime_pk7out_command="openssl smime -verify -in %f -noverify -pk7out"
+set smime_get_cert_command="openssl pkcs7 -print_certs -in %f"
+set smime_get_signer_cert_command="openssl smime -verify -in %f -noverify -signer %c -out /dev/null"
+set smime_get_cert_email_command="openssl x509 -in %f -noout -email"
+set smime_import_cert_command="smime_keys add_cert %f"
+set smime_encrypt_command="openssl smime -encrypt %a -outform DER -in %f %c"
+set smime_sign_command="openssl smime -sign -signer %c -inkey %k -passin stdin -in %f -certfile %i -outform DER"
+# This alternative command does not include the full certificates chain.
+# Be sure to understand RFC 2315 section 9.1 before using it.
+#set smime_sign_command="openssl smime -sign -signer %c -inkey %k -passin stdin -in %f -outform DER"
+set smime_decrypt_command="openssl smime -decrypt -passin stdin -inform DER -in %f -inkey %k -recip %c"
+set smime_verify_command="openssl smime -verify -inform DER -in %s %C -content %f"
+set smime_verify_opaque_command="\
+openssl smime -verify -inform DER -in %s %C || \
+openssl smime -verify -inform DER -in %s -noverify 2>/dev/null"
+

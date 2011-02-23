@@ -1,0 +1,22 @@
+# account
+set folder="~/Mail/vikke.bsd@gmail.com"
+set spoolfile="+INBOX"
+set record="+[Gmail]/Sent Mail"
+set mbox_type=Maildir
+set use_from=yes
+set from="vikke.bsd@gmail.com"
+set realname="MATSUNAGA Ichiro"
+#set sendmail="/usr/bin/msmtp --account=vikke.bsd"
+set sendmail="~/bin/msmtp-enqueue.sh --account=vikke.bsd"
+
+unmy_hdr bcc
+
+# signature
+set signature=~/.mutt/accounts/vikke.bsd@gmail.com/signature
+
+# ML
+unsubscribe *
+
+set pgp_sign_as=39144BED
+set pgp_autosign
+#set pgp_autoencrypt

@@ -1,0 +1,18 @@
+# account
+set imap_user="vikke"
+set imap_pass=""
+set folder="imap://localhost:8143/INBOX"
+set spoolfile="imap://localhost:8143/INBOX"
+set record="+Sender"
+unset mbox_type
+set use_from=yes
+set from="vikke@mars95.to"
+set realname="MATSUNAGA Ichiro"
+#set sendmail="/usr/bin/msmtp --account=vikke"
+set sendmail="/usr/share/doc/msmtp/examples/msmtpqueue/msmtp-enqueue.sh --account=vikke"
+
+# signature
+set signature=~/.mutt/accounts/vikke@mars95.to/signature
+
+set pgp_autosign
+# vim:ft=muttrc

@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+#(echo -n "mailboxes "; find -E ~/Mail -type d ! -regex ".*(cur|new|tmp)$" -exec bash -c 'echo -n \"$1\"; echo -n " "' dummy {} \;| sed "s#${HOME}/Mail/#+#g") > ~/.mutt/mbmailboxes
+
+(echo -n "mailboxes "; find ~/Mail -regex '.*/cur$' -exec bash -c 'echo -n \"$1\"; echo -n " "' dummy {} \; |sed -e "s#${HOME}/Mail/#+#g" -e "s#/cur##g") > ~/.mutt/mbmailboxes

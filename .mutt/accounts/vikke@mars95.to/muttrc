@@ -1,0 +1,24 @@
+# account
+set folder="~/Mail/vikke@mars95.to"
+set spoolfile="=INBOX"
+set record="+[Gmail]/Sent Mail"
+set mbox_type=Maildir
+set use_from=yes
+set from="vikke@mars95.to"
+set realname="MATSUNAGA Ichiro"
+#set sendmail="/usr/bin/msmtp --account=vikke"
+set sendmail="~/bin/msmtp-enqueue.sh --account=vikke"
+
+unmy_hdr bcc
+my_hdr BCC: vikke@mars95.to
+
+# signature
+set signature=~/.mutt/accounts/vikke@mars95.to/signature
+
+# ML
+unsubscribe *
+
+subscribe mutt-j-users@lists\.sourceforge\.jp
+
+set pgp_sign_as=39144BED
+set pgp_autosign

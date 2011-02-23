@@ -1,0 +1,2 @@
+set query_command="abook --mutt-query %s"
+macro pager A |'abook --add-email'\n
