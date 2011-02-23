@@ -228,6 +228,9 @@ function! s:unite_my_settings()
 	imap <buffer> <expr> <c-i> unite#do_action('vsplit')
 endfunction
 
+" = unite-outline =====================
+nnoremap <silent> fo :Unite -start-insert outline<cr>
+
 
 " = lingr-vim =========================
 let g:lingr_vim_user="vikke.bsd@gmail.com"
