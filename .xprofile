@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# GDMでgnome sessionで開始すると、
+# 1. .xprofile
+# 2. /usr/bin/gnome-wm(ここでwindow manager起動)
+# 3. gnome-session開始
+# となる。
+# 
+# なお、xsessionだと
+# 3が.xsessionとなる。
+# とりあえず、xprofileを使うように環境を寄せてみる。
+#
+# 参考: http://d.hatena.ne.jp/moriyoshi/20070504
+
+#. ~/.bashrc
+/usr/local/bin/urxvtd -q -f -o
+
+xmodmap ~/.Xmodmap
+export WINDOW_MANAGER=metacity
+#export WINDOW_MANAGER=twm
+#export WINDOW_MANAGER=e16
+

@@ -2,6 +2,8 @@
 
 
 for f in \
+	.xprofile \
+	.xsession \
 	.termcap \
 	.tmux.conf \
 	.mailcap \
