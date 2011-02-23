@@ -1,0 +1,12 @@
+#!/usr/bin/env sh
+
+# offlineimapが異常終了した時、lockfileを削除する。
+# crontabに10分おき位で仕込むと吉。
+
+DIR="~/.offlineimap"
+ps auxww|grep -v 'grep' |grep -v 'kill' | grep 'offlineimap'
+
+if [ $? -ne 0 ];then
+	rm -f ${DIR}/lock
+	rm -f ${DIR}/pid
+fi
