@@ -2,6 +2,8 @@
 
 
 for f in \
+	.bashrc \
+	.bash_profile \
 	.Xmodmap \
 	.msmtprc \
 	.Xdefaults \
