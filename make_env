@@ -2,6 +2,7 @@
 
 
 for f in \
+	.msmtprc \
 	.Xdefaults \
 	.xprofile \
 	.xsession \
