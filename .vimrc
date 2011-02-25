@@ -5,6 +5,8 @@
 " 全体設定 "--------------------------------------------------------------------------------
 call pathogen#runtime_append_all_bundles()
 
+let mapleader=","
+
 set ai
 set number
 set ts=4
@@ -351,7 +353,6 @@ let g:eblook_dict1_gaiji='/home/vikke/dictionary/genius-gaiji'
 "let g:eblook_dict2_title='koujien'
 "let g:eblook_dict2_gaiji='/home/vikke/dictionary/koujien-gaiji'
 
-let mapleader="\<C-M>"
 "let eblookenc="euc-jp
 let eblookenc="utf-8"
 
