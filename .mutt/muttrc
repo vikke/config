@@ -23,6 +23,8 @@ my_hdr X-Face: `cat ~/.mutt/face.muttrc | tr -d ' \n' | sed -e 's/\([^0-9a-zA-Z]
 # 文章作成時にheaderは表示しない
 set noedit_headers
 
+#set editor="vim -u NONE"
+
 # 表示文字コード
 set charset="UTF-8"
 # 送信文字コード
