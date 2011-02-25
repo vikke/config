@@ -221,6 +221,7 @@ nnoremap <silent> fs :Unite -start-insert buffer<CR>
 nnoremap <silent> ff :Unite -start-insert file<CR>
 nnoremap <silent> fm :Unite -start-insert file_mru<CR>
 nnoremap <silent> fb :Unite -start-insert bookmark<cr>
+nnoremap <silent> fc :UniteWithBufferDir -start-insert file<CR>
 au FileType unite call s:unite_my_settings()
 function! s:unite_my_settings()
 	nmap <buffer> <esc>	<Plug>(unite_exit)
