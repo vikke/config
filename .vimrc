@@ -382,7 +382,7 @@ let format_allow_over_tw = 0
 let g:yankring_history_file = 'tmpfs/yankring_history'
 
 " neocomplcache
-let g:NeoComplCache_EnableAtStartup = 1
+let g:neocomplcache_enable_at_startup = 1
 imap <silent><C-l> <Plug>(neocomplcache_snippets_expand)
 smap <silent><C-l> <Plug>(neocomplcache_snippets_expand)
 
