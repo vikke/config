@@ -384,8 +384,8 @@ let g:yankring_history_file = 'tmpfs/yankring_history'
 
 " neocomplcache
 let g:neocomplcache_enable_at_startup = 1
-imap <silent><C-l> <Plug>(neocomplcache_snippets_expand)
-smap <silent><C-l> <Plug>(neocomplcache_snippets_expand)
+imap <silent><C-i> <Plug>(neocomplcache_snippets_expand)
+smap <silent><C-i> <Plug>(neocomplcache_snippets_expand)
 
 set t_Co=256
 
