@@ -218,7 +218,7 @@ set grepprg=ack\ -a\ --type-set\ tags=.tags\ --notags
 
 " = unite.vim ==========================
 nnoremap <silent> fs :Unite -start-insert buffer<CR>
-nnoremap <silent> ff :Unite -start-insert file<CR>
+nnoremap <silent> ff :Unite -start-insert -buffer-name=files file<CR>
 nnoremap <silent> fm :Unite -start-insert file_mru<CR>
 nnoremap <silent> fb :Unite -start-insert bookmark<cr>
 nnoremap <silent> fc :UniteWithBufferDir -start-insert file<CR>
