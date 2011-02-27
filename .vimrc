@@ -216,6 +216,14 @@ set grepprg=ack\ -a\ --type-set\ tags=.tags\ --notags
 "	let g:LookupFile_Bufs_LikeBufCmd=""
 "endif
 
+
+
+" = neocomplcache =====================
+let g:neocomplcache_enable_at_startup = 1
+imap <silent><C-i> <Plug>(neocomplcache_snippets_expand)
+smap <silent><C-i> <Plug>(neocomplcache_snippets_expand)
+
+
 " = unite.vim ==========================
 nnoremap <silent> fs :Unite -start-insert buffer<CR>
 nnoremap <silent> ff :Unite -start-insert -buffer-name=files file<CR>
@@ -227,8 +235,8 @@ function! s:unite_my_settings()
 	nmap <buffer> <esc>	<Plug>(unite_exit)
 	nmap <buffer> <expr> <c-k> unite#do_action('split')
 	imap <buffer> <expr> <c-k> unite#do_action('split')
-	nmap <buffer> <expr> <c-i> unite#do_action('vsplit')
-	imap <buffer> <expr> <c-i> unite#do_action('vsplit')
+	nmap <buffer> <expr> <c-,> unite#do_action('vsplit')
+	imap <buffer> <expr> <c-,> unite#do_action('vsplit')
 endfunction
 
 " = unite-outline =====================
@@ -381,11 +389,6 @@ let format_allow_over_tw = 0
 
 " yankringの設定
 let g:yankring_history_file = 'tmpfs/yankring_history'
-
-" neocomplcache
-let g:neocomplcache_enable_at_startup = 1
-imap <silent><C-i> <Plug>(neocomplcache_snippets_expand)
-smap <silent><C-i> <Plug>(neocomplcache_snippets_expand)
 
 set t_Co=256
 
