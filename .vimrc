@@ -53,6 +53,11 @@ function! s:good_width()
 	endif
 endfunction
 
+"
+"
+"
+"nnoremap <silent> : q:
+
 
 "--------------------------------------------------------------------------------
 " cygwin連携
@@ -220,8 +225,8 @@ set grepprg=ack\ -a\ --type-set\ tags=.tags\ --notags
 
 " = neocomplcache =====================
 let g:neocomplcache_enable_at_startup = 1
-imap <silent><C-i> <Plug>(neocomplcache_snippets_expand)
-smap <silent><C-i> <Plug>(neocomplcache_snippets_expand)
+imap <silent><C-a> <Plug>(neocomplcache_snippets_expand)
+smap <silent><C-a> <Plug>(neocomplcache_snippets_expand)
 
 
 " = unite.vim ==========================
@@ -235,8 +240,8 @@ function! s:unite_my_settings()
 	nmap <buffer> <esc>	<Plug>(unite_exit)
 	nmap <buffer> <expr> <c-k> unite#do_action('split')
 	imap <buffer> <expr> <c-k> unite#do_action('split')
-	nmap <buffer> <expr> <c-,> unite#do_action('vsplit')
-	imap <buffer> <expr> <c-,> unite#do_action('vsplit')
+	nmap <buffer> <expr> <c-o> unite#do_action('vsplit')
+	imap <buffer> <expr> <c-o> unite#do_action('vsplit')
 endfunction
 
 " = unite-outline =====================
