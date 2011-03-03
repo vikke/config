@@ -30,7 +30,7 @@ case $OSTYPE in
 		# macports installer addition on 2009-09-20_at_00:46:05: adding an appropriate path variable for use with macports.
 		# こっちオリジナルだけど、pathが小文字なんでちょっと修正
 		# export path=/opt/local/bin:/opt/local/sbin:$path
-		export PATH=/opt/local/bin:/opt/local/sbin:$PATH:/Library/Frameworks/UIM.framework/Version/1.6.0/bin
+		export PATH=/opt/local/bin:/opt/local/sbin:$PATH:/Library/Frameworks/UIM.framework/Versions/1.6.0/bin
 		# finished adapting your path environment variable for use with macports.
 		export cocot="cocot"
 		export LANG=ja_JP.utf-8
@@ -114,6 +114,12 @@ case $OSTYPE in
 esac
 
 # alias offlineimap="~/linux-apps/offlineimap/offlineimap.py"
+
+export XMODIFIERS="@im=uim"
+ps auxww|grep -v "grep "|grep "uim-xim" -q
+if [ $? -ne 0 ];then
+	uim-xim &>/dev/null &
+fi
 
 alias tmux='tmux a'
 
