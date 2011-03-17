@@ -42,16 +42,16 @@ nnoremap k gk
 "--------------------------------------------------------------------------------
 " 縦分割時に狭い場合アクティブなwindowを自動で広くする。
 "--------------------------------------------------------------------------------
-nnoremap <silent> <c-w>l <c-w>l:call <SID>good_width()<cr>
-nnoremap <silent> <c-w>h <c-w>h:call <SID>good_width()<cr>
-nnoremap <silent> <c-w><c-w> <c-w><c-w>:call <SID>good_width()<cr>
-nnoremap <silent> <c-w>w <c-w>w:call <SID>good_width()<cr>
-function! s:good_width()
-	let size = 90
-	if winwidth(0) < size
-		execute "vertical resize" size
-	endif
-endfunction
+"nnoremap <silent> <c-w>l <c-w>l:call <SID>good_width()<cr>
+"nnoremap <silent> <c-w>h <c-w>h:call <SID>good_width()<cr>
+"nnoremap <silent> <c-w><c-w> <c-w><c-w>:call <SID>good_width()<cr>
+"nnoremap <silent> <c-w>w <c-w>w:call <SID>good_width()<cr>
+"function! s:good_width()
+"	let size = 90
+"	if winwidth(0) < size
+"		execute "vertical resize" size
+"	endif
+"endfunction
 
 "
 "
