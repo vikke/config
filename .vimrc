@@ -251,6 +251,14 @@ nnoremap <silent> fo :Unite -start-insert outline<cr>
 " = lingr-vim =========================
 let g:lingr_vim_user="vikke.bsd@gmail.com"
 
+" = vim-ref ===========================
+if has("macunix")
+	let g:home_dir = "/Users/vikke"
+elseif has("unix")
+	let g:home_dir="/home/vikke"
+endif
+let g:ref_phpmanual_path=g:home_dir . "/doc/php/manual/php-chunked-xhtml"
+
 " = fuf ==========================
 "set runtimepath+=~/vim-vcs/vim-fuzzyfinder
 "nnoremap <silent> ff :FufFile<CR>
