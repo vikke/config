@@ -1,5 +1,6 @@
 tags
 tags-ja
+.cache/
 /.mutt/mail_alias
 /.mutt/mbmailboxes*
 /.mutt/accounts/*/casket
