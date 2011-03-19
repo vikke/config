@@ -1,5 +1,13 @@
 #!/usr/bin/env sh
 
+function link_dotfile {
+	src=${1}
+	dst=${2}
+
+	rm -rf ~/${dst}
+	ln -s ${PWD}/${src} ~/${dst}	
+}
+
 
 for f in \
 	.bashrc \
@@ -9,9 +17,9 @@ for f in \
 	.gnupg \
 	.ssh \
 	.mayu \
-	.Xmodmap \
 	.msmtprc \
 	.Xdefaults \
+	.Xresources \
 	.xprofile \
 	.xsession \
 	.termcap \
@@ -24,11 +32,25 @@ for f in \
 	.gvimrc 
 do
 
-	rm -rf ~/${f}
-	ln -s ${PWD}/${f} ~/${f}
+	link_dotfile ${f} ${f}
 
 done
 
+case $OSTYPE in
+	darwin*)
+		link_dotfile .Xmodmap.mac .Xmodmap
+		;;
+	freebsd*)
+		
+		;;
+	
+	linux*)
+		link_dotfile .Xmodmap.ubuntu .Xmodmap
+		;;
+	
+	*)
+		;;
+esac
 
 rm ~/.gitignore
 ln -s ${PWD}/global.gitignore ~/.gitignore
