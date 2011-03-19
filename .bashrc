@@ -115,6 +115,8 @@ esac
 
 # alias offlineimap="~/linux-apps/offlineimap/offlineimap.py"
 
+xmodmap ~/.Xmodmap
+
 export XMODIFIERS="@im=uim"
 ps auxww|grep -v "grep "|grep "uim-xim" -q
 if [ $? -ne 0 ];then
