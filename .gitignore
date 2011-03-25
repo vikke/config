@@ -10,4 +10,7 @@ tags-ja
 /.gnupg/.#*
 /.ssh/id_dsa_mars
 /.ssh/known_hosts
-
+/skk-dic/all.dic
+/skk-dic/skk-uim-jisyo
+/skk-dic/skk-uim-jisyo.lock
+/skk-dic/skki1_0u.dic

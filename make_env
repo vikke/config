@@ -29,6 +29,7 @@ for f in \
 	.mutt \
 	.vim \
 	.vimrc \
+	skk-dic \
 	.gvimrc 
 do
 
