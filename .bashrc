@@ -115,7 +115,7 @@ esac
 
 # alias offlineimap="~/linux-apps/offlineimap/offlineimap.py"
 
-xmodmap ~/.Xmodmap
+# xmodmap ~/.Xmodmap
 
 export XMODIFIERS="@im=uim"
 ps auxww|grep -v "grep "|grep "uim-xim" -q
@@ -254,7 +254,7 @@ export ANGBAND_X11_FONT_0="-*-ipamonagothic-medium-r-normal-*-14-*-*-*-*-*-jisx0
 
 
 if [ -f ${HOME}/.gpg-agent-info ] && \
-		ps -axo 'pid' | grep -q `cut -d: -f 2 ${HOME}/.gpg-agent-info` ;then
+		ps axo 'pid' | grep -q `cut -d: -f 2 ${HOME}/.gpg-agent-info` ;then
 	. ${HOME}/.gpg-agent-info
 	export GPG_TTY=`tty`
 	export GPG_AGENT_INFO
