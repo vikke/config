@@ -12,6 +12,7 @@ function link_dotfile {
 for f in \
 	.bashrc \
 	.bash_profile \
+	.fetchmailrc \
 	.gitconfig \
 	.gitignore \
 	.gnupg \
