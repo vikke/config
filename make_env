@@ -27,6 +27,7 @@ for f in \
 	.tmux.conf \
 	.mailcap \
 	.offlineimaprc \
+	.procmailrc \
 	.mutt \
 	.vim \
 	.vimrc \
