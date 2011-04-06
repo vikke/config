@@ -13,7 +13,8 @@
 # 参考: http://d.hatena.ne.jp/moriyoshi/20070504
 
 #. ~/.bashrc
-/usr/local/bin/urxvtd -q -f -o
+/usr/bin/urxvtd -q -f -o
+/usr/bin/uim-toolbar-gtk-systray &
 
 xmodmap ~/.Xmodmap
 export WINDOW_MANAGER=metacity
