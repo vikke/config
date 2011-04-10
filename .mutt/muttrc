@@ -13,7 +13,6 @@ ignore *
 unignore from to cc subject date message-id
 unignore X-Mailing-List X-ML-Name
 unignore user-agent x-mailer x-face
-
 # 要xface patch
 #set xface
 
@@ -33,6 +32,10 @@ set send_charset="iso-2022-jp:UTF-8"
 set assumed_charset="iso-2022-jp:euc-jp:shift_jis:utf-8"
 # 添付テキストファイルの文字コードを指定。
 set attach_charset="iso-2022-jp:euc-jp:shift_jis:utf-8"
+# 機種依存文字による化けを避ける
+set sanitize_ja_chars
+
+
 
 # 日本語ファイル名のファイルを添付する際に、ファイル名が変になるのに対応。
 # 要jp patch
@@ -169,6 +172,8 @@ folder-hook "Mail/[^\/]+/*$" "push \"c!<enter>\""
 # online用のaccount-hook
 macro generic,pager <F9> ":source ~/.mutt/accounts/vikke@mars95.to/online_muttrc\n:exec change-folder\n!\n" "online vikke@mars95.to"
 macro generic,pager <F10> ":source ~/.mutt/accounts/vikke@mars95.to/muttrc\n:exec change-folder\n!\n" "offline vikke@mars95.to"
+
+macro index,pager y "<change-folder>?<toggle-mailboxes>" "show incoming mailboxes list"
 
 # 削除にゴミ箱を使うように変更
 # local pcの場合は[Gmail]/Trashへ。courrier imapdの場合は[Gmail].Trashへ。
