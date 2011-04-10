@@ -64,7 +64,7 @@ set quit="ask-no"
 set mark_old=no
 
 # header cache
-set header_cache="/Users/vikke/tmpfs/header_cache"
+set header_cache="~/tmpfs/header_cache"
 
 # auto_view
 auto_view text/html
