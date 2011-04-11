@@ -26,6 +26,7 @@ for f in \
 	.termcap \
 	.tmux.conf \
 	.mailcap \
+	.msmtpqueue \
 	.offlineimaprc \
 	.procmailrc \
 	.mutt \

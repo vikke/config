@@ -7,7 +7,7 @@ set use_from=yes
 set from="vikke@mars95.to"
 set realname="MATSUNAGA Ichiro"
 #set sendmail="/usr/bin/msmtp --account=vikke"
-set sendmail="~/bin/msmtp-enqueue.sh --account=vikke"
+set sendmail="~/.mutt/bin/msmtp-enqueue.sh --account=vikke"
 
 unmy_hdr bcc
 my_hdr BCC: vikke@mars95.to
