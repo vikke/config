@@ -178,7 +178,7 @@ macro index,pager y "<change-folder>?<toggle-mailboxes>" "show incoming mailboxe
 # 削除にゴミ箱を使うように変更
 # local pcの場合は[Gmail]/Trashへ。courrier imapdの場合は[Gmail].Trashへ。
 # ゴミ箱内では本当に削除。
-folder-hook '/Mail/' "macro index,pager d \"<save-message>=\[Gmail\]/Trash<enter>\y"" 
+folder-hook '/Mail/' "macro index,pager d \"<save-message>=\[Gmail\]/Trash<enter>y\"" 
 folder-hook "imap://localhost" "macro index,pager d \"<save-message>=[Gmail].Trash<enter>y\""
 folder-hook "\[Gmail\][\./]Trash" "macro index,pager d \"<delete-message>\""
 
