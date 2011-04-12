@@ -76,7 +76,7 @@ case $OSTYPE in
 		export ECLIPSE_HOME=${HOME}/win32/eclipse3
 		cocot="cocot"
 
-		PATH=${VIMPATH}:${HOME}/bin/windows:${PATH}
+		PATH=${VIMPATH%/gvim}:${HOME}/bin/windows:${PATH}
 		PATH=${PATH}:/cygdrive/c/Program\ Files/Microsoft\ Visual\ SourceSafe
 		;;
 
