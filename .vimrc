@@ -348,8 +348,8 @@ elseif has('unix')
 endif
 
 if has("win32unix")
-	let skk_jisyo = "/cygdrive/c/skkdict/skkvim.dic"
-	let skk_large_jisyo = "/cygdrive/c/skkdict/all.dic"
+	let skk_jisyo = "~/skk-dic/skk-uim-jisyo"
+	let skk_large_jisyo = "~/skk-dic/all.dic"
 elseif has("unix") 
 	let skk_jisyo = "~/skkdict/skkvim.dic"
 	let skk_large_jisyo = "~/skkdict/all.dic"
