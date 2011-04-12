@@ -249,6 +249,12 @@ endfunction
 " = unite-outline =====================
 nnoremap <silent> fo :Unite -start-insert outline<cr>
 
+" = unite-tag =========================
+autocmd BufEnter *
+\   if empty(&buftype)
+\|      nnoremap <buffer> <C-]> :<C-u>UniteWithCursorWord -start-insert -immediately tag<CR>
+\|  endif
+
 
 " = lingr-vim =========================
 let g:lingr_vim_user="vikke.bsd@gmail.com"
