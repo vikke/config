@@ -3,7 +3,6 @@
 "
 "--------------------------------------------------------------------------------
 " 全体設定 "--------------------------------------------------------------------------------
-call pathogen#runtime_append_all_bundles()
 
 let mapleader=","
 
@@ -17,8 +16,8 @@ set noignorecase
 set visualbell
 "set cursorline
 set shiftwidth=4
+set runtimepath+=~/.vim
 set runtimepath+=~/svnwork/vim-script
-
 set nocompatible
 set hidden
 set backspace=indent,eol,start
@@ -28,6 +27,8 @@ set foldmethod=syntax
 set foldlevel=3
 set history=2000
 set updatetime=500
+
+call pathogen#runtime_append_all_bundles()
 
 filetype plugin indent on
 syntax enable
@@ -232,6 +233,7 @@ smap <silent><C-a> <Plug>(neocomplcache_snippets_expand)
 " = unite.vim ==========================
 nnoremap <silent> fs :Unite -start-insert buffer<CR>
 nnoremap <silent> ff :Unite -start-insert -buffer-name=files file<CR>
+nnoremap <silent> FF :UniteWithBufferDir -start-insert -buffer-name=files file<CR>
 nnoremap <silent> fm :Unite -start-insert file_mru<CR>
 nnoremap <silent> fb :Unite -start-insert bookmark<cr>
 nnoremap <silent> fc :UniteWithBufferDir -start-insert file<CR>
@@ -256,6 +258,8 @@ if has("macunix")
 	let g:home_dir = "/Users/vikke"
 elseif has("unix")
 	let g:home_dir="/home/vikke"
+elseif has("win32")
+	let g:home_dir="c:/Users/imatsunaga"
 endif
 let g:ref_phpmanual_path=g:home_dir . "/doc/php/manual/php-chunked-xhtml"
 
@@ -342,7 +346,7 @@ let g:howm_title_pattern="="
 " FreeBSDの時は、uim-skk使うので、skkをloadingしないようにする。
 "let plugin_skk_disable = 1
 if has('win32unix') || has('win32')
-
+	let plugin_skk_disable = 1
 elseif has('unix')
 	let plugin_skk_disable = 1
 endif
@@ -354,8 +358,8 @@ elseif has("unix")
 	let skk_jisyo = "~/skkdict/skkvim.dic"
 	let skk_large_jisyo = "~/skkdict/all.dic"
 elseif has("win32")
-	let skk_jisyo = "c:/skkdict/skkvim.dic"
-	let skk_large_jisyo = "c:/skkdict/all.dic"
+	let skk_jisyo = "c:/Users/imatsunaga/skk-dic/skkvim.dic"
+	let skk_large_jisyo = "c:/Users/imatsunaga/skk-dic/SKK-JISYO.L.UTF-8"
 endif
 
 let skk_keep_state = 1
