@@ -47,7 +47,7 @@ case $OSTYPE in
 		;;
 
 	[cC][yY][gG][wW][iI][nN])
-		export LANG=ja_JP.SJIS
+		export LANG=ja_JP.UTF-8
 
 		# lsの日本語表示
 		alias ls='ls --show-control-chars -F'
@@ -71,7 +71,7 @@ case $OSTYPE in
 		export workspace=/cygdrive/c/workspace
 		
 #		export VIMPATH="${HOME}/win32/vim/vim7-daily-w32j/gvim7"
-		export VIMPATH="${HOME}/win32/vim/vim71-kaoriya-w32j/gvim"
+		export VIMPATH="vim"
 		export ECLIPSE_HOME=${HOME}/win32/eclipse3
 		cocot="cocot"
 
@@ -435,7 +435,7 @@ function u-ziq {
 
 function cipher {
 	keyadd
-	eval ${cocot} -p UTF-8 -- ssh -AY cipher.vikke.name
+	eval ${cocot} -p UTF-8 -- ssh -AY vikke@cipher.vikke.name
 }
 function kt {
 	keyadd
