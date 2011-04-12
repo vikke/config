@@ -51,7 +51,7 @@ case $OSTYPE in
 
 		# lsの日本語表示
 		alias ls='ls --show-control-chars -F'
-
+	
 		# lessの日本語表示
 		export PAGER="less"
 		export LESSCHARSET=dos
@@ -59,7 +59,7 @@ case $OSTYPE in
 		# cvsのeditor呼び出しを正常にできるように(cygwinはunix pathでtmp
 		# fileを作ろうとする)tmp fileを明示的に指定
 		alias cvs="cvs -qT \"`cygpath -w ${HOME}/tmp`\""
-		
+		alias vim="gvim"	
 		# cmd.exeのstartの代替
 		alias st=cygstart
 		
@@ -70,12 +70,13 @@ case $OSTYPE in
 		export TOMCAT_HOME=${CATALINA_HOME}
 		export workspace=/cygdrive/c/workspace
 		
-#		export VIMPATH="${HOME}/win32/vim/vim7-daily-w32j/gvim7"
-		export VIMPATH="vim"
+		export VIMPATH="${HOME}/apl/vim73-kaoriya-win64/gvim"
+
+#		export VIMPATH="vim"
 		export ECLIPSE_HOME=${HOME}/win32/eclipse3
 		cocot="cocot"
 
-		PATH=${HOME}/bin/windows:${PATH}
+		PATH=${VIMPATH}:${HOME}/bin/windows:${PATH}
 		PATH=${PATH}:/cygdrive/c/Program\ Files/Microsoft\ Visual\ SourceSafe
 		;;
 
@@ -448,5 +449,6 @@ function umnt-kt {
 	umount ~/mnt/kt
 }
 
-
-
+for f in ~/misc-env/*.sh;do
+	. ${f}
+done
