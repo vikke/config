@@ -10,6 +10,6 @@ set lines=64 columns=180
 set cmdheight=2
 
 " gvim用のcolorschemeを設定。vimには影響が出ない。
-colorscheme midnight2
+"colorscheme midnight2
 "colorscheme oceandeep
 "colorscheme midnight2
