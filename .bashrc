@@ -438,6 +438,11 @@ function cipher {
 	keyadd
 	eval ${cocot} -p UTF-8 -- ssh -AY vikke@cipher.vikke.name
 }
+function mnt-cipher {
+	keyadd
+	sshfs vikke@cipher.vikke.name:/home/vikke ~/mnt/cipher
+}
+
 function kt {
 	keyadd
 	eval ${cocot} -p UTF-8 -- ssh -AY kt.vikke.name
