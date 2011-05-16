@@ -250,10 +250,10 @@ endfunction
 nnoremap <silent> fo :Unite -start-insert outline<cr>
 
 " = unite-tag =========================
-autocmd BufEnter *
-\   if empty(&buftype)
-\|      nnoremap <buffer> <C-]> :<C-u>UniteWithCursorWord -start-insert -immediately tag<CR>
-\|  endif
+"autocmd BufEnter *
+"\   if empty(&buftype)
+"\|      nnoremap <buffer> <C-]> :<C-u>UniteWithCursorWord -start-insert -immediately tag<CR>
+"\|  endif
 
 
 " = lingr-vim =========================
