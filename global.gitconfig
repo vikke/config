@@ -2,5 +2,6 @@
 	excludesfile = ~/.gitignore
 [user]
 	email = vikke.bsd@gmail.com
+	name = MATSUNAGA Ichiro
 [alias]
 	l = log --name-status
