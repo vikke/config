@@ -8,6 +8,7 @@ tags-ja
 /.gnupg/*.gpg
 /.gnupg/random_seed
 /.gnupg/.#*
+/.gnupg/gpg-agent-info*
 /.ssh/id_dsa_mars
 /.ssh/known_hosts
 /skk-dic/all.dic
