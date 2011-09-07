@@ -2,6 +2,7 @@
 accounts = vikke.bsd@gmail.com,vikke@mars95.to
 #accounts = vikke.bsd@gmail.com
 maxsyncaccounts = 3
+ui = Blinkenlights
 
 ################################################################
 [Account vikke.bsd@gmail.com]
