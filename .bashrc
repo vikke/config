@@ -104,6 +104,7 @@ case $OSTYPE in
 		alias ls='ls --color=auto -F'
 		export VIMPATH=vim
 		export JDK_DIR=/usr/lib/jvm
+		export PAGER="lv"
 		cocot="cocot -t UTF-8"
 		GEM_HOME=/var/lib/gems/1.8
 		export TMP=~/tmpfs
@@ -310,7 +311,7 @@ export keyadd
 # tunnelingとか。
 function mars {
 	keyadd
-	eval ${cocot} -p UTF-8 -- ssh -C -L 8143:localhost:143 -L 8025:localhost:25 vikke@www.mars95.to
+	eval ${cocot} -p UTF-8 -- ssh -D 10080 -C -L 8143:localhost:143 -L 8025:localhost:25 vikke@www.mars95.to
 	echo -e ${xterm_title}
 }
 
