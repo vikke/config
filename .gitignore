@@ -5,6 +5,8 @@ tags-ja
 /.mutt/mbmailboxes*
 /.mutt/accounts/*/casket
 /.vim/.netrwhist
+/.vim/bundle/vimdoc-ja/doc
+/.vim/bundle/vimdoc-ja/syntax
 /.gnupg/*.gpg
 /.gnupg/random_seed
 /.gnupg/.#*
