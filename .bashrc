@@ -119,6 +119,8 @@ esac
 
 # xmodmap ~/.Xmodmap
 
+ulimit -c unlimited
+
 export XMODIFIERS="@im=uim"
 ps auxww|grep -v "grep "|grep "uim-xim" -q
 if [ $? -ne 0 ];then
