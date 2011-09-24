@@ -25,3 +25,6 @@
 [submodule ".vim/bundle/unite-tag"]
 	path = .vim/bundle/unite-tag
 	url = git://github.com/tsukkee/unite-tag.git
+[submodule ".vim/bundle/vimdoc-ja"]
+	path = .vim/bundle/vimdoc-ja
+	url = git://github.com/vim-jp/vimdoc-ja.git
