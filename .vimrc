@@ -3,6 +3,7 @@
 "
 "--------------------------------------------------------------------------------
 " 全体設定 "--------------------------------------------------------------------------------
+call pathogen#runtime_append_all_bundles()
 
 let mapleader=","
 
@@ -16,8 +17,6 @@ set noignorecase
 set visualbell
 "set cursorline
 set shiftwidth=4
-set runtimepath+=~/.vim
-"set runtimepath+=~/svnwork/vim-script
 set nocompatible
 set hidden
 set backspace=indent,eol,start
@@ -27,8 +26,6 @@ set foldmethod=syntax
 set foldlevel=3
 set history=2000
 set updatetime=500
-
-call pathogen#runtime_append_all_bundles()
 
 filetype plugin indent on
 syntax enable
@@ -375,3 +372,11 @@ set t_Co=256
 
 vmap _ :w !pbcopy<CR><CR>
 "vmap _ :w !nkf -Ws \|pbcopy<CR><CR>
+"
+
+
+" TODO: Hack #171: 編集している関数名を表示する
+"
+"
+"
+"
