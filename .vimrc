@@ -26,6 +26,7 @@ set foldmethod=syntax
 set foldlevel=3
 set history=2000
 set updatetime=500
+set notagbsearch
 
 filetype plugin indent on
 syntax enable
