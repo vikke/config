@@ -1,11 +1,12 @@
+!URxvt*font:	xft:Nimbus Sans L:pixelsize=12
 !URxvt*font:	xft:VL ゴシック:pixelsize=12
 !URxvt*font:	xft:azuki_font:pixelsize=14
-!URxvt*font:		xft:Dejavu Sans Mono:antialias=true:autohint=true:pixelsize=12,\
+!URxvt*font:		xft:DejaVu Sans Mono:antialias=true:autohint=true:pixelsize=12,\
 !				xft:azukifontLB:antialias=true:autohint=true:pixelsize=12
 
 URxvt*font:		xft:Dejavu Sans Mono:antialias=true:autohint=true:pixelsize=12,\
 				xft:VL ゴシック:pixelsize=12
-URxvt*imFont:		xft:VL ゴシック:pixelsize=12
+!URxvt*imFont:		xft:VL ゴシック:pixelsize=12
 
 !URxvt*font:		xft:ARISAKA:antialias=true:pixelsize=12,\
 !				xft:ARISAKA:antialias=true:pixelsize=12

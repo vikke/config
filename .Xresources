@@ -1,7 +1,9 @@
 !URxvt*font:		xft:みかちゃん:style=Normal:antialias=true:autohint=true:pixelsize=11,\
 !				xft:みかちゃん:style=Normal:antialias=true:autohint=true:pixelsize=11
-URxvt*font:		xft:Menlo:style=Normal:antialias=true:autohint=true:pixelsize=11,\
-				xft:IPA モナー ゴシック:antialias=true:autohint=true:pixelsize=11
+!URxvt*font:		xft:Menlo:style=Normal:antialias=true:autohint=true:pixelsize=11,\
+!				xft:IPA モナー ゴシック:antialias=true:autohint=true:pixelsize=11
+URxvt*font:		xft:MaruGoR\-AA:style=Book:style=Normal:antialias=true:autohint=true:pixelsize=11,\
+				xft:MaruGoR\-AA:style=Book:antialias=true:autohint=true:pixelsize=11
 
 
 !URxvt*font:	xft:VL ゴシック:pixelsize=12
