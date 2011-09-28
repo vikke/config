@@ -24,6 +24,7 @@ set diffopt=filler,iwhite
 set foldenable
 set foldmethod=syntax
 set foldlevel=3
+set foldlevelstart=99
 set history=2000
 set updatetime=500
 set notagbsearch
