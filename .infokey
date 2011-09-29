@@ -1,6 +1,8 @@
 #info
 j       next-line
 k       prev-line
+^f		scroll-forward-page-only
+^b		scroll-backward-page-only
 l       forward-char
 h       backward-char
 \kd     next-line
@@ -17,8 +19,8 @@ G       end-of-node
 \ke     end-of-node
 \n      select-reference-this-line
 -       history-node
-n       next-node
-p       prev-node
+^n       next-node
+^p       prev-node
 u       up-node
 t       top-node
 d       dir-node
@@ -27,8 +29,9 @@ d       dir-node
 \t		move-to-next-xref
 \e\t	move-to-prev-xref
 H		get-help-window
-^w		next-window
-^f		scroll-forward-page-only
-^b		scroll-backward-page-only
+^w^w		next-window
+^w^c		delete-window
+^w^s		split-window
+
 #var
 scroll-step=1
