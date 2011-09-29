@@ -1,0 +1,34 @@
+#info
+j       next-line
+k       prev-line
+l       forward-char
+h       backward-char
+\kd     next-line
+\ku     prev-line
+\kr     forward-char
+\kl     backward-char
+\       scroll-forward
+\kD     scroll-forward-page-only
+b       scroll-backward
+\kU     scroll-backward-page-only
+g       beginning-of-node
+\kh     beginning-of-node
+G       end-of-node
+\ke     end-of-node
+\n      select-reference-this-line
+-       history-node
+n       next-node
+p       prev-node
+u       up-node
+t       top-node
+d       dir-node
+/		search
+?		search-backward
+\t		move-to-next-xref
+\e\t	move-to-prev-xref
+H		get-help-window
+^w		next-window
+^f		scroll-forward-page-only
+^b		scroll-backward-page-only
+#var
+scroll-step=1
