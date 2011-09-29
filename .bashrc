@@ -323,42 +323,6 @@ function psb {
 	echo -e ${xterm_title}
 }
 
-function int21 {
-	keyadd
-	eval ${cocot} -- ssh -C -L 10025:izumi:25 -L 5434:localhost:5434 vikke@dev.int21.co.jp
-	echo -e ${xterm_title}
-}
-
-function izumi {
-	keyadd
-	eval ${cocot} -- ssh -C vikke@izumi.int21.co.jp
-	echo -e ${xterm_title}
-}
-
-function bs {
-	keyadd
-	eval ${cocot} -- ssh -C -L 6000:192.168.2.111:5900 -L 11143:mail:143 -L 11025:mail:25  -L 2401:project:2401 -L 8080:gw:80 -L 10143:newmail:143 vikke@mail.blueship.jp
-	echo -e ${xterm_title}
-}
-
-function monstar-gw {
-	keyadd
-	eval ${cocot} -p UTF-8 -- ssh -X -p 14142 -C -L10022:192.168.1.100:22 -L 10080:192.168.1.100:80 vikke@monstar-gw
-	echo -e ${xterm_title}
-}
-
-function monstar-fm {
-	keyadd
-	eval ${cocot} -p UTF-8 -- ssh -L13306:localhost:3306 -L3010:10.10.0.121:3010 -L3020:10.10.0.121:3020 onqoo@221.252.222.202
-	echo -e ${xterm_title}
-}
-
-function monstar-fm-dev {
-	keyadd
-	eval ${cocot} -p UTF-8 -- ssh vikke@192.168.68.10
-	echo -e ${xterm_title}
-}
-
 function mnt-monstar-fm-dev {
 	keyadd
 	sshfs root@192.168.68.10:/opt/tomcat/webapps ~/mnt-ssh/monstar-fm-dev/
@@ -396,18 +360,6 @@ function umnt-eijudo {
 
 }
 
-function freebsddev {
-	keyadd
-	eval ${cocot} -p UTF-8 -- ssh -X vikke@freebsddev
-	echo -e ${xterm_title}
-}
-
-function speee.gw {
-	keyadd
-	eval ${cocot} -p UTF-8 -- ssh -X -D 2999 -L 10080:svn.fsx.speee.jp:80 vikke@fsx.speee.jp
-	echo -e ${xterm_title}
-}
-
 function snow {
 	keyadd
 	# 13306: sonic platform
@@ -416,16 +368,6 @@ function snow {
 	# 23308: alex staging
 	eval ${cocot} -p UTF-8 -- ssh -g -A -L 13306:sonic.fsx.speee.jp:3306 -L 13308:sonic.fsx.speee.jp:3308 -L 23306:alex.fsx.speee.jp:3306 -L 23308:alex.fsx.speee.jp:3308 snow.fsx.speee.jp
 
-}
-
-function mtfuji {
-	keyadd
-	eval ${cocot} -p UTF-8 -- ssh -A mtfuji.fsx.speee.jp
-
-}
-
-function mnt-speee {
-	smbmount //10.0.1.20/社内共有 ~/mnt-smb/fs01-0社内共有 -o iocharset=utf8,user=ichiro.matsunaga
 }
 
 function pusher {
