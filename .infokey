@@ -1,32 +1,35 @@
 #info
-j		next-line
-k		prev-line
-^f		scroll-forward-page-only
-^b		scroll-backward-page-only
-l		forward-char
-h		backward-char
-g		beginning-of-node
-G		end-of-node
-\n		select-reference-this-line
--		history-node
-^t		history-node
-^n		next-node
-^p		prev-node
-u		up-node
-t		top-node
-d		dir-node
-/		search
-?		search-backward
-n		search-next
-N		search-previous
-\t		move-to-next-xref
-\e\t	move-to-prev-xref
-H		get-help-window
-^w^w	next-window
-^wc	delete-window
-^w^s	split-window
-^c		abort-key
+j		next-line	#下
+k		prev-line	#上
+^f		scroll-forward-page-only	#下スクロール
+^b		scroll-backward-page-only	#上スクロール
+l		forward-char	#右
+h		backward-char	#左
+g		beginning-of-node	#ページ頭
+G		end-of-node			#ページ最後
+\n		select-reference-this-line	#カーソル下のリンクへ飛ぶ
+^]		select-reference-this-line	#カーソル下のリンクへ飛ぶ
+-		history-node	#前にいたノードに戻る
+^t		history-node	#前にいたノードに戻る
+^n		next-node	#同階層の次のノードへ飛ぶ
+^p		prev-node	#同階層の前のノードへ飛ぶ
+]		global-next-node	#サブ階層も含め、次のノードへ飛ぶ
+[		global-prev-node	#サブ階層も含め、前のノードへ飛ぶ
+u		up-node		#一つ上のノードへ飛ぶ
+t		top-node	#一番上のノードへ飛ぶ
+d		dir-node	#ディレクトリノードへ飛ぶ
+/		search	#ノード内順方向検索
+?		search-backward #ノード内逆方向検索
+n		search-next		#検索で、次の候補
+N		search-previous	#検索で、前の候補
+\t		move-to-next-xref	#次のリンクへ
+\e\t	move-to-prev-xref	#前のリンクへ
+H		get-help-window		#ヘルプ
+^w^w	next-window		#次のウィンドウへ
+^wc	delete-window		#現在のウィンドウを閉じる
+^w^s	split-window	#ウィンドウを分割する
+^c		abort-key		#キャンセルキー(なぜか上手く設定されず、infoが終了する)
 
 #var
-scroll-step=1
-
+scroll-step=1	#スクロールは一行ずつ
+scroll-behavior=Page Only	#上/下とかで次/前ノードに飛ばない
