@@ -1,4 +1,4 @@
-#info
+scroll-step=1
 j       next-line
 k       prev-line
 ^f		scroll-forward-page-only
@@ -19,6 +19,7 @@ G       end-of-node
 \ke     end-of-node
 \n      select-reference-this-line
 -       history-node
+^t       history-node
 ^n       next-node
 ^p       prev-node
 u       up-node
@@ -33,5 +34,3 @@ H		get-help-window
 ^w^c		delete-window
 ^w^s		split-window
 
-#var
-scroll-step=1
