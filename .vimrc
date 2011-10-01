@@ -189,10 +189,15 @@ nnoremap <silent> fc :UniteWithBufferDir -start-insert file<CR>
 au FileType unite call s:unite_my_settings()
 function! s:unite_my_settings()
 	nmap <buffer> <esc>	<Plug>(unite_exit)
-	nmap <buffer> <expr> <c-k> unite#do_action('split')
-	imap <buffer> <expr> <c-k> unite#do_action('split')
-	nmap <buffer> <expr> <c-o> unite#do_action('vsplit')
-	imap <buffer> <expr> <c-o> unite#do_action('vsplit')
+"    nmap <buffer> <expr> <c-k> unite#do_action('split')
+"    imap <buffer> <expr> <c-k> unite#do_action('split')
+"    nmap <buffer> <expr> <c-o> unite#do_action('vsplit')
+"    imap <buffer> <expr> <c-o> unite#do_action('vsplit')
+	"なんか上記コードで動かないんで、一端へんてこ対応。
+	nmap <buffer> <c-k> <esc><TAB>split<CR>
+	imap <buffer> <c-k> <esc><TAB>split<CR>
+	nmap <buffer> <c-o> <esc><tab>vsplit<CR>
+	imap <buffer> <c-o> <esc><tab>vsplit<CR>
 endfunction
 
 " = unite-outline =====================
@@ -375,7 +380,6 @@ set t_Co=256
 vmap _ :w !pbcopy<CR><CR>
 "vmap _ :w !nkf -Ws \|pbcopy<CR><CR>
 "
-
 
 " TODO: Hack #171: 編集している関数名を表示する
 "
