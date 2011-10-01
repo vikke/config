@@ -1,36 +1,32 @@
-scroll-step=1
-j       next-line
-k       prev-line
+#info
+j		next-line
+k		prev-line
 ^f		scroll-forward-page-only
 ^b		scroll-backward-page-only
-l       forward-char
-h       backward-char
-\kd     next-line
-\ku     prev-line
-\kr     forward-char
-\kl     backward-char
-\       scroll-forward
-\kD     scroll-forward-page-only
-b       scroll-backward
-\kU     scroll-backward-page-only
-g       beginning-of-node
-\kh     beginning-of-node
-G       end-of-node
-\ke     end-of-node
-\n      select-reference-this-line
--       history-node
-^t       history-node
-^n       next-node
-^p       prev-node
-u       up-node
-t       top-node
-d       dir-node
+l		forward-char
+h		backward-char
+g		beginning-of-node
+G		end-of-node
+\n		select-reference-this-line
+-		history-node
+^t		history-node
+^n		next-node
+^p		prev-node
+u		up-node
+t		top-node
+d		dir-node
 /		search
 ?		search-backward
+n		search-next
+N		search-previous
 \t		move-to-next-xref
 \e\t	move-to-prev-xref
 H		get-help-window
-^w^w		next-window
-^w^c		delete-window
-^w^s		split-window
+^w^w	next-window
+^wc	delete-window
+^w^s	split-window
+^c		abort-key
+
+#var
+scroll-step=1
 
