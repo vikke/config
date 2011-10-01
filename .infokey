@@ -27,6 +27,7 @@ N		search-previous	#検索で、前の候補
 H		get-help-window		#ヘルプ
 ^w^w	next-window		#次のウィンドウへ
 ^wc	delete-window		#現在のウィンドウを閉じる
+^w^c	delete-window		#現在のウィンドウを閉じる(なぜか上手く設定されず、infoが終了する)
 ^w^s	split-window	#ウィンドウを分割する
 ^c		abort-key		#キャンセルキー(なぜか上手く設定されず、infoが終了する)
 
