@@ -26,6 +26,7 @@ set noedit_headers
 
 # 表示文字コード
 set charset="UTF-8"
+#set file_charset="iso-2022-jp:euc-jp:shift_jis:utf-8"
 # 送信文字コード
 set send_charset="iso-2022-jp:UTF-8"
 # 文字コード指定がされていないメールの時の複合文字コード
@@ -35,11 +36,11 @@ set attach_charset="iso-2022-jp:euc-jp:shift_jis:utf-8"
 # 機種依存文字による化けを避ける
 set sanitize_ja_chars
 
-
+set cjk_width
 
 # 日本語ファイル名のファイルを添付する際に、ファイル名が変になるのに対応。
 # 要jp patch
-#set create_rfc2047_parameters
+set create_rfc2047_parameters
 #
 # msgidの生成をfromの文字列を利用して作成
 # 要jp patch
