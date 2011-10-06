@@ -1,0 +1,7 @@
+iwconfig wlan0 power on
+
+if [ -d /home/vikke/.mutt/header_cache ]; then
+	rsync -avr /home/vikke/.mutt/header_cache /home/vikke/tmpfs
+fi
+
+exit 0

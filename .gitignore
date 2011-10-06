@@ -4,6 +4,7 @@ tags-ja
 /.mutt/mail_alias
 /.mutt/mbmailboxes*
 /.mutt/accounts/*/casket
+/.mutt/header_cache
 /.vim/.netrwhist
 /.vim/dict/c_headers.tags
 /.gnupg/*.gpg
