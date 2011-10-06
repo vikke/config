@@ -3,7 +3,7 @@ if has("win32")
 	set guifont=MS_Gothic:h10:cSHIFTJIS
 	set printfont=MS_Gothic:h10:cSHIFTJIS
 elseif has("unix")
-	set guifont=IPA\ モナー\ ゴシック 10
+	set guifont=MaruGoR\-AA\ 8
 endif
 winpos 0 0
 set lines=64 columns=180
