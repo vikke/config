@@ -126,7 +126,7 @@ bind generic H help
 bind pager,index R group-reply
 
 # マニュアル
-macro generic,index,pager <f1> "<shell-escape> w3m /opt/local/share/doc/mutt/index.html<Enter>" "show Mutt documentation"
+macro generic,index,pager <f1> "<shell-escape> w3m /usr/local/share/doc/mutt/index.html<Enter>" "show Mutt documentation"
 # smtp queue run & list
 macro generic,index,pager <f5> "<shell-escape> ~/.mutt/bin/msmtp-runqueue.sh\n"	"queue run"
 macro generic,index,pager <f6> "<shell-escape> ~/.mutt/bin/msmtp-listqueue.sh\n"	"queue list"
