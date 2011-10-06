@@ -41,6 +41,8 @@ set cjk_width
 # 日本語ファイル名のファイルを添付する際に、ファイル名が変になるのに対応。
 # 要jp patch
 set create_rfc2047_parameters
+set rfc2047_parameters
+
 #
 # msgidの生成をfromの文字列を利用して作成
 # 要jp patch
