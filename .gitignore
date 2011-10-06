@@ -19,3 +19,7 @@ tags-ja
 /skk-dic/skki1_0u.dic
 /.w3m/cookie
 /.w3m/history
+/.w3m/w3mcache*
+/.w3m/w3mtmp*
+/.w3m/w3msrc*
+
