@@ -31,3 +31,6 @@
 [submodule ".vim/bundle/info.vim"]
 	path = .vim/bundle/info.vim
 	url = git://github.com/vim-scripts/info.vim
+[submodule ".vim/bundle/current-func-info.vim"]
+	path = .vim/bundle/current-func-info.vim
+	url = git://github.com/tyru/current-func-info.vim

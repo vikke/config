@@ -109,9 +109,13 @@ func! String2Hex(str)
 	return out
 endfunc
 if winwidth(0) >= 120
-	set statusline=%<[%n]%m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).':'.&ff.']'}%y\ %F%=[%{GetB()}]\ %l,%c%V%8P
+	let &statusline='%<[%n]%m%r%h%w%{"[".(&fenc!=""?&fenc:&enc).":".&ff."]"}%y %F%=[%{GetB()}] %{cfi#format("[%s()]", "no function")} %l,%c%V%8P'
+	"current-func-info.vim のテスト用
+	"let &statusline='%{cfi#format("[%s()]", "no function")}'
 else
-	set statusline=%<[%n]%m%r%h%w%{'['.(&fenc!=''?&fenc:&enc).':'.&ff.']'}%y\ %f%=[%{GetB()}]\ %l,%c%V%8P
+	let &statusline='%<[%n]%m%r%h%w%{"[".(&fenc!=""?&fenc:&enc).":".&ff."]"}%y %f%=[%{GetB()}] %{cfi#format("[%s()]", "no function")} %l,%c%V%8P'
+	"current-func-info.vim のテスト用
+	"let &statusline='%{cfi#format("[%s()]", "no function")}'
 endif
 
 "--------------------------------------------------------------------------------
@@ -382,7 +386,4 @@ vmap _ :w !pbcopy<CR><CR>
 "
 
 " TODO: Hack #171: 編集している関数名を表示する
-"
-"
-"
-"
+
