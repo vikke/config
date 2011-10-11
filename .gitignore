@@ -8,6 +8,7 @@ tags-ja
 /.vim/.netrwhist
 /.vim/dict/c_headers.tags
 /.gnupg/*.gpg
+/.gnupg/*.gpg~
 /.gnupg/random_seed
 /.gnupg/.#*
 /.gnupg/gpg-agent-info*
