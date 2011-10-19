@@ -1,13 +1,18 @@
 #!/usr/bin/env bash
 
+backup="${HOME}/config.orig"
+
 function link_dotfile {
 	src=${1}
 	dst=${2}
 
-	rm -rf ~/${dst}
-	ln -s ${PWD}/${src} ~/${dst}	
+	mv ${HOME}/${dst} ${backup}/${dst}
+	ln -s ${PWD}/${src} ${HOME}/${dst}	
 }
 
+if [ ! -e ${backup} ]; then
+	mkdir ${backup}
+fi
 
 for f in \
 	.bashrc \
@@ -15,8 +20,6 @@ for f in \
 	.fetchmailrc \
 	.gitconfig \
 	.gitignore \
-	.gnupg \
-	.ssh \
 	.mayu \
 	.msmtprc \
 	.Xdefaults \
@@ -57,7 +60,13 @@ case $OSTYPE in
 		;;
 esac
 
-rm ~/.gitignore
+mv ~/.gitignore ${backup}/.gitignore.orig
 ln -s ${PWD}/global.gitignore ~/.gitignore
-rm ~/.gitconfig
+mv ~/.gitconfig ${backup}/.gitconfig.orig
 ln -s ${PWD}/global.gitconfig ~/.gitconfig
+
+echo "
+.ssh \
+.gnupg \
+is not linked.
+"

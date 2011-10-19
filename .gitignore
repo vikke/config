@@ -14,6 +14,7 @@ tags-ja
 /.gnupg/gpg-agent-info*
 /.ssh/id_dsa_mars
 /.ssh/known_hosts
+/.ssh/authorized_keys
 /skk-dic/all.dic
 /skk-dic/skk-uim-jisyo
 /skk-dic/skk-uim-jisyo.lock
