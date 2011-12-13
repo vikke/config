@@ -109,15 +109,13 @@ case $OSTYPE in
 		GEM_HOME=/var/lib/gems/1.8
 		export TMP=~/tmpfs
 		PATH=/usr/local/mysql/bin:${PATH}
+		export MAVEN_HOME=${HOME}/dev-tools/apache-maven-3.0.3
 		;;
 
 	*)
 		;;
 esac
 
-# alias offlineimap="~/linux-apps/offlineimap/offlineimap.py"
-
-# xmodmap ~/.Xmodmap
 
 ulimit -c unlimited
 
@@ -130,7 +128,7 @@ fi
 alias tmux='tmux -2 a'
 
 if [ ! -e ~/tmpfs/header_cache ]; then
-	cp ~/.mutt/header_cache ~/tmpfs
+	cp -r ~/.mutt/header_cache ~/tmpfs
 fi
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
@@ -322,25 +320,6 @@ function psb {
 	eval ${cocot} -p EUC-JP -- ssh -X -C -L 8389:192.168.1.201:3389 -L 1100:192.168.1.1:80 -L 5880:192.168.1.13:5900 vikke@psb.vikke.mydns.jp
 	echo -e ${xterm_title}
 }
-
-function mnt-monstar-fm-dev {
-	keyadd
-	sshfs root@192.168.68.10:/opt/tomcat/webapps ~/mnt-ssh/monstar-fm-dev/
-}
-function umnt-monstar-fm-dev {
-	sudo umount ~/mnt-ssh/monstar-fm-dev/
-}
-function deploy-monstar-fm-dev {
-	keyadd
-
-	ssh root@192.168.68.10 "/opt/tomcat/bin/shutdown.sh"
-
-	ssh root@192.168.68.10 "rm -rf /opt/tomcat/webapps/artist*"
-	scp ~/workspace/MonstarArtistWeb/dist/artist.war root@192.168.68.10:/opt/tomcat/webapps/
-
-	ssh root@192.168.68.10 "/opt/tomcat/bin/catalina.sh jpda start"
-}
-
 
 function mnt-eijudo {
 	smbmount //192.168.1.13/f ~/mnt-smb/office1-f/ -o iocharset=utf8,password=
