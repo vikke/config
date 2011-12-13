@@ -28,7 +28,8 @@ set foldlevelstart=99
 set history=2000
 set updatetime=500
 set notagbsearch
-
+set list
+set listchars=trail:_,tab:\ \  
 filetype plugin indent on
 syntax enable
 
@@ -192,16 +193,11 @@ nnoremap <silent> fb :Unite -start-insert bookmark<cr>
 nnoremap <silent> fc :UniteWithBufferDir -start-insert file<CR>
 au FileType unite call s:unite_my_settings()
 function! s:unite_my_settings()
-	nmap <buffer> <esc>	<Plug>(unite_exit)
-"    nmap <buffer> <expr> <c-k> unite#do_action('split')
-"    imap <buffer> <expr> <c-k> unite#do_action('split')
-"    nmap <buffer> <expr> <c-o> unite#do_action('vsplit')
-"    imap <buffer> <expr> <c-o> unite#do_action('vsplit')
-	"なんか上記コードで動かないんで、一端へんてこ対応。
-	nmap <buffer> <c-k> <esc><TAB>split<CR>
-	imap <buffer> <c-k> <esc><TAB>split<CR>
-	nmap <buffer> <c-o> <esc><tab>vsplit<CR>
-	imap <buffer> <c-o> <esc><tab>vsplit<CR>
+	nmap <buffer> <esc>     <Plug>(unite_exit)
+    nnoremap <buffer> <expr> <c-k> unite#do_action('split')
+    inoremap <buffer> <expr> <c-k> unite#do_action('split')
+    nnoremap <buffer> <expr> <c-o> unite#do_action('vsplit')
+    inoremap <buffer> <expr> <c-o> unite#do_action('vsplit')
 endfunction
 
 " = unite-outline =====================
@@ -377,7 +373,8 @@ set t_Co=256
 "colorscheme xterm16
 "let xterm16_brightness = 'soft'
 
-"colorscheme midnight2 
+"colorscheme midnight2
+colorscheme xterm16
 
 "hi Normal ctermfg=248 ctermbg=none
 
@@ -385,5 +382,5 @@ vmap _ :w !pbcopy<CR><CR>
 "vmap _ :w !nkf -Ws \|pbcopy<CR><CR>
 "
 
-" TODO: Hack #171: 編集している関数名を表示する
+" TODO: Hack #171(http://vim-users.jp/2010/09/hack171/): 編集している関数名を表示する
 
