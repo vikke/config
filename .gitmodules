@@ -34,3 +34,6 @@
 [submodule ".vim/bundle/current-func-info.vim"]
 	path = .vim/bundle/current-func-info.vim
 	url = git://github.com/tyru/current-func-info.vim
+[submodule ".vim/bundle/vcscommand"]
+	path = .vim/bundle/vcscommand
+	url = git://repo.or.cz/vcscommand.git
