@@ -254,6 +254,7 @@ unset f
 
 export ANGBAND_X11_FONT_0="-*-ipamonagothic-medium-r-normal-*-14-*-*-*-*-*-jisx0208.1983-*"
 
+export PYTHONPATH=.
 
 if [ -f ${HOME}/.gpg-agent-info ] && \
 		ps axo 'pid' | grep -q `cut -d: -f 2 ${HOME}/.gpg-agent-info` ;then
@@ -269,14 +270,6 @@ fi
 
 
 # SSHのagent周りの設定
-# 基本方針としては、ssh-agentをssh端末数によらず1個しか上げない。
-# そのために、ssh-agentとの通信用socketを固定でふり、ssh-addのreturn値
-# で、そのsocketが死んでいるか判断し、死んでたら新規にssh-agentをあげ
-# なおす。
-# 		# man ssh-add
-#			DIAGNOSTICS参考
-#
-# YPとか使って$HOMEをexport/mountしている場合を想定して、sock名はsock.$HOSTとする。
 if ssh-add -l >/dev/null 2>&1 
 then
 	:
@@ -294,8 +287,6 @@ then
 fi
 
 # ssh-agentへkeyを追加
-# とりあえず有効期間180分
-# X31でサスペンドするとどーなるんだろう？
 function keyadd {
 	ssh-add -l | grep "mars" > /dev/null
 	if [ 1 == "$?" ] 
