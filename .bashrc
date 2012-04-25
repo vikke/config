@@ -94,7 +94,7 @@ case $OSTYPE in
 #		export JAVA_VENDOR=freebsd
 #		export JAVA_VERSION=1.5+
 		export ECLIPSE_HOME=${HOME}/win32/eclipse3
-		cocot=""
+		cocot="cocot -t UTF-8"
 		export TMP=/tmp
 		export PATH=/usr/local/sbin:${PATH}		
 		MYSQL_BASE=/usr/local/mysql
