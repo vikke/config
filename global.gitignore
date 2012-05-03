@@ -2,3 +2,4 @@
 tags
 tags-ja
 *.exe.stackdump
+*.pyc
