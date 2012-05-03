@@ -2,8 +2,8 @@
 !				xft:みかちゃん:style=Normal:antialias=true:autohint=true:pixelsize=11
 !URxvt*font:		xft:Menlo:style=Normal:antialias=true:autohint=true:pixelsize=11,\
 !				xft:IPA モナー ゴシック:antialias=true:autohint=true:pixelsize=11
-URxvt*font:		xft:MaruGoR\-AA:style=Book:style=Normal:antialias=true:autohint=true:pixelsize=11,\
-				xft:MaruGoR\-AA:style=Book:antialias=true:autohint=true:pixelsize=11
+!URxvt*font:		xft:MaruGoR\-AA:style=Book:style=Normal:antialias=true:autohint=true:pixelsize=11,\
+!				xft:MaruGoR\-AA:style=Book:antialias=true:autohint=true:pixelsize=11
 
 
 !URxvt*font:	xft:VL ゴシック:pixelsize=12
@@ -27,17 +27,17 @@ URxvt*font:		xft:MaruGoR\-AA:style=Book:style=Normal:antialias=true:autohint=tru
 !				xft:ARISAKA:antialias=true:pixelsize=12
 !URxvt*imFont:	xft:ARISAKA:pixelsize=12
 
-URxvt*eightBitInput: true
-URxvt*title:		urxvt
+!URxvt*eightBitInput: true
+!URxvt*title:		urxvt
 !URxvt*termName:		xterm
-URxvt*termName:		rxvt-256color
+!URxvt*termName:		rxvt-256color
 !URxvt*termName:		rxvt-unicode
 !URxvt*preeditType:	Root
 !URxvt*preeditType:	OverTheSpot
 !URxvt*preeditType:	OffTheSpot
 !URxvt*inputMethod:	XIM
-URxvt*geometry:		80x32
-URxvt*saveLines:	10000000
+!URxvt*geometry:		80x32
+!URxvt*saveLines:	10000000
 !URxvt*backgroundPixmap:	/home/vikke/Photos/wallpaper/k-comic-neco02-1280.jpg
 !URxvt*backgroundPixmap:	/home/vikke/Photos/wallpaper/Henry1_dark.jpg
 !URxvt*backgroundPixmap:	/home/vikke/Photos/wallpaper/wolf\ and\ spice.jpg
@@ -47,30 +47,30 @@ URxvt*saveLines:	10000000
 
 
 !URxvt*background: red
-URxvt*background: black
-URxvt*foreground: white
+!URxvt*background: black
+!URxvt*foreground: white
 !URxvt*foreground: gray
-URxvt*color0:  #000000
-URxvt*color1:  #CD0000
-URxvt*color2:  #00CD00
-URxvt*color3:  #CDCD00
-URxvt*color4:  #1E90FF
-URxvt*color5:  #CD00CD
-URxvt*color6:  #00CDCD
-URxvt*color7:  #E5E5E5
-URxvt*color8:  #4C4C4C
-URxvt*color9:  #FF0000
-URxvt*color10: #00FF00
-URxvt*color11: #FFFF00
-URxvt*color12: #4682B4
-URxvt*color13: #FF00FF
-URxvt*color14: #00FFFF
-URxvt*color15: #FFFFFF
+!URxvt*color0:  #000000
+!URxvt*color1:  #CD0000
+!URxvt*color2:  #00CD00
+!URxvt*color3:  #CDCD00
+!URxvt*color4:  #1E90FF
+!URxvt*color5:  #CD00CD
+!URxvt*color6:  #00CDCD
+!URxvt*color7:  #E5E5E5
+!URxvt*color8:  #4C4C4C
+!URxvt*color9:  #FF0000
+!URxvt*color10: #00FF00
+!URxvt*color11: #FFFF00
+!URxvt*color12: #4682B4
+!URxvt*color13: #FF00FF
+!URxvt*color14: #00FFFF
+!URxvt*color15: #FFFFFF
 
 !URxvt*keysym*F1: "\033[11~"
 !URxvt*keysym*0xFFBE: \e1
 
-URxvt*depth:	24
+!URxvt*depth:	24
 !URxvt*cursorBlink:	True
-URxvt*visualBell:	True
+!URxvt*visualBell:	True
 !URxvt*cursorColor2: white
