@@ -258,5 +258,3 @@ keycode 255 =
 remove Lock = Caps_Lock
 keysym Caps_Lock = Control_L
 add Control = Control_L
-add mod1 = Muhenkan
-add mod4 = Katakana
