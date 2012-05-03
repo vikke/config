@@ -37,3 +37,6 @@
 [submodule ".vim/bundle/vcscommand"]
 	path = .vim/bundle/vcscommand
 	url = git://repo.or.cz/vcscommand.git
+[submodule ".vim/bundle/VimPdb"]
+	path = .vim/bundle/VimPdb
+	url = git://github.com/vim-scripts/VimPdb
