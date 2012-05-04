@@ -28,6 +28,7 @@ for f in \
 	.xsession \
 	.termcap \
 	.tmux.conf \
+	.screenrc \
 	.mailcap \
 	.msmtpqueue \
 	.offlineimaprc \
