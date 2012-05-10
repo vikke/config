@@ -24,6 +24,7 @@ if [ -z "${WINPATH}" -a "$OSTYPE" == "cygwin" ]; then
 fi
 
 PATH=${HOME}/bin:/usr/local/bin:/usr/bin:/usr/sbin:/bin:/sbin:/usr/X11R6/bin:/usr/games
+declare -r vcsroot=~/vcswork
 
 case $OSTYPE in
 	darwin*)
@@ -255,6 +256,11 @@ unset f
 export ANGBAND_X11_FONT_0="-*-ipamonagothic-medium-r-normal-*-14-*-*-*-*-*-jisx0208.1983-*"
 
 export PYTHONPATH=.
+
+if [ -e ${vcsroot}/nvm/nvm.sh ]; then
+	. ${vcsroot}/nvm/nvm.sh
+	nvm use v0.7.8 > /dev/null
+fi
 
 if [ -f ${HOME}/.gpg-agent-info ] && \
 		ps axo 'pid' | grep -q `cut -d: -f 2 ${HOME}/.gpg-agent-info` ;then
