@@ -6,6 +6,19 @@ function link_dotfile {
 	src=${1}
 	dst=${2}
 
+	if [ ! -e ${HOME}/${dst} ];then
+		return
+	fi
+	if [ -e ${backup}/${dst} ];then
+		rm -rf ${backup}/${dst}
+	fi
+	
+	dst_dir=${backup}/${dst}
+	dst_dir=${dst_dir%/*}
+	if [ ! -e ${dst_dir} ];then
+		mkdir -p ${dst_dir}
+	fi
+
 	mv ${HOME}/${dst} ${backup}/${dst}
 	ln -s ${PWD}/${src} ${HOME}/${dst}	
 }
@@ -60,6 +73,11 @@ case $OSTYPE in
 	*)
 		;;
 esac
+
+if [ ! -e ~/.config ];then
+	mkdir ~/.config
+fi
+link_dotfile .config/awesome .config/awesome
 
 mv ~/.gitignore ${backup}/.gitignore.orig
 ln -s ${PWD}/global.gitignore ~/.gitignore
