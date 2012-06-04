@@ -5,3 +5,5 @@
 	name = MATSUNAGA Ichiro
 [alias]
 	l = log --name-status
+[i18n]
+	logoutputencoding = utf-8
