@@ -260,6 +260,7 @@ export PYTHONPATH=.
 if [ -e ${vcsroot}/nvm/nvm.sh ]; then
 	. ${vcsroot}/nvm/nvm.sh
 	nvm use v0.7.8 > /dev/null
+	export NODE_PATH=${NVM_PATH}_modules
 fi
 
 if [ -f ${HOME}/.gpg-agent-info ] && \
