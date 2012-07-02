@@ -23,7 +23,7 @@ set hidden
 set backspace=indent,eol,start
 set diffopt=filler,iwhite
 set foldenable
-set foldmethod=syntax
+set foldmethod=marker
 set foldlevel=3
 set foldlevelstart=99
 set history=2000
