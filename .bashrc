@@ -353,7 +353,7 @@ function pusher {
 }
 function u-ziq {
 	keyadd
-	eval ${cocot} -p UTF-8 -- ssh -AY u-ziq.vikke.name -p 10022
+	eval ${cocot} -p UTF-8 -- ssh -AY vikke@u-ziq.vikke.name -p 10022
 }
 
 function cipher {
@@ -367,7 +367,7 @@ function mnt-cipher {
 
 function kt {
 	keyadd
-	eval ${cocot} -p UTF-8 -- ssh -AY kt.vikke.name
+	eval ${cocot} -p UTF-8 -- ssh -AY vikke@kt.vikke.name
 }
 function mnt-kt {
 	sshfs 	vikke@kt.vikke.name:/home/vikke ~/mnt/kt
