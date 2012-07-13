@@ -6,9 +6,9 @@ function link_dotfile {
 	src=${1}
 	dst=${2}
 
-	if [ ! -e ${HOME}/${dst} ];then
-		return
-	fi
+#	if [ ! -e ${HOME}/${dst} ];then
+#		return
+#	fi
 	if [ -e ${backup}/${dst} ];then
 		rm -rf ${backup}/${dst}
 	fi
