@@ -29,8 +29,8 @@ set foldlevelstart=99
 set history=2000
 set updatetime=500
 set notagbsearch
-set list
-set listchars=trail:_,tab:\ \  
+set list 
+set listchars=trail:\ ,tab:\ \  
 filetype plugin indent on
 syntax enable
 set t_Co=256
