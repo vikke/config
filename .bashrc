@@ -219,6 +219,11 @@ if [ -n "${WINPATH}" ]; then
 fi
 export PATH
 
+# PERL5 local::lib対応。
+if [ -e ~/perl5/lib/perl5/local/lib.pm ]; then
+	eval $(perl -I ~/perl5/lib/perl5 -Mlocal::lib)
+fi
+
 CLASSPATH=".:./build/classes"
 CLASSPATH="$CLASSPATH:$JAVA_HOME/lib/tools.jar"
 CLASSPATH="$CLASSPATH:$CATALINA_HOME/common/lib/servlet.jar"
