@@ -49,6 +49,7 @@ for f in \
 	skk-dic \
 	.infokey \
 	.gvimrc 
+	.ctags
 do
 
 	link_dotfile ${f} ${f}
