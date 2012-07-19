@@ -24,6 +24,13 @@ if [ -z "${WINPATH}" -a "$OSTYPE" == "cygwin" ]; then
 fi
 
 PATH=${HOME}/bin:/usr/local/bin:/usr/bin:/usr/sbin:/bin:/sbin:/usr/X11R6/bin:/usr/games
+if [ -n $PERL_MM_OPT ]; then
+	unset PERL_LOCAL_LIB_ROOT
+	unset PERL_MM_OPT
+	unset PERL_MB_OPT
+	unset PERL5LIB
+fi
+
 declare -r vcsroot=~/vcswork
 
 case $OSTYPE in
