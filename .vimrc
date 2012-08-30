@@ -179,10 +179,10 @@ endif
 "--------------------------------------------------------------------------------
 " 開発用の共通設定とか。
 "{{{--------------------------------------------------------------------------------
-set tags=./.tags,.tags,../.tags,../../.tags,../../../.tags,../../../../.tags,../../../../../.tags,../../../../../../.tags
+set tags=./tags,tags,../tags,../../tags,../../../tags,../../../../tags,../../../../../tags,../../../../../../tags
 
 "set grepprg=grep\ -nH\ --exclude-dir=\".svn\"
-set grepprg=ack\ --notags
+set grepprg=ack
 "set grepprg=ack-grep\ -a\ --type-set\ tags=.tags\ --notags
 "}}}--------------------------------------------------------------------------------
 
@@ -223,6 +223,12 @@ endfunction
 "{{{
 nnoremap <silent> fo :Unite -start-insert outline<cr>
 "}}}
+
+
+" = php debugger =====================
+" {{{
+let g:debuggerMaxDepth = 1
+" }}}
 
 
 " = unite-tag =========================

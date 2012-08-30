@@ -2,7 +2,6 @@
 "au BufWritePost * silent make %
 setlocal makeprg=php\ -l\ %
 setlocal errorformat=%m\ in\ %f\ on\ line\ %l
-
 setlocal dictionary+=~/.vim/dict/php_functions.dict
 setlocal tags+=~/.vim/dict/zend.php.tags
 setlocal tags+=~/.vim/dict/phpunit.php.tags
