@@ -1,6 +1,6 @@
 [general]
-accounts = vikke.bsd@gmail.com,vikke@mars95.to
-#accounts = vikke.bsd@gmail.com
+#accounts = vikke.bsd@gmail.com,vikke@mars95.to
+accounts = vikke.bsd@gmail.com
 maxsyncaccounts = 3
 ui = Blinkenlights
 
@@ -21,7 +21,7 @@ remoteuser = vikke.bsd@gmail.com
 remotepassfile = ~/.offlineimap/vikke.bsd@gmail.com_pass
 maxconnections = 3
 realdelete = no
-
+cert_fingerprint=f3043dd689a2e7dddfbef82703a6c65ea9b634c1
 
 ################################################################
 [Account vikke@mars95.to]
