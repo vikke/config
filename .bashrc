@@ -133,6 +133,7 @@ if [ $? -ne 0 ];then
 	uim-xim &>/dev/null &
 fi
 
+#alias tmux='tmux -2 -S /tmp/tmux.session a'
 alias tmux='tmux -2 a'
 
 if [ ! -e ~/tmpfs/header_cache ]; then
