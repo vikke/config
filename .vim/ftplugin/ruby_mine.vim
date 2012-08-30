@@ -9,8 +9,8 @@ compiler ruby
 setlocal dictionary+=~/vimfiles/dict/ruby.dict
 " setlocal tags+=~/tags/ruby/gem-tags
 
-set tabstop=2
-set expandtab
-set shiftwidth=2
-set autoindent
+setlocal tabstop=2
+setlocal expandtab
+setlocal shiftwidth=2
+setlocal autoindent
 
