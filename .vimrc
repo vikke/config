@@ -139,7 +139,7 @@ if winwidth(0) >= 120
 	"current-func-info.vim のテスト用
 	"let &statusline='%{cfi#format("[%s()]", "no function")}'
 else
-	let &statusline='%<[%n]%m%r%h%w%{"[".(&fenc!=""?&fenc:&enc).":".&ff."]"}%y %-10.30f%=[%{GetB()}] %{cfi#format("[%s()]", "no function")} %l,%c%V%8P'
+	let &statusline='%<[%n]%m%r%h%w%{"[".(&fenc!=""?&fenc:&enc).":".&ff."]"}%y %10.40f%=[%{GetB()}] %{cfi#format("[%s()]", "no function")} %l,%c%V%8P'
 	"current-func-info.vim のテスト用
 	"let &statusline='%{cfi#format("[%s()]", "no function")}'
 endif
