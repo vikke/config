@@ -16,7 +16,7 @@ function link_dotfile {
 		mkdir -p ${dst_dir}
 	fi
 
-	if [ ! -e ${HOME}/${dst} ];then
+	if [ -e ${HOME}/${dst} ];then
 		mv ${HOME}/${dst} ${backup}/${dst}
 	fi
 	ln -s ${PWD}/${src} ${HOME}/${dst}	
