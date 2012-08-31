@@ -389,6 +389,10 @@ function umnt-kt {
 	umount ~/mnt/kt
 }
 
-for f in ~/misc-env/*.sh;do
-	. ${f}
-done
+ls ~/misc-env/*.sh >/dev/null 2>&1 
+if [ $? -eq 0 ]; then
+	for f in ~/misc-env/*.sh;do
+		. ${f}
+	done
+fi
+

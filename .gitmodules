@@ -40,6 +40,9 @@
 [submodule ".vim/bundle/vim-symfony"]
 	path = .vim/bundle/vim-symfony
 	url = git://github.com/soh335/vim-symfony.git
+[submodule ".vim/bundle/vim-unite-svn"]
+	path = .vim/bundle/vim-unite-svn
+	url = git://github.com/kmnk/vim-unite-svn.git
 [submodule ".vim/bundle/vinarise"]
 	path = .vim/bundle/vinarise
 	url = git://github.com/Shougo/vinarise.git

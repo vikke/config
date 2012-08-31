@@ -16,7 +16,9 @@ function link_dotfile {
 		mkdir -p ${dst_dir}
 	fi
 
-	mv ${HOME}/${dst} ${backup}/${dst}
+	if [ -e ${HOME}/${dst} ];then
+		mv ${HOME}/${dst} ${backup}/${dst}
+	fi
 	ln -s ${PWD}/${src} ${HOME}/${dst}	
 }
 
@@ -48,7 +50,7 @@ for f in \
 	.vimrc \
 	skk-dic \
 	.infokey \
-	.gvimrc 
+	.gvimrc \
 	.ctags
 do
 
