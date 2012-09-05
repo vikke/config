@@ -135,6 +135,8 @@ fi
 
 #alias tmux='tmux -2 -S /tmp/tmux.session a'
 alias tmux='tmux -2 a'
+alias svn.start_rev="svn log --stop-on-copy |awk '/^r[0-9]+ \|.*/{ rev=\$1;} END{print rev;}'"
+
 
 if [ ! -e ~/tmpfs/header_cache ]; then
 	cp -r ~/.mutt/header_cache ~/tmpfs
