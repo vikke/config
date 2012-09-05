@@ -135,7 +135,44 @@ fi
 
 #alias tmux='tmux -2 -S /tmp/tmux.session a'
 alias tmux='tmux -2 a'
-alias svn.start_rev="svn log --stop-on-copy |awk '/^r[0-9]+ \|.*/{ rev=\$1;} END{print rev;}'"
+
+function svn_head_rev {
+	local head_rev=$(LANG=C svn update | grep 'At'| cut -d\  -f 3 | sed -e 's/\.//g')
+	echo $head_rev
+}
+
+function svn_merge_command {
+	start_rev=$(LANG=C svn log --stop-on-copy |awk '/^r[0-9]+ \|.*/{ rev=$1;} END{print gensub(/^r/, "", "g", rev);}')
+	head_rev=$(svn_head_rev)
+	echo  "svn merge -r ${start_rev}:${head_rev} ^/trunk"
+}
+
+function svn_mk_branch {
+	local branch=$1
+	if [ -z ${branch} ];then
+		echo "引数にbranch名を与えて下さい" 1>&2
+		exit 1
+	fi
+
+	shift
+	local comment=$1
+	if [ -n ${comment} ];then
+		comment=${comment}"\n\n"
+	fi
+
+	local head_rev=$(svn_head_rev)
+	local commit_comment_file=$(mktemp)
+	local svn_cp_command="svn cp -F ${commit_comment_file} ^/trunk@${head_rev} ^/branches/${branch}"
+
+echo -e $(cat << EOS
+create branch.\n\n${comment}${svn_cp_command}
+EOS
+) > ${commit_comment_file}
+	
+	eval ${svn_cp_command}
+
+	rm ${commit_comment_file}
+}
 
 
 if [ ! -e ~/tmpfs/header_cache ]; then
