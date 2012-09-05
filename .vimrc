@@ -246,14 +246,8 @@ let g:lingr_vim_user="vikke.bsd@gmail.com"
 
 " = vim-ref ===========================
 "{{{
-if has("macunix")
-	let g:home_dir = "/Users/vikke"
-elseif has("unix")
-	let g:home_dir="/home/vikke"
-elseif has("win32")
-	let g:home_dir="c:/Users/imatsunaga"
-endif
-let g:ref_phpmanual_path=g:home_dir . "/doc/php/manual/php-chunked-xhtml"
+let g:ref_phpmanual_path=$HOME . "/.vim/dict/manual/php-chunked-xhtml"
+let g:ref_use_vimproc = 0
 "}}}
 
 "=== taglist ===
