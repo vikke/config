@@ -147,6 +147,14 @@ function svn_merge_command {
 	echo  "svn merge -r ${start_rev}:${head_rev} ^/trunk"
 }
 
+
+# make svn's branch under ^/branches/
+#
+# usage: svn_mk_branch BRANCH_PATH [additional-comment]
+#   ex.: svn_mk_branch ichiro/TEST_TEST "なんたらかんたら用branch作成"
+#
+# 	BRANCH_PATH: 
+#		create branch path under ^/branches/
 function svn_mk_branch {
 	local branch=$1
 	if [ -z ${branch} ];then
