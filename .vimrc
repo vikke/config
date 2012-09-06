@@ -203,6 +203,7 @@ smap <silent><C-a> <Plug>(neocomplcache_snippets_expand)
 
 " = unite.vim ==========================
 "{{{
+let g:unite_source_file_mru_limit=400
 nnoremap <silent> fs :Unite -start-insert buffer<CR>
 nnoremap <silent> ff :Unite -start-insert -buffer-name=files file<CR>
 nnoremap <silent> FF :UniteWithBufferDir -start-insert -buffer-name=files file<CR>
