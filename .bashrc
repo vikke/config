@@ -141,7 +141,7 @@ function svn_head_rev {
 	echo $head_rev
 }
 
-function svn_merge_command {
+function svn_merge_from_trunk_command {
 	start_rev=$(LANG=C svn log --stop-on-copy |awk '/^r[0-9]+ \|.*/{ rev=$1;} END{print gensub(/^r/, "", "g", rev);}')
 	head_rev=$(svn_head_rev)
 	echo  "svn merge -r ${start_rev}:${head_rev} ^/trunk"
