@@ -71,7 +71,7 @@ EOS
 function svn_tagging_command {
 	prev_tag_rev=$(svn_get_last_rev ^/tags)
 	prev_tag_rev=$((${prev_tag_rev} + 1))
-	prev_tag_rev=4667	
+	#prev_tag_rev=4667	
 	
 	trunk_rev=$(svn_get_last_rev ^/trunk)
 
