@@ -51,6 +51,7 @@ for f in \
 	skk-dic \
 	.infokey \
 	.gvimrc \
+	bash_misc_func \
 	.ctags
 do
 
