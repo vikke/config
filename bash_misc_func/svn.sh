@@ -49,17 +49,21 @@ function svn_mk_branch {
 	shift
 	local comment=$1
 	if [ -n "${comment}" ];then
-		comment=${comment}"\n\n"
+		comment=${comment}'
+
+'
 	fi
 
 	local head_rev=$(svn_head_rev)
 	local commit_comment_file=$(mktemp)
 	local svn_cp_command="svn cp -F ${commit_comment_file} ^/trunk@${head_rev} ^/branches/${branch}"
 
-echo -e $(cat << EOS
-create branch.\n\n${comment}${svn_cp_command}
+	echo "$(cat << EOS
+create branch.
+
+${comment}${svn_cp_command}
 EOS
-) > ${commit_comment_file}
+)" > ${commit_comment_file}
 	
 	eval ${svn_cp_command}
 
