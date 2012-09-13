@@ -182,7 +182,7 @@ endif
 set tags=./tags,tags,../tags,../../tags,../../../tags,../../../../tags,../../../../../tags,../../../../../../tags
 
 "set grepprg=grep\ -nH\ --exclude-dir=\".svn\"
-set grepprg=ack
+set grepprg=ack\ -G\ '^(?!cache/).*'
 "set grepprg=ack-grep\ -a\ --type-set\ tags=.tags\ --notags
 "}}}--------------------------------------------------------------------------------
 
