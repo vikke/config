@@ -52,6 +52,7 @@ for f in \
 	.infokey \
 	.gvimrc \
 	bash_misc_func \
+	.w3m \
 	.ctags
 do
 
