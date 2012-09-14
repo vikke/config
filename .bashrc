@@ -389,6 +389,10 @@ function umnt-kt {
 	umount ~/mnt/kt
 }
 
+if [ -e /usr/share/doc/tig-1.0/contrib/tig-completion.bash ]; then
+	. /usr/share/doc/tig-1.0/contrib/tig-completion.bash
+fi
+
 ls ~/bash_misc_func/*.sh >/dev/null 2>&1
 if [ $? -eq 0 ]; then
 	for f in ~/bash_misc_func/*.sh;do
