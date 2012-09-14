@@ -15,13 +15,12 @@ function svn_get_mk_branch_rev {
 	echo $(LANG=C svn log -v --stop-on-copy ${branch} |gawk --re-interval '/^[[:space:]]{3}A .*\(from \/trunk.*$/{rev=$0;} END{print gensub(/^.*:([[:digit:]]+).*\).*$/, "\\1", "G", rev);}')
 }
 
-function svn_get_last_rev {
-	local branch=$1
-	if [ -z ${branch} ];then
-		echo "branchが指定されていません" 1>&2
-		exit 1
-	fi
+function svn_get_last_tag_rev {
 	echo $(LANG=C svn log -v --stop-on-copy ^/tags | gawk --re-interval '/^[[:space:]]{3}A .*\(from \/trunk.*$/{ print gensub(/^.*:([[:digit:]]+).*\).*$/, "\\1", "G"); exit;}')
+}
+
+function svn_get_last_trunk_rev {
+	echo $(LANG=C svn log -v -l 1 ^/trunk|awk '/^r[[:digit:]]+/ { print gensub("r", "", "G", $1);}')
 }
 
 
@@ -43,7 +42,7 @@ function svn_mk_branch {
 	local branch=$1
 	if [ -z "${branch}" ];then
 		echo "引数にbranch名を与えて下さい" 1>&2
-		exit 1
+		return 1
 	fi
 
 	shift
@@ -73,15 +72,17 @@ EOS
 # create new tagging command.
 # ちょっとめんどいんで、一旦枝番対応は後回し
 function svn_tagging_command {
-	prev_tag_rev=$(svn_get_last_rev ^/tags)
+	prev_tag_rev=$(svn_get_last_tag_rev)
 	prev_tag_rev=$((${prev_tag_rev} + 1))
 	#prev_tag_rev=4667	
 	
-	trunk_rev=$(svn_get_last_rev ^/trunk)
+	trunk_rev=$(svn_get_last_trunk_rev)
 
+	echo "trunk_rev: ${trunk_rev}"
+	echo "prev_tag_rev: ${prev_tag_rev}"
 	if [ ${trunk_rev} -lt ${prev_tag_rev} ];then
 		echo "最終tagのrev.よりtrunkのrev.の方が若い。これはぁゃιぃ" 1>&2	
-		exit 1
+		return 1
 	fi
 
 	comment_file=$(mktemp)	
