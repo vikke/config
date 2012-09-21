@@ -72,11 +72,11 @@ EOS
 # create new tagging command.
 # ちょっとめんどいんで、一旦枝番対応は後回し
 function svn_tagging_command {
-	prev_tag_rev=$(svn_get_last_tag_rev)
-	prev_tag_rev=$((${prev_tag_rev} + 1))
+	local prev_tag_rev=$(svn_get_last_tag_rev)
+	local prev_tag_rev=$((${prev_tag_rev} + 1))
 	#prev_tag_rev=4667	
 	
-	trunk_rev=$(svn_get_last_trunk_rev)
+	local trunk_rev=$(svn_get_last_trunk_rev)
 
 	echo "trunk_rev: ${trunk_rev}"
 	echo "prev_tag_rev: ${prev_tag_rev}"
@@ -96,5 +96,17 @@ function svn_tagging_command {
 
 	# eval ${command}
 	echo ${command}
+}
+
+
+# get rev.no that contains the word.
+function svn_get_rev_contain_word {
+	local target_word=${1}
+	if [ -z "${target_word}" ];then
+		echo "検索語を渡して下さい" 1>&2
+		return 1
+	fi
+	
+	svn log | gawk "/^r[0-9]+/{ var=\$0; } /${target_word}\>/{ print var \"\n\" \$0 \"\n\";}"
 }
 
