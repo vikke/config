@@ -136,53 +136,6 @@ fi
 #alias tmux='tmux -2 -S /tmp/tmux.session a'
 alias tmux='tmux -2 a'
 
-function svn_head_rev {
-	local head_rev=$(LANG=C svn update | grep 'At'| cut -d\  -f 3 | sed -e 's/\.//g')
-	echo $head_rev
-}
-
-function svn_merge_from_trunk_command {
-	local start_rev=$(LANG=C svn log --stop-on-copy |awk '/^r[0-9]+ \|.*/{ rev=$1;} END{print gensub(/^r/, "", "g", rev);}')
-	local head_rev=$(svn_head_rev)
-	echo  "svn merge -r ${start_rev}:${head_rev} ^/trunk"
-}
-
-
-# make svn's branch under ^/branches/
-#
-# usage: svn_mk_branch BRANCH_PATH [additional-comment]
-#   ex.: svn_mk_branch ichiro/TEST_TEST "なんたらかんたら用branch作成"
-#
-# 	BRANCH_PATH: 
-#		create branch path under ^/branches/
-function svn_mk_branch {
-	local branch=$1
-	if [ -z ${branch} ];then
-		echo "引数にbranch名を与えて下さい" 1>&2
-		exit 1
-	fi
-
-	shift
-	local comment=$1
-	if [ -n ${comment} ];then
-		comment=${comment}"\n\n"
-	fi
-
-	local head_rev=$(svn_head_rev)
-	local commit_comment_file=$(mktemp)
-	local svn_cp_command="svn cp -F ${commit_comment_file} ^/trunk@${head_rev} ^/branches/${branch}"
-
-echo -e $(cat << EOS
-create branch.\n\n${comment}${svn_cp_command}
-EOS
-) > ${commit_comment_file}
-	
-	eval ${svn_cp_command}
-
-	rm ${commit_comment_file}
-}
-
-
 if [ ! -e ~/tmpfs/header_cache ]; then
 	cp -r ~/.mutt/header_cache ~/tmpfs
 fi
@@ -436,10 +389,20 @@ function umnt-kt {
 	umount ~/mnt/kt
 }
 
+if [ -e /usr/share/doc/tig-1.0/contrib/tig-completion.bash ]; then
+	. /usr/share/doc/tig-1.0/contrib/tig-completion.bash
+fi
+
+ls ~/bash_misc_func/*.sh >/dev/null 2>&1
+if [ $? -eq 0 ]; then
+	for f in ~/bash_misc_func/*.sh;do
+		. ${f}
+	done
+fi
+
 ls ~/misc-env/*.sh >/dev/null 2>&1 
 if [ $? -eq 0 ]; then
 	for f in ~/misc-env/*.sh;do
 		. ${f}
 	done
 fi
-
