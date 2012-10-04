@@ -254,6 +254,7 @@ let g:ref_use_vimproc = 0
 "=== taglist ===
 "{{{
 let g:Tlist_WinWidth=40
+let g:tlist_php_settings = 'php;c:class;d:constant;f:function'
 "}}}
 
 "=== howm ================
