@@ -28,13 +28,14 @@ set foldlevel=3
 set foldlevelstart=99
 set history=2000
 set updatetime=500
-set notagbsearch
+"set notagbsearch
 set list 
 set listchars=trail:\ ,tab:\ \  
 filetype plugin indent on
 syntax enable
 set t_Co=256
 set nohlsearch
+set viminfo=:2000,'100,<50,s10,h
 "}}}--------------------------------------------------------------------------------
 
 "--------------------------------------------------------------------------
@@ -45,7 +46,9 @@ set nohlsearch
 "colorscheme xterm16
 "let xterm16_brightness = 'soft'
 "colorscheme midnight2
-colorscheme xterm16
+" colorscheme xterm16
+"colorscheme jellybeans
+colorscheme gentooish
 "hi Normal ctermfg=248 ctermbg=none
 "}}}--------------------------------------------------------------------------------
 
@@ -203,10 +206,10 @@ smap <silent><C-a> <Plug>(neocomplcache_snippets_expand)
 
 " = unite.vim ==========================
 "{{{
-let g:unite_source_file_mru_limit=400
+let g:unite_source_file_mru_limit=1000
 nnoremap <silent> fs :Unite -start-insert buffer<CR>
-nnoremap <silent> ff :Unite -start-insert -buffer-name=files file<CR>
-nnoremap <silent> FF :UniteWithBufferDir -start-insert -buffer-name=files file<CR>
+nnoremap <silent> ff :Unite -start-insert -buffer-name=files file file/new<CR>
+nnoremap <silent> FF :UniteWithBufferDir -start-insert -buffer-name=files file file/new<CR>
 nnoremap <silent> fm :Unite -start-insert file_mru<CR>
 nnoremap <silent> fb :Unite -start-insert bookmark<cr>
 nnoremap <silent> fc :UniteWithBufferDir -start-insert file<CR>
