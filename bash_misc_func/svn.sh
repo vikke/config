@@ -12,7 +12,11 @@ function svn_get_mk_branch_rev {
 	if [ -z "${branch}" ];then
 		branch=.
 	fi
-	echo $(LANG=C svn log -v --stop-on-copy ${branch} |gawk --re-interval '/^[[:space:]]{3}A .*\(from \/trunk.*$/{rev=$0;} END{print gensub(/^.*:([[:digit:]]+).*\).*$/, "\\1", "G", rev);}')
+	echo $(LANG=C svn log -v --stop-on-copy ${branch} |gawk --re-interval '/^[[:space:]]{3}A .*\(from .*:[[:digit:]]+\)$/{rev=$0;} END{print gensub(/^.*:([[:digit:]]+).*\).*$/, "\\1", "G", rev);}')
+}
+
+function svn_get_parent_branch_path {
+echo $(LANG=C svn log -v --stop-on-copy ${branch} |gawk --re-interval '/^[[:space:]]{3}A .*\(from .*:[[:digit:]]+\)$/{m=$0;} END{print gensub(/.*\(from (.+):.*$/, "\\1", "G", m);}')
 }
 
 function svn_get_last_tag_rev {
@@ -25,10 +29,11 @@ function svn_get_last_trunk_rev {
 
 
 # create svn merge command.
-function svn_merge_from_trunk_command {
+function svn_merge_from_parent_command {
 	local start_rev=$(svn_get_mk_branch_rev . )
 	local head_rev=$(svn_head_rev)
-	echo  "svn merge -r ${start_rev}:${head_rev} ^/trunk"
+	local parent_path=$(svn_get_parent_branch_path)
+	echo  "svn merge -r ${start_rev}:${head_rev} ^/${parent_path}"
 }
 
 # make svn's branch under ^/branches/
