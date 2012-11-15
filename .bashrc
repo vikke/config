@@ -114,7 +114,6 @@ case $OSTYPE in
 		export JDK_DIR=/usr/lib/jvm
 		export PAGER="lv"
 		cocot="cocot -t UTF-8"
-		GEM_HOME=/var/lib/gems/1.8
 		export TMP=~/tmpfs
 		PATH=/usr/local/mysql/bin:${PATH}
 		export MAVEN_HOME=${HOME}/dev-tools/apache-maven-3.0.3
@@ -221,7 +220,6 @@ PATH=${PATH}:${JAVA_HOME}/bin:${J2EE_HOME}/bin
 PATH=${PATH}:${CATALINA_HOME}/bin
 PATH=${PATH}:${ANT_HOME}/bin
 PATH=${PATH}:${M2_HOME}/bin
-PATH=${PATH}:${GEM_HOME}/bin
 PATH=${PATH}:${MYSQL_BASE}/bin
 
 if [ -n "${WINPATH}" ]; then
