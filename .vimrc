@@ -260,6 +260,10 @@ let g:Tlist_WinWidth=40
 let g:tlist_php_settings = 'php;c:class;d:constant;f:function'
 "}}}
 
+
+"=== vcscommand ===
+let g:VCSCommandDiffSplit="w"
+
 "=== howm ================
 "{{{
 " howm_vimの設定
@@ -345,6 +349,24 @@ endif
 "{{{
 let g:yankring_history_file = 'tmpfs/yankring_history'
 "}}}
+
+"}}}--------------------------------------------------------------------------------
+
+" quickrun
+"{{{
+let g:quickrun_config = {}
+"}}}
+
+"--------------------------------------------------------------------------------
+" au関係
+"{{{--------------------------------------------------------------------------------
+
+augroup AddFileType
+	au!
+	au BufWinEnter,BufNewFile, *_spec.rb set filetype=ruby.rspec
+augroup END
+let g:quickrun_config['ruby.rspec'] = { 'command': 'bundle exec rspec', 'cmdopt': '-cfs', 'exec': '%c %s %a' }
+
 
 "}}}--------------------------------------------------------------------------------
 
