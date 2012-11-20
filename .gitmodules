@@ -52,3 +52,6 @@
 [submodule ".vim/bundle/vim-endwise.git"]
 	path = .vim/bundle/vim-endwise.git
 	url = git://github.com/tpope/vim-endwise.git
+[submodule ".vim/bundle/matchit.zip.git"]
+	path = .vim/bundle/matchit.zip.git
+	url = git://github.com/vim-scripts/matchit.zip.git
