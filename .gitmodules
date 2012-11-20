@@ -49,3 +49,6 @@
 [submodule ".vim/bundle/unite-colorscheme"]
 	path = .vim/bundle/unite-colorscheme
 	url = git://github.com/ujihisa/unite-colorscheme.git
+[submodule ".vim/bundle/vim-endwise.git"]
+	path = .vim/bundle/vim-endwise.git
+	url = git://github.com/tpope/vim-endwise.git
