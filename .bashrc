@@ -94,7 +94,7 @@ case $OSTYPE in
 #		export LANG=ja_JP.eucJP
 		export LV='-Iej -Ou8'
 		export LANG=ja_JP.UTF-8
-		export PAGER="lv"
+		export PAGER="lv -c"
 		
 		export VIMPATH=vim
 		export JDK_DIR=/usr/local/jdk1.5.0
@@ -112,7 +112,7 @@ case $OSTYPE in
 		alias ls='ls --color=auto -F'
 		export VIMPATH=vim
 		export JDK_DIR=/usr/lib/jvm
-		export PAGER="lv"
+		export PAGER="lv -c"
 		cocot="cocot -t UTF-8"
 		export TMP=~/tmpfs
 		PATH=/usr/local/mysql/bin:${PATH}

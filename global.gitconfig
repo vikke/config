@@ -4,7 +4,7 @@
 	email = vikke.bsd@gmail.com
 	name = MATSUNAGA Ichiro
 [alias]
-	l = log --name-status
+	l = log --name-status --decorate --all --graph
 	st = status
 [i18n]
 	logoutputencoding = utf-8
