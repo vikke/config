@@ -16,5 +16,6 @@ setlocal autoindent
 setlocal softtabstop=2
 
 " matchit
-let b:match_words = '\<\%(if\|unless\|case\|while\|until\|for\|do\|class\|module\|def\|begin\)\>=\@!:\<\%(else\|elsif\|ensure\|when\|rescue\|break\|redo\|next\|retry\)\>:\<end\>,{:},\[:\],(:),\<describe\|it\|context\>:\<end\>'
+" なんか動きが変なので、一旦comment。後でちゃんとマニュアル読む。
+"let b:match_words = '\<\%(if\|unless\|case\|while\|until\|for\|do\|class\|module\|def\|begin\)\>=\@!:\<\%(else\|elsif\|ensure\|when\|rescue\|break\|redo\|next\|retry\)\>:\<end\>,{:},\[:\],(:),\<describe\|it\|context\>:\<end\>'
 
