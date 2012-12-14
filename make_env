@@ -53,6 +53,8 @@ for f in \
 	.gvimrc \
 	bash_misc_func \
 	.w3m \
+	.irbrc \
+	.rdebugrc \
 	.ctags
 do
 
