@@ -30,7 +30,7 @@ set history=2000
 set updatetime=500
 "set notagbsearch
 set list
-set listchars=trail:\ ,tab:\ \
+set listchars=trail:\ ,tab:\ \ ,
 filetype plugin indent on
 syntax enable
 set t_Co=256
@@ -50,6 +50,10 @@ set viminfo=:2000,'100,<50,s10,h
 "colorscheme jellybeans
 colorscheme gentooish
 "hi Normal ctermfg=248 ctermbg=none
+
+"" %s///c とかのときに、マッチした場所を別の色で表示
+highlight IncSearch term=bold ctermbg=54 guibg=LightMagenta
+
 "}}}--------------------------------------------------------------------------------
 
 
@@ -370,8 +374,13 @@ augroup END
 let g:quickrun_config['ruby.rspec'] = { 'command': 'bundle exec rspec', 'cmdopt': '-cfs', 'exec': '%c %s %a' }
 
 " 保存時に行末スペース削除
-autocmd BufWritePre * :%s#\s\+$##ge
+function! Rtrim()
+	let s:now = getpos(".")
+	%s/\s\+$//e
+	call setpos(".", s:now)
+endfunction
 
-
+autocmd BufWritePre * call Rtrim()
 "}}}--------------------------------------------------------------------------------
+
 
