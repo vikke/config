@@ -1,4 +1,4 @@
-#!/usr/bin/env bash 
+#!/usr/bin/env bash
 
 # $Id: .bashrc 582 2011-02-15 23:27:26Z vikke $
 # $HeadURL: https://psb.vikke.mydns.jp/svn/vikke_env/.bashrc $
@@ -18,7 +18,7 @@ fi
 #	source ${HOME}/.bash_profile
 #fi
 
-# Windows用pathを退避 
+# Windows用pathを退避
 if [ -z "${WINPATH}" -a "$OSTYPE" == "cygwin" ]; then
 	export WINPATH=${PATH}
 fi
@@ -45,7 +45,7 @@ case $OSTYPE in
 		alias mysql=mysql5
 #		alias urxvt="urxvt -e \'/Library/Frameworks/UIM.framework/Versions/1.6.0/bin/uim-fep\'"
 		export VIMPATH=vim
-		
+
 		export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Versions/CurrentJDK/HOME
 		export _JAVA_OPTIONS=-Dfile.encoding=UTF-8
 		export MAVEN_HOME=/opt/local/share/java/maven2
@@ -59,25 +59,25 @@ case $OSTYPE in
 
 		# lsの日本語表示
 		alias ls='ls --show-control-chars -F'
-	
+
 		# lessの日本語表示
 		export PAGER="less"
 		export LESSCHARSET=dos
-		
+
 		# cvsのeditor呼び出しを正常にできるように(cygwinはunix pathでtmp
 		# fileを作ろうとする)tmp fileを明示的に指定
 		alias cvs="cvs -qT \"`cygpath -w ${HOME}/tmp`\""
-		alias vim="gvim"	
+		alias vim="gvim"
 		# cmd.exeのstartの代替
 		alias st=cygstart
-		
+
 		# Windowsで設定しているTMP環境変数を退避
 		export WTEMP=$TMP
 		export JDK_DIR=/cygdrive/c/jdk
 		export CATALINA_HOME=/cygdrive/c/svr/Tomcat5.5
 		export TOMCAT_HOME=${CATALINA_HOME}
 		export workspace=/cygdrive/c/workspace
-		
+
 		export VIMPATH="${HOME}/apl/vim73-kaoriya-win64/gvim"
 
 #		export VIMPATH="vim"
@@ -95,7 +95,7 @@ case $OSTYPE in
 		export LV='-Iej -Ou8'
 		export LANG=ja_JP.UTF-8
 		export PAGER="lv -c"
-		
+
 		export VIMPATH=vim
 		export JDK_DIR=/usr/local/jdk1.5.0
 #		export JAVA_OS=native
@@ -104,7 +104,7 @@ case $OSTYPE in
 		export ECLIPSE_HOME=${HOME}/win32/eclipse3
 		cocot="cocot -t UTF-8"
 		export TMP=/tmp
-		export PATH=/usr/local/sbin:${PATH}		
+		export PATH=/usr/local/sbin:${PATH}
 		MYSQL_BASE=/usr/local/mysql
 		;;
 
@@ -184,7 +184,7 @@ HISTCONTROL=ignoreboth
 #export RUBYOPT=rubygems
 export TAGDIR=${HOME}/tags
 
-export PS1='\n\u@\h:\w\n$(branch=$(git branch -a 2>/dev/null | grep "^*" | tr -d "\\* "); if [ "${branch}" != "" ];then echo "[${branch}] "; fi)\$ '
+export PS1='\n\u@\h:\w\n$(branch=$(git branch -a 2>/dev/null | grep "^*" | tr -d "\\* "); if [ "${branch}" != "" ];then echo "[\[\033[0;31m\]${branch}] "; fi)\$ '
 export RSYNC_RSH=ssh
 #export JAVA_HOME=${JDK_DIR}/j2sdk1.4.1_07
 #export JAVA_HOME=${JDK_DIR}/j2sdk1.4.2_08
@@ -210,7 +210,7 @@ export TEMP=${TMP}
 export SCHEME_LIBRARY_PATH="/usr/local/lib/slib/"
 
 export XDEBUG_CONFIG="idekey=DBGP"
-export XDEBUG_SESSION_START=DBGP 
+export XDEBUG_SESSION_START=DBGP
 
 #PATH=/usr/bin:/usr/sbin:/bin:/sbin:/usr/X11R6/bin:${HOME}/bin:/usr/local/bin
 PATH=${PATH}:${HOME}/cvswork/refeng/tools
@@ -285,17 +285,17 @@ else
 	export GPG_TTY=`tty`
 	export GPG_AGENT_INFO
 fi
-		
+
 
 
 # SSHのagent周りの設定
-if ssh-add -l >/dev/null 2>&1 
+if ssh-add -l >/dev/null 2>&1
 then
 	:
 elif [ 2 == "$?" ]
 then
 	export SSH_AUTH_SOCK=${HOME}/.ssh/sock.`hostname`
-	if ssh-add -l > /dev/null 2>&1 
+	if ssh-add -l > /dev/null 2>&1
 	then
 		:
 	elif [ 2 == "$?" -a ! "$SSH_CLIENT" ]
@@ -308,7 +308,7 @@ fi
 # ssh-agentへkeyを追加
 function keyadd {
 	ssh-add -l | grep "mars" > /dev/null
-	if [ 1 == "$?" ] 
+	if [ 1 == "$?" ]
 	then
 		echo "ssh key add"
 		ssh-add -t 180m ~/.ssh/id_dsa_mars
@@ -335,7 +335,7 @@ function mnt-eijudo {
 	smbmount //192.168.1.13/f ~/mnt-smb/office1-f/ -o iocharset=utf8,password=
 	smbmount //192.168.1.201/e ~/mnt-smb/nin-e/ -o iocharset=utf8,user=vikke
 	smbmount //psb/export ~/mnt-smb/psb/ -o iocharset=utf8,user=vikke,password=
-	
+
 }
 
 function mnt-freebsddev {
@@ -399,7 +399,7 @@ if [ $? -eq 0 ]; then
 	done
 fi
 
-ls ~/misc-env/*.sh >/dev/null 2>&1 
+ls ~/misc-env/*.sh >/dev/null 2>&1
 if [ $? -eq 0 ]; then
 	for f in ~/misc-env/*.sh;do
 		. ${f}
