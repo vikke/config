@@ -184,8 +184,7 @@ HISTCONTROL=ignoreboth
 #export RUBYOPT=rubygems
 export TAGDIR=${HOME}/tags
 
-
-export PS1="\n\u@\h:\w\n$ "
+export PS1='\n\u@\h:\w\n$(branch=$(git branch -a 2>/dev/null | grep "^*" | tr -d "\\* "); if [ "${branch}" != "" ];then echo "[${branch}] "; fi)\$ '
 export RSYNC_RSH=ssh
 #export JAVA_HOME=${JDK_DIR}/j2sdk1.4.1_07
 #export JAVA_HOME=${JDK_DIR}/j2sdk1.4.2_08
