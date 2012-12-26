@@ -29,8 +29,8 @@ set foldlevelstart=99
 set history=2000
 set updatetime=500
 "set notagbsearch
-set list 
-set listchars=trail:\ ,tab:\ \  
+set list
+set listchars=trail:\ ,tab:\ \
 filetype plugin indent on
 syntax enable
 set t_Co=256
@@ -150,7 +150,7 @@ endif
 
 "--------------------------------------------------------------------------------
 " /で検索した結果をquickfixで表示;
-" 元ネタは http://subtech.g.hatena.ne.jp/secondlife/ 
+" 元ネタは http://subtech.g.hatena.ne.jp/secondlife/
 "{{{--------------------------------------------------------------------------------
 nmap <unique> f/ :exec ':vimgrep /' . getreg('/') . '/j %\|cwin'<CR>
 "}}}--------------------------------------------------------------------------------
@@ -187,6 +187,7 @@ set tags=./tags,tags,../tags,../../tags,../../../tags,../../../../tags,../../../
 "set grepprg=grep\ -nH\ --exclude-dir=\".svn\"
 set grepprg=ack\ -G\ '^(?!cache/).*'
 "set grepprg=ack-grep\ -a\ --type-set\ tags=.tags\ --notags
+
 "}}}--------------------------------------------------------------------------------
 
 "--------------------------------------------------------------------------------
@@ -305,7 +306,7 @@ endif
 if has("win32unix")
 	let skk_jisyo = "~/skk-dic/skk-uim-jisyo"
 	let skk_large_jisyo = "~/skk-dic/all.dic"
-elseif has("unix") 
+elseif has("unix")
 	let skk_jisyo = "~/skkdict/skkvim.dic"
 	let skk_large_jisyo = "~/skkdict/all.dic"
 elseif has("win32")
@@ -361,11 +362,15 @@ let g:quickrun_config = {}
 " au関係
 "{{{--------------------------------------------------------------------------------
 
+" _spec.rbのquickrun設定
 augroup AddFileType
 	au!
 	au BufWinEnter,BufNewFile, *_spec.rb set filetype=ruby.rspec
 augroup END
 let g:quickrun_config['ruby.rspec'] = { 'command': 'bundle exec rspec', 'cmdopt': '-cfs', 'exec': '%c %s %a' }
+
+" 保存時に行末スペース削除
+autocmd BufWritePre * :%s#\s\+$##ge
 
 
 "}}}--------------------------------------------------------------------------------
