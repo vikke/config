@@ -6,6 +6,9 @@
 [alias]
 	l = log --name-status --decorate --all --graph
 	st = status
-	m = merge --no-ff
+	co = checkout
+#	m = merge --squash
 [i18n]
 	logoutputencoding = utf-8
+[merge]
+#	ff = false
