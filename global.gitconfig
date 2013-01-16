@@ -11,4 +11,6 @@
 [i18n]
 	logoutputencoding = utf-8
 [merge]
-#	ff = false
+	ff = false
+[color]
+	diff = true
