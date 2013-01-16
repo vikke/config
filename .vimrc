@@ -371,7 +371,8 @@ augroup AddFileType
 	au!
 	au BufWinEnter,BufNewFile, *_spec.rb set filetype=ruby.rspec
 augroup END
-let g:quickrun_config['ruby.rspec'] = { 'command': 'bundle exec rspec', 'cmdopt': '-cfs', 'exec': '%c %s %a' }
+"let g:quickrun_config['ruby.rspec'] = { 'command': 'bundle exec rspec', 'cmdopt': '-cfs', 'exec': '%c %s %a' }
+let g:quickrun_config['ruby.rspec'] = { 'command': 'bundle exec rspec -cfs', 'exec': '%c %s %a' }
 
 " 保存時に行末スペース削除
 function! Rtrim()
