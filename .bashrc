@@ -14,9 +14,15 @@ fi
 
 #if [ -z $L ]
 #then
-	. /etc/profile
+	if [ -e /etc/profile ];then
+		. /etc/profile
+	fi
 #	source ${HOME}/.bash_profile
 #fi
+
+if [ -e /etc/bash_completion ];then
+	. /etc/bash_completion
+fi
 
 # Windows用pathを退避
 if [ -z "${WINPATH}" -a "$OSTYPE" == "cygwin" ]; then
