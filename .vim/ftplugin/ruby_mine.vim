@@ -14,6 +14,7 @@ setlocal expandtab
 setlocal shiftwidth=2
 setlocal autoindent
 setlocal softtabstop=2
+setlocal foldmethod=syntax
 
 " matchit
 " なんか動きが変なので、一旦comment。後でちゃんとマニュアル読む。
