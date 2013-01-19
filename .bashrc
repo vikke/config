@@ -397,6 +397,10 @@ function umnt-kt {
 	umount ~/mnt/kt
 }
 
+
+alias rcoverage='if [ -d coverage ]; then rm -rf coverage; fi; COVERAGE=boo bundle exec rspec --no-drb'
+alias rspec='bundle exec rspec'
+
 if [ -e /usr/share/doc/tig-1.0/contrib/tig-completion.bash ]; then
 	. /usr/share/doc/tig-1.0/contrib/tig-completion.bash
 fi
