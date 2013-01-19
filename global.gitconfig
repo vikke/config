@@ -7,10 +7,13 @@
 	l = log --name-status --decorate --all --graph
 	st = status
 	co = checkout
+	ga = log --pretty=format:\"%C(red)%h%Creset %C(cyan)<%an>%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset\" --all --abbrev-commit --date=relative --graph
 #	m = merge --squash
 [i18n]
 	logoutputencoding = utf-8
 [merge]
-	ff = false
+#	ff = false
 [color]
 	diff = true
+[branch "master"]
+	mergeoptions = --squash
