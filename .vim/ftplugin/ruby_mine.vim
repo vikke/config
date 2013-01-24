@@ -1,12 +1,11 @@
-" refe2が使うのでcommentout。
-nnoremap <buffer> <silent> K :Refe <cword><CR>
-nnoremap <buffer> <silent> <C-K> :Refe<CR>
+"nnoremap <buffer> <silent> K :Refe <cword><CR>
+"nnoremap <buffer> <silent> <C-K> :Refe<CR>
 
-" errormaker.vim対応
+" errormaker.vim
 compiler ruby
 " au BufWritePost * silent make %
 
-setlocal dictionary+=~/vimfiles/dict/ruby.dict
+"setlocal dictionary+=~/vimfiles/dict/ruby.dict
 " setlocal tags+=~/tags/ruby/gem-tags
 
 setlocal tabstop=2
