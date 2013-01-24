@@ -16,9 +16,9 @@
 [submodule ".vim/bundle/unite-outline"]
 	path = .vim/bundle/unite-outline
 	url = https://github.com/h1mesuke/unite-outline.git
-[submodule ".vim/bundle/neocomplcache"]
-	path = .vim/bundle/neocomplcache
-	url = git://github.com/Shougo/neocomplcache.git
+#[submodule ".vim/bundle/neocomplcache"]
+#	path = .vim/bundle/neocomplcache
+#	url = git://github.com/Shougo/neocomplcache.git
 [submodule ".vim/bundle/unite-tag"]
 	path = .vim/bundle/unite-tag
 	url = git://github.com/tsukkee/unite-tag.git
