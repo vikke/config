@@ -20,7 +20,7 @@ fi
 #	source ${HOME}/.bash_profile
 #fi
 
-if [ -e /etc/bash_completion ];then
+if [ -e /etc/bash_completion ]; then
 	. /etc/bash_completion
 fi
 
@@ -119,7 +119,7 @@ case $OSTYPE in
 		export VIMPATH=vim
 		export JDK_DIR=/usr/lib/jvm
 		export PAGER="lv -c"
-		cocot="cocot -t UTF-8"
+
 		export TMP=~/tmpfs
 		PATH=/usr/local/mysql/bin:${PATH}
 		export MAVEN_HOME=${HOME}/dev-tools/apache-maven-3.0.3
@@ -330,7 +330,7 @@ export keyadd
 # tunnelingとか。
 function mars {
 	keyadd
-	eval ${cocot} -p UTF-8 -- ssh -D 10080 -C -L 8143:localhost:143 -L 8025:localhost:25 vikke@www.mars95.to
+	eval ${cocot} -p UTF-8 -- ssh -AY -D 10080 -C -L 8143:localhost:143 -L 8025:localhost:25 vikke@www.mars95.to
 	echo -e ${xterm_title}
 }
 

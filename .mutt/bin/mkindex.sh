@@ -19,6 +19,9 @@ for d in ${MAILS_ROOT_DIR}/*;do
 	casket_tmp=${HOME}/.mutt/accounts/${account}/casket_tmp
 	casket=${HOME}/.mutt/accounts/${account}/casket
 
+	if [ ! -e ${casket} ]; then
+		mkdir -p ${casket}
+	fi
 	find ${d} -type f | estcmd gather -il ja -sd -fm -cm -cl ${casket} -
 
 	# indexをlockしないようにするパターン。最後のcopyが重い。。。

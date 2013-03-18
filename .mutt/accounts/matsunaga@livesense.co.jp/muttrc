@@ -1,0 +1,23 @@
+# account
+set folder="~/Mail/matsunaga@livesense.co.jp"
+set spoolfile="+INBOX"
+set record="+[Gmail]/Sent Mail"
+set mbox_type=Maildir
+set use_from=yes
+set from="matsunaga@livesense.co.jp"
+set realname="MATSUNAGA Ichiro"
+#set sendmail="/usr/bin/msmtp --account=vikke.bsd"
+set sendmail="~/.mutt/bin/msmtp-enqueue.sh --account=matsunaga.livesense.co.jp"
+
+unmy_hdr cc bcc
+my_hdr cc: matsunaga@livesense.co.jp
+
+# signature
+set signature=~/.mutt/accounts/matsunaga@livesense.co.jp/signature
+
+# ML
+unsubscribe *
+
+set pgp_sign_as=B5346815
+set pgp_autosign
+#set pgp_autoencrypt
