@@ -8,6 +8,9 @@
 	st = status
 	co = checkout
 	ga = log --pretty=format:\"%C(red)%h%Creset %C(cyan)<%an>%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset\" --all --abbrev-commit --date=relative --graph
+	cl = fetch --prune
+	d = diff --ignore-space-at-eol
+	dc = diff --cached --ignore-space-at-eol
 #	m = merge --squash
 [i18n]
 	logoutputencoding = utf-8

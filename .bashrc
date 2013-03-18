@@ -119,7 +119,16 @@ case $OSTYPE in
 		export VIMPATH=vim
 		export JDK_DIR=/usr/lib/jvm
 		export PAGER="lv -c"
-		cocot="cocot -t UTF-8"
+
+		case ${HOSTNAME} in
+			*.livesense.jp)
+				cocot=""
+				;;
+			*)
+				cocot="cocot -t UTF-8"
+				;;
+		esac
+
 		export TMP=~/tmpfs
 		PATH=/usr/local/mysql/bin:${PATH}
 		export MAVEN_HOME=${HOME}/dev-tools/apache-maven-3.0.3
