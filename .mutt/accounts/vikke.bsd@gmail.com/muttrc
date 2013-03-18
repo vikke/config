@@ -9,7 +9,7 @@ set realname="MATSUNAGA Ichiro"
 #set sendmail="/usr/bin/msmtp --account=vikke.bsd"
 set sendmail="~/.mutt/bin/msmtp-enqueue.sh --account=vikke.bsd"
 
-unmy_hdr bcc
+unmy_hdr cc bcc
 
 # signature
 set signature=~/.mutt/accounts/vikke.bsd@gmail.com/signature
