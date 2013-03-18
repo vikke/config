@@ -9,7 +9,7 @@ function link_dotfile {
 	if [ -e ${backup}/${dst} ];then
 		rm -rf ${backup}/${dst}
 	fi
-	
+
 	dst_dir=${backup}/${dst}
 	dst_dir=${dst_dir%/*}
 	if [ ! -e ${dst_dir} ];then
@@ -19,7 +19,7 @@ function link_dotfile {
 	if [ -e ${HOME}/${dst} ];then
 		mv ${HOME}/${dst} ${backup}/${dst}
 	fi
-	ln -s ${PWD}/${src} ${HOME}/${dst}	
+	ln -s ${PWD}/${src} ${HOME}/${dst}
 }
 
 if [ ! -e ${backup} ]; then
@@ -27,35 +27,45 @@ if [ ! -e ${backup} ]; then
 fi
 
 for f in \
-	.bashrc \
+	.Xdefaults \
+#	.Xmodmap.mac \
+#	.Xmodmap.ubuntu \
+	.Xresources \
 	.bash_profile \
+	.bashrc \
+#	.config \
+	.ctags \
 	.fetchmailrc \
+#	.git \
 	.gitconfig \
 	.gitignore \
+#	.gitmodules \
+#	.gnupg \
+	.gvimrc \
+	.infokey \
+	.mailcap \
 	.mayu \
+	.msmtpqueue \
 	.msmtprc \
-	.Xdefaults \
-	.Xresources \
-	.xprofile \
-	.xsession \
+	.mutt \
+	.offlineimaprc \
+	.screenrc \
+#	.ssh \
 	.termcap \
 	.tmux.conf \
-	.screenrc \
-	.mailcap \
-	.msmtpqueue \
-	.offlineimaprc \
-	.procmailrc \
-	.mutt \
 	.vim \
 	.vimrc \
-	skk-dic \
-	.infokey \
-	.gvimrc \
-	bash_misc_func \
 	.w3m \
-	.irbrc \
-	.rdebugrc \
-	.ctags
+	.xprofile \
+	.xsession \
+	bash_misc_func \
+	cronscripts \
+#	crontab \
+#	global.gitconfig \
+#	global.gitignore \
+#	make_env \
+#	rc.local.ubuntu \
+	skk-dic
 do
 
 	link_dotfile ${f} ${f}
@@ -67,13 +77,13 @@ case $OSTYPE in
 		link_dotfile .Xmodmap.mac .Xmodmap
 		;;
 	freebsd*)
-		
+
 		;;
-	
+
 	linux*)
 		link_dotfile .Xmodmap.ubuntu .Xmodmap
 		;;
-	
+
 	*)
 		;;
 esac
