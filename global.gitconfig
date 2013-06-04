@@ -18,5 +18,5 @@
 #	ff = false
 [color]
 	diff = true
-[branch "master"]
-	mergeoptions = --squash
+#[branch "master"]
+#	mergeoptions = --squash
