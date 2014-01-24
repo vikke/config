@@ -4,7 +4,8 @@
 "--------------------------------------------------------------------------------
 " 全体設定
 " {{{--------------------------------------------------------------------------------
-call pathogen#incubate()
+call pathogen#runtime_append_all_bundles()
+
 let mapleader=","
 
 set ai
@@ -35,7 +36,6 @@ syntax enable
 set t_Co=256
 set nohlsearch
 set viminfo=:2000,'100,<50,s10,h
-set ambiwidth=double
 "}}}--------------------------------------------------------------------------------
 
 "--------------------------------------------------------------------------
@@ -189,7 +189,8 @@ endif
 set tags=./tags,tags,../tags,../../tags,../../../tags,../../../../tags,../../../../../tags,../../../../../../tags
 
 "set grepprg=grep\ -nH\ --exclude-dir=\".svn\"
-set grepprg=ack\ --notags
+set grepprg=ack\ -G\ '^(?!cache/).*'
+"set grepprg=ack-grep\ -a\ --type-set\ tags=.tags\ --notags
 
 "}}}--------------------------------------------------------------------------------
 
