@@ -6,7 +6,7 @@ source ~/.mutt/source-muttrc.d|
 source ~/.mutt/gpg.rc
 #source /opt/local/share/doc/mutt/samples/gpg.rc
 
-set tmpdir=~/tmpfs
+set tmpdir=~/tmp
 
 # 表示ヘッダ。
 ignore *
@@ -70,7 +70,7 @@ set quit="ask-no"
 set mark_old=no
 
 # header cache
-set header_cache="~/tmpfs/header_cache"
+set header_cache="~/.mutt/header_cache"
 
 # auto_view
 auto_view text/html
@@ -139,7 +139,7 @@ macro generic,index,pager xz ":set my_tmpfolder=$folder\n:set ?my_tmpfolder:set 
 
 # sidebar関係 #########################################
 #set sidebar_visible=no
-#mailboxes =INBOX 
+#mailboxes =INBOX
 #bind index \CP sidebar-prev
 #bind index \CN sidebar-next
 #bind index \CO sidebar-open
@@ -169,7 +169,7 @@ folder-hook "matsunaga\@livesense.co.jp" "source ~/.mutt/accounts/matsunaga@live
 folder-hook "Mail/[^\/]+/*$" "push \"c!<enter>\""
 # 移動先にmuttのカレントディレクトリを移動させる。
 # これにより、現在見ているfolderをshell-escapeに渡せるようになる。
-# 要 http://www.df7cb.de/projects/mutt/chdir/patch-1.5.13.cb.chdir.1 
+# 要 http://www.df7cb.de/projects/mutt/chdir/patch-1.5.13.cb.chdir.1
 #folder-hook "/Mail/" "cd ^"
 
 # online用のaccount-hook
@@ -181,7 +181,7 @@ macro index,pager y "<change-folder>?<toggle-mailboxes>" "show incoming mailboxe
 # 削除にゴミ箱を使うように変更
 # local pcの場合は[Gmail]/Trashへ。courrier imapdの場合は[Gmail].Trashへ。
 # ゴミ箱内では本当に削除。
-folder-hook '/Mail/' "macro index,pager d \"<save-message>=\[Gmail\]/Trash<enter>y\"" 
+folder-hook '/Mail/' "macro index,pager d \"<save-message>=\[Gmail\]/Trash<enter>y\""
 folder-hook "imap://localhost" "macro index,pager d \"<save-message>=[Gmail].Trash<enter>y\""
 folder-hook "\[Gmail\][\./]Trash" "macro index,pager d \"<delete-message>\""
 
