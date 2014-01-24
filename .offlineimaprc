@@ -19,10 +19,12 @@ sep = /
 type = Gmail
 remoteuser = vikke.bsd@gmail.com
 remotepassfile = ~/.offlineimap/vikke.bsd@gmail.com_pass
-maxconnections = 3
+maxconnections = 6
 realdelete = no
 #cert_fingerprint=f3043dd689a2e7dddfbef82703a6c65ea9b634c1
-cert_fingerprint=6d1b5b5ee0180ab493b71d3b94534b5ab937d042
+#cert_fingerprint=6d1b5b5ee0180ab493b71d3b94534b5ab937d042
+#cert_fingerprint=b0ba392bba326e6feb1add4d04fa0fb86cd173fa
+cert_fingerprint=89091347184d41768bfc0da9fad94bfe882dd358
 
 ################################################################
 [Account vikke@mars95.to]
