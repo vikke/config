@@ -330,7 +330,6 @@ export keyadd
 # 各hostへの接続設定。
 # tunnelingとか。
 function mars {
-	keyadd
 	eval ${cocot} -p UTF-8 -- ssh -AY -D 10080 -C -L 8143:localhost:143 -L 8025:localhost:25 vikke@www.mars95.to
 	echo -e ${xterm_title}
 }
