@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+find . -name "*.rar" -exec bash -c \
+'
+target="$@"
+
+tmp=./tmp
+rm -rf "${tmp}"
+mkdir "${tmp}"
+cd ${tmp}
+
+if [ "${target##*.}" == "rar" ]; then
+	unrar x -r ../"${target}"
+fi
+
+zip -r ../"${target%.rar}".zip *
+
+cd ..
+rm -rf "${tmp}"
+' \
+dummy {} \;
