@@ -20,3 +20,5 @@
 	diff = true
 #[branch "master"]
 #	mergeoptions = --squash
+[push]
+	default = simple
