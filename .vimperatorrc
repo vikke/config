@@ -1,11 +1,14 @@
 "3.8.1 (created: 2013/11/21 23:49:14)
 
-nnoremap <silent> <C-h> :tabprevious<Return>
-nnoremap <silent> <C-l> :tabnext<Return>
-nnoremap <silent> <C-i> :back<Return>
-nnoremap <silent> <C-o> :forward<Return>
+nnoremap <silent> <C-h> :tabprevious<CR>
+nnoremap <silent> <C-l> :tabnext<CR>
+nnoremap <silent> <C-i> :back<CR>
+nnoremap <silent> <C-o> :forward<CR>
 nnoremap <silent> O t
-set hintmatching=custom
-source! /home/ichiro/.vimperatorrc.local
+nnoremap <silent> S :tabnew google
+nnoremap <silent> <C-j> <NOP>
+
+" set hintmatching=custom
+" source! /home/vikke/.vimperatorrc.local
 
 " vim: set ft=vimperator:
