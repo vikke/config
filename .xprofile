@@ -13,11 +13,11 @@
 # 参考: http://d.hatena.ne.jp/moriyoshi/20070504
 
 #. ~/.bashrc
-/usr/bin/urxvtd -q -f -o
-/usr/bin/uim-toolbar-gtk-systray &
+#/usr/bin/urxvtd -q -f -o
+#/usr/bin/uim-toolbar-gtk-systray &
 
 xmodmap ~/.Xmodmap
-export WINDOW_MANAGER=metacity
+#export WINDOW_MANAGER=metacity
 #export WINDOW_MANAGER=twm
 #export WINDOW_MANAGER=e16
 
