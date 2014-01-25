@@ -1,6 +1,6 @@
 #!/bin/bash
 
-. ~/.bashrc
+# . ~/.bashrc
 xmodmap ~/.Xmodmap
-/usr/local/bin/urxvtd -q -f -o
-gnome-session
+# /usr/local/bin/urxvtd -q -f -o
+# gnome-session
