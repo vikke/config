@@ -5,7 +5,7 @@ nnoremap <silent> <C-l> :tabnext<CR>
 nnoremap <silent> <C-i> :back<CR>
 nnoremap <silent> <C-o> :forward<CR>
 nnoremap <silent> O t
-nnoremap <silent> S :tabnew google
+nnoremap <silent> S :tabnew google<SPACE>
 nnoremap <silent> <C-j> <NOP>
 
 " set hintmatching=custom
