@@ -1,14 +1,22 @@
 "3.8.1 (created: 2013/11/21 23:49:14)
 
-nnoremap <silent> <C-h> :tabprevious<CR>
-nnoremap <silent> <C-l> :tabnext<CR>
-nnoremap <silent> <C-i> :back<CR>
-nnoremap <silent> <C-o> :forward<CR>
-nnoremap <silent> O t
-nnoremap <silent> S :tabnew google
-nnoremap <silent> <C-j> <NOP>
+nnoremap <silent> <C-h> :tabprevious<Return>
+nnoremap <silent> <C-l> :tabnext<Return>
+nnoremap <silent> <C-i> :back<Return>
+nnoremap <silent> <C-o> :forward<Return>
+nnoremap <silent> O :tabnew<Space>
+nnoremap <silent> S :tabnew<Space>google<Space>
+nnoremap <silent> <C-j> <Nop>
+nnoremap <silent> t :tabnew<CR>
+inoremap <silent> <C-j> <Nop>
+set hintmatching=custom
 
-" set hintmatching=custom
-" source! /home/vikke/.vimperatorrc.local
+nnoremap <silent> gcy :tabopen https://cybozu.ad.livesense.co.jp/scripts/cbgrn/grn.exe/portal/index?<CR>
+nnoremap <silent> gbt :tabopen https://bts.livesense.jp/my/page<CR>
+nnoremap <silent> gco :tabopen https://confluence.ad.livesense.co.jp/index.action<CR>
+nnoremap <silent> ghc :tabopen https://livesense.hipchat.com/chat<CR>
+
+
+source! /home/ichiro/.vimperatorrc.local
 
 " vim: set ft=vimperator:
