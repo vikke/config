@@ -1,0 +1,1 @@
+../custom-plugins/vimperator-plugins/migemo-find.js
