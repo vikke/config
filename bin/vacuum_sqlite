@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+# 引数(複数可)で指定指定されたdirectoryかあら下のfileでsqlite3のものをvacuumする。
+# 引数指定しない場合はcurrent directoryから。
+if [ $# -eq 0 ]; then
+	target_dirs=.
+else
+	target_dirs=$@
+fi
+
+find ${target_dirs} -type f -exec bash \
+	-c 	'file ${1} | grep -i -q "sqlite 3";
+		 if [ $? -eq 0 ]; then
+			sqlite3 ${1} vacuum;
+		 fi;' \
+		dummy {} \;
