@@ -189,7 +189,7 @@ endif
 set tags=./tags,tags,../tags,../../tags,../../../tags,../../../../tags,../../../../../tags,../../../../../../tags
 
 "set grepprg=grep\ -nH\ --exclude-dir=\".svn\"
-set grepprg=ack\ --notags
+set grepprg=ag
 
 "}}}--------------------------------------------------------------------------------
 

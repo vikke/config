@@ -3,6 +3,10 @@
 # $Id: .bashrc 582 2011-02-15 23:27:26Z vikke $
 # $HeadURL: https://psb.vikke.mydns.jp/svn/vikke_env/.bashrc $
 
+if [ -z "${PS1}" ]; then
+	return
+fi
+
 if [ -n "${SSH_TTY}" ]; then
 	echo .bashrc
 fi
@@ -401,6 +405,9 @@ function umnt-kt {
 
 alias rcoverage='if [ -d coverage ]; then rm -rf coverage; fi; COVERAGE=boo bundle exec rspec --no-drb'
 alias rspec='bundle exec rspec'
+alias rake='bundle exec rake'
+alias rails='bundle exec rails'
+alias ssh_copy_id='ssh-copy-id -i ~/.ssh/id_rsa_livesense.pub '
 
 if [ -e /usr/share/doc/tig-1.0/contrib/tig-completion.bash ]; then
 	. /usr/share/doc/tig-1.0/contrib/tig-completion.bash
@@ -419,3 +426,4 @@ if [ $? -eq 0 ]; then
 		. ${f}
 	done
 fi
+
