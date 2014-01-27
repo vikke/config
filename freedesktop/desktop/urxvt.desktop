@@ -1,0 +1,15 @@
+[Desktop Entry]
+Name=urxvt
+GenericName=urxvt
+X-GNOME-FullName=uxvt
+Comment=urxvt
+Exec=urxvt
+Icon=urxvt
+Type=Application
+StartupNotify=true
+Categories=Utility;Accessibility;TerminalEmulator;
+
+[Desktop Action New]
+Name=New urxvt
+Exec=urxvt
+

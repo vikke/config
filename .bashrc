@@ -33,7 +33,7 @@ if [ -z "${WINPATH}" -a "$OSTYPE" == "cygwin" ]; then
 	export WINPATH=${PATH}
 fi
 
-PATH=${HOME}/bin:${HOME}/local/bin:/usr/local/bin:/usr/bin:/usr/sbin:/bin:/sbin:/usr/X11R6/bin:/usr/games
+PATH=${HOME}/bin:${HOME}/bin_local:${HOME}/local/bin:/usr/local/bin:/usr/bin:/usr/sbin:/bin:/sbin:/usr/X11R6/bin:/usr/games
 if [ -n $PERL_MM_OPT ]; then
 	unset PERL_LOCAL_LIB_ROOT
 	unset PERL_MM_OPT
@@ -334,7 +334,6 @@ export keyadd
 # 各hostへの接続設定。
 # tunnelingとか。
 function mars {
-	keyadd
 	eval ${cocot} -p UTF-8 -- ssh -AY -D 10080 -C -L 8143:localhost:143 -L 8025:localhost:25 vikke@www.mars95.to
 	echo -e ${xterm_title}
 }
