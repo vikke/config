@@ -58,6 +58,7 @@ for f in \
 	.w3m \
 	.xprofile \
 	.xsession \
+	.mlterm \
 	bash_misc_func \
 	cronscripts \
 #	crontab \
