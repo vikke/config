@@ -149,8 +149,6 @@ if [ ! -e ~/tmpfs/header_cache ]; then
 	cp -r ~/.mutt/header_cache ~/tmpfs
 fi
 
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
-
 #if [ "${TERM}" == "cygwin" ]; then
 #	export TERM=vt100
 #fi
