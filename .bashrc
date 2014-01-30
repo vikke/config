@@ -281,6 +281,9 @@ export ANGBAND_X11_FONT_0="-*-ipamonagothic-medium-r-normal-*-14-*-*-*-*-*-jisx0
 
 export PYTHONPATH=.
 
+export PATH=~/.rbenv/bin:${PATH}
+eval "$(rbenv init -)"
+
 if [ -e ${vcsroot}/nvm/nvm.sh ]; then
 	. ${vcsroot}/nvm/nvm.sh
 	nvm use v0.7.8 > /dev/null
