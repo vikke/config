@@ -26,8 +26,10 @@
 ###############################################################################
 #text/html; firefox -a firefox -remote 'openURL(file://%s, new-tab)'
 # text/html; /opt/google/chrome/chrome %s
-text/html; /usr/bin/firefox %s
+text/html; /usr/bin/xdg-open %s
 text/html; w3m -dump -T %t %s;copiousoutput;
+application/pdf; /usr/bin/xdg-open %s;copiousoutput;
+
 
 #application/vnd.oasis.opendocument.chart; soffice -calc '%s'; edit=soffice -calc '%s'; test=test -n "$DISPLAY"; description="OpenDocument Chart"; nametemplate=%s.odc
 #application/vnd.oasis.opendocument.spreadsheet; soffice -calc '%s'; edit=soffice -calc '%s'; test=test -n "$DISPLAY"; description="OpenDocument Spreadsheet"; nametemplate=%s.ods

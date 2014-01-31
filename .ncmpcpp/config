@@ -338,7 +338,7 @@ song_library_format = "{%n - }{%t}|{%f}"
 ## As you can see, above example will switch between
 ## playlist, visualizer and media library screens.
 ##
-#screen_switcher_mode = "sequence: 2 -> 3"
+screen_switcher_mode = "sequence: 2 -> 3 -> 5"
 #
 ##
 ## Note: You can define startup screen for ncmpcpp
