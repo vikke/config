@@ -149,8 +149,6 @@ if [ ! -e ~/tmpfs/header_cache ]; then
 	cp -r ~/.mutt/header_cache ~/tmpfs
 fi
 
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
-
 #if [ "${TERM}" == "cygwin" ]; then
 #	export TERM=vt100
 #fi
@@ -282,6 +280,9 @@ unset f
 export ANGBAND_X11_FONT_0="-*-ipamonagothic-medium-r-normal-*-14-*-*-*-*-*-jisx0208.1983-*"
 
 export PYTHONPATH=.
+
+export PATH=~/.rbenv/bin:${PATH}
+eval "$(rbenv init -)"
 
 if [ -e ${vcsroot}/nvm/nvm.sh ]; then
 	. ${vcsroot}/nvm/nvm.sh
