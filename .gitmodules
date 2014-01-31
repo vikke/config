@@ -55,3 +55,6 @@
 [submodule ".vim/bundle/matchit.zip.git"]
 	path = .vim/bundle/matchit.zip.git
 	url = git://github.com/vim-scripts/matchit.zip.git
+[submodule ".vimperator/custom-plugins/vimperator-plugins"]
+	path = .vimperator/custom-plugins/vimperator-plugins
+	url = git://github.com/vimpr/vimperator-plugins.git
