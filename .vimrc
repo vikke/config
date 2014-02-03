@@ -234,7 +234,7 @@ nnoremap <silent> fo :Unite -start-insert outline<cr>
 
 " = php debugger =====================
 " {{{
-let g:debuggerMaxDepth = 1
+let g:debuggerMaxDepth = 3
 " }}}
 
 
