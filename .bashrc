@@ -407,7 +407,7 @@ alias rcoverage='if [ -d coverage ]; then rm -rf coverage; fi; COVERAGE=boo bund
 alias rspec='bundle exec rspec'
 alias rake='bundle exec rake'
 alias rails='bundle exec rails'
-alias ssh_copy_id='ssh-copy-id -i ~/.ssh/id_rsa_livesense.pub '
+alias ssh_copy_id='ssh-copy-id -i ~/.ssh/id_rsa.pub '
 
 if [ -e /usr/share/doc/tig-1.0/contrib/tig-completion.bash ]; then
 	. /usr/share/doc/tig-1.0/contrib/tig-completion.bash
