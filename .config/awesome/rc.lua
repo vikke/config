@@ -1,3 +1,5 @@
+-- gnomeとの共存 http://awesome.naquadah.org/wiki/Quickly_Setting_up_Awesome_with_Gnome#Gnome_3.9_.2F_Ubuntu_13.10
+
 -- Standard awesome library
 require("awful")
 require("awful.autofocus")
@@ -375,3 +377,4 @@ end)
 client.add_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.add_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
+
