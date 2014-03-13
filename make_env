@@ -101,9 +101,9 @@ ln -s ./Dropbox/env/livesense/dot.fetchmailrc ~/.fetchmailrc
 mv ~/.msmtprc ${backup}/.fetchmailrc
 ln -s ./Dropbox/env/livesense/dot.msmtprc ~/.msmtprc
 
-mv ~/.gitignore ${backup}/.gitignore.orig
+mv ~/.gitignore ${backup}/.gitignore
 ln -s ${PWD}/global.gitignore ~/.gitignore
-mv ~/.gitconfig ${backup}/.gitconfig.orig
+mv ~/.gitconfig ${backup}/.gitconfig
 ln -s ${PWD}/global.gitconfig ~/.gitconfig
 
 echo "
