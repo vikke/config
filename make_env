@@ -38,7 +38,9 @@ fi
 #	global.gitignore \
 #	make_env \
 #	rc.local.ubuntu \
+#	.msmtprc \
 for f in \
+	.agignore \
 	.Xdefaults \
 	.Xresources \
 	.bash_profile \
@@ -52,7 +54,6 @@ for f in \
 	.mailcap \
 	.mayu \
 	.msmtpqueue \
-	.msmtprc \
 	.mutt \
 	.offlineimaprc \
 	.screenrc \
@@ -94,6 +95,11 @@ if [ ! -e ~/.config ];then
 	mkdir ~/.config
 fi
 link_dotfile .config/awesome .config/awesome
+
+mv ~/.fetchmailrc ${backup}/.fetchmailrc
+ln -s ./Dropbox/env/livesense/dot.fetchmailrc ~/.fetchmailrc
+mv ~/.msmtprc ${backup}/.fetchmailrc
+ln -s ./Dropbox/env/livesense/dot.msmtprc ~/.msmtprc
 
 mv ~/.gitignore ${backup}/.gitignore.orig
 ln -s ${PWD}/global.gitignore ~/.gitignore
