@@ -49,6 +49,7 @@ for f in \
 	.msmtprc \
 	.mutt \
 	.offlineimaprc \
+	.pryrc \
 	.screenrc \
 #	.ssh \
 	.termcap \
