@@ -26,7 +26,7 @@
 ###############################################################################
 #text/html; firefox -a firefox -remote 'openURL(file://%s, new-tab)'
 # text/html; /opt/google/chrome/chrome %s
-text/html; /usr/bin/xdg-open %s;copiousoutput;
+text/html; /usr/bin/xdg-open %s
 text/html; w3m -dump -T %t %s;copiousoutput;
 application/pdf; /usr/bin/xdg-open %s;copiousoutput;
 

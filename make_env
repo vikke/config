@@ -26,32 +26,38 @@ if [ ! -e ${backup} ]; then
 	mkdir ${backup}
 fi
 
-for f in \
-	.Xdefaults \
 #	.Xmodmap.mac \
 #	.Xmodmap.ubuntu \
+#	.config \
+#	.git \
+#	.gitmodules \
+#	.gnupg \
+#	.ssh \
+#	crontab \
+#	global.gitconfig \
+#	global.gitignore \
+#	make_env \
+#	rc.local.ubuntu \
+#	.msmtprc \
+for f in \
+	.agignore \
+	.Xdefaults \
 	.Xresources \
 	.bash_profile \
 	.bashrc \
-#	.config \
 	.ctags \
 	.fetchmailrc \
-#	.git \
 	.gitconfig \
 	.gitignore \
-#	.gitmodules \
-#	.gnupg \
 	.gvimrc \
 	.infokey \
 	.mailcap \
 	.mayu \
 	.msmtpqueue \
-	.msmtprc \
 	.mutt \
 	.offlineimaprc \
 	.pryrc \
 	.screenrc \
-#	.ssh \
 	.termcap \
 	.tmux.conf \
 	.vim \
@@ -62,12 +68,8 @@ for f in \
 	.mlterm \
 	bash_misc_func \
 	cronscripts \
-#	crontab \
-#	global.gitconfig \
-#	global.gitignore \
-#	make_env \
-#	rc.local.ubuntu \
-	skk-dic
+	skk-dic \
+	.config/awesome
 do
 
 	link_dotfile ${f} ${f}
@@ -83,7 +85,7 @@ case $OSTYPE in
 		;;
 
 	linux*)
-		link_dotfile .Xmodmap.ubuntu .Xmodmap
+#		link_dotfile .Xmodmap.ubuntu .Xmodmap
 		;;
 
 	*)
@@ -95,9 +97,14 @@ if [ ! -e ~/.config ];then
 fi
 link_dotfile .config/awesome .config/awesome
 
-mv ~/.gitignore ${backup}/.gitignore.orig
+mv ~/.fetchmailrc ${backup}/.fetchmailrc
+ln -s ./Dropbox/env/livesense/dot.fetchmailrc ~/.fetchmailrc
+mv ~/.msmtprc ${backup}/.fetchmailrc
+ln -s ./Dropbox/env/livesense/dot.msmtprc ~/.msmtprc
+
+mv ~/.gitignore ${backup}/.gitignore
 ln -s ${PWD}/global.gitignore ~/.gitignore
-mv ~/.gitconfig ${backup}/.gitconfig.orig
+mv ~/.gitconfig ${backup}/.gitconfig
 ln -s ${PWD}/global.gitconfig ~/.gitconfig
 
 echo "
