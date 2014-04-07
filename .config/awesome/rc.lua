@@ -54,19 +54,19 @@ editor_cmd = terminal .. " -e " .. editor
 modkey = "Mod4"
 
 -- Table of layouts to cover with awful.layout.inc, order matters.
+--    awful.layout.suit.floating,
+--    awful.layout.suit.tile.left,
+--    awful.layout.suit.tile.top,
+--    awful.layout.suit.fair.horizontal,
+--    awful.layout.suit.spiral,
+--    awful.layout.suit.spiral.dwindle,
+--    awful.layout.suit.max.fullscreen,
 layouts =
 {
-    awful.layout.suit.floating,
-    awful.layout.suit.tile,
-    awful.layout.suit.tile.left,
-    awful.layout.suit.tile.bottom,
-    awful.layout.suit.tile.top,
-    awful.layout.suit.fair,
-    awful.layout.suit.fair.horizontal,
-    awful.layout.suit.spiral,
-    awful.layout.suit.spiral.dwindle,
     awful.layout.suit.max,
-    awful.layout.suit.max.fullscreen,
+    awful.layout.suit.tile,
+    awful.layout.suit.tile.bottom,
+    awful.layout.suit.fair,
     awful.layout.suit.magnifier
 }
 -- }}}
@@ -74,10 +74,13 @@ layouts =
 -- {{{ Tags
 -- Define a tag table which hold all screen tags.
 tags = {}
-for s = 1, screen.count() do
-    -- Each screen has its own tag table.
-    tags[s] = awful.tag({ 1, 2, 3, 4, 5, 6, 7, 8, 9 }, s, layouts[1])
-end
+-- for s = 1, screen.count() do
+--     -- Each screen has its own tag table.
+--     tags[s] = awful.tag({ 1, 2, 3, 4, 5, 6, 7, 8, 9 }, s, layouts[1])
+-- end
+tags[1] = awful.tag({ 1, 2, 3, 4, 5, 6, 7, 8, 9 }, 1, layouts[1])
+tags[2] = awful.tag({  1, 2, 3, 4, 5, 6, 7, 8, 9 }, 2, layouts[2])
+tags[3] = awful.tag({ 1, 2, 3, 4, 5, 6, 7, 8, 9 }, 3, layouts[1])
 -- }}}
 
 -- {{{ Menu
@@ -151,6 +154,13 @@ mytasklist.buttons = awful.util.table.join(
                                               if client.focus then client.focus:raise() end
                                           end))
 
+require('flaw')
+gcpu = flaw.gadget.graph.cpu('cpu', {}, { width = 60, height = 18 })
+gbattery_icon = flaw.gadget.icon.battery('BAT0', {}, { image = image(beautiful.battery_icon) })
+gbattery_text = flaw.gadget.text.battery('BAT0')
+
+-- require('volume')
+
 for s = 1, screen.count() do
     -- Create a promptbox for each screen
     mypromptbox[s] = awful.widget.prompt({ layout = awful.widget.layout.horizontal.leftright })
@@ -178,9 +188,13 @@ for s = 1, screen.count() do
             mylauncher,
             mytaglist[s],
             mypromptbox[s],
+--			volume_widget,
             layout = awful.widget.layout.horizontal.leftright
         },
         mylayoutbox[s],
+		gcpu.widget,
+		gbattery_icon.widget,
+		gbattery_text.widget,
         mytextclock,
         s == 1 and mysystray or nil,
         mytasklist[s],
@@ -254,7 +268,14 @@ globalkeys = awful.util.table.join(
                   mypromptbox[mouse.screen].widget,
                   awful.util.eval, nil,
                   awful.util.getdir("cache") .. "/history_eval")
-              end)
+              end),
+	awful.key({ }, "XF86AudioRaiseVolume", function ()
+	   awful.util.spawn("amixer set Master 9%+") end),
+	awful.key({ }, "XF86AudioLowerVolume", function ()
+	   awful.util.spawn("amixer set Master 9%-") end),
+	awful.key({ }, "XF86AudioMute", function ()
+	   awful.util.spawn("amixer -q -D default set Master toggle") end)
+
 )
 
 clientkeys = awful.util.table.join(
@@ -344,6 +365,20 @@ awful.rules.rules = {
     -- Set Firefox to always map on tags number 2 of screen 1.
     -- { rule = { class = "Firefox" },
     --   properties = { tag = tags[1][2] } },
+
+	{ rule = { class = "Gkrellm" },
+      properties = {
+		tag = tags[2][3],
+		floating = false
+	  }
+	},
+	{ rule = { class = "Thunderbird" },
+	  properties = {
+		  tag = tags[2][3]
+	  }
+    }
+--	{ rule = { class = "gnome-system-monitor" },
+--		properties = {tags[1][2]} },
 }
 -- }}}
 
