@@ -46,6 +46,7 @@ for f in \
 	.bash_profile \
 	.bashrc \
 	.ctags \
+	.conkyrc \
 	.fetchmailrc \
 	.gitconfig \
 	.gitignore \
