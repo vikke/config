@@ -366,17 +366,18 @@ awful.rules.rules = {
     -- { rule = { class = "Firefox" },
     --   properties = { tag = tags[1][2] } },
 
-	{ rule = { class = "Gkrellm" },
-      properties = {
-		tag = tags[2][3],
-		floating = false
-	  }
-	},
+--	{ rule = { class = "Gkrellm" },
+--      properties = {
+--		tag = tags[2][3],
+--		floating = false
+--	  }
+--	},
+	{ rule = { class = "Conky" },
+	  properties = { tag = tags[1][3], floating = false }
+    },
 	{ rule = { class = "Thunderbird" },
-	  properties = {
-		  tag = tags[2][3]
-	  }
-    }
+	  properties = { tag = tags[1][3] }
+    },
 --	{ rule = { class = "gnome-system-monitor" },
 --		properties = {tags[1][2]} },
 }
