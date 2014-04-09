@@ -304,20 +304,24 @@ fi
 
 
 # SSHのagent周りの設定
-if ssh-add -l >/dev/null 2>&1
-then
-	:
-elif [ 2 == "$?" ]
-then
-	export SSH_AUTH_SOCK=${HOME}/.ssh/sock.`hostname`
-	if ssh-add -l > /dev/null 2>&1
-	then
-		:
-	elif [ 2 == "$?" -a ! "$SSH_CLIENT" ]
-	then
-		rm -f ${SSH_AUTH_SOCK}
-		eval `ssh-agent -a ${SSH_AUTH_SOCK}`
-	fi
+#if ssh-add -l >/dev/null 2>&1; then
+#	:
+#elif [ 2 == "$?" ]
+#then
+#	export SSH_AUTH_SOCK=${HOME}/.ssh/sock.`hostname`
+#	if ssh-add -l > /dev/null 2>&1
+#	then
+#		:
+#	elif [ 2 == "$?" -a ! "$SSH_CLIENT" ]
+#	then
+#		rm -f ${SSH_AUTH_SOCK}
+#		eval `ssh-agent -a ${SSH_AUTH_SOCK}`
+#	fi
+#fi
+
+if [ -n "${DESKTOP_SESSION}" ] && [ -n "${GNOME_KEYRING_PID}"  ]; then
+	eval $(gnome-keyring-daemon --start --components=gpg,ssh)
+	export SSH_AUTH_SOCK
 fi
 
 # ssh-agentへkeyを追加
