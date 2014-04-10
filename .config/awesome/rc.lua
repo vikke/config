@@ -78,8 +78,8 @@ tags = {}
 --     -- Each screen has its own tag table.
 --     tags[s] = awful.tag({ 1, 2, 3, 4, 5, 6, 7, 8, 9 }, s, layouts[1])
 -- end
-tags[1] = awful.tag({ 1, 2, 3, 4, 5, 6, 7, 8, 9 }, 1, layouts[1])
-tags[2] = awful.tag({  1, 2, 3, 4, 5, 6, 7, 8, 9 }, 2, layouts[2])
+tags[1] = awful.tag({ 1, 2, 3, 4, 5, 6, 7, 8, 9 }, 1, layouts[2])
+tags[2] = awful.tag({  1, 2, 3, 4, 5, 6, 7, 8, 9 }, 2, layouts[1])
 tags[3] = awful.tag({ 1, 2, 3, 4, 5, 6, 7, 8, 9 }, 3, layouts[1])
 -- }}}
 
@@ -373,10 +373,13 @@ awful.rules.rules = {
 --	  }
 --	},
 	{ rule = { class = "Conky" },
-	  properties = { tag = tags[1][3], floating = false }
+	  properties = { tag = tags[1][1], floating = false }
     },
 	{ rule = { class = "Thunderbird" },
-	  properties = { tag = tags[1][3] }
+	  properties = { tag = tags[1][1] }
+    },
+	{ rule = { class = "Nautilus" },
+	  properties = { tag = tags[2][1], floating = false }
     },
 --	{ rule = { class = "gnome-system-monitor" },
 --		properties = {tags[1][2]} },
