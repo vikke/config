@@ -1,11 +1,44 @@
 " $Id: .vimrc 602 2011-02-17 16:54:21Z vikke $
 " $HeadURL: https://psb.vikke.mydns.jp/svn/vikke_env/.vimrc $
 "
+
+"{{{ neobundle --------------------------------------------------------------------------------
+if has('vim_starting')
+	set nocompatible               " Be iMproved
+	set runtimepath+=~/.vim/bundle/neobundle.vim/
+endif
+call neobundle#begin(expand('~/.vim/bundle/'))
+NeoBundleFetch 'Shougo/neobundle.vim'
+
+NeoBundle 'Shougo/neosnippet.vim'
+NeoBundle 'Shougo/neocomplcache.vim'
+NeoBundle 'tyru/current-func-info.vim'
+NeoBundle 'vim-scripts/info.vim'
+NeoBundle 'tsukkee/lingr-vim'
+NeoBundle 'tsukkee/unite-tag'
+NeoBundle 'vim-scripts/matchit.zip'
+NeoBundle 'ujihisa/quickrun'
+NeoBundle 'ujihisa/unite-colorscheme'
+NeoBundle 'h1mesuke/unite-outline'
+NeoBundle 'tsukkee/unite-tag'
+NeoBundle 'Shougo/unite.vim'
+NeoBundle 'tpope/vim-endwise'
+NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'tpope/vim-pathogen'
+NeoBundle 'thinca/vim-ref'
+NeoBundle 'soh335/vim-symfony'
+NeoBundle 'kmnk/vim-unite-svn'
+NeoBundle 'vim-jp/vimdoc-ja'
+NeoBundle 'Shougo/vinarise'
+
+call neobundle#end()
+filetype plugin indent on
+NeoBundleCheck
+"}}}--------------------------------------------------------------------------------
+
 "--------------------------------------------------------------------------------
 " 全体設定
 " {{{--------------------------------------------------------------------------------
-call pathogen#incubate()
-
 let mapleader=","
 
 set ai
@@ -203,8 +236,10 @@ set grepprg=ag
 " = neocomplcache =====================
 "{{{
 let g:neocomplcache_enable_at_startup = 1
-imap <silent><C-a> <Plug>(neocomplcache_snippets_expand)
-smap <silent><C-a> <Plug>(neocomplcache_snippets_expand)
+let g:neocomplcache_enable_smart_case = 1
+let g:neocomplcache_min_syntax_length = 3
+let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
+
 "}}}
 
 " = unite.vim ==========================
@@ -240,10 +275,10 @@ let g:debuggerMaxDepth = 3
 
 " = unite-tag =========================
 "{{{
-"autocmd BufEnter *
-"\   if empty(&buftype)
-"\|      nnoremap <buffer> <C-]> :<C-u>UniteWithCursorWord -start-insert -immediately tag<CR>
-"\|  endif
+autocmd BufEnter *
+\   if empty(&buftype)
+\|      nnoremap <buffer> <C-]> :<C-u>UniteWithCursorWord -start-insert -immediately tag<CR>
+\|  endif
 "}}}
 
 " = lingr-vim =========================
