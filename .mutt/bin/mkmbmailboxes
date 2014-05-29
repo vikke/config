@@ -2,4 +2,4 @@
 
 #(echo -n "mailboxes "; find -E ~/Mail -type d ! -regex ".*(cur|new|tmp)$" -exec bash -c 'echo -n \"$1\"; echo -n " "' dummy {} \;| sed "s#${HOME}/Mail/#+#g") > ~/.mutt/mbmailboxes
 
-(echo -n "mailboxes "; find ~/Mail -type d -regex '.*/cur$' -exec bash -c 'echo -n \"$1\"; echo -n " "' dummy {} \; |sed -e "s#${HOME}/Mail/#+#g" -e "s#/cur##g") > ~/.mutt/mbmailboxes
+(echo -n "mailboxes "; find ~/Mail ! -name 'lost+found' -a -type d -regex '.*/cur$' -exec bash -c 'echo -n \"$1\"; echo -n " "' dummy {} \; |sed -e "s#${HOME}/Mail/#+#g" -e "s#/cur##g") > ~/.mutt/mbmailboxes
