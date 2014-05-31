@@ -10,8 +10,11 @@ endif
 call neobundle#begin(expand('~/.vim/bundle/'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 
+NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/neosnippet.vim'
 NeoBundle 'Shougo/neocomplcache.vim'
+NeoBundle 'Shougo/neomru.vim'
+NeoBundle 'Shougo/vinarise'
 NeoBundle 'tyru/current-func-info.vim'
 NeoBundle 'vim-scripts/info.vim'
 NeoBundle 'tsukkee/lingr-vim'
@@ -21,15 +24,15 @@ NeoBundle 'ujihisa/quickrun'
 NeoBundle 'ujihisa/unite-colorscheme'
 NeoBundle 'h1mesuke/unite-outline'
 NeoBundle 'tsukkee/unite-tag'
-NeoBundle 'Shougo/unite.vim'
 NeoBundle 'tpope/vim-endwise'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tpope/vim-pathogen'
 NeoBundle 'thinca/vim-ref'
-NeoBundle 'soh335/vim-symfony'
 NeoBundle 'kmnk/vim-unite-svn'
 NeoBundle 'vim-jp/vimdoc-ja'
-NeoBundle 'Shougo/vinarise'
+NeoBundle 'mattn/webapi-vim'
+NeoBundle 'mattn/mkdpreview-vim'
+NeoBundle 'vimscript/taglist'
 
 call neobundle#end()
 filetype plugin indent on
@@ -192,6 +195,12 @@ endif
 nmap <unique> f/ :exec ':vimgrep /' . getreg('/') . '/j %\|cwin'<CR>
 "}}}--------------------------------------------------------------------------------
 
+"{{{ C-I, C-O入れ替え --------------------------------------------------------------------------------
+nnoremap <C-I> <C-O>
+nnoremap <C-O> <C-I>
+
+"}}}--------------------------------------------------------------------------------
+
 "--------------------------------------------------------------------------------
 " file改行code関係
 "{{{--------------------------------------------------------------------------------
@@ -219,9 +228,9 @@ endif
 "--------------------------------------------------------------------------------
 " 開発用の共通設定とか。
 "{{{--------------------------------------------------------------------------------
-set tags=./tags,tags,../tags,../../tags,../../../tags,../../../../tags,../../../../../tags,../../../../../../tags
+set tags=tags
 
-set grepprg=ag
+set grepprg=ag\ -i
 
 "}}}--------------------------------------------------------------------------------
 
@@ -415,6 +424,9 @@ function! Rtrim()
 endfunction
 
 autocmd BufWritePre * call Rtrim()
+
 "}}}--------------------------------------------------------------------------------
 
-
+" mdがmodula2用になっているので上書き
+autocmd BufRead,BufNewFile *.md  setfiletype markdown
+autocmd BufRead,BufNewFile *.MD  setfiletype markdown
