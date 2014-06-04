@@ -284,8 +284,15 @@ export ANGBAND_X11_FONT_0="-*-ipamonagothic-medium-r-normal-*-14-*-*-*-*-*-jisx0
 
 export PYTHONPATH=.
 
-export PATH=~/.rbenv/bin:${PATH}
-eval "$(rbenv init -)"
+if [ -e ${HOME}/.rbenv ]; then
+	export PATH=~/.rbenv/bin:${PATH}
+	eval "$(rbenv init -)"
+fi
+
+if [ -e ${HOME}/.ndenv ]; then
+	export PATH=$PATH:$HOME/.ndenv/bin
+	eval "$(ndenv init -)"
+fi
 
 if [ -e ${vcsroot}/nvm/nvm.sh ]; then
 	. ${vcsroot}/nvm/nvm.sh
