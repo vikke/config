@@ -61,6 +61,9 @@ case $OSTYPE in
 		export MAVEN_HOME=/opt/local/share/java/maven2
 		MYSQL_BASE=/opt/local
 
+		if [ -f $(brew --prefix)/etc/bash_completion ]; then
+			. $(brew --prefix)/etc/bash_completion
+		fi
 
 		;;
 
