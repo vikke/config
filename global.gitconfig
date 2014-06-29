@@ -22,3 +22,7 @@
 #	mergeoptions = --squash
 [push]
 	default = simple
+[pager]
+	diff = /usr/local/opt/git/share/git-core/contrib/diff-highlight/diff-highlight | less
+	log = /usr/local/opt/git/share/git-core/contrib/diff-highlight/diff-highlight | less
+#	show = /usr/local/opt/git/share/git-core/contrib/diff-highlight/diff-highlight | less
