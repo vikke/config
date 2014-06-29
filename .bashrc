@@ -33,7 +33,7 @@ if [ -z "${WINPATH}" -a "$OSTYPE" == "cygwin" ]; then
 	export WINPATH=${PATH}
 fi
 
-PATH=${HOME}/bin:${HOME}/bin_local:${HOME}/local/bin:/usr/local/bin:/usr/bin:/usr/sbin:/bin:/sbin:/usr/X11R6/bin:/usr/games
+PATH=${HOME}/bin:${HOME}/bin_local:${HOME}/local/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:/usr/X11R6/bin:/usr/games
 if [ -n $PERL_MM_OPT ]; then
 	unset PERL_LOCAL_LIB_ROOT
 	unset PERL_MM_OPT
@@ -52,7 +52,6 @@ case $OSTYPE in
 		# finished adapting your path environment variable for use with macports.
 		export cocot="cocot"
 		export LANG=ja_JP.utf-8
-		alias mysql=mysql5
 #		alias urxvt="urxvt -e \'/Library/Frameworks/UIM.framework/Versions/1.6.0/bin/uim-fep\'"
 		export VIMPATH=vim
 
@@ -64,6 +63,8 @@ case $OSTYPE in
 		if [ -f $(brew --prefix)/etc/bash_completion ]; then
 			. $(brew --prefix)/etc/bash_completion
 		fi
+
+		alias vim='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
 
 		;;
 
@@ -441,3 +442,6 @@ if [ $? -eq 0 ]; then
 	done
 fi
 
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
