@@ -12,6 +12,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/neosnippet.vim'
+NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'Shougo/neocomplcache.vim'
 NeoBundle 'Shougo/neomru.vim'
 NeoBundle 'Shougo/vinarise'
