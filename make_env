@@ -28,6 +28,8 @@ fi
 
 #	.Xmodmap.mac \
 #	.Xmodmap.ubuntu \
+#	.Xdefaults \
+#	.Xresources \
 #	.config \
 #	.git \
 #	.gitmodules \
@@ -41,8 +43,6 @@ fi
 #	.msmtprc \
 for f in \
 	.agignore \
-	.Xdefaults \
-	.Xresources \
 	.bash_profile \
 	.bashrc \
 	.ctags \
