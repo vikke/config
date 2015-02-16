@@ -442,6 +442,10 @@ if [ $? -eq 0 ]; then
 	done
 fi
 
+# awesome wm / java
+# https://bbs.archlinux.org/viewtopic.php?id=142063
+wmname LG3D
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
+
