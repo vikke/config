@@ -27,13 +27,19 @@ NeoBundle 'h1mesuke/unite-outline'
 NeoBundle 'tsukkee/unite-tag'
 NeoBundle 'tpope/vim-endwise'
 NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'tpope/vim-pathogen'
 NeoBundle 'thinca/vim-ref'
 NeoBundle 'kmnk/vim-unite-svn'
 NeoBundle 'vim-jp/vimdoc-ja'
 NeoBundle 'mattn/webapi-vim'
 NeoBundle 'mattn/mkdpreview-vim'
 NeoBundle 'vimscript/taglist'
+NeoBundle 'joonty/vdebug'
+NeoBundle 'Shougo/vimproc.vim', {
+\	'build': {
+\		'linux': 'make'
+\	}
+\}
+
 
 call neobundle#end()
 filetype plugin indent on
@@ -249,11 +255,14 @@ let g:neocomplcache_enable_at_startup = 1
 let g:neocomplcache_enable_smart_case = 1
 let g:neocomplcache_min_syntax_length = 3
 let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
-
 "}}}
 
 " = unite.vim ==========================
 "{{{
+let g:unite_enable_ignore_case = 1
+let g:unite_enable_smart_case = 1
+
+
 let g:unite_source_file_mru_limit=1000
 nnoremap <silent> fs :Unite -start-insert buffer<CR>
 nnoremap <silent> ff :Unite -start-insert -buffer-name=files file file/new<CR>
@@ -261,7 +270,13 @@ nnoremap <silent> FF :UniteWithBufferDir -start-insert -buffer-name=files file f
 nnoremap <silent> fm :Unite -start-insert file_mru<CR>
 nnoremap <silent> fb :Unite -start-insert bookmark<cr>
 nnoremap <silent> fc :UniteWithBufferDir -start-insert file<CR>
+
+nnoremap <silent> FG :Unite grep:. -buffer-name=search-buffer<CR>
+nnoremap <silent> fg :Unite grep:. -buffer-name=search-buffer<CR><C-R><C-W><CR>
+nnoremap <silent> fr  :<C-u>UniteResume search-buffer<CR>
+
 au FileType unite call s:unite_my_settings()
+
 function! s:unite_my_settings()
 	nmap <buffer> <esc>     <Plug>(unite_exit)
     nnoremap <buffer> <expr> <c-k> unite#do_action('split')
@@ -269,6 +284,13 @@ function! s:unite_my_settings()
     nnoremap <buffer> <expr> <c-o> unite#do_action('vsplit')
     inoremap <buffer> <expr> <c-o> unite#do_action('vsplit')
 endfunction
+
+if executable('ag')
+	let g:unite_source_grep_command = 'ag'
+	let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
+	let g:unite_source_grep_recursive_opt = ''
+endif
+
 "}}}
 
 " = unite-outline =====================
@@ -279,7 +301,9 @@ nnoremap <silent> fo :Unite -start-insert outline<cr>
 
 " = php debugger =====================
 " {{{
-let g:debuggerMaxDepth = 3
+let g:vdebug_options={
+\	'timeout': 5
+\}
 " }}}
 
 
