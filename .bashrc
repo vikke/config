@@ -131,6 +131,7 @@ case $OSTYPE in
 		export TMP=~/tmpfs
 		PATH=/usr/local/mysql/bin:${PATH}
 		export MAVEN_HOME=${HOME}/dev-tools/apache-maven-3.0.3
+		export LANG=ja_JP.UTF-8
 		;;
 
 	*)
