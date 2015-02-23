@@ -39,7 +39,7 @@ NeoBundle 'Shougo/vimproc.vim', {
 \		'linux': 'make'
 \	}
 \}
-
+NeoBundle 'mrk21/yaml-vim'
 
 call neobundle#end()
 filetype plugin indent on
