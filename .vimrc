@@ -339,6 +339,7 @@ autocmd BufEnter *
 " = lingr-vim =========================
 "{{{
 let g:lingr_vim_user="vikke.bsd@gmail.com"
+let g:lingr_vim_command_to_open_url="xdg-open "
 "}}}
 
 " = vim-ref ===========================
