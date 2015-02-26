@@ -4,8 +4,8 @@
 
 "{{{ neobundle --------------------------------------------------------------------------------
 if has('vim_starting')
-	set nocompatible               " Be iMproved
-	set runtimepath+=~/.vim/bundle/neobundle.vim/
+    set nocompatible               " Be iMproved
+    set runtimepath+=~/.vim/bundle/neobundle.vim/
 endif
 call neobundle#begin(expand('~/.vim/bundle/'))
 NeoBundleFetch 'Shougo/neobundle.vim'
@@ -35,9 +35,9 @@ NeoBundle 'mattn/mkdpreview-vim'
 NeoBundle 'vimscript/taglist'
 NeoBundle 'joonty/vdebug'
 NeoBundle 'Shougo/vimproc.vim', {
-\	'build': {
-\		'linux': 'make'
-\	}
+\    'build': {
+\        'linux': 'make'
+\    }
 \}
 NeoBundle 'mrk21/yaml-vim'
 
@@ -109,8 +109,8 @@ nnoremap k gk
 
 " clipboard
 if has('macunix')
-	vmap _ :w !pbcopy<CR><CR>
-	"vmap _ :w !nkf -Ws \|pbcopy<CR><CR>
+    vmap _ :w !pbcopy<CR><CR>
+    "vmap _ :w !nkf -Ws \|pbcopy<CR><CR>
 endif
 "}}}--------------------------------------------------------------------------------
 
@@ -122,10 +122,10 @@ endif
 "nnoremap <silent> <c-w><c-w> <c-w><c-w>:call <SID>good_width()<cr>
 "nnoremap <silent> <c-w>w <c-w>w:call <SID>good_width()<cr>
 "function! s:good_width()
-"	let size = 90
-"	if winwidth(0) < size
-"		execute "vertical resize" size
-"	endif
+"    let size = 90
+"    if winwidth(0) < size
+"        execute "vertical resize" size
+"    endif
 "endfunction
 "}}}--------------------------------------------------------------------------------
 
@@ -134,11 +134,11 @@ endif
 " cygwin連携
 "{{{--------------------------------------------------------------------------------
 if has("win32unix")
-	set shell=bash
-	set shellcmdflag=-c
-	"set shq=\\"
-	"set sxq=\\"
-	set shellslash
+    set shell=bash
+    set shellcmdflag=-c
+    "set shq=\\"
+    "set sxq=\\"
+    set shellslash
 endif
 "}}}--------------------------------------------------------------------------------
 
@@ -148,7 +148,7 @@ endif
 set printoptions=number:y
 set printheader=%<%f%h%m%=Page\ %N
 if has("win32")
-	set printfont=MS_Gothic:h10:cSHIFTJIS
+    set printfont=MS_Gothic:h10:cSHIFTJIS
 endif
 "}}}--------------------------------------------------------------------------------
 
@@ -157,41 +157,41 @@ endif
 "{{{--------------------------------------------------------------------------------
 set laststatus=2
 function! GetB()
-	let c = matchstr(getline('.'), '.', col('.') - 1)
-	let c = iconv(c, &enc, &fenc)
-	return String2Hex(c)
+    let c = matchstr(getline('.'), '.', col('.') - 1)
+    let c = iconv(c, &enc, &fenc)
+    return String2Hex(c)
 endfunction
 " :help eval-examples
 " The function Nr2Hex() returns the Hex string of a number.
 func! Nr2Hex(nr)
-	let n = a:nr
-	let r = ""
-	while n
-		let r = '0123456789ABCDEF'[n % 16] . r
-		let n = n / 16
-	endwhile
-	return r
+    let n = a:nr
+    let r = ""
+    while n
+        let r = '0123456789ABCDEF'[n % 16] . r
+        let n = n / 16
+    endwhile
+    return r
 endfunc
 " The function String2Hex() converts each character in a string to a two
 " character Hex string.
 func! String2Hex(str)
-	let out = ''
-	let ix = 0
-	while ix < strlen(a:str)
-		let out = out . Nr2Hex(char2nr(a:str[ix]))
-		let ix = ix + 1
-	endwhile
-	return out
+    let out = ''
+    let ix = 0
+    while ix < strlen(a:str)
+        let out = out . Nr2Hex(char2nr(a:str[ix]))
+        let ix = ix + 1
+    endwhile
+    return out
 endfunc
 if winwidth(0) >= 120
-	let &statusline='%<[%n]%m%r%h%w%{"[".(&fenc!=""?&fenc:&enc).":".&ff."]"}%y %F%=[%{GetB()}] %{cfi#format("[%s()]", "no function")} %l,%c%V%8P'
-	" TODO: Hack #171(http://vim-users.jp/2010/09/hack171/): 編集している関数名を表示する
-	"current-func-info.vim のテスト用
-	"let &statusline='%{cfi#format("[%s()]", "no function")}'
+    let &statusline='%<[%n]%m%r%h%w%{"[".(&fenc!=""?&fenc:&enc).":".&ff."]"}%y %F%=[%{GetB()}] %{cfi#format("[%s()]", "no function")} %l,%c%V%8P'
+    " TODO: Hack #171(http://vim-users.jp/2010/09/hack171/): 編集している関数名を表示する
+    "current-func-info.vim のテスト用
+    "let &statusline='%{cfi#format("[%s()]", "no function")}'
 else
-	let &statusline='%<[%n]%m%r%h%w%{"[".(&fenc!=""?&fenc:&enc).":".&ff."]"}%y %10.40f%=[%{GetB()}] %{cfi#format("[%s()]", "no function")} %l,%c%V%8P'
-	"current-func-info.vim のテスト用
-	"let &statusline='%{cfi#format("[%s()]", "no function")}'
+    let &statusline='%<[%n]%m%r%h%w%{"[".(&fenc!=""?&fenc:&enc).":".&ff."]"}%y %10.40f%=[%{GetB()}] %{cfi#format("[%s()]", "no function")} %l,%c%V%8P'
+    "current-func-info.vim のテスト用
+    "let &statusline='%{cfi#format("[%s()]", "no function")}'
 endif
 "}}}--------------------------------------------------------------------------------
 
@@ -299,15 +299,15 @@ function! s:unite_my_settings()
     inoremap <buffer> <expr> <C-k> unite#do_action('split')
     nnoremap <buffer> <expr> <C-o> unite#do_action('vsplit')
     inoremap <buffer> <expr> <c-o> unite#do_action('vsplit')
-	imap <buffer> <C-g>		<Plug>(unite_delete_backward_path)
-	imap <buffer> <C-h>		<Plug>(unite_delete_backward_path)
-	imap <buffer> <TAB>   <Plug>(unite_select_next_line)
+    imap <buffer> <C-g>        <Plug>(unite_delete_backward_path)
+    imap <buffer> <C-h>        <Plug>(unite_delete_backward_path)
+    imap <buffer> <TAB>   <Plug>(unite_select_next_line)
 endfunction
 
 if executable('ag')
-	let g:unite_source_grep_command = 'ag'
-	let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
-	let g:unite_source_grep_recursive_opt = ''
+    let g:unite_source_grep_command = 'ag'
+    let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
+    let g:unite_source_grep_recursive_opt = ''
 endif
 
 "}}}
@@ -321,7 +321,7 @@ nnoremap <silent> fo :Unite -start-insert outline<cr>
 " = php debugger =====================
 " {{{
 let g:vdebug_options={
-\	'timeout': 5
+\    'timeout': 5
 \}
 " }}}
 
@@ -376,10 +376,10 @@ let MyGrep_ShellEncoding="utf-8"
 let MyGrep_ExcludeReg = '[/\\]\.svn[/\\]|tags'
 
 if has("win32")
-	let g:howm_openurlcmd="C:/Program\\ Files/Mozilla\\ Firefox/firefox %s"
+    let g:howm_openurlcmd="C:/Program\\ Files/Mozilla\\ Firefox/firefox %s"
 endif
 if has("unix")
-	let g:howm_openurlcmd="firefox %s"
+    let g:howm_openurlcmd="firefox %s"
 endif
 let g:howm_title_pattern="="
 "}}}
@@ -389,20 +389,20 @@ let g:howm_title_pattern="="
 " FreeBSDの時は、uim-skk使うので、skkをloadingしないようにする。
 "let plugin_skk_disable = 1
 if has('win32unix') || has('win32')
-	let plugin_skk_disable = 1
+    let plugin_skk_disable = 1
 elseif has('unix')
-	let plugin_skk_disable = 1
+    let plugin_skk_disable = 1
 endif
 
 if has("win32unix")
-	let skk_jisyo = "~/skk-dic/skk-uim-jisyo"
-	let skk_large_jisyo = "~/skk-dic/all.dic"
+    let skk_jisyo = "~/skk-dic/skk-uim-jisyo"
+    let skk_large_jisyo = "~/skk-dic/all.dic"
 elseif has("unix")
-	let skk_jisyo = "~/skkdict/skkvim.dic"
-	let skk_large_jisyo = "~/skkdict/all.dic"
+    let skk_jisyo = "~/skkdict/skkvim.dic"
+    let skk_large_jisyo = "~/skkdict/all.dic"
 elseif has("win32")
-	let skk_jisyo = "c:/Users/imatsunaga/skk-dic/skkvim.dic"
-	let skk_large_jisyo = "c:/Users/imatsunaga/skk-dic/SKK-JISYO.L.UTF-8"
+    let skk_jisyo = "c:/Users/imatsunaga/skk-dic/skkvim.dic"
+    let skk_large_jisyo = "c:/Users/imatsunaga/skk-dic/SKK-JISYO.L.UTF-8"
 endif
 
 let skk_keep_state = 1
@@ -433,7 +433,7 @@ let g:DirDiffExcludes = "CVS,*.class,*.exe,.*.swp,.svn"
 " migemoの設定
 "{{{
 if has('migemo')
-	set migemo
+    set migemo
 endif
 "}}}
 
@@ -455,17 +455,17 @@ let g:quickrun_config = {}
 
 " _spec.rbのquickrun設定
 augroup AddFileType
-	au!
-	au BufWinEnter,BufNewFile, *_spec.rb set filetype=ruby.rspec
+    au!
+    au BufWinEnter,BufNewFile, *_spec.rb set filetype=ruby.rspec
 augroup END
 "let g:quickrun_config['ruby.rspec'] = { 'command': 'bundle exec rspec', 'cmdopt': '-cfs', 'exec': '%c %s %a' }
 let g:quickrun_config['ruby.rspec'] = { 'command': 'bundle exec rspec -cfs', 'exec': '%c %s %a' }
 
 " 保存時に行末スペース削除
 function! Rtrim()
-	let s:now = getpos(".")
-	%s/\s\+$//e
-	call setpos(".", s:now)
+    let s:now = getpos(".")
+    %s/\s\+$//e
+    call setpos(".", s:now)
 endfunction
 
 autocmd BufWritePre * call Rtrim()
