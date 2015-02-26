@@ -295,11 +295,12 @@ nnoremap <silent> fr  :<C-u>UniteResume search-buffer<CR>
 au FileType unite call s:unite_my_settings()
 
 function! s:unite_my_settings()
-    nmap <buffer> <esc> <Plug>(unite_exit)
+    nmap <buffer> <ESC> <Plug>(unite_exit)
     inoremap <buffer> <expr> <C-k> unite#do_action('split')
     nnoremap <buffer> <expr> <C-o> unite#do_action('vsplit')
     inoremap <buffer> <expr> <c-o> unite#do_action('vsplit')
-	imap <buffer> <C-h> 	<Plug>(unite_exit)
+	imap <buffer> <C-g>		<Plug>(unite_delete_backward_path)
+	imap <buffer> <C-h>		<Plug>(unite_delete_backward_path)
 	imap <buffer> <TAB>   <Plug>(unite_select_next_line)
 endfunction
 
