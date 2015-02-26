@@ -16,6 +16,7 @@ NeoBundle 'Shougo/neosnippet-snippets'
 NeoBundle 'Shougo/neocomplete'
 NeoBundle 'Shougo/neomru.vim'
 NeoBundle 'Shougo/vinarise'
+NeoBundle 'Shougo/unite-outline'
 NeoBundle 'tyru/current-func-info.vim'
 NeoBundle 'vim-scripts/info.vim'
 NeoBundle 'tsukkee/lingr-vim'
@@ -23,7 +24,6 @@ NeoBundle 'tsukkee/unite-tag'
 NeoBundle 'vim-scripts/matchit.zip'
 NeoBundle 'ujihisa/quickrun'
 NeoBundle 'ujihisa/unite-colorscheme'
-NeoBundle 'h1mesuke/unite-outline'
 NeoBundle 'tsukkee/unite-tag'
 NeoBundle 'tpope/vim-endwise'
 NeoBundle 'tpope/vim-fugitive'
@@ -257,6 +257,7 @@ let g:neocomplete#enable_smart_case = 1
 let g:neocomplete#auto_completion_start_length = 3
 let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
 let g:neocomplete#sources#tags#cache_limit_size = 8000000
+let g:unite_data_directory = '~/.cache/unite'
 
 if !exists('g:neocomplete#keyword_patterns')
     let g:neocomplete#keyword_patterns = {}
