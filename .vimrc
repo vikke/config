@@ -294,56 +294,15 @@ nnoremap <silent> FG :Unite grep:. -buffer-name=search-buffer<CR>
 nnoremap <silent> fg :Unite grep:. -buffer-name=search-buffer<CR><C-R><C-W><CR>
 nnoremap <silent> fr  :<C-u>UniteResume search-buffer<CR>
 
-"au FileType unite call s:unite_my_settings()
-au FileType unite call s:unite_manual_settings()
+au FileType unite call s:unite_my_settings()
 
 function! s:unite_my_settings()
     nmap <buffer> <esc> <Plug>(unite_exit)
-    nnoremap <buffer> <expr> <c-k> unite#do_action('split')
-    inoremap <buffer> <expr> <c-k> unite#do_action('split')
-    nnoremap <buffer> <expr> <c-o> unite#do_action('vsplit')
+    nnoremap <buffer> <expr> <C-k> unite#do_action('split')
+    inoremap <buffer> <expr> <C-k> unite#do_action('split')
+    nnoremap <buffer> <expr> <C-o> unite#do_action('vsplit')
     inoremap <buffer> <expr> <c-o> unite#do_action('vsplit')
-endfunction
-
-
-function! s:unite_manual_settings() "{{{
-	  " Overwrite settings.
-
-	  imap <buffer> jj      <Plug>(unite_insert_leave)
-	  "imap <buffer> <C-w>     <Plug>(unite_delete_backward_path)
-
-	  imap <buffer><expr> j unite#smart_map('j', '')
-	  imap <buffer> <TAB>   <Plug>(unite_select_next_line)
-	  imap <buffer> <C-w>     <Plug>(unite_delete_backward_path)
-	  imap <buffer> '     <Plug>(unite_quick_match_default_action)
-	  nmap <buffer> '     <Plug>(unite_quick_match_default_action)
-	  imap <buffer><expr> x
-	          \ unite#smart_map('x', "\<Plug>(unite_quick_match_choose_action)")
-	  nmap <buffer> x     <Plug>(unite_quick_match_choose_action)
-	  nmap <buffer> <C-z>     <Plug>(unite_toggle_transpose_window)
-	  imap <buffer> <C-z>     <Plug>(unite_toggle_transpose_window)
-	  imap <buffer> <C-y>     <Plug>(unite_narrowing_path)
-	  nmap <buffer> <C-y>     <Plug>(unite_narrowing_path)
-	  nmap <buffer> <C-j>     <Plug>(unite_toggle_auto_preview)
-	  nmap <buffer> <C-r>     <Plug>(unite_narrowing_input_history)
-	  imap <buffer> <C-r>     <Plug>(unite_narrowing_input_history)
-	  nnoremap <silent><buffer><expr> l
-	          \ unite#smart_map('l', unite#do_action('default'))
-
-	  let unite = unite#get_current_unite()
-	  if unite.profile_name ==# 'search'
-	    nnoremap <silent><buffer><expr> r     unite#do_action('replace')
-	  else
-	    nnoremap <silent><buffer><expr> r     unite#do_action('rename')
-	  endif
-
-	  nnoremap <silent><buffer><expr> cd     unite#do_action('lcd')
-	  nnoremap <buffer><expr> S      unite#mappings#set_current_filters(
-	          \ empty(unite#mappings#get_current_filters()) ?
-	          \ ['sorter_reverse'] : [])
-
-	  " Runs "split" action by <C-s>.
-	  imap <silent><buffer><expr> <C-s>     unite#do_action('split')
+	imap <buffer> <C-h> 	<Plug>(unite_exit)
 endfunction
 
 if executable('ag')
