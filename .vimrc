@@ -279,6 +279,7 @@ let g:unite_enable_smart_case = 1
 
 
 let g:unite_source_file_mru_limit=1000
+
 nnoremap <silent> fs :Unite -start-insert buffer<CR>
 nnoremap <silent> ff :Unite -start-insert -buffer-name=files file file/new<CR>
 nnoremap <silent> FF :UniteWithBufferDir -start-insert -buffer-name=files file file/new<CR>
@@ -293,14 +294,12 @@ nnoremap <silent> fr  :<C-u>UniteResume search-buffer<CR>
 au FileType unite call s:unite_my_settings()
 
 function! s:unite_my_settings()
-    nmap <buffer> <esc>     <Plug>(unite_exit)
-    nnoremap <buffer> <expr> <c-k> unite#do_action('split')
-    inoremap <buffer> <expr> <c-k> unite#do_action('split')
-    nnoremap <buffer> <expr> <c-o> unite#do_action('vsplit')
+    nmap <buffer> <esc> <Plug>(unite_exit)
+    inoremap <buffer> <expr> <C-k> unite#do_action('split')
+    nnoremap <buffer> <expr> <C-o> unite#do_action('vsplit')
     inoremap <buffer> <expr> <c-o> unite#do_action('vsplit')
-
+	imap <buffer> <C-h> 	<Plug>(unite_exit)
 	imap <buffer> <TAB>   <Plug>(unite_select_next_line)
-
 endfunction
 
 if executable('ag')
