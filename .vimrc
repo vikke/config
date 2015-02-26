@@ -256,6 +256,7 @@ let g:neocomplete#enable_ignore_case = 1
 let g:neocomplete#enable_smart_case = 1
 let g:neocomplete#auto_completion_start_length = 3
 let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
+let g:neocomplete#sources#tags#cache_limit_size = 8000000
 
 if !exists('g:neocomplete#keyword_patterns')
     let g:neocomplete#keyword_patterns = {}
