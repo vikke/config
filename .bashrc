@@ -55,9 +55,9 @@ case $OSTYPE in
 #		alias urxvt="urxvt -e \'/Library/Frameworks/UIM.framework/Versions/1.6.0/bin/uim-fep\'"
 		export VIMPATH=vim
 
-		export JAVA_HOME=/System/Library/Frameworks/JavaVM.framework/Versions/CurrentJDK/HOME
-		export _JAVA_OPTIONS=-Dfile.encoding=UTF-8
-		export MAVEN_HOME=/opt/local/share/java/maven2
+		export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
+		export _JAVA_OPTIONS="-Dfile.encoding=UTF-8"
+#		export MAVEN_HOME=/opt/local/share/java/maven2
 		MYSQL_BASE=/opt/local
 
 		if [ -f $(brew --prefix)/etc/bash_completion ]; then
