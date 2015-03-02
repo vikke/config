@@ -32,7 +32,7 @@ URxvt*saveLines:	10000000
 !URxvt*backgroundPixmap:	/home/vikke/Photos/wallpaper/Henry1_dark.jpg
 !URxvt*backgroundPixmap:	/home/vikke/Photos/wallpaper/wolf\ and\ spice.jpg
 !URxvt*backgroundPixmap:	/home/vikke/Photos/wallpaper/motoko-ipod-dark2.png
-URxvt*backgroundPixmap:	/home/ichiro/Pictures/Alyssa_MIlano.jpg;op=keep-aspect
+!URxvt*backgroundPixmap:	/home/ichiro/Pictures/Alyssa_MIlano.jpg;op=keep-aspect
 
 URxvt*background: black
 URxvt*foreground: gray
@@ -60,3 +60,4 @@ URxvt*depth:	24
 !URxvt*cursorBlink:	True
 URxvt*visualBell:	True
 !URxvt*cursorColor2: white
+
