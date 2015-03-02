@@ -26,3 +26,4 @@ tags-ja
 /.w3m/w3msrc*
 /.vim/dict/manual
 /.vim/bundle
+/.DS_Store
