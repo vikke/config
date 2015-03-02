@@ -1,5 +1,3 @@
--- gnomeとの共存 http://awesome.naquadah.org/wiki/Quickly_Setting_up_Awesome_with_Gnome#Gnome_3.9_.2F_Ubuntu_13.10
-
 -- Standard awesome library
 require("awful")
 require("awful.autofocus")
@@ -42,7 +40,7 @@ end
 beautiful.init("/usr/share/awesome/themes/default/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
-terminal = "x-terminal-emulator"
+terminal = "gnome-terminal"
 editor = os.getenv("EDITOR") or "editor"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -54,13 +52,6 @@ editor_cmd = terminal .. " -e " .. editor
 modkey = "Mod4"
 
 -- Table of layouts to cover with awful.layout.inc, order matters.
---    awful.layout.suit.floating,
---    awful.layout.suit.tile.left,
---    awful.layout.suit.tile.top,
---    awful.layout.suit.fair.horizontal,
---    awful.layout.suit.spiral,
---    awful.layout.suit.spiral.dwindle,
---    awful.layout.suit.max.fullscreen,
 layouts =
 {
     awful.layout.suit.max,
@@ -74,13 +65,10 @@ layouts =
 -- {{{ Tags
 -- Define a tag table which hold all screen tags.
 tags = {}
--- for s = 1, screen.count() do
---     -- Each screen has its own tag table.
---     tags[s] = awful.tag({ 1, 2, 3, 4, 5, 6, 7, 8, 9 }, s, layouts[1])
--- end
-tags[1] = awful.tag({ 1, 2, 3, 4, 5, 6, 7, 8, 9 }, 1, layouts[2])
-tags[2] = awful.tag({  1, 2, 3, 4, 5, 6, 7, 8, 9 }, 2, layouts[1])
-tags[3] = awful.tag({ 1, 2, 3, 4, 5, 6, 7, 8, 9 }, 3, layouts[1])
+for s = 1, screen.count() do
+    -- Each screen has its own tag table.
+    tags[s] = awful.tag({ 1, 2, 3, 4, 5, 6, 7, 8, 9 }, s, layouts[1])
+end
 -- }}}
 
 -- {{{ Menu
@@ -94,7 +82,8 @@ myawesomemenu = {
 
 mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesome_icon },
                                     { "Debian", debian.menu.Debian_menu.Debian },
-                                    { "open terminal", terminal }
+                                    { "open terminal", terminal },
+                                    { "chrome", "google-chrome" }
                                   }
                         })
 
@@ -154,13 +143,6 @@ mytasklist.buttons = awful.util.table.join(
                                               if client.focus then client.focus:raise() end
                                           end))
 
-require('flaw')
-gcpu = flaw.gadget.graph.cpu('cpu', {}, { width = 60, height = 18 })
-gbattery_icon = flaw.gadget.icon.battery('BAT0', {}, { image = image(beautiful.battery_icon) })
-gbattery_text = flaw.gadget.text.battery('BAT0')
-
--- require('volume')
-
 for s = 1, screen.count() do
     -- Create a promptbox for each screen
     mypromptbox[s] = awful.widget.prompt({ layout = awful.widget.layout.horizontal.leftright })
@@ -188,13 +170,9 @@ for s = 1, screen.count() do
             mylauncher,
             mytaglist[s],
             mypromptbox[s],
---			volume_widget,
             layout = awful.widget.layout.horizontal.leftright
         },
         mylayoutbox[s],
-		gcpu.widget,
-		gbattery_icon.widget,
-		gbattery_text.widget,
         mytextclock,
         s == 1 and mysystray or nil,
         mytasklist[s],
@@ -245,6 +223,7 @@ globalkeys = awful.util.table.join(
 
     -- Standard program
     awful.key({ modkey,           }, "Return", function () awful.util.spawn(terminal) end),
+    awful.key({ modkey,           }, "b", function () awful.util.spawn("google-chrome") end),
     awful.key({ modkey, "Control" }, "r", awesome.restart),
     awful.key({ modkey, "Shift"   }, "q", awesome.quit),
 
@@ -268,14 +247,7 @@ globalkeys = awful.util.table.join(
                   mypromptbox[mouse.screen].widget,
                   awful.util.eval, nil,
                   awful.util.getdir("cache") .. "/history_eval")
-              end),
-	awful.key({ }, "XF86AudioRaiseVolume", function ()
-	   awful.util.spawn("amixer set Master 9%+") end),
-	awful.key({ }, "XF86AudioLowerVolume", function ()
-	   awful.util.spawn("amixer set Master 9%-") end),
-	awful.key({ }, "XF86AudioMute", function ()
-	   awful.util.spawn("amixer -q -D default set Master toggle") end)
-
+              end)
 )
 
 clientkeys = awful.util.table.join(
@@ -362,27 +334,11 @@ awful.rules.rules = {
       properties = { floating = true } },
     { rule = { class = "gimp" },
       properties = { floating = true } },
+    { rule = { class = "Amarok" },
+      properties = { tag = tags[1][8], floating = false } },
     -- Set Firefox to always map on tags number 2 of screen 1.
     -- { rule = { class = "Firefox" },
     --   properties = { tag = tags[1][2] } },
-
---	{ rule = { class = "Gkrellm" },
---      properties = {
---		tag = tags[2][3],
---		floating = false
---	  }
---	},
-	{ rule = { class = "Conky" },
-	  properties = { tag = tags[1][1], floating = false }
-    },
-	{ rule = { class = "Thunderbird" },
-	  properties = { tag = tags[1][1] }
-    },
-	{ rule = { class = "Nautilus" },
-	  properties = { tag = tags[2][1], floating = false }
-    },
---	{ rule = { class = "gnome-system-monitor" },
---		properties = {tags[1][2]} },
 }
 -- }}}
 

@@ -19,7 +19,7 @@ function link_dotfile {
 	if [ -e ${HOME}/${dst} ];then
 		mv ${HOME}/${dst} ${backup}/${dst}
 	fi
-	ln -s ${PWD}/${src} ${HOME}/${dst}
+	ln -fs ${PWD}/${src} ${HOME}/${dst}
 }
 
 if [ ! -e ${backup} ]; then
@@ -54,7 +54,6 @@ for f in \
 	.infokey \
 	.mailcap \
 	.mayu \
-	.msmtpqueue \
 	.mutt \
 	.offlineimaprc \
 	.pryrc \
