@@ -5,6 +5,7 @@ if has("win32")
 elseif has("unix")
 	set guifont=MaruGoR\-AA\ 8
 endif
+set noimdisableactivate
 winpos 0 0
 set lines=64 columns=180
 set cmdheight=2
@@ -13,3 +14,4 @@ set cmdheight=2
 "colorscheme midnight2
 "colorscheme oceandeep
 "colorscheme midnight2
+colorscheme darkblue

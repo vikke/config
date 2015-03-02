@@ -106,6 +106,7 @@ if has('macunix')
 	vmap _ :w !pbcopy<CR><CR>
 	"vmap _ :w !nkf -Ws \|pbcopy<CR><CR>
 endif
+set clipboard+=unnamed
 "}}}--------------------------------------------------------------------------------
 
 "--------------------------------------------------------------------------------
@@ -427,7 +428,3 @@ endfunction
 autocmd BufWritePre * call Rtrim()
 
 "}}}--------------------------------------------------------------------------------
-
-" mdがmodula2用になっているので上書き
-autocmd BufRead,BufNewFile *.md  setfiletype markdown
-autocmd BufRead,BufNewFile *.MD  setfiletype markdown
