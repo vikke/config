@@ -24,7 +24,6 @@ NeoBundle 'tsukkee/unite-tag'
 NeoBundle 'vim-scripts/matchit.zip'
 NeoBundle 'ujihisa/quickrun'
 NeoBundle 'ujihisa/unite-colorscheme'
-NeoBundle 'tsukkee/unite-tag'
 NeoBundle 'tpope/vim-endwise'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'thinca/vim-ref'
@@ -290,8 +289,8 @@ nnoremap <silent> fm :Unite -start-insert file_mru<CR>
 nnoremap <silent> fb :Unite -start-insert bookmark<cr>
 nnoremap <silent> fc :UniteWithBufferDir -start-insert file<CR>
 
-nnoremap <silent> FG :Unite grep:. -buffer-name=search-buffer<CR>
-nnoremap <silent> fg :Unite grep:. -buffer-name=search-buffer<CR><C-R><C-W><CR>
+nnoremap <silent> FG :Unite grep:. -start-insert -buffer-name=search-buffer<CR>
+nnoremap <silent> fg :Unite grep:. -start-insert -buffer-name=search-buffer<CR><C-R><C-W><CR>
 nnoremap <silent> fr  :<C-u>UniteResume search-buffer<CR>
 
 au FileType unite call s:unite_my_settings()
@@ -330,9 +329,10 @@ let g:vdebug_options={
 
 " = unite-tag =========================
 "{{{
+let g:unite_source_tag_max_fname_length=50
 autocmd BufEnter *
 \   if empty(&buftype)
-\|      nnoremap <buffer> <C-]> :<C-u>UniteWithCursorWord -start-insert -immediately tag<CR>
+\|      nnoremap <buffer> <C-]> :<C-u>UniteWithCursorWord -start-insert tag<CR>
 \|  endif
 "}}}
 
