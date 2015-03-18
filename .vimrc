@@ -24,7 +24,6 @@ NeoBundle 'tsukkee/unite-tag'
 NeoBundle 'vim-scripts/matchit.zip'
 NeoBundle 'ujihisa/quickrun'
 NeoBundle 'ujihisa/unite-colorscheme'
-NeoBundle 'tpope/vim-endwise'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'thinca/vim-ref'
 NeoBundle 'kmnk/vim-unite-svn'
@@ -39,8 +38,13 @@ NeoBundle 'Shougo/vimproc.vim', {
 \    }
 \}
 NeoBundle 'mrk21/yaml-vim'
+NeoBundle 'kana/vim-smartinput'
+NeoBundle 'cohama/vim-smartinput-endwise'
 
 call neobundle#end()
+
+call smartinput_endwise#define_default_rules()
+
 filetype plugin indent on
 NeoBundleCheck
 "}}}--------------------------------------------------------------------------------
