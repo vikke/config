@@ -305,7 +305,7 @@ function! s:unite_my_settings()
     nnoremap <buffer> <expr> <C-o> unite#do_action('vsplit')
     inoremap <buffer> <expr> <c-o> unite#do_action('vsplit')
     imap <buffer> <C-g>        <Plug>(unite_delete_backward_path)
-    imap <buffer> <C-h>        <Plug>(unite_delete_backward_path)
+"    imap <buffer> <C-h>        <Plug>(unite_delete_backward_path)
     imap <buffer> <TAB>   <Plug>(unite_select_next_line)
 endfunction
 
@@ -333,7 +333,8 @@ let g:vdebug_options={
 
 " = unite-tag =========================
 "{{{
-let g:unite_source_tag_max_fname_length=50
+let g:unite_source_tag_max_fname_length=70
+let g:unite_source_tag_max_name_length=35
 autocmd BufEnter *
 \   if empty(&buftype)
 \|      nnoremap <buffer> <C-]> :<C-u>UniteWithCursorWord -start-insert tag<CR>
