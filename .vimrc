@@ -25,6 +25,7 @@ NeoBundle 'vim-scripts/matchit.zip'
 NeoBundle 'ujihisa/quickrun'
 NeoBundle 'ujihisa/unite-colorscheme'
 NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'tpope/vim-rails'
 NeoBundle 'thinca/vim-ref'
 NeoBundle 'kmnk/vim-unite-svn'
 NeoBundle 'vim-jp/vimdoc-ja'
@@ -39,7 +40,6 @@ NeoBundle 'Shougo/vimproc.vim', {
 \}
 NeoBundle 'mrk21/yaml-vim'
 NeoBundle 'kana/vim-smartinput'
-NeoBundle 'cohama/vim-smartinput-endwise'
 
 call neobundle#end()
 
@@ -326,7 +326,7 @@ nnoremap <silent> fo :Unite -start-insert outline<cr>
 " = php debugger =====================
 " {{{
 let g:vdebug_options={
-\    'timeout': 5
+\    'timeout': 30
 \}
 " }}}
 
