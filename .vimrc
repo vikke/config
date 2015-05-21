@@ -43,8 +43,6 @@ NeoBundle 'kana/vim-smartinput'
 
 call neobundle#end()
 
-call smartinput_endwise#define_default_rules()
-
 filetype plugin indent on
 NeoBundleCheck
 "}}}--------------------------------------------------------------------------------
