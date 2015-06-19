@@ -39,7 +39,6 @@ NeoBundle 'Shougo/vimproc.vim', {
 \    }
 \}
 NeoBundle 'mrk21/yaml-vim'
-NeoBundle 'kana/vim-smartinput'
 
 call neobundle#end()
 
