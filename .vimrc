@@ -24,9 +24,8 @@ NeoBundle 'tsukkee/unite-tag'
 NeoBundle 'vim-scripts/matchit.zip'
 NeoBundle 'ujihisa/quickrun'
 NeoBundle 'ujihisa/unite-colorscheme'
-NeoBundle 'tsukkee/unite-tag'
-NeoBundle 'tpope/vim-endwise'
 NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'tpope/vim-rails'
 NeoBundle 'thinca/vim-ref'
 NeoBundle 'kmnk/vim-unite-svn'
 NeoBundle 'vim-jp/vimdoc-ja'
@@ -42,6 +41,7 @@ NeoBundle 'Shougo/vimproc.vim', {
 NeoBundle 'mrk21/yaml-vim'
 
 call neobundle#end()
+
 filetype plugin indent on
 NeoBundleCheck
 "}}}--------------------------------------------------------------------------------
@@ -290,8 +290,8 @@ nnoremap <silent> fm :Unite -start-insert file_mru<CR>
 nnoremap <silent> fb :Unite -start-insert bookmark<cr>
 nnoremap <silent> fc :UniteWithBufferDir -start-insert file<CR>
 
-nnoremap <silent> FG :Unite grep:. -buffer-name=search-buffer<CR>
-nnoremap <silent> fg :Unite grep:. -buffer-name=search-buffer<CR><C-R><C-W><CR>
+nnoremap <silent> FG :Unite grep:. -start-insert -buffer-name=search-buffer<CR>
+nnoremap <silent> fg :Unite grep:. -start-insert -buffer-name=search-buffer<CR><C-R><C-W><CR>
 nnoremap <silent> fr  :<C-u>UniteResume search-buffer<CR>
 
 au FileType unite call s:unite_my_settings()
@@ -302,7 +302,7 @@ function! s:unite_my_settings()
     nnoremap <buffer> <expr> <C-o> unite#do_action('vsplit')
     inoremap <buffer> <expr> <c-o> unite#do_action('vsplit')
     imap <buffer> <C-g>        <Plug>(unite_delete_backward_path)
-    imap <buffer> <C-h>        <Plug>(unite_delete_backward_path)
+"    imap <buffer> <C-h>        <Plug>(unite_delete_backward_path)
     imap <buffer> <TAB>   <Plug>(unite_select_next_line)
 endfunction
 
@@ -323,16 +323,18 @@ nnoremap <silent> fo :Unite -start-insert outline<cr>
 " = php debugger =====================
 " {{{
 let g:vdebug_options={
-\    'timeout': 5
+\    'timeout': 30
 \}
 " }}}
 
 
 " = unite-tag =========================
 "{{{
+let g:unite_source_tag_max_fname_length=70
+let g:unite_source_tag_max_name_length=35
 autocmd BufEnter *
 \   if empty(&buftype)
-\|      nnoremap <buffer> <C-]> :<C-u>UniteWithCursorWord -start-insert -immediately tag<CR>
+\|      nnoremap <buffer> <C-]> :<C-u>UniteWithCursorWord -start-insert tag<CR>
 \|  endif
 "}}}
 

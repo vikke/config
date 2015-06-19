@@ -390,6 +390,10 @@ function snow {
 
 }
 
+function ssh_client {
+	ssh -AY $(echo $SSH_CLIENT | cut -f 1 -d \ ) -l ichiro
+}
+
 function pusher {
 	keyadd
 	eval ${cocot} -p UTF-8 -- ssh -AY pusher.vikke.name
