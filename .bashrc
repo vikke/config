@@ -178,7 +178,8 @@ if [ -n "${SSH_TTY}" ]; then
 fi
 
 # ctrl-sでterminalがlockしないようにする。
-stty -ixon
+# stty -ixon
+stty stop undef
 
 # command履歴共有
 export HISTSIZE=9999
