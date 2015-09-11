@@ -52,6 +52,7 @@ for f in \
 	.gitignore \
 	.gvimrc \
 	.infokey \
+	.inputrc \
 	.mailcap \
 	.mayu \
 	.mutt \
