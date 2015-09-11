@@ -64,7 +64,8 @@ case $OSTYPE in
 			. $(brew --prefix)/etc/bash_completion
 		fi
 
-		alias vim='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
+		export LSCOLORS=gxfxcxdxbxegedabagacad
+		alias ls='ls -G'
 
 		;;
 
@@ -74,7 +75,7 @@ case $OSTYPE in
 		# lsの日本語表示
 		alias ls='ls --show-control-chars -F'
 
-		# lessの日本語表示
+		# lessの日本語
 		export PAGER="less"
 		export LESSCHARSET=dos
 
@@ -429,6 +430,7 @@ alias rspec='bundle exec rspec'
 alias rake='bundle exec rake'
 alias rails='bundle exec rails'
 alias ssh_copy_id='ssh-copy-id -i ~/.ssh/id_rsa.pub '
+
 
 if [ -e /usr/share/doc/tig-1.0/contrib/tig-completion.bash ]; then
 	. /usr/share/doc/tig-1.0/contrib/tig-completion.bash
