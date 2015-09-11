@@ -34,9 +34,10 @@ NeoBundle 'mattn/mkdpreview-vim'
 NeoBundle 'vimscript/taglist'
 NeoBundle 'joonty/vdebug'
 NeoBundle 'Shougo/vimproc.vim', {
-\    'build': {
-\        'linux': 'make'
-\    }
+\   'build': {
+\       'linux': 'make',
+\       'mac': 'make -f make_mac.mak',
+\   }
 \}
 NeoBundle 'mrk21/yaml-vim'
 
