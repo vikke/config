@@ -457,3 +457,7 @@ wmname LG3D
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 
+# brew-file
+if [ -f $(brew --prefix)/etc/brew-wrap ];then
+	source $(brew --prefix)/etc/brew-wrap
+fi
