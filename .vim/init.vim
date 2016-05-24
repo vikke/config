@@ -1,0 +1,1 @@
+/Users/ichiro.matsunaga/config/.vimrc
