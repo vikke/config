@@ -27,3 +27,4 @@ tags-ja
 /.vim/dict/manual
 /.vim/bundle
 /.DS_Store
+*~
