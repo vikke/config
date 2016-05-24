@@ -70,6 +70,7 @@ for f in \
 	bash_misc_func \
 	cronscripts \
 	skk-dic \
+	bin \
 	.config/awesome
 do
 
