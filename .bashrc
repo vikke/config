@@ -33,7 +33,7 @@ if [ -z "${WINPATH}" -a "$OSTYPE" == "cygwin" ]; then
 	export WINPATH=${PATH}
 fi
 
-PATH=${HOME}/bin:${HOME}/bin_local:${HOME}/local/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:/usr/X11R6/bin:/usr/games
+PATH=${HOME}/bin:${HOME}/dbin:${HOME}/bin_local:${HOME}/local/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:/usr/X11R6/bin:/usr/games
 if [ -n $PERL_MM_OPT ]; then
 	unset PERL_LOCAL_LIB_ROOT
 	unset PERL_MM_OPT
