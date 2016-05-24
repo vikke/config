@@ -113,7 +113,7 @@ if has('macunix')
     vmap _ :w !pbcopy<CR><CR>
     "vmap _ :w !nkf -Ws \|pbcopy<CR><CR>
 endif
-" set clipboard+=unnamed
+set clipboard+=unnamed
 "}}}--------------------------------------------------------------------------------
 
 "--------------------------------------------------------------------------------
@@ -454,6 +454,18 @@ let g:yankring_history_file = 'tmpfs/yankring_history'
 let g:quickrun_config = {}
 "}}}
 
+"{{{ jq http://qiita.com/tekkoc/items/324d736f68b0f27680b8
+command! -nargs=? Jq call s:Jq(<f-args>)
+function! s:Jq(...)
+    if 0 == a:0
+        let l:arg = "."
+    else
+        let l:arg = a:1
+    endif
+    execute "%! jq ~/tmp/tmp.json" . l:arg . "~/tmp/tmp.json"
+endfunction
+"}}}
+
 "--------------------------------------------------------------------------------
 " au関係
 "{{{--------------------------------------------------------------------------------
@@ -476,3 +488,6 @@ endfunction
 autocmd BufWritePre * call Rtrim()
 
 "}}}--------------------------------------------------------------------------------
+
+"http://d.hatena.ne.jp/hirafoo/20120223/1329926505
+let g:ruby_path = ""
