@@ -53,7 +53,7 @@ case $OSTYPE in
 		export cocot="cocot"
 		export LANG=ja_JP.utf-8
 #		alias urxvt="urxvt -e \'/Library/Frameworks/UIM.framework/Versions/1.6.0/bin/uim-fep\'"
-		export VIMPATH=vim
+		export VIMPATH=nvim
 
 		export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
 		export _JAVA_OPTIONS="-Dfile.encoding=UTF-8"

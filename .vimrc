@@ -74,7 +74,8 @@ call dein#add('ujihisa/quickrun')
 call dein#add('vim-jp/vimdoc-ja')
 call dein#add('tpope/vim-rails')
 call dein#add('tpope/vim-fugitive')
-
+call dein#add('tmhedberg/matchit')
+call dein#add('tyru/restart.vim')
 
 " }}}
 
