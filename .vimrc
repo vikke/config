@@ -76,7 +76,11 @@ call dein#add('tpope/vim-rails')
 call dein#add('tpope/vim-fugitive')
 call dein#add('tmhedberg/matchit')
 call dein#add('tyru/restart.vim')
+call dein#add('scrooloose/nerdtree')
+call dein#add('vim-scripts/taglist.vim')
 
+call dein#end()
+filetype plugin indent on
 " }}}
 
 "--------------------------------------------------------------------------------
@@ -143,11 +147,11 @@ nnoremap j gj
 nnoremap k gk
 
 " clipboard
-if has('macunix')
-    vmap _ :w !pbcopy<CR><CR>
-    "vmap _ :w !nkf -Ws \|pbcopy<CR><CR>
-endif
-set clipboard+=unnamed
+"if has('macunix')
+"    vmap _ :w !pbcopy<CR><CR>
+"    "vmap _ :w !nkf -Ws \|pbcopy<CR><CR>
+"endif
+set clipboard+=unnamedplus
 "}}}--------------------------------------------------------------------------------
 
 "--------------------------------------------------------------------------------
@@ -220,7 +224,7 @@ func! String2Hex(str)
     return out
 endfunc
 
-if winwidth(0) >= 120
+if winwidth(0) >= 80
     let &statusline='%<[%n]%m%r%h%w%{"[".(&fenc!=""?&fenc:&enc).":".&ff."]"}%y %F%=[%{GetB()}] %{cfi#format("[%s()]", "no function")} %l,%c%V%8P'
     " TODO: Hack #171(http://vim-users.jp/2010/09/hack171/): 編集している関数名を表示する
     "current-func-info.vim のテスト用
@@ -397,8 +401,12 @@ let g:ref_use_vimproc = 0
 
 "=== taglist ===
 "{{{
-let g:Tlist_WinWidth=40
-let g:tlist_php_settings = 'php;c:class;d:constant;f:function'
+let g:Tlist_WinWidth=30
+let g:Tlist_php_settings = 'php;c:class;d:constant;f:function'
+let g:Tlist_Show_One_File = 1
+let g:Tlist_Exit_OnlyWindow = 1
+let g:Tlist_Auto_Update = 1
+let g:Tlist_Auto_Open = 1
 "}}}
 
 
