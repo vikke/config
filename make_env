@@ -70,6 +70,7 @@ for f in \
 	bash_misc_func \
 	cronscripts \
 	skk-dic \
+	bin \
 	.config/awesome
 do
 
@@ -107,6 +108,14 @@ mv ~/.gitignore ${backup}/.gitignore
 ln -s ${PWD}/global.gitignore ~/.gitignore
 mv ~/.gitconfig ${backup}/.gitconfig
 ln -s ${PWD}/global.gitconfig ~/.gitconfig
+
+mkdir -p ${HOME}/.config
+ln -snfv ${HOME}/config/.vim ${HOME}/.config/nvim
+ln -snfv ${HOME}/config/.vimrc ${HOME}/.config/nvim/init.vim
+
+# choice
+ln -snvf ${HOME}/config/lemonade_server.toml ${HOME}/.config/lemonade.toml
+ln -snvf ${HOME}/config/lemonade_client.toml ${HOME}/.config/lemonade.toml
 
 echo "
 .ssh \

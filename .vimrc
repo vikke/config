@@ -2,50 +2,86 @@
 " $HeadURL: https://psb.vikke.mydns.jp/svn/vikke_env/.vimrc $
 "
 
-"{{{ neobundle --------------------------------------------------------------------------------
-if has('vim_starting')
-    set nocompatible               " Be iMproved
-    set runtimepath+=~/.vim/bundle/neobundle.vim/
+" "{{{ neobundle --------------------------------------------------------------------------------
+" if has('vim_starting')
+"     set nocompatible               " Be iMproved
+"     set runtimepath+=~/.vim/bundle/neobundle.vim/
+" endif
+" call neobundle#begin(expand('~/.vim/bundle/'))
+" NeoBundleFetch 'Shougo/neobundle.vim'
+"
+" NeoBundle 'Shougo/unite.vim'
+" NeoBundle 'Shougo/neosnippet.vim'
+" NeoBundle 'Shougo/neosnippet-snippets'
+" NeoBundle 'Shougo/neocomplete'
+" NeoBundle 'Shougo/neomru.vim'
+" NeoBundle 'Shougo/vinarise'
+" NeoBundle 'Shougo/unite-outline'
+" NeoBundle 'tyru/current-func-info.vim'
+" NeoBundle 'vim-scripts/info.vim'
+" NeoBundle 'tsukkee/lingr-vim'
+" NeoBundle 'tsukkee/unite-tag'
+" NeoBundle 'vim-scripts/matchit.zip'
+" NeoBundle 'ujihisa/quickrun'
+" NeoBundle 'ujihisa/unite-colorscheme'
+" NeoBundle 'tpope/vim-fugitive'
+" NeoBundle 'tpope/vim-rails'
+" NeoBundle 'thinca/vim-ref'
+" NeoBundle 'kmnk/vim-unite-svn'
+" NeoBundle 'vim-jp/vimdoc-ja'
+" NeoBundle 'mattn/webapi-vim'
+" NeoBundle 'mattn/mkdpreview-vim'
+" NeoBundle 'vimscript/taglist'
+" NeoBundle 'joonty/vdebug'
+" NeoBundle 'Shougo/vimproc.vim', {
+" \   'build': {
+" \       'linux': 'make',
+" \       'mac': 'make -f make_mac.mak',
+" \   }
+" \}
+" NeoBundle 'mrk21/yaml-vim'
+"
+" call neobundle#end()
+"
+" filetype plugin indent on
+" NeoBundleCheck
+" "}}}--------------------------------------------------------------------------------
+
+" {{{ dein
+if &compatible
+      set nocompatible
 endif
-call neobundle#begin(expand('~/.vim/bundle/'))
-NeoBundleFetch 'Shougo/neobundle.vim'
+set runtimepath+=~/.vim/dein/repos/github.com/Shougo/dein.vim
 
-NeoBundle 'Shougo/unite.vim'
-NeoBundle 'Shougo/neosnippet.vim'
-NeoBundle 'Shougo/neosnippet-snippets'
-NeoBundle 'Shougo/neocomplete'
-NeoBundle 'Shougo/neomru.vim'
-NeoBundle 'Shougo/vinarise'
-NeoBundle 'Shougo/unite-outline'
-NeoBundle 'tyru/current-func-info.vim'
-NeoBundle 'vim-scripts/info.vim'
-NeoBundle 'tsukkee/lingr-vim'
-NeoBundle 'tsukkee/unite-tag'
-NeoBundle 'vim-scripts/matchit.zip'
-NeoBundle 'ujihisa/quickrun'
-NeoBundle 'ujihisa/unite-colorscheme'
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'tpope/vim-rails'
-NeoBundle 'thinca/vim-ref'
-NeoBundle 'kmnk/vim-unite-svn'
-NeoBundle 'vim-jp/vimdoc-ja'
-NeoBundle 'mattn/webapi-vim'
-NeoBundle 'mattn/mkdpreview-vim'
-NeoBundle 'vimscript/taglist'
-NeoBundle 'joonty/vdebug'
-NeoBundle 'Shougo/vimproc.vim', {
-\   'build': {
-\       'linux': 'make',
-\       'mac': 'make -f make_mac.mak',
-\   }
-\}
-NeoBundle 'mrk21/yaml-vim'
+call dein#begin(expand('~/.vim/dein'))
 
-call neobundle#end()
+call dein#add('Shougo/deoplete.nvim')
 
+call dein#add('Shougo/vimproc.vim', {'build': 'make'})
+
+" call dein#add('Shougo/dein.vim')
+call dein#add('Shougo/unite.vim')
+call dein#add('Shougo/neomru.vim')
+call dein#add('Shougo/neosnippet')
+call dein#add('Shougo/unite-outline')
+call dein#add('Shougo/neosnippet')
+call dein#add('Shougo/neosnippet-snippets')
+
+call dein#add('tsukkee/unite-tag')
+call dein#add('tyru/current-func-info.vim')
+call dein#add('vim-scripts/matchit.zip')
+call dein#add('ujihisa/quickrun')
+call dein#add('vim-jp/vimdoc-ja')
+call dein#add('tpope/vim-rails')
+call dein#add('tpope/vim-fugitive')
+call dein#add('tmhedberg/matchit')
+call dein#add('tyru/restart.vim')
+call dein#add('scrooloose/nerdtree')
+call dein#add('vim-scripts/taglist.vim')
+
+call dein#end()
 filetype plugin indent on
-NeoBundleCheck
-"}}}--------------------------------------------------------------------------------
+" }}}
 
 "--------------------------------------------------------------------------------
 " 全体設定
@@ -91,8 +127,10 @@ set viminfo=:2000,'100,<50,s10,h
 "let xterm16_brightness = 'soft'
 "colorscheme midnight2
 " colorscheme xterm16
-"colorscheme jellybeans
-colorscheme gentooish
+colorscheme jellybeans
+
+"colorscheme gentooish
+"
 "hi Normal ctermfg=248 ctermbg=none
 
 "" %s///c とかのときに、マッチした場所を別の色で表示
@@ -109,11 +147,11 @@ nnoremap j gj
 nnoremap k gk
 
 " clipboard
-if has('macunix')
-    vmap _ :w !pbcopy<CR><CR>
-    "vmap _ :w !nkf -Ws \|pbcopy<CR><CR>
-endif
-" set clipboard+=unnamed
+"if has('macunix')
+"    vmap _ :w !pbcopy<CR><CR>
+"    "vmap _ :w !nkf -Ws \|pbcopy<CR><CR>
+"endif
+set clipboard+=unnamedplus
 "}}}--------------------------------------------------------------------------------
 
 "--------------------------------------------------------------------------------
@@ -185,7 +223,8 @@ func! String2Hex(str)
     endwhile
     return out
 endfunc
-if winwidth(0) >= 120
+
+if winwidth(0) >= 80
     let &statusline='%<[%n]%m%r%h%w%{"[".(&fenc!=""?&fenc:&enc).":".&ff."]"}%y %F%=[%{GetB()}] %{cfi#format("[%s()]", "no function")} %l,%c%V%8P'
     " TODO: Hack #171(http://vim-users.jp/2010/09/hack171/): 編集している関数名を表示する
     "current-func-info.vim のテスト用
@@ -195,6 +234,7 @@ else
     "current-func-info.vim のテスト用
     "let &statusline='%{cfi#format("[%s()]", "no function")}'
 endif
+
 "}}}--------------------------------------------------------------------------------
 
 "--------------------------------------------------------------------------------
@@ -251,30 +291,38 @@ set grepprg=ag\ -i
 " buffer操作系
 "--------------------------------------------------------------------------------
 
-" = neocomplete ========================
-"{{{
-let g:neocomplete#enable_at_startup = 1
-let g:neocomplete#enable_ignore_case = 1
-let g:neocomplete#enable_smart_case = 1
-let g:neocomplete#auto_completion_start_length = 3
-let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
-let g:neocomplete#sources#tags#cache_limit_size = 8000000
+" " = neocomplete ========================
+" "{{{
+" let g:neocomplete#enable_at_startup = 1
+" let g:neocomplete#enable_ignore_case = 1
+" let g:neocomplete#enable_smart_case = 1
+" let g:neocomplete#auto_completion_start_length = 3
+" let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
+" let g:neocomplete#sources#tags#cache_limit_size = 8000000
+" let g:unite_data_directory = '~/.cache/unite'
+"
+" if !exists('g:neocomplete#keyword_patterns')
+"     let g:neocomplete#keyword_patterns = {}
+" endif
+" let g:neocomplete#keyword_patterns._ = '\h\w*'
+"
+" " omnifunc
+" autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+" autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+" autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+" autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+" autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+" "}}}
+
+" {{{ = deoplete ==================================
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_ignore_case = 1
+let g:deoplete#enable_smart_case = 1
+let g:deoplete#auto_completion_start_length = 3
+let g:deoplete#lock_buffer_name_pattern = '\*ku\*'
+let g:deoplete#sources#tags#cache_limit_size = 8000000
 let g:unite_data_directory = '~/.cache/unite'
-
-if !exists('g:neocomplete#keyword_patterns')
-    let g:neocomplete#keyword_patterns = {}
-endif
-let g:neocomplete#keyword_patterns._ = '\h\w*'
-
-" omnifunc
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-"}}}
-
-
+" }}}
 
 " = unite.vim ==========================
 "{{{
@@ -353,8 +401,12 @@ let g:ref_use_vimproc = 0
 
 "=== taglist ===
 "{{{
-let g:Tlist_WinWidth=40
-let g:tlist_php_settings = 'php;c:class;d:constant;f:function'
+let g:Tlist_WinWidth=30
+let g:Tlist_php_settings = 'php;c:class;d:constant;f:function'
+let g:Tlist_Show_One_File = 1
+let g:Tlist_Exit_OnlyWindow = 1
+let g:Tlist_Auto_Update = 1
+let g:Tlist_Auto_Open = 1
 "}}}
 
 
@@ -454,6 +506,18 @@ let g:yankring_history_file = 'tmpfs/yankring_history'
 let g:quickrun_config = {}
 "}}}
 
+"{{{ jq http://qiita.com/tekkoc/items/324d736f68b0f27680b8
+command! -nargs=? Jq call s:Jq(<f-args>)
+function! s:Jq(...)
+    if 0 == a:0
+        let l:arg = "."
+    else
+        let l:arg = a:1
+    endif
+    execute "%! jq ~/tmp/tmp.json" . l:arg . "~/tmp/tmp.json"
+endfunction
+"}}}
+
 "--------------------------------------------------------------------------------
 " au関係
 "{{{--------------------------------------------------------------------------------
@@ -476,3 +540,6 @@ endfunction
 autocmd BufWritePre * call Rtrim()
 
 "}}}--------------------------------------------------------------------------------
+
+"http://d.hatena.ne.jp/hirafoo/20120223/1329926505
+" let g:ruby_path = ""

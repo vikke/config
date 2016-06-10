@@ -33,7 +33,7 @@ if [ -z "${WINPATH}" -a "$OSTYPE" == "cygwin" ]; then
 	export WINPATH=${PATH}
 fi
 
-PATH=${HOME}/bin:${HOME}/bin_local:${HOME}/local/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:/usr/X11R6/bin:/usr/games
+PATH=${HOME}/bin:${HOME}/dbin:${HOME}/bin_local:${HOME}/local/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:/usr/X11R6/bin:/usr/games
 if [ -n $PERL_MM_OPT ]; then
 	unset PERL_LOCAL_LIB_ROOT
 	unset PERL_MM_OPT
@@ -53,7 +53,7 @@ case $OSTYPE in
 		export cocot="cocot"
 		export LANG=ja_JP.utf-8
 #		alias urxvt="urxvt -e \'/Library/Frameworks/UIM.framework/Versions/1.6.0/bin/uim-fep\'"
-		export VIMPATH=vim
+		export VIMPATH=nvim
 
 		export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
 		export _JAVA_OPTIONS="-Dfile.encoding=UTF-8"
@@ -133,6 +133,11 @@ case $OSTYPE in
 		PATH=/usr/local/mysql/bin:${PATH}
 		export MAVEN_HOME=${HOME}/dev-tools/apache-maven-3.0.3
 		export LANG=ja_JP.UTF-8
+
+		export PATH="${HOME}/.linuxbrew/bin:$PATH"
+		export MANPATH="${HOME}/.linuxbrew/share/man:$MANPATH"
+		export INFOPATH="${HOME}/.linuxbrew/share/info:$INFOPATH"
+
 		;;
 
 	*)
@@ -213,6 +218,7 @@ export RSYNC_RSH=ssh
 #export JAVA_HOME=${JDK_DIR}/jdk1.5.0_06
 export J2EE_HOME=${JDK_DIR}/j2sdkee1.3.1
 export JAVADOC_HOME=${HOME}/doc/javadoc/1.4
+export GOPATH=${HOME}/.go
 
 export CATALINA_OPTS="-Xms32m -Xmx128m"
 export CATALINA_PID=/var/run/catalina.pid
@@ -231,6 +237,8 @@ export SCHEME_LIBRARY_PATH="/usr/local/lib/slib/"
 export XDEBUG_CONFIG="idekey=DBGP"
 export XDEBUG_SESSION_START=DBGP
 
+export XDG_CONFIG_HOME=${HOME}/.config
+
 #PATH=/usr/bin:/usr/sbin:/bin:/sbin:/usr/X11R6/bin:${HOME}/bin:/usr/local/bin
 PATH=${PATH}:${HOME}/cvswork/refeng/tools
 PATH=${PATH}:${HOME}/bin/vim
@@ -239,6 +247,9 @@ PATH=${PATH}:${CATALINA_HOME}/bin
 PATH=${PATH}:${ANT_HOME}/bin
 PATH=${PATH}:${M2_HOME}/bin
 PATH=${PATH}:${MYSQL_BASE}/bin
+PATH=${PATH}:${GOPATH}/bin
+PATH=${PATH}:~/wo_docker/bin
+
 
 if [ -n "${WINPATH}" ]; then
 	PATH=${PATH}:${WINPATH}
@@ -430,6 +441,7 @@ alias rspec='bundle exec rspec'
 alias rake='bundle exec rake'
 alias rails='bundle exec rails'
 alias ssh_copy_id='ssh-copy-id -i ~/.ssh/id_rsa.pub '
+alias vim='nvim'
 
 
 if [ -e /usr/share/doc/tig-1.0/contrib/tig-completion.bash ]; then
