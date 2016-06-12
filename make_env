@@ -81,6 +81,8 @@ done
 case $OSTYPE in
 	darwin*)
 		link_dotfile .Xmodmap.mac .Xmodmap
+
+		ln -s ~/config/Library/Application\ Support/Karabiner ~/Library/Application\ Support/Karabiner
 		;;
 	freebsd*)
 
@@ -116,6 +118,10 @@ ln -snfv ${HOME}/config/.vimrc ${HOME}/.config/nvim/init.vim
 # choice
 ln -snvf ${HOME}/config/lemonade_server.toml ${HOME}/.config/lemonade.toml
 ln -snvf ${HOME}/config/lemonade_client.toml ${HOME}/.config/lemonade.toml
+
+# Karabikna
+
+
 
 echo "
 .ssh \
