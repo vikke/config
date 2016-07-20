@@ -63,10 +63,12 @@
 
 # You cah change your style sheet file.
 template="$HOME/.config/mkdpreview/styles/github-markdown-css/github-markdown.css"
-template="https://raw.githubusercontent.com/sindresorhus/github-markdown-css/gh-pages/github-markdown.css"
 # Of cource you can load from the web.
-template='http://szk-engineering.com/markdown.css'
+template="slate/stylesheets/stylesheet.css"
 template="https://raw.githubusercontent.com/jasoncostello/slate/gh-pages/stylesheets/stylesheet.css"
+template="https://raw.githubusercontent.com/sindresorhus/github-markdown-css/gh-pages/github-markdown.css"
+template='http://szk-engineering.com/markdown.css'
+template='slate/stylesheets/stylesheet.css'
 
 # You may change these files in order to show a header bar or a footer bar.
 header="$HOME/bin/mkdpreview_design/header.html"
