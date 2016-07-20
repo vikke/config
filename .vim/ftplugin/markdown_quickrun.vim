@@ -41,6 +41,6 @@ augroup markdown_pandoc
       call mkdir(iconv(a:dir, &encoding, &termencoding), 'p')
     endif
   endfunction
-  autocmd BufWritePost,FileWritePost *.md :QuickRun -type markdown/update
+"  autocmd BufWritePost,FileWritePost *.md :QuickRun -type markdown/update
 augroup END
 

@@ -54,18 +54,19 @@ endif
 set runtimepath+=~/.vim/dein/repos/github.com/Shougo/dein.vim
 
 call dein#begin(expand('~/.vim/dein'))
+call dein#add('Shougo/dein.vim')
 
 call dein#add('Shougo/deoplete.nvim')
 
 call dein#add('Shougo/vimproc.vim', {'build': 'make'})
 
-" call dein#add('Shougo/dein.vim')
 call dein#add('Shougo/unite.vim')
 call dein#add('Shougo/neomru.vim')
 call dein#add('Shougo/neosnippet')
 call dein#add('Shougo/unite-outline')
 call dein#add('Shougo/neosnippet')
 call dein#add('Shougo/neosnippet-snippets')
+call dein#add('Shougo/neocomplete.vim')
 
 call dein#add('tsukkee/unite-tag')
 call dein#add('tyru/current-func-info.vim')
@@ -78,6 +79,8 @@ call dein#add('tmhedberg/matchit')
 call dein#add('tyru/restart.vim')
 call dein#add('scrooloose/nerdtree')
 call dein#add('vim-scripts/taglist.vim')
+
+call dein#add('kchmck/vim-coffee-script')
 
 call dein#end()
 filetype plugin indent on
@@ -321,23 +324,35 @@ let g:deoplete#enable_smart_case = 1
 let g:deoplete#auto_completion_start_length = 3
 let g:deoplete#lock_buffer_name_pattern = '\*ku\*'
 let g:deoplete#sources#tags#cache_limit_size = 8000000
-let g:unite_data_directory = '~/.cache/unite'
 " }}}
 
 " = unite.vim ==========================
 "{{{
 let g:unite_enable_ignore_case = 1
 let g:unite_enable_smart_case = 1
+" let g:unite_data_directory = '~/.cache/unite'
 
 
 let g:unite_source_file_mru_limit=1000
+let g:unite_source_rec_max_cache_files=100000
+let g:unite_source_rec_async_command=['ag', '--follow', '--nocolor', '--nogroup', '--hidden', '-g', '']
+
+function! DispatchUniteFileRecAsyncOrGit()
+    if isdirectory(getcwd()."/.git")
+        Unite -start-insert -buffer-name=files file file_rec/git
+    else
+        Unite -start-insert -buffer-name=files file file/new
+    endif
+endfunction
 
 nnoremap <silent> fs :Unite -start-insert buffer<CR>
-nnoremap <silent> ff :Unite -start-insert -buffer-name=files file file/new<CR>
+"nnoremap <silent> ff :Unite -start-insert -buffer-name=files file file_rec/neovim<CR>
+"nnoremap <silent> ff :Unite -start-insert -buffer-name=files file file_rec/git<CR>
+nnoremap <silent> ff :<C-u>call DispatchUniteFileRecAsyncOrGit()<CR>
 nnoremap <silent> FF :UniteWithBufferDir -start-insert -buffer-name=files file file/new<CR>
 nnoremap <silent> fm :Unite -start-insert file_mru<CR>
 nnoremap <silent> fb :Unite -start-insert bookmark<cr>
-nnoremap <silent> fc :UniteWithBufferDir -start-insert file<CR>
+nnoremap fc <Plug>(unite_redraw)
 
 nnoremap <silent> FG :Unite grep:. -start-insert -buffer-name=search-buffer<CR>
 nnoremap <silent> fg :Unite grep:. -start-insert -buffer-name=search-buffer<CR><C-R><C-W><CR>
@@ -407,6 +422,9 @@ let g:Tlist_Show_One_File = 1
 let g:Tlist_Exit_OnlyWindow = 1
 let g:Tlist_Auto_Update = 1
 let g:Tlist_Auto_Open = 1
+
+nnoremap <Leader>t :Tlist<CR>
+
 "}}}
 
 
@@ -543,3 +561,4 @@ autocmd BufWritePre * call Rtrim()
 
 "http://d.hatena.ne.jp/hirafoo/20120223/1329926505
 " let g:ruby_path = ""
+
