@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<root>
+    <list>
+		<item>
+			<name>window change by ctrl + tab</name>
+			<identifier>private.ctr-tab</identifier>
+			<autogen>
+				__KeyToKey__,
+				KeyCode::TAB, ModifierFlag::CONTROL_L,
+				KeyCode::TAB, ModifierFlag::COMMAND_L
+			</autogen>
+		</item>
+
+        <item>
+            <name>AquaSKK</name>
+            <appdef>
+                <appname>Terminal</appname>
+                <equal>com.googlecode.iterm2</equal>
+                <equal>com.apple.Terminal</equal>
+            </appdef>
+            <list>
+                <item>
+                     <name>Ctrl-J to Kana on Apple Terminal/iTerm2</name>
+                     <only>Terminal</only>
+                     <identifier>private.iterm2.ctrl_j_to_kana</identifier>
+                     <autogen>
+                         __KeyToKey__
+                         KeyCode::J, ModifierFlag::CONTROL_L,
+                         KeyCode::JIS_KANA
+                     </autogen>
+                </item>
+                <item>
+                     <name>Ctrl-J to Kana on Apple Terminal/iTerm2 for Dvorak user</name>
+                     <only>Terminal</only>
+                     <identifier>private.iterm2.ctrl_j_to_kana.dvorak</identifier>
+                     <autogen>
+                         __KeyToKey__
+                         KeyCode::C, ModifierFlag::CONTROL_L,
+                         KeyCode::JIS_KANA
+                     </autogen>
+                </item>
+                <item>
+                     <name>Ctrl-J to Kana on Apple Terminal/iTerm2 with ctrl-0</name>
+                     <only>Terminal</only>
+                     <identifier>private.iterm2.ctrl_j_to_kana.ctrl0</identifier>
+                     <autogen>
+                         __KeyToKey__
+                         KeyCode::J, ModifierFlag::CONTROL_L,
+                         KeyCode::0, ModifierFlag::CONTROL_L
+                     </autogen>
+                </item>
+            </list>
+        </item>
+    </list>
+</root>
