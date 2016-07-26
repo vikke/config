@@ -79,7 +79,7 @@ call dein#add('tmhedberg/matchit')
 call dein#add('tyru/restart.vim')
 call dein#add('scrooloose/nerdtree')
 call dein#add('vim-scripts/taglist.vim')
-
+call dein#add('junegunn/vim-easy-align')
 call dein#add('kchmck/vim-coffee-script')
 
 call dein#end()
@@ -562,3 +562,7 @@ autocmd BufWritePre * call Rtrim()
 "http://d.hatena.ne.jp/hirafoo/20120223/1329926505
 " let g:ruby_path = ""
 
+"{{{ vim-easy-align
+vmap <Enter> <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
+"}}}
