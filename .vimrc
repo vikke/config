@@ -355,7 +355,7 @@ nnoremap fc <Plug>(unite_redraw)
 
 nnoremap <silent> FG :Unite grep:. -start-insert -buffer-name=search-buffer<CR>
 nnoremap <silent> fg :Unite grep:. -start-insert -buffer-name=search-buffer<CR><C-R><C-W><CR>
-nnoremap <silent> fb :Unite grep:. -start-insert -buffer-name=search-buffer<cr>\b<C-R><C-W>\b<CR>
+nnoremap <silent> fj :Unite grep:. -start-insert -buffer-name=search-buffer<cr>\b<C-R><C-W>\b<CR>
 nnoremap <silent> fr  :<C-u>UniteResume search-buffer<CR>
 
 au FileType unite call s:unite_my_settings()
