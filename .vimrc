@@ -351,11 +351,11 @@ nnoremap <silent> fs :Unite -start-insert buffer<CR>
 nnoremap <silent> ff :<C-u>call DispatchUniteFileRecAsyncOrGit()<CR>
 nnoremap <silent> FF :UniteWithBufferDir -start-insert -buffer-name=files file file/new<CR>
 nnoremap <silent> fm :Unite -start-insert file_mru<CR>
-nnoremap <silent> fb :Unite -start-insert bookmark<cr>
 nnoremap fc <Plug>(unite_redraw)
 
 nnoremap <silent> FG :Unite grep:. -start-insert -buffer-name=search-buffer<CR>
 nnoremap <silent> fg :Unite grep:. -start-insert -buffer-name=search-buffer<CR><C-R><C-W><CR>
+nnoremap <silent> fb :Unite grep:. -start-insert -buffer-name=search-buffer<cr>\b<C-R><C-W>\b<CR>
 nnoremap <silent> fr  :<C-u>UniteResume search-buffer<CR>
 
 au FileType unite call s:unite_my_settings()
