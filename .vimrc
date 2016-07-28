@@ -2,50 +2,6 @@
 " $HeadURL: https://psb.vikke.mydns.jp/svn/vikke_env/.vimrc $
 "
 
-" "{{{ neobundle --------------------------------------------------------------------------------
-" if has('vim_starting')
-"     set nocompatible               " Be iMproved
-"     set runtimepath+=~/.vim/bundle/neobundle.vim/
-" endif
-" call neobundle#begin(expand('~/.vim/bundle/'))
-" NeoBundleFetch 'Shougo/neobundle.vim'
-"
-" NeoBundle 'Shougo/unite.vim'
-" NeoBundle 'Shougo/neosnippet.vim'
-" NeoBundle 'Shougo/neosnippet-snippets'
-" NeoBundle 'Shougo/neocomplete'
-" NeoBundle 'Shougo/neomru.vim'
-" NeoBundle 'Shougo/vinarise'
-" NeoBundle 'Shougo/unite-outline'
-" NeoBundle 'tyru/current-func-info.vim'
-" NeoBundle 'vim-scripts/info.vim'
-" NeoBundle 'tsukkee/lingr-vim'
-" NeoBundle 'tsukkee/unite-tag'
-" NeoBundle 'vim-scripts/matchit.zip'
-" NeoBundle 'ujihisa/quickrun'
-" NeoBundle 'ujihisa/unite-colorscheme'
-" NeoBundle 'tpope/vim-fugitive'
-" NeoBundle 'tpope/vim-rails'
-" NeoBundle 'thinca/vim-ref'
-" NeoBundle 'kmnk/vim-unite-svn'
-" NeoBundle 'vim-jp/vimdoc-ja'
-" NeoBundle 'mattn/webapi-vim'
-" NeoBundle 'mattn/mkdpreview-vim'
-" NeoBundle 'vimscript/taglist'
-" NeoBundle 'joonty/vdebug'
-" NeoBundle 'Shougo/vimproc.vim', {
-" \   'build': {
-" \       'linux': 'make',
-" \       'mac': 'make -f make_mac.mak',
-" \   }
-" \}
-" NeoBundle 'mrk21/yaml-vim'
-"
-" call neobundle#end()
-"
-" filetype plugin indent on
-" NeoBundleCheck
-" "}}}--------------------------------------------------------------------------------
 
 " {{{ dein
 if &compatible
@@ -81,6 +37,9 @@ call dein#add('scrooloose/nerdtree')
 call dein#add('vim-scripts/taglist.vim')
 call dein#add('junegunn/vim-easy-align')
 call dein#add('kchmck/vim-coffee-script')
+call dein#add('koron/chalice')
+call dein#add('ctrlpvim/ctrlp.vim')
+
 
 call dein#end()
 filetype plugin indent on
@@ -334,14 +293,15 @@ let g:unite_enable_smart_case = 1
 
 
 let g:unite_source_file_mru_limit=1000
-let g:unite_source_rec_max_cache_files=100000
+let g:unite_source_rec_min_cache_files=100
+let g:unite_source_rec_max_cache_files=20000
 let g:unite_source_rec_async_command=['ag', '--follow', '--nocolor', '--nogroup', '--hidden', '-g', '']
 
 function! DispatchUniteFileRecAsyncOrGit()
     if isdirectory(getcwd()."/.git")
         Unite -start-insert -buffer-name=files file file_rec/git
     else
-        Unite -start-insert -buffer-name=files file file/new
+        Unite -start-insert -buffer-name=files file file_rec/async
     endif
 endfunction
 
