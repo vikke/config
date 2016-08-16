@@ -2,50 +2,6 @@
 " $HeadURL: https://psb.vikke.mydns.jp/svn/vikke_env/.vimrc $
 "
 
-" "{{{ neobundle --------------------------------------------------------------------------------
-" if has('vim_starting')
-"     set nocompatible               " Be iMproved
-"     set runtimepath+=~/.vim/bundle/neobundle.vim/
-" endif
-" call neobundle#begin(expand('~/.vim/bundle/'))
-" NeoBundleFetch 'Shougo/neobundle.vim'
-"
-" NeoBundle 'Shougo/unite.vim'
-" NeoBundle 'Shougo/neosnippet.vim'
-" NeoBundle 'Shougo/neosnippet-snippets'
-" NeoBundle 'Shougo/neocomplete'
-" NeoBundle 'Shougo/neomru.vim'
-" NeoBundle 'Shougo/vinarise'
-" NeoBundle 'Shougo/unite-outline'
-" NeoBundle 'tyru/current-func-info.vim'
-" NeoBundle 'vim-scripts/info.vim'
-" NeoBundle 'tsukkee/lingr-vim'
-" NeoBundle 'tsukkee/unite-tag'
-" NeoBundle 'vim-scripts/matchit.zip'
-" NeoBundle 'ujihisa/quickrun'
-" NeoBundle 'ujihisa/unite-colorscheme'
-" NeoBundle 'tpope/vim-fugitive'
-" NeoBundle 'tpope/vim-rails'
-" NeoBundle 'thinca/vim-ref'
-" NeoBundle 'kmnk/vim-unite-svn'
-" NeoBundle 'vim-jp/vimdoc-ja'
-" NeoBundle 'mattn/webapi-vim'
-" NeoBundle 'mattn/mkdpreview-vim'
-" NeoBundle 'vimscript/taglist'
-" NeoBundle 'joonty/vdebug'
-" NeoBundle 'Shougo/vimproc.vim', {
-" \   'build': {
-" \       'linux': 'make',
-" \       'mac': 'make -f make_mac.mak',
-" \   }
-" \}
-" NeoBundle 'mrk21/yaml-vim'
-"
-" call neobundle#end()
-"
-" filetype plugin indent on
-" NeoBundleCheck
-" "}}}--------------------------------------------------------------------------------
 
 " {{{ dein
 if &compatible
@@ -79,8 +35,11 @@ call dein#add('tmhedberg/matchit')
 call dein#add('tyru/restart.vim')
 call dein#add('scrooloose/nerdtree')
 call dein#add('vim-scripts/taglist.vim')
-
+call dein#add('junegunn/vim-easy-align')
 call dein#add('kchmck/vim-coffee-script')
+call dein#add('koron/chalice')
+call dein#add('ctrlpvim/ctrlp.vim')
+
 
 call dein#end()
 filetype plugin indent on
@@ -334,14 +293,15 @@ let g:unite_enable_smart_case = 1
 
 
 let g:unite_source_file_mru_limit=1000
-let g:unite_source_rec_max_cache_files=100000
+let g:unite_source_rec_min_cache_files=100
+let g:unite_source_rec_max_cache_files=20000
 let g:unite_source_rec_async_command=['ag', '--follow', '--nocolor', '--nogroup', '--hidden', '-g', '']
 
 function! DispatchUniteFileRecAsyncOrGit()
     if isdirectory(getcwd()."/.git")
         Unite -start-insert -buffer-name=files file file_rec/git
     else
-        Unite -start-insert -buffer-name=files file file/new
+        Unite -start-insert -buffer-name=files file file_rec/async
     endif
 endfunction
 
@@ -351,11 +311,11 @@ nnoremap <silent> fs :Unite -start-insert buffer<CR>
 nnoremap <silent> ff :<C-u>call DispatchUniteFileRecAsyncOrGit()<CR>
 nnoremap <silent> FF :UniteWithBufferDir -start-insert -buffer-name=files file file/new<CR>
 nnoremap <silent> fm :Unite -start-insert file_mru<CR>
-nnoremap <silent> fb :Unite -start-insert bookmark<cr>
 nnoremap fc <Plug>(unite_redraw)
 
 nnoremap <silent> FG :Unite grep:. -start-insert -buffer-name=search-buffer<CR>
 nnoremap <silent> fg :Unite grep:. -start-insert -buffer-name=search-buffer<CR><C-R><C-W><CR>
+nnoremap <silent> fj :Unite grep:. -start-insert -buffer-name=search-buffer<cr>\b<C-R><C-W>\b<CR>
 nnoremap <silent> fr  :<C-u>UniteResume search-buffer<CR>
 
 au FileType unite call s:unite_my_settings()
@@ -562,3 +522,7 @@ autocmd BufWritePre * call Rtrim()
 "http://d.hatena.ne.jp/hirafoo/20120223/1329926505
 " let g:ruby_path = ""
 
+"{{{ vim-easy-align
+vmap <Enter> <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
+"}}}
