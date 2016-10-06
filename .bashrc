@@ -473,3 +473,7 @@ export PATH="/usr/local/heroku/bin:$PATH"
 if [ -f $(brew --prefix)/etc/brew-wrap ];then
 	source $(brew --prefix)/etc/brew-wrap
 fi
+
+function se(){
+	ag "$1" ~/vcswork/dsp-wo-doc
+}
