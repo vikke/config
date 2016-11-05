@@ -249,6 +249,7 @@ PATH=${PATH}:${M2_HOME}/bin
 PATH=${PATH}:${MYSQL_BASE}/bin
 PATH=${PATH}:${GOPATH}/bin
 PATH=${PATH}:~/wo_docker/bin
+PATH=${PATH}:~/bin-nongit
 
 
 if [ -n "${WINPATH}" ]; then
