@@ -40,6 +40,7 @@ call dein#add('junegunn/vim-easy-align')
 call dein#add('kchmck/vim-coffee-script')
 call dein#add('koron/chalice')
 call dein#add('mbbill/undotree')
+call dein#add('osyo-manga/vim-monster')
 
 call dein#end()
 filetype plugin indent on
@@ -492,6 +493,14 @@ if has('migemo')
     set migemo
 endif
 "}}}
+
+" {{{ vim-monster
+" Set async completion.
+let g:monster#completion#rcodetools#backend = "async_rct_complete"
+let g:deoplete#sources#omni#input_patterns = {
+\   "ruby" : '[^. *\t]\.\w*\|\h\w*::',
+\}
+" }}}
 
 " yankringの設定
 "{{{
