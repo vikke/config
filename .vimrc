@@ -41,6 +41,7 @@ call dein#add('kchmck/vim-coffee-script')
 call dein#add('koron/chalice')
 call dein#add('mbbill/undotree')
 call dein#add('osyo-manga/vim-monster')
+call dein#add('easymotion/vim-easymotion')
 
 call dein#end()
 filetype plugin indent on
@@ -308,7 +309,6 @@ function! DispatchUniteFileRecAsyncOrGit()
 endfunction
 
 
-
 call denite#custom#var('file_rec', 'command', ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
 
 nnoremap <silent> fs :Denite buffer<CR>
@@ -323,6 +323,14 @@ call denite#custom#option('default', 'auto-preview', 1)
 
 call denite#custom#map('insert', '<C-p>', 'move_to_prev_line')
 call denite#custom#map('insert', '<C-n>', 'move_to_next_line')
+
+let s:menus = {}
+let s:menus.split = { 'description': 'my commands' }
+let s:menus.split.command_candidates = [
+    \ ['split the window', 'new'],
+    \ ['vert split the window', 'vnew']
+\]
+
 
 
 "call denite#custom#map('insert', '<C-o>', '')
@@ -403,7 +411,6 @@ let g:Tlist_php_settings = 'php;c:class;d:constant;f:function'
 let g:Tlist_Show_One_File = 1
 let g:Tlist_Exit_OnlyWindow = 1
 let g:Tlist_Auto_Update = 1
-let g:Tlist_Auto_Open = 1
 
 nnoremap <Leader>t :Tlist<CR>
 
