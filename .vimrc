@@ -316,15 +316,14 @@ call denite#custom#var('grep', 'recursive_opts', [])
 call denite#custom#var('grep', 'final_opts', [])
 call denite#custom#var('grep', 'separator', [])
 call denite#custom#var('grep', 'default_opts',
-        \ ['--path-to-agignore', $HOME.'/.agignore',
-        \ '--nopager', '--nocolor', '--nogroup' ])
+        \ [ '--nopager', '--nocolor', '--nogroup' ])
 
 nnoremap <silent> fs :Denite buffer<CR>
 nnoremap <silent> ff :Denite file_rec<CR>
 nnoremap <silent> fm :Denite file_mru<CR>
 nnoremap <silent> FF :DeniteBufferDir file_rec<CR>
 nnoremap <silent> FG :Denite grep<CR>
-nnoremap <silent> fg :DeniteCursorWord grep<CR><CR>
+nnoremap <silent> fg :Denite grep<CR><C-R><C-W><CR>
 nnoremap <silent> fo :Denite unite:outline<CR>
 
 call denite#custom#option('default', 'auto-preview', v:true)
