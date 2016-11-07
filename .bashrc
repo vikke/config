@@ -135,6 +135,7 @@ case $OSTYPE in
 		export LANG=ja_JP.UTF-8
 
 		export PATH="${HOME}/.linuxbrew/bin:$PATH"
+		export PATH=${PATH}:/usr/local/node-v4.6.0-linux-x64/bin
 		export MANPATH="${HOME}/.linuxbrew/share/man:$MANPATH"
 		export INFOPATH="${HOME}/.linuxbrew/share/info:$INFOPATH"
 
@@ -249,7 +250,7 @@ PATH=${PATH}:${M2_HOME}/bin
 PATH=${PATH}:${MYSQL_BASE}/bin
 PATH=${PATH}:${GOPATH}/bin
 PATH=${PATH}:~/wo_docker/bin
-
+PATH=${PATH}:./node_modules/.bin
 
 if [ -n "${WINPATH}" ]; then
 	PATH=${PATH}:${WINPATH}
