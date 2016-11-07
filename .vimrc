@@ -308,18 +308,26 @@ function! DispatchUniteFileRecAsyncOrGit()
     endif
 endfunction
 
-
 call denite#custom#var('file_rec', 'command', ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
+"call denite#custom#var('file_rec', 'command', ['denite_file_list.sh'])
+
+call denite#custom#var('grep', 'command', ['ag'])
+call denite#custom#var('grep', 'recursive_opts', [])
+call denite#custom#var('grep', 'final_opts', [])
+call denite#custom#var('grep', 'separator', [])
+call denite#custom#var('grep', 'default_opts',
+        \ ['--path-to-agignore', $HOME.'/.agignore',
+        \ '--nopager', '--nocolor', '--nogroup' ])
 
 nnoremap <silent> fs :Denite buffer<CR>
 nnoremap <silent> ff :Denite file_rec<CR>
 nnoremap <silent> fm :Denite file_mru<CR>
-nnoremap <silent> FF :DeniteBufferDir<CR>
+nnoremap <silent> FF :DeniteBufferDir file_rec<CR>
 nnoremap <silent> FG :Denite grep<CR>
-nnoremap <silent> fg :DeniteCursorWord grep<C-R>
+nnoremap <silent> fg :DeniteCursorWord grep<CR><CR>
 nnoremap <silent> fo :Denite unite:outline<CR>
 
-call denite#custom#option('default', 'auto-preview', 1)
+call denite#custom#option('default', 'auto-preview', v:true)
 
 call denite#custom#map('insert', '<C-p>', 'move_to_prev_line')
 call denite#custom#map('insert', '<C-n>', 'move_to_next_line')
