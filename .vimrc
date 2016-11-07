@@ -38,7 +38,7 @@ call dein#add('vim-scripts/taglist.vim')
 call dein#add('junegunn/vim-easy-align')
 call dein#add('kchmck/vim-coffee-script')
 call dein#add('koron/chalice')
-call dein#add('ctrlpvim/ctrlp.vim')
+" call dein#add('ctrlpvim/ctrlp.vim')
 
 
 call dein#end()
