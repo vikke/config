@@ -251,6 +251,7 @@ PATH=${PATH}:${MYSQL_BASE}/bin
 PATH=${PATH}:${GOPATH}/bin
 PATH=${PATH}:~/wo_docker/bin
 PATH=${PATH}:./node_modules/.bin
+PATH=${PATH}:~/bin-nongit
 
 if [ -n "${WINPATH}" ]; then
 	PATH=${PATH}:${WINPATH}
