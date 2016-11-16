@@ -1,3 +1,3 @@
 #!/bin/bash
 
-ag --follow --nocolor --nogroup -g '' | sed -e 's/^/.\//'
+ag --follow --nocolor --nogroup -g '' | sort -d

@@ -308,16 +308,15 @@ function! DispatchUniteFileRecAsyncOrGit()
     endif
 endfunction
 
-call denite#custom#var('file_rec', 'command', ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
-"call denite#custom#var('file_rec', 'command', ['denite_file_list.sh'])
+"call denite#custom#var('file_rec', 'command', ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
+call denite#custom#var('file_rec', 'command', ['denite_file_list.sh'])
+call denite#custom#source('file_rec', 'matchers', ['matcher_fuzzy', 'matcher_project_files'])
 
-call denite#custom#var('grep', 'command', ['ag'])
+call denite#custom#var('grep', 'command', ['denite_grep.sh'])
 call denite#custom#var('grep', 'recursive_opts', [])
 call denite#custom#var('grep', 'final_opts', [])
 call denite#custom#var('grep', 'separator', [])
-call denite#custom#var('grep', 'default_opts',
-        \ [ '--nopager', '--nocolor', '--nogroup' ])
-
+call denite#custom#var('grep', 'default_opts', [])
 nnoremap <silent> fs :Denite buffer<CR>
 nnoremap <silent> ff :Denite file_rec<CR>
 nnoremap <silent> fm :Denite file_mru<CR>
@@ -325,8 +324,9 @@ nnoremap <silent> FF :DeniteBufferDir file_rec<CR>
 nnoremap <silent> FG :Denite grep<CR>
 nnoremap <silent> fg :Denite grep<CR><C-R><C-W><CR>
 nnoremap <silent> fo :Denite unite:outline<CR>
+nnoremap <buffer> <C-]> :<C-u>:Denite unite:UniteWithCursorWord -start-insert tag<CR>
 
-call denite#custom#option('default', 'auto-preview', v:true)
+"call denite#custom#option('default', 'auto-preview', v:true)
 
 call denite#custom#map('insert', '<C-p>', 'move_to_prev_line')
 call denite#custom#map('insert', '<C-n>', 'move_to_next_line')
@@ -391,12 +391,12 @@ let g:vdebug_options={
 
 " = unite-tag =========================
 "{{{
-let g:unite_source_tag_max_fname_length=70
-let g:unite_source_tag_max_name_length=35
-autocmd BufEnter *
-\   if empty(&buftype)
-\|      nnoremap <buffer> <C-]> :<C-u>UniteWithCursorWord -start-insert tag<CR>
-\|  endif
+" let g:unite_source_tag_max_fname_length=70
+" let g:unite_source_tag_max_name_length=35
+" autocmd BufEnter *
+" \   if empty(&buftype)
+" \|      nnoremap <buffer> <C-]> :<C-u>UniteWithCursorWord -start-insert tag<CR>
+" \|  endif
 "}}}
 
 " = lingr-vim =========================
