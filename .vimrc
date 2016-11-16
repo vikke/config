@@ -17,6 +17,7 @@ call dein#add('Shougo/deoplete.nvim')
 call dein#add('Shougo/vimproc.vim', {'build': 'make'})
 
 call dein#add('Shougo/unite.vim')
+call dein#add('Shougo/denite.nvim')
 call dein#add('Shougo/neomru.vim')
 call dein#add('Shougo/neosnippet')
 call dein#add('Shougo/unite-outline')
@@ -38,8 +39,9 @@ call dein#add('vim-scripts/taglist.vim')
 call dein#add('junegunn/vim-easy-align')
 call dein#add('kchmck/vim-coffee-script')
 call dein#add('koron/chalice')
-call dein#add('ctrlpvim/ctrlp.vim')
-
+call dein#add('mbbill/undotree')
+call dein#add('osyo-manga/vim-monster')
+call dein#add('easymotion/vim-easymotion')
 
 call dein#end()
 filetype plugin indent on
@@ -78,6 +80,7 @@ syntax enable
 set t_Co=256
 set nohlsearch
 set viminfo=:2000,'100,<50,s10,h
+set bri
 "}}}--------------------------------------------------------------------------------
 
 "--------------------------------------------------------------------------
@@ -305,44 +308,78 @@ function! DispatchUniteFileRecAsyncOrGit()
     endif
 endfunction
 
-nnoremap <silent> fs :Unite -start-insert buffer<CR>
+"call denite#custom#var('file_rec', 'command', ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
+call denite#custom#var('file_rec', 'command', ['denite_file_list.sh'])
+call denite#custom#source('file_rec', 'matchers', ['matcher_fuzzy', 'matcher_project_files'])
+
+call denite#custom#var('grep', 'command', ['denite_grep.sh'])
+call denite#custom#var('grep', 'recursive_opts', [])
+call denite#custom#var('grep', 'final_opts', [])
+call denite#custom#var('grep', 'separator', [])
+call denite#custom#var('grep', 'default_opts', [])
+nnoremap <silent> fs :Denite buffer<CR>
+nnoremap <silent> ff :Denite file_rec<CR>
+nnoremap <silent> fm :Denite file_mru<CR>
+nnoremap <silent> FF :DeniteBufferDir file_rec<CR>
+nnoremap <silent> FG :Denite grep<CR>
+nnoremap <silent> fg :Denite grep<CR><C-R><C-W><CR>
+nnoremap <silent> fo :Denite unite:outline<CR>
+nnoremap <buffer> <C-]> :<C-u>:Denite unite:UniteWithCursorWord -start-insert tag<CR>
+
+"call denite#custom#option('default', 'auto-preview', v:true)
+
+call denite#custom#map('insert', '<C-p>', 'move_to_prev_line')
+call denite#custom#map('insert', '<C-n>', 'move_to_next_line')
+
+let s:menus = {}
+let s:menus.split = { 'description': 'my commands' }
+let s:menus.split.command_candidates = [
+    \ ['split the window', 'new'],
+    \ ['vert split the window', 'vnew']
+\]
+
+
+
+"call denite#custom#map('insert', '<C-o>', '')
+
+"nnoremap <silent> fs :Unite -start-insert buffer<CR>
 "nnoremap <silent> ff :Unite -start-insert -buffer-name=files file file_rec/neovim<CR>
 "nnoremap <silent> ff :Unite -start-insert -buffer-name=files file file_rec/git<CR>
-nnoremap <silent> ff :<C-u>call DispatchUniteFileRecAsyncOrGit()<CR>
-nnoremap <silent> FF :UniteWithBufferDir -start-insert -buffer-name=files file file/new<CR>
-nnoremap <silent> fm :Unite -start-insert file_mru<CR>
-nnoremap fc <Plug>(unite_redraw)
-
-nnoremap <silent> FG :Unite grep:. -start-insert -buffer-name=search-buffer<CR>
-nnoremap <silent> fg :Unite grep:. -start-insert -buffer-name=search-buffer<CR><C-R><C-W><CR>
-nnoremap <silent> fj :Unite grep:. -start-insert -buffer-name=search-buffer<cr>\b<C-R><C-W>\b<CR>
-nnoremap <silent> fr  :<C-u>UniteResume search-buffer<CR>
-
-au FileType unite call s:unite_my_settings()
-
-function! s:unite_my_settings()
-    nmap <buffer> <ESC> <Plug>(unite_exit)
-    inoremap <buffer> <expr> <C-k> unite#do_action('split')
-    nnoremap <buffer> <expr> <C-o> unite#do_action('vsplit')
-    inoremap <buffer> <expr> <c-o> unite#do_action('vsplit')
-    imap <buffer> <C-g>        <Plug>(unite_delete_backward_path)
-"    imap <buffer> <C-h>        <Plug>(unite_delete_backward_path)
-    imap <buffer> <TAB>   <Plug>(unite_select_next_line)
-endfunction
-
-if executable('ag')
-    let g:unite_source_grep_command = 'ag'
-    let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
-    let g:unite_source_grep_recursive_opt = ''
-endif
-
-"}}}
-
-" = unite-outline =====================
-"{{{
-nnoremap <silent> fo :Unite -start-insert outline<cr>
-"}}}
-
+"#nnoremap <silent> ff :<C-u>call DispatchUniteFileRecAsyncOrGit()<CR>
+"nnoremap <silent> FF :UniteWithBufferDir -start-insert -buffer-name=files file file/new<CR>
+"nnoremap <silent> fm :Unite -start-insert file_mru<CR>
+"nnoremap fc <Plug>(unite_redraw)
+"
+"nnoremap <silent> FG :Unite grep:. -start-insert -buffer-name=search-buffer<CR>
+"nnoremap <silent> fg :Unite grep:. -start-insert -buffer-name=search-buffer<CR><C-R><C-W><CR>
+"nnoremap <silent> fj :Unite grep:. -start-insert -buffer-name=search-buffer<cr>\b<C-R><C-W>\b<CR>
+"nnoremap <silent> fr :<C-u>UniteResume search-buffer<CR>
+"
+"au FileType unite call s:unite_my_settings()
+"
+"function! s:unite_my_settings()
+"    nmap <buffer> <ESC> <Plug>(unite_exit)
+"    inoremap <buffer> <expr> <C-k> unite#do_action('split')
+"    nnoremap <buffer> <expr> <C-o> unite#do_action('vsplit')
+"    inoremap <buffer> <expr> <c-o> unite#do_action('vsplit')
+"    imap <buffer> <C-g>        <Plug>(unite_delete_backward_path)
+""    imap <buffer> <C-h>        <Plug>(unite_delete_backward_path)
+"    imap <buffer> <TAB>   <Plug>(unite_select_next_line)
+"endfunction
+"
+"if executable('ag')
+"    let g:unite_source_grep_command = 'ag'
+"    let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
+"    let g:unite_source_grep_recursive_opt = ''
+"endif
+"
+""}}}
+"
+"" = unite-outline =====================
+""{{{
+"nnoremap <silent> fo :Unite -start-insert outline<cr>
+""}}}
+"
 
 " = php debugger =====================
 " {{{
@@ -354,12 +391,12 @@ let g:vdebug_options={
 
 " = unite-tag =========================
 "{{{
-let g:unite_source_tag_max_fname_length=70
-let g:unite_source_tag_max_name_length=35
-autocmd BufEnter *
-\   if empty(&buftype)
-\|      nnoremap <buffer> <C-]> :<C-u>UniteWithCursorWord -start-insert tag<CR>
-\|  endif
+" let g:unite_source_tag_max_fname_length=70
+" let g:unite_source_tag_max_name_length=35
+" autocmd BufEnter *
+" \   if empty(&buftype)
+" \|      nnoremap <buffer> <C-]> :<C-u>UniteWithCursorWord -start-insert tag<CR>
+" \|  endif
 "}}}
 
 " = lingr-vim =========================
@@ -381,7 +418,6 @@ let g:Tlist_php_settings = 'php;c:class;d:constant;f:function'
 let g:Tlist_Show_One_File = 1
 let g:Tlist_Exit_OnlyWindow = 1
 let g:Tlist_Auto_Update = 1
-let g:Tlist_Auto_Open = 1
 
 nnoremap <Leader>t :Tlist<CR>
 
@@ -471,6 +507,14 @@ if has('migemo')
     set migemo
 endif
 "}}}
+
+" {{{ vim-monster
+" Set async completion.
+let g:monster#completion#rcodetools#backend = "async_rct_complete"
+let g:deoplete#sources#omni#input_patterns = {
+\   "ruby" : '[^. *\t]\.\w*\|\h\w*::',
+\}
+" }}}
 
 " yankringの設定
 "{{{

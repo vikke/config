@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# curl -i -X POST 'http://v251.dev.scaleout.jp/sobin/ads/trace/rtb/bid?id=8374&posall=RTB&proto=adgen_inf' -d '{"id":"150a9cb3de98995.63060317","imp":[{"impid":"12345","native":{"request":"{\"native\":{\"ver\":\"1\",\"layout\":1,\"plcmtcnt\":1,\"assets\":[{\"id\":1,\"title\":{\"len\":150}},{\"id\":2,\"img\":{\"type\":3,\"mimes\":[\"image/jpg\"]}}]}}","var":"1.0"}}],"site":{"id":"12345","ref":"http:\/\/stad.jp\/","page":"http:\/\/www.google.com\/"},"device":{"ip":"49.96.62.79","ua":"ichiro","dnt":0},"at":2,"tmax":100,"user": {"uid":"WBnSFcCoBusAAGIaBELwxTQe", "dspuid":"UhdIqcCo4RUAAMBo2bcAAAAA"},"bcat":[],"badv":[]}' -u 'scaleout:spitfire'
+
+#curl -i -X POST 'http://v251.dev.scaleout.jp/sobin/ads/trace/rtb/bid?id=8374&posall=RTB&proto=adgen_inf' -d '{"id":"150a9cb3de98995.63060317","imp":[{"impid":"12345","native":{"request":"{\"native\":{\"ver\":\"1\",\"layout\":1,\"plcmtcnt\":1,\"assets\":[{\"id\":1,\"title\":{\"len\":150}}]}}","var":"1.0"}}],"site":{"id":"12345","ref":"http:\/\/stad.jp\/","page":"http:\/\/www.google.com\/"},"device":{"ip":"49.96.62.79","ua":"ichiro","dnt":0},"at":2,"tmax":100,"user": {"uid":"WBnSFcCoBusAAGIaBELwxTQe", "dspuid":"UhdIqcCo4RUAAMBo2bcAAAAA"},"bcat":[],"badv":[]}' -u 'scaleout:spitfire'
+
+#curl -i -X POST 'http://v251.dev.scaleout.jp/sobin/ads/trace/rtb/bid?id=8366&posall=RTB&proto=adgen_inf' -d '{"id":"150a9cb3de98995.63060317","imp":[{"impid":"12345","native":{"request":"{\"native\":{\"ver\":\"1.0.0.2\",\"layout\":1,\"plcmtcnt\":1,\"assets\":[{\"id\":1, \"img\":{\"type\":3, \"mimes\":[\"image/gif\"]}}]}}","var":"1"}}],"site":{"id":"12345","ref":"http:\/\/stad.jp\/","page":"http:\/\/www.google.com\/"},"device":{"ip":"49.96.62.79","ua":"ichiro","dnt":0},"at":2,"tmax":100,"user": {"uid":"WBnSFcCoBusAAGIaBELwxTQe", "dspuid":"UhdIqcCo4RUAAMBo2bcAAAAA"},"bcat":[],"badv":[]}' -u 'scaleout:spitfire'
+
+# infeed
+curl -i -X POST 'http://v251.dev.scaleout.jp/sobin/ads/trace/rtb/bid?id=8366&posall=RTB&proto=adgen_inf' -d '{"id":"150a9cb3de98995.63060317","imp":[{"impid":"12345","native":{"request":"{\"native\":{\"ver\":\"1.0.0.2\",\"plcmtcnt\":1,\"assets\":[{\"id\":1, \"img\":{\"type\":3, \"w\": 728, \"h\": 90}}]}}","ver":"1"}}],"site":{"id":"12345","ref":"http:\/\/stad.jp\/","page":"http:\/\/www.google.com\/"},"device":{"ip":"49.96.62.79","ua":"ichiro","dnt":0},"at":2,"tmax":100,"user": {"uid":"WBnlR8CoBusAAFH2BELwxTQe", "dspuid":"UhdIqcCo4RUAAMBo2bcAAAAA"},"bcat":[],"badv":[]}' -u 'scaleout:spitfire'
+
+# 通常
+curl -i -X POST 'http://v251.dev.scaleout.jp/sobin/ads/trace/rtb/bid?id=8366&posall=RTB&proto=adgen' -d '{"id":"150a9cb3de98995.63060317","imp":[{"impid":"12345","native":{"request":"{\"native\":{\"ver\":\"1.0.0.2\",\"plcmtcnt\":1,\"assets\":[{\"id\":1, \"img\":{\"type\":3, \"w\": 728, \"h\": 90}}]}}","ver":"1"}}],"site":{"id":"12345","ref":"http:\/\/stad.jp\/","page":"http:\/\/www.google.com\/"},"device":{"ip":"49.96.62.79","ua":"ichiro","dnt":0},"at":2,"tmax":100,"user": {"uid":"WBnlR8CoBusAAFH2BELwxTQe", "dspuid":"UhdIqcCo4RUAAMBo2bcAAAAA"},"bcat":[],"badv":[]}' -u 'scaleout:spitfire'
+
+

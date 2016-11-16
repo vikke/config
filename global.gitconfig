@@ -11,6 +11,12 @@
 	cl = fetch --prune
 	d = diff --ignore-space-at-eol
 	dc = diff --cached --ignore-space-at-eol
+	alias = !git config --get-regexp '^alias\\.' | sed 's/alias\\.\\([^ ]*\\) \\(.*\\)/\\1\\\t => \\2/' | sort
+	bb = !git merge-base $1 $(sh -c "git branch | awk -e '/^* /{print $2;}'")
+	bc = !git merge-base $1 $(git branch | awk -e '/^* /{ print \\$2; }')
+	br = !git merge-base "$1" "$(git branch | awk -e '{print $2}')"
+#	mas = "!f() { git branch  -v | awk -e '/^m.*/{ print; }';}; f"
+	#mas = "!f() { git branch  -v | awk -e '{print $1;}'; }; f"
 #	m = merge --squash
 [i18n]
 	logoutputencoding = utf-8
@@ -21,10 +27,12 @@
 #[branch "master"]
 #	mergeoptions = --squash
 [push]
-	default = simple
+#	default = simple
 [pager]
-	diff = /usr/local/opt/git/share/git-core/contrib/diff-highlight/diff-highlight | less
-	log = /usr/local/opt/git/share/git-core/contrib/diff-highlight/diff-highlight | less
+	diff = ~/bin-nongit/diff-highlight | less
+	log = ~/bin-nongit/diff-highlight | less
+#	diff = /usr/local/opt/git/share/git-core/contrib/diff-highlight/diff-highlight | less
+#	log = /usr/local/opt/git/share/git-core/contrib/diff-highlight/diff-highlight | less
 #	show = /usr/local/opt/git/share/git-core/contrib/diff-highlight/diff-highlight | less
 #[difftool "sourcetree"]
 #	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
