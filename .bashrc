@@ -189,7 +189,7 @@ fi
 stty stop undef
 
 # command履歴共有
-export HISTSIZE=9999
+export HISTSIZE=20000
 function share_history {
     history -a
     history -c
@@ -200,7 +200,7 @@ shopt -u histappend
 shopt -s globstar
 
 # 履歴で、空行の場合と、同じコマンドが続けて2回目の場合は履歴に入れないようにする。
-HISTCONTROL=ignoreboth
+HISTCONTROL=ignoreboth:erasedups
 
 #export RUBYLIB=/usr/lib/ruby/gems/1.8/gems/tidy-1.1.2/lib
 #export RUBYOPT=rubygems
@@ -477,5 +477,77 @@ if [ -f $(brew --prefix)/etc/brew-wrap ];then
 fi
 
 function se(){
-	ag "$1" ~/vcswork/dsp-wo-doc
+	fs=$(ag "$1" ~/vcswork/dsp-wo-doc | fzf-tmux)
+	vim ${fs%%:*}
 }
+
+# fzf ######################################################
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+export FZF_DEFAULT_OPTS='+s -m --color'
+
+# file edit.
+fe() {
+  local files
+  IFS=$'\n' files=($(fzf-tmux --query="$1" --multi --select-1 --exit-0))
+  [[ -n "$files" ]] && ${EDITOR:-vim} "${files[@]}"
+}
+
+# fd - cd to selected directory. including hidden directories
+fd() {
+  local dir
+  dir=$(find ${1:-.} -type d 2> /dev/null | fzf-tmux +m) && cd "$dir"
+}
+
+fdi() {
+	local file
+	local dir
+	file=$(fzf-tmux +m -q "$1") && dir=$(dirname "$file") && cd "$dir"
+}
+
+# fkill - kill process
+fkill() {
+  pid=$(ps -ef | sed 1d | fzf-tmux -m | awk '{print $2}')
+
+  if [ "x$pid" != "x" ]
+  then
+    kill -${1:-9} $pid
+  fi
+}
+
+# fgbr - checkout git branch (including remote branches)
+gbr() {
+  local branches branch
+  branches=$(git branch --all | grep -v HEAD) &&
+  branch=$(echo "$branches" |
+           fzf-tmux -d $(( 2 + $(wc -l <<< "$branches") )) +m) &&
+  git checkout $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
+}
+
+# fco - checkout git branch/tag
+gco() {
+  local tags branches target
+  tags=$(
+    git tag | awk '{print "\x1b[31;1mtag\x1b[m\t" $1}') || return
+  branches=$(
+    git branch --all | grep -v HEAD             |
+    sed "s/.* //"    | sed "s#remotes/[^/]*/##" |
+    sort -u          | awk '{print "\x1b[34;1mbranch\x1b[m\t" $1}') || return
+  target=$(
+    (echo "$tags"; echo "$branches") |
+    fzf-tmux -l30 -- --no-hscroll --ansi +m -d "\t" -n 2) || return
+  git checkout $(echo "$target" | awk '{print $2}')
+}
+
+# fshow - git commit browser
+gshow() {
+  git log --graph --color=always \
+      --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" "$@" |
+  fzf-tmux --ansi --no-sort --reverse --tiebreak=index --bind=ctrl-s:toggle-sort \
+      --bind "ctrl-m:execute:
+                (grep -o '[a-f0-9]\{7\}' | head -1 |
+                xargs -I % sh -c 'git show --color=always % | less -R') << 'FZF-EOF'
+                {}
+FZF-EOF"
+}
+
+
