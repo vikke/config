@@ -125,7 +125,7 @@ case $OSTYPE in
 
 	linux*)
 		alias ls='ls --color=auto -F'
-		export VIMPATH=vim
+		export VIMPATH=nvim
 		export JDK_DIR=/usr/lib/jvm
 		export PAGER="lv -c"
 
@@ -168,7 +168,7 @@ fi
 	#export TERM=rxvt-256color
 #fi
 
-#export TERM=xterm-256color
+export TERM=xterm-256color
 
 # http://forums.freebsd.org/showthread.php?t=13345 によると、環境変数TERMCAPに値を設定するようにと書いてあるが、不要？
 #if [ -e "${HOME}/.termcap" ];then
