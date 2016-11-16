@@ -27,7 +27,7 @@
 #[branch "master"]
 #	mergeoptions = --squash
 [push]
-	default = simple
+#	default = simple
 [pager]
 	diff = ~/bin-nongit/diff-highlight | less
 	log = ~/bin-nongit/diff-highlight | less
