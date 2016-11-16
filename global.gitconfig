@@ -1,5 +1,5 @@
 [core]
-	excludesfile = ~/.gitignore
+	excludesfile = /Users/ichiro.matsunaga/.gitignore
 [user]
 	email = vikke.bsd@gmail.com
 	name = MATSUNAGA Ichiro
@@ -26,3 +26,9 @@
 	diff = /usr/local/opt/git/share/git-core/contrib/diff-highlight/diff-highlight | less
 	log = /usr/local/opt/git/share/git-core/contrib/diff-highlight/diff-highlight | less
 #	show = /usr/local/opt/git/share/git-core/contrib/diff-highlight/diff-highlight | less
+#[difftool "sourcetree"]
+#	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+#	path =
+#[mergetool "sourcetree"]
+#	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+#	trustExitCode = true
