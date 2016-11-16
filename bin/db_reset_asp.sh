@@ -1,7 +1,7 @@
 cd ~/wo_docker/data
 
 echo 'dumping db'
-#ssh asp-rc './dump-mini.sh'
+ssh asp-rc './dump-mini.sh'
 
 echo "kill db connect"
 echo "SELECT pg_terminate_backend(pid) FROM pg_stat_activity WHERE datname = 'weborder_development' AND pid <> pg_backend_pid();" \
@@ -27,10 +27,10 @@ cat << MIG > $MIG_FILE
 class UpdateKeyUniqueRecord < ActiveRecord::Migration
 
   def up
-    puts "#{KeyUniqueRecord.where(key: "TargetingCheck.adsvrs").first.content} => ads"
+    puts "#{KeyUniqueRecord.where(key: "TargetingCheck.adsvrs").first.content} => wodev05.dev.scaleouat.jp"
 
     KeyUniqueRecord.where(key: "TargetingCheck.adsvrs").first.tap do |cont|
-      cont.content = 'ads'
+      cont.content = 'wodev05.dev.scaleouat.jp'
       cont.save
     end
   end
@@ -62,7 +62,7 @@ MIG
 
 echo '= migrate ====================================='
 cd ~/wo_docker/wo
-#wo a rake db:migrate:up VERSION=20180901061942
+wo a rake db:migrate:up VERSION=20180901061942
 #wo a rake db:migrate:up VERSION=20180901061943
 wo a rake db:migrate
 
