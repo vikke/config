@@ -1,3 +1,5 @@
+set -e
+
 cd ~/wo_docker/data
 
 echo 'dumping db'
