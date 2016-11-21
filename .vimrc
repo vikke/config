@@ -308,7 +308,6 @@ function! DispatchUniteFileRecAsyncOrGit()
     endif
 endfunction
 
-"call denite#custom#var('file_rec', 'command', ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
 call denite#custom#var('file_rec', 'command', ['denite_file_list.sh'])
 call denite#custom#source('file_rec', 'matchers', ['matcher_fuzzy', 'matcher_project_files'])
 
@@ -317,27 +316,25 @@ call denite#custom#var('grep', 'recursive_opts', [])
 call denite#custom#var('grep', 'final_opts', [])
 call denite#custom#var('grep', 'separator', [])
 call denite#custom#var('grep', 'default_opts', [])
+
 nnoremap <silent> fs :Denite buffer<CR>
 nnoremap <silent> ff :Denite file_rec<CR>
 nnoremap <silent> fm :Denite file_mru<CR>
 nnoremap <silent> FF :DeniteBufferDir file_rec<CR>
 nnoremap <silent> FG :Denite grep<CR>
 nnoremap <silent> fg :Denite grep<CR><C-R><C-W><CR>
+nnoremap <silent> fj :Denite grep<cr>\b<C-R><C-W>\b<CR>
+nnoremap <silent> fr :Denite -resume<CR>
 nnoremap <silent> fo :Denite unite:outline<CR>
+
 nnoremap <buffer> <C-]> :<C-u>:Denite unite:UniteWithCursorWord -start-insert tag<CR>
 
-"call denite#custom#option('default', 'auto-preview', v:true)
+call denite#custom#option('default', 'auto_preview', 1)
 
 call denite#custom#map('insert', '<C-p>', 'move_to_prev_line')
 call denite#custom#map('insert', '<C-n>', 'move_to_next_line')
-
-let s:menus = {}
-let s:menus.split = { 'description': 'my commands' }
-let s:menus.split.command_candidates = [
-    \ ['split the window', 'new'],
-    \ ['vert split the window', 'vnew']
-\]
-
+call denite#custom#map('insert', '<C-k>', 'do_action:split')
+call denite#custom#map('insert', '<C-o>', 'do_action:vsplit')
 
 
 "call denite#custom#map('insert', '<C-o>', '')
