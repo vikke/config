@@ -155,7 +155,7 @@ if [ $? -ne 0 ];then
 fi
 
 #alias tmux='tmux -2 -S /tmp/tmux.session a'
-alias tmux='tmux -2 a'
+alias tmux='tmux a'
 
 if [ ! -e ~/tmpfs/header_cache ]; then
 	cp -r ~/.mutt/header_cache ~/tmpfs
