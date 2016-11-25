@@ -1,2 +1,3 @@
 #!/bin/bash
-ag  --nopager --nocolor --nogroup  $@ | sort -d
+echo ${@}
+ag  --nopager --nocolor --nogroup $( printf '%q' "${@}" ) | sort -d
