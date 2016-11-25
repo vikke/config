@@ -256,37 +256,19 @@ set grepprg=ag\ -i
 " buffer操作系
 "--------------------------------------------------------------------------------
 
-" " = neocomplete ========================
-" "{{{
-" let g:neocomplete#enable_at_startup = 1
-" let g:neocomplete#enable_ignore_case = 1
-" let g:neocomplete#enable_smart_case = 1
-" let g:neocomplete#auto_completion_start_length = 3
-" let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
-" let g:neocomplete#sources#tags#cache_limit_size = 8000000
-" let g:unite_data_directory = '~/.cache/unite'
-"
-" if !exists('g:neocomplete#keyword_patterns')
-"     let g:neocomplete#keyword_patterns = {}
-" endif
-" let g:neocomplete#keyword_patterns._ = '\h\w*'
-"
-" " omnifunc
-" autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-" autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-" autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-" autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-" autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-" "}}}
-
 " {{{ = deoplete ==================================
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#enable_ignore_case = 1
 let g:deoplete#enable_smart_case = 1
-let g:deoplete#auto_completion_start_length = 3
+let g:deoplete#auto_completion_start_length = 2
 let g:deoplete#lock_buffer_name_pattern = '\*ku\*'
 let g:deoplete#sources#tags#cache_limit_size = 8000000
 " }}}
+
+" {{{ vim-monster
+" Set async completion.
+let g:monster#completion#rcodetools#backend = "async_rct_complete"
+"}}}
 
 " = unite.vim ==========================
 "{{{
@@ -327,54 +309,16 @@ nnoremap <silent> fj :Denite grep<cr>\b<C-R><C-W>\b<CR>
 nnoremap <silent> fr :Denite -resume<CR>
 nnoremap <silent> fo :Denite unite:outline<CR>
 
-nnoremap <buffer> <C-]> :<C-u>:Denite unite:UniteWithCursorWord -start-insert tag<CR>
-
-call denite#custom#option('default', 'auto_preview', 1)
+" くそ重い
+" call denite#custom#option('default', 'auto_preview', 1)
 
 call denite#custom#map('insert', '<C-p>', 'move_to_prev_line')
 call denite#custom#map('insert', '<C-n>', 'move_to_next_line')
 call denite#custom#map('insert', '<C-k>', 'do_action:split')
-call denite#custom#map('insert', '<C-o>', 'do_action:vsplit')
 
-
-"call denite#custom#map('insert', '<C-o>', '')
-
-"nnoremap <silent> fs :Unite -start-insert buffer<CR>
-"nnoremap <silent> ff :Unite -start-insert -buffer-name=files file file_rec/neovim<CR>
-"nnoremap <silent> ff :Unite -start-insert -buffer-name=files file file_rec/git<CR>
-"#nnoremap <silent> ff :<C-u>call DispatchUniteFileRecAsyncOrGit()<CR>
-"nnoremap <silent> FF :UniteWithBufferDir -start-insert -buffer-name=files file file/new<CR>
-"nnoremap <silent> fm :Unite -start-insert file_mru<CR>
-"nnoremap fc <Plug>(unite_redraw)
-"
-"nnoremap <silent> FG :Unite grep:. -start-insert -buffer-name=search-buffer<CR>
-"nnoremap <silent> fg :Unite grep:. -start-insert -buffer-name=search-buffer<CR><C-R><C-W><CR>
-"nnoremap <silent> fj :Unite grep:. -start-insert -buffer-name=search-buffer<cr>\b<C-R><C-W>\b<CR>
-"nnoremap <silent> fr :<C-u>UniteResume search-buffer<CR>
-"
-"au FileType unite call s:unite_my_settings()
-"
-"function! s:unite_my_settings()
-"    nmap <buffer> <ESC> <Plug>(unite_exit)
-"    inoremap <buffer> <expr> <C-k> unite#do_action('split')
-"    nnoremap <buffer> <expr> <C-o> unite#do_action('vsplit')
-"    inoremap <buffer> <expr> <c-o> unite#do_action('vsplit')
-"    imap <buffer> <C-g>        <Plug>(unite_delete_backward_path)
-""    imap <buffer> <C-h>        <Plug>(unite_delete_backward_path)
-"    imap <buffer> <TAB>   <Plug>(unite_select_next_line)
-"endfunction
-"
-"if executable('ag')
-"    let g:unite_source_grep_command = 'ag'
-"    let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
-"    let g:unite_source_grep_recursive_opt = ''
-"endif
-"
-""}}}
-"
 "" = unite-outline =====================
 ""{{{
-"nnoremap <silent> fo :Unite -start-insert outline<cr>
+call denite#custom#map('insert', '<C-o>', 'do_action:vsplit')
 ""}}}
 "
 
@@ -388,12 +332,7 @@ let g:vdebug_options={
 
 " = unite-tag =========================
 "{{{
-" let g:unite_source_tag_max_fname_length=70
-" let g:unite_source_tag_max_name_length=35
-" autocmd BufEnter *
-" \   if empty(&buftype)
-" \|      nnoremap <buffer> <C-]> :<C-u>UniteWithCursorWord -start-insert tag<CR>
-" \|  endif
+nnoremap <buffer> <C-]> :<C-u>:Denite unite:tag<CR>
 "}}}
 
 " = lingr-vim =========================
@@ -504,14 +443,6 @@ if has('migemo')
     set migemo
 endif
 "}}}
-
-" {{{ vim-monster
-" Set async completion.
-let g:monster#completion#rcodetools#backend = "async_rct_complete"
-let g:deoplete#sources#omni#input_patterns = {
-\   "ruby" : '[^. *\t]\.\w*\|\h\w*::',
-\}
-" }}}
 
 " yankringの設定
 "{{{
