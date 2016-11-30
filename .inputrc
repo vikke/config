@@ -1,1 +1,11 @@
 set completion-ignore-case on
+
+# vi mode
+set editing-mode vi
+set keymap vi-insert
+
+# tab補完でignore case
+set completion-ignore-case
+
+"\C-p": history-search-backward
+"\C-n": history-search-forward

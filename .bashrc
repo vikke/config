@@ -481,6 +481,10 @@ function se(){
 	vim ${fs%%:*}
 }
 
+# for fzf
+# https://github.com/junegunn/fzf/issues/39
+set -o vi
+
 # fzf ######################################################
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 export FZF_DEFAULT_OPTS='+s -m --color'
