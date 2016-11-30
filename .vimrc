@@ -311,6 +311,7 @@ nnoremap <silent> fo :Denite unite:outline<CR>
 
 " くそ重い
 " call denite#custom#option('default', 'auto_preview', 1)
+call denite#custom#option('default', 'empty', 0)
 
 call denite#custom#map('insert', '<C-p>', 'move_to_prev_line')
 call denite#custom#map('insert', '<C-n>', 'move_to_next_line')
