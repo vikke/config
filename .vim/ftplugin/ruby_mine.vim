@@ -32,3 +32,5 @@ autocmd InsertLeave,WinLeave * if exists('w:last_fdm')
             \| let &l:foldmethod=w:last_fdm
             \| unlet w:last_fdm
             \| endif
+
+let g:quickrun_config['ruby.quickrun'] = { 'command': 'ruby', 'cmdopt': 'bundle exec', 'exec': '%o %c %s' }
