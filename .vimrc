@@ -270,34 +270,18 @@ let g:deoplete#sources#tags#cache_limit_size = 8000000
 let g:monster#completion#rcodetools#backend = "async_rct_complete"
 "}}}
 
-" = unite.vim ==========================
+" = denite.vim ==========================
 "{{{
-let g:unite_enable_ignore_case = 1
-let g:unite_enable_smart_case = 1
-" let g:unite_data_directory = '~/.cache/unite'
-
-
-let g:unite_source_file_mru_limit=1000
-let g:unite_source_rec_min_cache_files=100
-let g:unite_source_rec_max_cache_files=20000
-let g:unite_source_rec_async_command=['ag', '--follow', '--nocolor', '--nogroup', '--hidden', '-g', '']
-
-function! DispatchUniteFileRecAsyncOrGit()
-    if isdirectory(getcwd()."/.git")
-        Unite -start-insert -buffer-name=files file file_rec/git
-    else
-        Unite -start-insert -buffer-name=files file file_rec/async
-    endif
-endfunction
-
 call denite#custom#var('file_rec', 'command', ['denite_file_list.sh'])
 call denite#custom#source('file_rec', 'matchers', ['matcher_fuzzy', 'matcher_project_files'])
 
-call denite#custom#var('grep', 'command', ['denite_grep.sh'])
+" call denite#custom#var('grep', 'command', ['denite_grep.sh'])
+call denite#custom#var('grep', 'command', ['ag'])
 call denite#custom#var('grep', 'recursive_opts', [])
 call denite#custom#var('grep', 'final_opts', [])
 call denite#custom#var('grep', 'separator', [])
-call denite#custom#var('grep', 'default_opts', [])
+call denite#custom#var('grep', 'default_opts',
+    \ ['--nopager', '--nocolor', '--nogroup', '--column'])
 
 nnoremap <silent> fs :Denite buffer<CR>
 nnoremap <silent> ff :Denite file_rec<CR>
@@ -311,7 +295,6 @@ nnoremap <silent> fo :Denite unite:outline<CR>
 
 " くそ重い
 " call denite#custom#option('default', 'auto_preview', 1)
-call denite#custom#option('default', 'empty', 0)
 
 call denite#custom#map('insert', '<C-p>', 'move_to_prev_line')
 call denite#custom#map('insert', '<C-n>', 'move_to_next_line')
