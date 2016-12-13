@@ -299,10 +299,10 @@ nnoremap <silent> fo :Denite unite:outline<CR>
 call denite#custom#map('insert', '<C-p>', '<denite:move_to_previous_line>', 'noremap')
 call denite#custom#map('insert', '<C-n>', '<denite:move_to_next_line>', 'noremap')
 call denite#custom#map('insert', '<C-k>', '<denite:do_action:split>', 'noremap')
+call denite#custom#map('insert', '<C-o>', '<denite:do_action:vsplit>')
 
 "" = unite-outline =====================
 ""{{{
-call denite#custom#map('insert', '<C-o>', 'do_action:vsplit')
 ""}}}
 "
 
