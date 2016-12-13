@@ -1,6 +1,7 @@
 -R
 --sort=yes
 --exclude=vendor/**
+--exclude=public/**
 --langdef=coffee
 --langmap=coffee:.coffee
 --regex-coffee=/class ([A-Za-z.]+)/\1/c,class/
