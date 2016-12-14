@@ -1,0 +1,5 @@
+#!/bin/sh
+
+ag -i --ruby --haml --js --coffee --nogroup 'binding.pry|debugger|debug.*code' --ignore vendor
+
+exit 0
