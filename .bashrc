@@ -155,7 +155,18 @@ if [ $? -ne 0 ];then
 fi
 
 #alias tmux='tmux -2 -S /tmp/tmux.session a'
-alias tmux='tmux a'
+function tmx {
+	echo 'tmx'
+	cls=$(\tmux list-sessions)
+	if [ -z "${cls}" ]; then
+		echo 'create'
+		\tmux
+	else
+		echo 'attach'
+		\tmux  a
+	fi
+}
+alias tmux='tmx'
 
 if [ ! -e ~/tmpfs/header_cache ]; then
 	cp -r ~/.mutt/header_cache ~/tmpfs
