@@ -42,6 +42,7 @@ call dein#add('koron/chalice')
 call dein#add('mbbill/undotree')
 call dein#add('osyo-manga/vim-monster')
 call dein#add('easymotion/vim-easymotion')
+call dein#add('wakatime/vim-wakatime')
 
 call dein#end()
 filetype plugin indent on

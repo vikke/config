@@ -172,6 +172,10 @@ if [ ! -e ~/tmpfs/header_cache ]; then
 	cp -r ~/.mutt/header_cache ~/tmpfs
 fi
 
+if [ -e ~/vcswork/bash-wakatime/bash-wakatime.sh ]; then
+	. ~/vcswork/bash-wakatime/bash-wakatime.sh
+fi
+
 #if [ "${TERM}" == "cygwin" ]; then
 #	export TERM=vt100
 #fi
@@ -211,7 +215,7 @@ shopt -u histappend
 shopt -s globstar
 
 # 履歴で、空行の場合と、同じコマンドが続けて2回目の場合は履歴に入れないようにする。
-HISTCONTROL=ignoreboth:erasedups
+export HISTCONTROL=erasedups
 
 #export RUBYLIB=/usr/lib/ruby/gems/1.8/gems/tidy-1.1.2/lib
 #export RUBYOPT=rubygems
