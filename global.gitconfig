@@ -18,6 +18,8 @@
 #	mas = "!f() { git branch  -v | awk -e '/^m.*/{ print; }';}; f"
 	#mas = "!f() { git branch  -v | awk -e '{print $1;}'; }; f"
 #	m = merge --squash
+[apply]
+	ignoreWhitespace = change
 [i18n]
 	logoutputencoding = utf-8
 [merge]
