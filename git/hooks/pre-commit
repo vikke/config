@@ -1,6 +1,6 @@
 #!/bin/sh
 
-ag -s --ruby --haml --js --coffee --nogroup 'binding.pry|debugger|debug.*code' \
+ag -s --ruby --haml --js --coffee --nogroup 'console.log|binding.pry|debugger|debug.*code' \
 	--ignore vendor \
 	--ignore lib/extentions/yajl_json.rb \
 	--ignore delivery_test/delivery_support/request.rb \
