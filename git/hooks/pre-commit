@@ -4,6 +4,11 @@ ag -s --ruby --haml --js --coffee --nogroup 'console.log|binding.pry|debugger|de
 	--ignore vendor \
 	--ignore lib/extentions/yajl_json.rb \
 	--ignore delivery_test/delivery_support/request.rb \
-	--ignore config/initializers/backtrace_silencers.rb
+	--ignore config/initializers/backtrace_silencers.rb \
+	--ignore public/javascripts/selectivizr.js \
+	--ignore public/jquery.simulate.drag-sortable.js \
+	--ignore app/views/front/app_lists/_apps_selector.html.haml \
+	--ignore app/assets/javascripts/scaleout/plugin/fixed_table.coffee \
+	--ignore app/assets/javascripts/scaleout/ui/selection_group.js.coffee
 
 exit 0
