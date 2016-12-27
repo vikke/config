@@ -570,4 +570,7 @@ gshow() {
 FZF-EOF"
 }
 
-
+# dasht ############################################
+export dash_dir=~/vcswork/dasht
+export PATH=${PATH}:${dash_dir}/bin
+export MANPATH=${MANPATH}:${dash_dir}/man

@@ -43,6 +43,7 @@ call dein#add('mbbill/undotree')
 call dein#add('osyo-manga/vim-monster')
 call dein#add('easymotion/vim-easymotion')
 call dein#add('wakatime/vim-wakatime')
+call dein#add('sunaku/vim-dasht')
 
 call dein#end()
 filetype plugin indent on
@@ -278,11 +279,13 @@ call denite#custom#source('file_rec', 'matchers', ['matcher_fuzzy', 'matcher_pro
 
 " call denite#custom#var('grep', 'command', ['denite_grep.sh'])
 call denite#custom#var('grep', 'command', ['ag'])
-call denite#custom#var('grep', 'recursive_opts', [])
-call denite#custom#var('grep', 'final_opts', [])
-call denite#custom#var('grep', 'separator', [])
 call denite#custom#var('grep', 'default_opts',
     \ ['--nopager', '--nocolor', '--nogroup', '--column'])
+call denite#custom#var('grep', 'recursive_opts', [])
+call denite#custom#var('grep', 'pattern_opt', ['--match'])
+call denite#custom#var('grep', 'final_opts', [])
+call denite#custom#var('grep', 'separator', ['--'])
+call denite#custom#var('grep', 'final_opts', [])
 
 nnoremap <silent> fs :Denite buffer<CR>
 nnoremap <silent> ff :Denite file_rec<CR>
@@ -475,6 +478,30 @@ endfunction
 autocmd BufWritePre * call Rtrim()
 
 "}}}--------------------------------------------------------------------------------
+
+"{{{ dasht.vim ---------------------------------------------------------------------
+"
+" search related docsets
+nnoremap <Leader>k :Dasht<Space>
+
+" search ALL the docsets
+nnoremap <Leader><Leader>k :Dasht!<Space>
+
+" search related docsets
+nnoremap <silent> <Leader>K :call Dasht([expand('<cWORD>'), expand('<cword>')])<Return>
+
+" search ALL the docsets
+nnoremap <silent> <Leader><Leader>K :call Dasht([expand('<cWORD>'), expand('<cword>')], '!')<Return>
+
+" search related docsets
+vnoremap <silent> <Leader>K y:<C-U>call Dasht(getreg(0))<Return>
+
+" search ALL the docsets
+vnoremap <silent> <Leader><Leader>K y:<C-U>call Dasht(getreg(0), '!')<Return>
+
+"}}}
+
+
 
 "http://d.hatena.ne.jp/hirafoo/20120223/1329926505
 " let g:ruby_path = ""
