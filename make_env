@@ -51,6 +51,7 @@ for f in \
 	.gitconfig \
 	.gitignore \
 	.gvimrc \
+	.ideavimrc \
 	.infokey \
 	.inputrc \
 	.mailcap \
@@ -121,7 +122,8 @@ ln -snvf ${HOME}/config/lemonade_client.toml ${HOME}/.config/lemonade.toml
 
 # Karabikna
 
-
+#wakatime
+ln -s ${HOME}/Dropbox/secure/dot.wakatime.cfg ${HOME}/.wakatime.cfg
 
 echo "
 .ssh \

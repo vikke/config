@@ -1,0 +1,2 @@
+nnoremap ff :action GotoClass<CR>
+nnoremap FF :action GotoFile<CR>
