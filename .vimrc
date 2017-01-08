@@ -16,11 +16,13 @@ call dein#add('Shougo/deoplete.nvim')
 
 call dein#add('Shougo/vimproc.vim', {'build': 'make'})
 
-call dein#add('Shougo/unite.vim')
 call dein#add('Shougo/denite.nvim')
+
+call dein#add('Shougo/unite.vim')
 call dein#add('Shougo/neomru.vim')
 call dein#add('Shougo/neosnippet')
 call dein#add('Shougo/unite-outline')
+
 call dein#add('Shougo/neosnippet')
 call dein#add('Shougo/neosnippet-snippets')
 call dein#add('Shougo/neocomplete.vim')
@@ -44,6 +46,9 @@ call dein#add('osyo-manga/vim-monster')
 call dein#add('easymotion/vim-easymotion')
 call dein#add('wakatime/vim-wakatime')
 call dein#add('sunaku/vim-dasht')
+" necessary to run :GoInstallBinaries
+call dein#add('fatih/vim-go')
+call dein#add('zchee/deoplete-go', {'build': 'make'})
 
 call dein#end()
 filetype plugin indent on
@@ -266,6 +271,17 @@ let g:deoplete#auto_completion_start_length = 2
 let g:deoplete#lock_buffer_name_pattern = '\*ku\*'
 let g:deoplete#sources#tags#cache_limit_size = 8000000
 " }}}
+
+" {{{ = deoplete-go ===============================
+let g:deoplete#sources#go#gocode_binary = $GOPATH . '/bin'
+let g:deoplete#sources#go#package_dot = 0
+let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
+let g:deoplete#sources#go#pointer = 0
+let g:deoplete#sources#go#use_cache = 0
+" about GOOS and GOARCH
+let g:deoplete#sources#go#json_directory = $HOME . '/.cache/deoplete/go/' . $GOOS . '_' . $GOARCH
+
+" }}} =============================================
 
 " {{{ vim-monster
 " Set async completion.
