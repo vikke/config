@@ -234,7 +234,6 @@ export RSYNC_RSH=ssh
 #export JAVA_HOME=${JDK_DIR}/jdk1.5.0_06
 export J2EE_HOME=${JDK_DIR}/j2sdkee1.3.1
 export JAVADOC_HOME=${HOME}/doc/javadoc/1.4
-export GOPATH=${HOME}/.go
 
 export CATALINA_OPTS="-Xms32m -Xmx128m"
 export CATALINA_PID=/var/run/catalina.pid
@@ -254,6 +253,11 @@ export XDEBUG_CONFIG="idekey=DBGP"
 export XDEBUG_SESSION_START=DBGP
 
 export XDG_CONFIG_HOME=${HOME}/.config
+
+# GO #############################
+export GOPATH=${HOME}/.go
+export GOOS=$(go env GOOS)
+export GOARCH=$(go env GOARCH)
 
 #PATH=/usr/bin:/usr/sbin:/bin:/sbin:/usr/X11R6/bin:${HOME}/bin:/usr/local/bin
 PATH=${PATH}:${HOME}/cvswork/refeng/tools

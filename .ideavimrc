@@ -1,0 +1,3 @@
+nnoremap ff :action GotoClass<CR>
+nnoremap FF :action GotoFile<CR>
+nnoremap K :action DashLauncherAction<CR>
