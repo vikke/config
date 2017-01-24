@@ -507,7 +507,7 @@ set -o vi
 
 # fzf ######################################################
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
-export FZF_DEFAULT_OPTS='+s -m --color'
+export FZF_DEFAULT_OPTS='-m --color dark'
 
 # file edit.
 fe() {
