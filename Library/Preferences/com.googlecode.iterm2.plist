@@ -17,9 +17,9 @@
 	<key>HideTab</key>
 	<false/>
 	<key>LoadPrefsFromCustomFolder</key>
-	<false/>
+	<true/>
 	<key>NSNavLastRootDirectory</key>
-	<string>~/Dropbox</string>
+	<string>~/config/Library/Preferences</string>
 	<key>NSNavPanelExpandedSizeForOpenMode</key>
 	<string>{712, 448}</string>
 	<key>NSQuotedKeystrokeBinding</key>
@@ -56,11 +56,11 @@
 	<key>NSWindow Frame SessionsPreferences</key>
 	<string>2829 139 606 456 2560 0 1920 1057 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>692 362 796 473 0 0 1920 1080 </string>
+	<string>692 89 918 512 0 0 1920 1080 </string>
 	<key>NSWindow Frame UKCrashReporter</key>
 	<string>320 284 1280 773 0 0 1920 1057 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 0 665 523 0 0 1920 1080 </string>
+	<string>0 0 665 523 0 0 1920 1057 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>150 327 585 473 0 0 1280 800 </string>
 	<key>New Bookmarks</key>
@@ -663,6 +663,10 @@
 	<integer>0</integer>
 	<key>NoSyncInstallationId</key>
 	<string>D2681582-AF41-4629-92C8-0373C4A12BEE</string>
+	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
+	<true/>
+	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
+	<integer>0</integer>
 	<key>NoSyncPermissionToShowTip</key>
 	<false/>
 	<key>NoSyncSuppressAnnyoingBellOffer</key>
@@ -705,7 +709,7 @@
 		</dict>
 	</dict>
 	<key>PrefsCustomFolder</key>
-	<string>/Users/ichiro.matsunaga/Documents</string>
+	<string>/Users/ichiro.matsunaga/config/Library/Preferences</string>
 	<key>Print In Black And White</key>
 	<true/>
 	<key>SUEnableAutomaticChecks</key>

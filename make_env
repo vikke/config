@@ -130,3 +130,5 @@ echo "
 .gnupg \
 is not linked.
 "
+echo "set iterm2 load preferences directory to ~/config/Library/Preferences and enable save when quit."
+
