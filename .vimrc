@@ -455,7 +455,7 @@ let g:yankring_history_file = 'tmpfs/yankring_history'
 
 " quickrun
 "{{{
-"let g:quickrun_config = {}
+let g:quickrun_config = {}
 "}}}
 
 "{{{ jq http://qiita.com/tekkoc/items/324d736f68b0f27680b8
@@ -518,6 +518,10 @@ vnoremap <silent> <Leader><Leader>K y:<C-U>call Dasht(getreg(0), '!')<Return>
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
 smap <C-k>     <Plug>(neosnippet_expand_or_jump)
 xmap <C-k>     <Plug>(neosnippet_expand_target)
+"}}}
+
+"{{{ 対応閉じ
+
 "}}}
 
 "http://d.hatena.ne.jp/hirafoo/20120223/1329926505
