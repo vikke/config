@@ -168,7 +168,7 @@ function tmx {
 }
 alias tmux='tmx'
 
-if [ ! -e ~/tmpfs/header_cache ]; then
+if [ ! -e ~/tmpfs/header_cache ] && [ -e ~/.mutt/header_cache ]; then
 	cp -r ~/.mutt/header_cache ~/tmpfs
 fi
 
@@ -465,7 +465,6 @@ alias rails='bundle exec rails'
 alias ssh_copy_id='ssh-copy-id -i ~/.ssh/id_rsa.pub '
 alias vim='nvim'
 
-
 if [ -e /usr/share/doc/tig-1.0/contrib/tig-completion.bash ]; then
 	. /usr/share/doc/tig-1.0/contrib/tig-completion.bash
 fi
@@ -486,7 +485,7 @@ fi
 
 # awesome wm / java
 # https://bbs.archlinux.org/viewtopic.php?id=142063
-wmname LG3D
+# wmname LG3D
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
