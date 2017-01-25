@@ -11,26 +11,23 @@ set runtimepath+=~/.vim/dein/repos/github.com/Shougo/dein.vim
 
 call dein#begin(expand('~/.vim/dein'))
 call dein#add('Shougo/dein.vim')
-
 call dein#add('Shougo/deoplete.nvim')
+call dein#add('Shougo/denite.nvim')
 
 call dein#add('Shougo/vimproc.vim', {'build': 'make'})
 
-call dein#add('Shougo/denite.nvim')
-
+call dein#add('Shougo/unite.vim')
+call dein#add('tsukkee/unite-tag')
+call dein#add('Shougo/unite-outline')
 call dein#add('Shougo/unite.vim')
 call dein#add('Shougo/neomru.vim')
-call dein#add('Shougo/neosnippet')
-call dein#add('Shougo/unite-outline')
 
 call dein#add('Shougo/neosnippet')
 call dein#add('Shougo/neosnippet-snippets')
-call dein#add('Shougo/neocomplete.vim')
 
-call dein#add('tsukkee/unite-tag')
 call dein#add('tyru/current-func-info.vim')
 call dein#add('vim-scripts/matchit.zip')
-call dein#add('ujihisa/quickrun')
+call dein#add('thinca/vim-quickrun')
 call dein#add('vim-jp/vimdoc-ja')
 call dein#add('tpope/vim-rails')
 call dein#add('tpope/vim-fugitive')
@@ -46,6 +43,7 @@ call dein#add('osyo-manga/vim-monster')
 call dein#add('easymotion/vim-easymotion')
 call dein#add('wakatime/vim-wakatime')
 call dein#add('sunaku/vim-dasht')
+
 " necessary to run :GoInstallBinaries
 call dein#add('fatih/vim-go')
 call dein#add('zchee/deoplete-go', {'build': 'make'})
@@ -457,7 +455,7 @@ let g:yankring_history_file = 'tmpfs/yankring_history'
 
 " quickrun
 "{{{
-let g:quickrun_config = {}
+"let g:quickrun_config = {}
 "}}}
 
 "{{{ jq http://qiita.com/tekkoc/items/324d736f68b0f27680b8
@@ -482,7 +480,7 @@ augroup AddFileType
     au BufWinEnter,BufNewFile, *_spec.rb set filetype=ruby.rspec
 augroup END
 "let g:quickrun_config['ruby.rspec'] = { 'command': 'bundle exec rspec', 'cmdopt': '-cfs', 'exec': '%c %s %a' }
-let g:quickrun_config['ruby.rspec'] = { 'command': 'bundle exec rspec -cfs', 'exec': '%c %s %a' }
+"let g:quickrun_config['ruby.rspec'] = { 'command': 'bundle exec rspec -cfs', 'exec': '%c %s %a' }
 
 " 保存時に行末スペース削除
 function! Rtrim()
@@ -514,10 +512,13 @@ vnoremap <silent> <Leader>K y:<C-U>call Dasht(getreg(0))<Return>
 
 " search ALL the docsets
 vnoremap <silent> <Leader><Leader>K y:<C-U>call Dasht(getreg(0), '!')<Return>
-
 "}}}
 
-
+"{{{ neosnippet
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+"}}}
 
 "http://d.hatena.ne.jp/hirafoo/20120223/1329926505
 " let g:ruby_path = ""
