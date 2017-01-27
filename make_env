@@ -126,6 +126,9 @@ ln -snvf ${HOME}/config/lemonade_client.toml ${HOME}/.config/lemonade.toml
 #wakatime
 ln -s ${HOME}/Dropbox/secure/dot.wakatime.cfg ${HOME}/.wakatime.cfg
 
+mkdir -p ${HOME}/.docker
+ln -s ${HOME}/config/.docker/config.json ${HOME}/.docker/config.json
+
 echo "
 .ssh \
 .gnupg \
