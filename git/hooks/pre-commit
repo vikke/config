@@ -1,14 +1,20 @@
 #!/bin/sh
 
-ag -s --ruby --haml --js --coffee --nogroup 'console.log|binding.pry|debugger|debug.*code' \
-	--ignore vendor \
-	--ignore lib/extentions/yajl_json.rb \
-	--ignore delivery_test/delivery_support/request.rb \
-	--ignore config/initializers/backtrace_silencers.rb \
-	--ignore public/javascripts/selectivizr.js \
-	--ignore public/jquery.simulate.drag-sortable.js \
-	--ignore app/views/front/app_lists/_apps_selector.html.haml \
-	--ignore app/assets/javascripts/scaleout/plugin/fixed_table.coffee \
-	--ignore app/assets/javascripts/scaleout/ui/selection_group.js.coffee
+# commit前にチェックするhook
 
-exit 0
+if [ -z "$WIP" ] ; then
+
+  # debug codeが残ってないかチェック。
+  ag -s --ruby --haml --js --coffee --nogroup 'console.log|binding.pry|debugger|debug.*code' \
+    --ignore vendor \
+    --ignore config/initializers/backtrace_silencers.rb
+  if [ $? -eq 0 ]; then
+    exit 1
+  fi
+
+  # rubocop
+  git diff --cached --name-only --diff-filter=AM | grep '\.rb$' | grep -v '^db/.*' | xargs bundle exec rubocop
+
+fi
+
+exit $?
