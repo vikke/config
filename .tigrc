@@ -1,0 +1,10 @@
+# main viewの左端にコミットIDを表示する
+set main-view = id date author commit-title:graph=yes,refs=yes
+# デフォルト
+# set main-view = date author commit-title:graph=yes,refs=yes
+
+# defaultではgcが走っちゃってあぶないので無効化
+bind generic G none
+
+# vimdiffで表示
+bind generic D !git difftool --tool=vimdiff --no-prompt --trust-exit-code %(commit)^!

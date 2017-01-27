@@ -61,6 +61,7 @@ for f in \
 	.pryrc \
 	.screenrc \
 	.termcap \
+	.tigrc \
 	.tmux.conf \
 	.vim \
 	.vimrc \
