@@ -585,3 +585,8 @@ FZF-EOF"
 export dash_dir=~/vcswork/dasht
 export PATH=${PATH}:${dash_dir}/bin
 export MANPATH=${MANPATH}:${dash_dir}/man
+
+# hive
+export HIVE_HOME=~/vcswork/apache-hive-1.1.0-bin
+export PATH=${PATH}:${HIVE_HOME}/bin
+
