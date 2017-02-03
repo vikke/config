@@ -288,7 +288,7 @@ let g:monster#completion#rcodetools#backend = "async_rct_complete"
 
 " = denite.vim ==========================
 "{{{
-call denite#custom#var('file_rec', 'command', ['denite_file_list.sh'])
+call denite#custom#var('file_rec', 'command', ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
 call denite#custom#source('file_rec', 'matchers', ['matcher_fuzzy', 'matcher_project_files'])
 
 " call denite#custom#var('grep', 'command', ['denite_grep.sh'])
