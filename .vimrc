@@ -48,6 +48,8 @@ call dein#add('sunaku/vim-dasht')
 call dein#add('fatih/vim-go')
 call dein#add('zchee/deoplete-go', {'build': 'make'})
 
+call dein#add('w0ng/vim-hybrid')
+
 call dein#end()
 filetype plugin indent on
 " }}}
@@ -85,7 +87,7 @@ syntax enable
 set t_Co=256
 set nohlsearch
 set viminfo=:2000,'100,<50,s10,h
-set bri
+set breakindent
 "}}}--------------------------------------------------------------------------------
 
 "--------------------------------------------------------------------------
@@ -98,6 +100,8 @@ set bri
 "colorscheme midnight2
 " colorscheme xterm16
 colorscheme jellybeans
+"set background=dark
+"colorscheme hybrid
 
 "colorscheme gentooish
 "
@@ -294,9 +298,9 @@ call denite#custom#source('file_rec', 'matchers', ['matcher_fuzzy', 'matcher_pro
 " call denite#custom#var('grep', 'command', ['denite_grep.sh'])
 call denite#custom#var('grep', 'command', ['ag'])
 call denite#custom#var('grep', 'default_opts',
-    \ ['--nopager', '--nocolor', '--nogroup', '--column'])
+    \ ['-i', '--vimgrep'])
 call denite#custom#var('grep', 'recursive_opts', [])
-call denite#custom#var('grep', 'pattern_opt', ['--match'])
+call denite#custom#var('grep', 'pattern_opt', [])
 call denite#custom#var('grep', 'final_opts', [])
 call denite#custom#var('grep', 'separator', ['--'])
 call denite#custom#var('grep', 'final_opts', [])
@@ -308,8 +312,8 @@ nnoremap <silent> FF :DeniteBufferDir file_rec<CR>
 nnoremap <silent> FG :Denite grep<CR>
 nnoremap <silent> fg :Denite grep<CR><C-R><C-W><CR>
 " pattern_optを--matchにしたので、一端正規表現を外してみる。
-"nnoremap <silent> fj :Denite grep<cr>\b<C-R><C-W>\b<CR>
-nnoremap <silent> fj :Denite grep<cr><C-R><C-W><CR>
+nnoremap <silent> fj :Denite grep<CR>\b<C-R><C-W>\b<CR>
+"nnoremap <silent> fj :Denite grep<cr><C-R><C-W><CR>
 nnoremap <silent> fr :Denite -resume<CR>
 nnoremap <silent> fo :Denite unite:outline<CR>
 

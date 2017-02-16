@@ -7,4 +7,6 @@ set main-view = id date author commit-title:graph=yes,refs=yes
 bind generic G none
 
 # vimdiffで表示
-bind generic D !git difftool --tool=vimdiff --no-prompt --trust-exit-code %(commit)^!
+bind generic D !git difftool --tool=nvim -d --no-prompt --trust-exit-code %(commit)^!
+
+set vertical-split = no
