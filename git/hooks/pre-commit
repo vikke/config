@@ -5,7 +5,8 @@
 if [ -z "$WIP" ] ; then
 
   # debug codeが残ってないかチェック。
-  ag -s --ruby --haml --js --coffee --nogroup 'console.log|binding.pry|debugger|debug.*code' \
+  #ag -s --ruby --haml --js --coffee --nogroup 'console.log|binding.pry|debugger|debug.*code' \
+  ag -s --ruby --haml --js --coffee --nogroup 'binding.pry|debugger|debug.*code' \
     --ignore vendor \
     --ignore config/initializers/backtrace_silencers.rb
   if [ $? -eq 0 ]; then

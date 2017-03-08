@@ -589,4 +589,5 @@ export MANPATH=${MANPATH}:${dash_dir}/man
 # hive
 export HIVE_HOME=~/vcswork/apache-hive-1.1.0-bin
 export PATH=${PATH}:${HIVE_HOME}/bin
+export HADOOP_HOME=/usr/local/Cellar/hadoop/2.7.3
 

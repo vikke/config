@@ -43,6 +43,8 @@ call dein#add('osyo-manga/vim-monster')
 call dein#add('easymotion/vim-easymotion')
 call dein#add('wakatime/vim-wakatime')
 call dein#add('sunaku/vim-dasht')
+"call dein#add('vikke/BlockDiff')
+call dein#add('statox/vim-compare-lines')
 
 " necessary to run :GoInstallBinaries
 call dein#add('fatih/vim-go')
@@ -310,9 +312,10 @@ nnoremap <silent> ff :Denite file_rec<CR>
 nnoremap <silent> fm :Denite file_mru<CR>
 nnoremap <silent> FF :DeniteBufferDir file_rec<CR>
 nnoremap <silent> FG :Denite grep<CR>
-nnoremap <silent> fg :Denite grep<CR><C-R><C-W><CR>
+nnoremap <silent> fg :<C-u>DeniteCursorWord grep:.<CR>
 " pattern_optを--matchにしたので、一端正規表現を外してみる。
-nnoremap <silent> fj :Denite grep<CR>\b<C-R><C-W>\b<CR>
+"nnoremap <silent> fj :<C_u>DeniteCursorWord grep:.<CR>
+nnoremap <silent> fj :<C-u>DeniteCursorWord grep:.<CR>
 "nnoremap <silent> fj :Denite grep<cr><C-R><C-W><CR>
 nnoremap <silent> fr :Denite -resume<CR>
 nnoremap <silent> fo :Denite unite:outline<CR>
