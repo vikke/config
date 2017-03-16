@@ -14,7 +14,7 @@ call dein#add('Shougo/dein.vim')
 call dein#add('Shougo/deoplete.nvim')
 call dein#add('Shougo/denite.nvim')
 
-call dein#add('Shougo/vimproc.vim', {'build': 'make'})
+" call dein#add('Shougo/vimproc.vim', {'build': 'make'})
 
 call dein#add('Shougo/unite.vim')
 call dein#add('tsukkee/unite-tag')
@@ -37,20 +37,24 @@ call dein#add('scrooloose/nerdtree')
 call dein#add('vim-scripts/taglist.vim')
 call dein#add('junegunn/vim-easy-align')
 call dein#add('kchmck/vim-coffee-script')
-call dein#add('koron/chalice')
+" call dein#add('koron/chalice')
 call dein#add('mbbill/undotree')
 call dein#add('osyo-manga/vim-monster')
 call dein#add('easymotion/vim-easymotion')
 call dein#add('wakatime/vim-wakatime')
 call dein#add('sunaku/vim-dasht')
 "call dein#add('vikke/BlockDiff')
-call dein#add('statox/vim-compare-lines')
+"call dein#add('statox/vim-compare-lines')
+call dein#add('vim-scripts/Align')
+call dein#add('vim-scripts/SQLUtilities')
+
 
 " necessary to run :GoInstallBinaries
 call dein#add('fatih/vim-go')
 call dein#add('zchee/deoplete-go', {'build': 'make'})
 
-call dein#add('w0ng/vim-hybrid')
+" Theme
+" call dein#add('w0ng/vim-hybrid')
 
 call dein#end()
 filetype plugin indent on
@@ -89,7 +93,7 @@ syntax enable
 set t_Co=256
 set nohlsearch
 set viminfo=:2000,'100,<50,s10,h
-set breakindent
+" set breakindent
 "}}}--------------------------------------------------------------------------------
 
 "--------------------------------------------------------------------------
@@ -101,7 +105,7 @@ set breakindent
 "let xterm16_brightness = 'soft'
 "colorscheme midnight2
 " colorscheme xterm16
-colorscheme jellybeans
+" colorscheme jellybeans
 "set background=dark
 "colorscheme hybrid
 
@@ -501,6 +505,16 @@ endfunction
 autocmd BufWritePre * call Rtrim()
 
 "}}}--------------------------------------------------------------------------------
+
+"{{{ diff時にwrapされるのをやめる。
+" http://stackoverflow.com/questions/16840433/forcing-vimdiff-to-wrap-lines
+autocmd FilterWritePre * if &diff | setlocal wrap< | endif
+"}}}
+
+"{{{ SQLUFormatter
+let g:sqlutil_align_where = 0
+let g:sqlutil_align_comma = 1
+"}}}
 
 "{{{ dasht.vim ---------------------------------------------------------------------
 "
