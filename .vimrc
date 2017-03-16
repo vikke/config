@@ -54,7 +54,7 @@ call dein#add('fatih/vim-go')
 call dein#add('zchee/deoplete-go', {'build': 'make'})
 
 " Theme
-" call dein#add('w0ng/vim-hybrid')
+call dein#add('w0ng/vim-hybrid')
 
 call dein#end()
 filetype plugin indent on
@@ -106,8 +106,8 @@ set viminfo=:2000,'100,<50,s10,h
 "colorscheme midnight2
 " colorscheme xterm16
 " colorscheme jellybeans
-"set background=dark
-"colorscheme hybrid
+set background=dark
+colorscheme hybrid
 
 "colorscheme gentooish
 "
