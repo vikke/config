@@ -111,7 +111,7 @@ colorscheme hybrid
 
 "colorscheme gentooish
 "
-"hi Normal ctermfg=248 ctermbg=none
+hi Normal ctermfg=248 ctermbg=none
 
 "" %s///c とかのときに、マッチした場所を別の色で表示
 highlight IncSearch term=bold ctermbg=54 guibg=LightMagenta
