@@ -67,6 +67,8 @@ case $OSTYPE in
 		export LSCOLORS=gxfxcxdxbxegedabagacad
 		alias ls='ls -G'
 
+		eval "$(docker-machine env docker-host)"
+
 		;;
 
 	[cC][yY][gG][wW][iI][nN])
@@ -255,7 +257,7 @@ export XDEBUG_SESSION_START=DBGP
 export XDG_CONFIG_HOME=${HOME}/.config
 
 # GO #############################
-export GOPATH=${HOME}/.go
+export GOPATH=${HOME}/go
 export GOOS=$(go env GOOS)
 export GOARCH=$(go env GOARCH)
 
