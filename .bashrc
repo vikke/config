@@ -591,3 +591,5 @@ export HIVE_HOME=~/vcswork/apache-hive-1.1.0-bin
 export PATH=${PATH}:${HIVE_HOME}/bin
 export HADOOP_HOME=/usr/local/Cellar/hadoop/2.7.3
 
+# for ansible 1.9
+export PATH="/usr/local/opt/ansible@1.9/bin:${PATH}"
