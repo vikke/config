@@ -67,7 +67,7 @@ case $OSTYPE in
 		export LSCOLORS=gxfxcxdxbxegedabagacad
 		alias ls='ls -G'
 
-		eval "$(docker-machine env docker-host)"
+		# eval "$(docker-machine env docker-host)"
 
 		;;
 
@@ -581,6 +581,21 @@ gshow() {
                 xargs -I % sh -c 'git show --color=always % | less -R') << 'FZF-EOF'
                 {}
 FZF-EOF"
+}
+
+plist() {
+	val=${1}
+	ps auxww | grep -v 'grep' | grep -e "${val}"
+}
+
+pkill() {
+	for pid in $(plist "$1" | awk  '{print $2}'); do
+		kill ${pid}
+	done
+}
+
+fkill() {
+	ps aux | fzf | sed 's/  */ /g' | cut -d ' ' -f2 | xargs kill -KILL
 }
 
 # dasht ############################################
