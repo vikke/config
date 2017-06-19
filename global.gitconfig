@@ -15,6 +15,9 @@
 	bb = !git merge-base $1 $(sh -c "git branch | awk -e '/^* /{print $2;}'")
 	bc = !git merge-base $1 $(git branch | awk -e '/^* /{ print \\$2; }')
 	br = !git merge-base "$1" "$(git branch | awk -e '{print $2}')"
+	delete-merged-branches-local = !git branch --merged | grep -vE '^\\*|master$|develop$' | xargs -I % git branch -d %
+	delete-merged-branches-remote = !git branch -r --merged | grep '/ichiro/' |sed -e 's% *origin/%%' | xargs -I % git push origin :%
+
 #	mas = "!f() { git branch  -v | awk -e '/^m.*/{ print; }';}; f"
 	#mas = "!f() { git branch  -v | awk -e '{print $1;}'; }; f"
 #	m = merge --squash

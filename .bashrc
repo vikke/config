@@ -67,7 +67,7 @@ case $OSTYPE in
 		export LSCOLORS=gxfxcxdxbxegedabagacad
 		alias ls='ls -G'
 
-		eval "$(docker-machine env docker-host)"
+		# eval "$(docker-machine env docker-host)"
 
 		;;
 
@@ -583,6 +583,21 @@ gshow() {
 FZF-EOF"
 }
 
+plist() {
+	val=${1}
+	ps auxww | grep -v 'grep' | grep -e "${val}"
+}
+
+pkill() {
+	for pid in $(plist "$1" | awk  '{print $2}'); do
+		kill ${pid}
+	done
+}
+
+fkill() {
+	ps aux | fzf | sed 's/  */ /g' | cut -d ' ' -f2 | xargs kill -KILL
+}
+
 # dasht ############################################
 export dash_dir=~/vcswork/dasht
 export PATH=${PATH}:${dash_dir}/bin
@@ -595,3 +610,6 @@ export HADOOP_HOME=/usr/local/Cellar/hadoop/2.7.3
 
 
 export PATH=${PATH}:/Users/vikke/bin-nongit/gcc-arm-none-eabi-6-2017-q1-update/bin
+
+# for ansible 1.9
+export PATH="/usr/local/opt/ansible@1.9/bin:${PATH}"

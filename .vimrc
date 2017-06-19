@@ -319,7 +319,7 @@ nnoremap <silent> FG :Denite grep<CR>
 nnoremap <silent> fg :<C-u>DeniteCursorWord grep:.<CR>
 " pattern_optを--matchにしたので、一端正規表現を外してみる。
 "nnoremap <silent> fj :<C_u>DeniteCursorWord grep:.<CR>
-nnoremap <silent> fj :<C-u>DeniteCursorWord grep:.<CR>
+nnoremap <silent> fj :DeniteCursorWord grep:.<CR>
 "nnoremap <silent> fj :Denite grep<cr><C-R><C-W><CR>
 nnoremap <silent> fr :Denite -resume<CR>
 nnoremap <silent> fo :Denite unite:outline<CR>
