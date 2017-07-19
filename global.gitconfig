@@ -9,7 +9,7 @@
 	co = checkout
 	ga = log --pretty=format:\"%C(red)%h%Creset %C(cyan)<%an>%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset\" --all --abbrev-commit --date=relative --graph
 	cl = fetch --prune
-	d = diff --ignore-space-at-eol
+	d = diff --ignore-space-at-eol --ignore-space-change
 	dc = diff --cached --ignore-space-at-eol
 	alias = !git config --get-regexp '^alias\\.' | sed 's/alias\\.\\([^ ]*\\) \\(.*\\)/\\1\\\t => \\2/' | sort
 	bb = !git merge-base $1 $(sh -c "git branch | awk -e '/^* /{print $2;}'")
@@ -17,7 +17,7 @@
 	br = !git merge-base "$1" "$(git branch | awk -e '{print $2}')"
 	delete-merged-branches-local = !git branch --merged | grep -vE '^\\*|master$|develop$' | xargs -I % git branch -d %
 	delete-merged-branches-remote = !git branch -r --merged | grep '/ichiro/' |sed -e 's% *origin/%%' | xargs -I % git push origin :%
-
+	ac = commit -a --amend -C HEAD
 #	mas = "!f() { git branch  -v | awk -e '/^m.*/{ print; }';}; f"
 	#mas = "!f() { git branch  -v | awk -e '{print $1;}'; }; f"
 #	m = merge --squash
