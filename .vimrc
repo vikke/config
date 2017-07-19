@@ -311,18 +311,18 @@ call denite#custom#var('grep', 'final_opts', [])
 call denite#custom#var('grep', 'separator', ['--'])
 call denite#custom#var('grep', 'final_opts', [])
 
-nnoremap <silent> fs :Denite buffer<CR>
-nnoremap <silent> ff :Denite file_rec<CR>
-nnoremap <silent> fm :Denite file_mru<CR>
-nnoremap <silent> FF :DeniteBufferDir file_rec<CR>
-nnoremap <silent> FG :Denite grep<CR>
-nnoremap <silent> fg :<C-u>DeniteCursorWord grep:.<CR>
+nnoremap <silent> fs :Denite buffer -highlight-mode-insert=Search<CR>
+nnoremap <silent> ff :Denite file_rec -highlight-mode-insert=Search<CR>
+nnoremap <silent> fm :Denite file_mru -highlight-mode-insert=Search<CR>
+nnoremap <silent> FF :DeniteBufferDir file_rec -highlight-mode-insert=Search<CR>
+nnoremap <silent> FG :Denite grep -highlight-mode-insert=Search<CR>
+nnoremap <silent> fg :<C-u>DeniteCursorWord grep:. -highlight-mode-insert=Search<CR>
 " pattern_optを--matchにしたので、一端正規表現を外してみる。
 "nnoremap <silent> fj :<C_u>DeniteCursorWord grep:.<CR>
-nnoremap <silent> fj :DeniteCursorWord grep:.<CR>
+nnoremap <silent> fj :DeniteCursorWord grep:. -highlight-mode-insert=Search<CR>
 "nnoremap <silent> fj :Denite grep<cr><C-R><C-W><CR>
-nnoremap <silent> fr :Denite -resume<CR>
-nnoremap <silent> fo :Denite unite:outline<CR>
+nnoremap <silent> fr :Denite -resume -highlight-mode-insert=Search<CR>
+nnoremap <silent> fo :Denite unite:outline -highlight-mode-insert=Search<CR>
 
 " くそ重い
 " call denite#custom#option('default', 'auto_preview', 1)
