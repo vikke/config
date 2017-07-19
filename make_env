@@ -54,6 +54,7 @@ for f in \
 	.ideavimrc \
 	.infokey \
 	.inputrc \
+	.lv \
 	.mailcap \
 	.mayu \
 	.mutt \
