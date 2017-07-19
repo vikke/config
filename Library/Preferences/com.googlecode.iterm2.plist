@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>AboutToPasteTabsWithCancel</key>
+	<true/>
+	<key>AboutToPasteTabsWithCancel_selection</key>
+	<integer>2</integer>
 	<key>AppleAntiAliasingThreshold</key>
 	<integer>1</integer>
 	<key>AppleScrollAnimationEnabled</key>
@@ -47,20 +51,22 @@
 	<array/>
 	<key>NSTableView Sort Ordering KeyBingingTable</key>
 	<array/>
+	<key>NSWindow Frame NSFontPanel</key>
+	<string>835 110 445 103 0 0 1280 777 </string>
 	<key>NSWindow Frame Preferences</key>
 	<string>165 150 918 464 0 0 1920 1057 </string>
 	<key>NSWindow Frame ProfilesPanel</key>
-	<string>345 624 735 382 0 0 1920 1057 </string>
+	<string>345 624 735 382 0 0 1920 1080 </string>
 	<key>NSWindow Frame SUUpdateAlert</key>
-	<string>970 889 620 392 0 0 2560 1577 </string>
+	<string>650 517 620 392 0 0 1920 1080 </string>
 	<key>NSWindow Frame SessionsPreferences</key>
 	<string>2829 139 606 456 2560 0 1920 1057 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>692 89 918 512 0 0 1920 1080 </string>
+	<string>707 305 918 495 0 0 1920 1080 </string>
 	<key>NSWindow Frame UKCrashReporter</key>
 	<string>320 284 1280 773 0 0 1920 1057 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 0 665 523 0 0 1920 1057 </string>
+	<string>0 4 665 523 0 0 1920 1057 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>150 327 585 473 0 0 1280 800 </string>
 	<key>New Bookmarks</key>
@@ -588,7 +594,7 @@
 			<key>Name</key>
 			<string>Default</string>
 			<key>Non Ascii Font</key>
-			<string>Monaco 12</string>
+			<string>Osaka-Mono 12</string>
 			<key>Non-ASCII Anti Aliased</key>
 			<true/>
 			<key>Normal Font</key>
@@ -646,7 +652,7 @@
 			<key>Use Italic Font</key>
 			<true/>
 			<key>Use Non-ASCII Font</key>
-			<false/>
+			<true/>
 			<key>Vertical Spacing</key>
 			<real>1</real>
 			<key>Visual Bell</key>
@@ -675,6 +681,8 @@
 	<real>496917094.92030799</real>
 	<key>PMPrintingExpandedStateForPrint2</key>
 	<false/>
+	<key>PasteTabToStringTabStopSize</key>
+	<integer>4</integer>
 	<key>PointerActions</key>
 	<dict>
 		<key>Button,1,1,,</key>
@@ -721,7 +729,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2017-01-25T04:07:25Z</date>
+	<date>2017-04-25T12:08:58Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>ShowFullScreenTabBar</key>
@@ -735,6 +743,6 @@
 	<key>findRegex_iTerm</key>
 	<false/>
 	<key>iTerm Version</key>
-	<string>3.0.13</string>
+	<string>3.0.15</string>
 </dict>
 </plist>
