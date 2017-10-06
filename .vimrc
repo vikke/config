@@ -47,7 +47,9 @@ call dein#add('sunaku/vim-dasht')
 "call dein#add('statox/vim-compare-lines')
 call dein#add('vim-scripts/Align')
 call dein#add('vim-scripts/SQLUtilities')
-
+call dein#add('tyru/open-browser.vim')
+call dein#add('kazuph/previm', { 'rev': 'feature/add-plantuml-plugin' })
+call dein#add('aklt/plantuml-syntax')
 
 " necessary to run :GoInstallBinaries
 call dein#add('fatih/vim-go')
@@ -323,6 +325,7 @@ nnoremap <silent> fj :DeniteCursorWord grep:. -highlight-mode-insert=Search<CR>
 "nnoremap <silent> fj :Denite grep<cr><C-R><C-W><CR>
 nnoremap <silent> fr :Denite -resume -highlight-mode-insert=Search<CR>
 nnoremap <silent> fo :Denite unite:outline -highlight-mode-insert=Search<CR>
+nnoremap <silent> ] :<C-u>DeniteCursorWord unite:tag -highlight-mode-insert=Search<CR>
 
 " くそ重い
 " call denite#custom#option('default', 'auto_preview', 1)
@@ -347,7 +350,7 @@ let g:vdebug_options={
 
 " = unite-tag =========================
 "{{{
-nnoremap <buffer> <C-]> :<C-u>:Denite unite:tag<CR>
+" nnoremap <buffer> <C-]> <C-u>:UniteWithCursorWord -buffer-name=tags -immediately -start-insert tag<CR>
 "}}}
 
 " = lingr-vim =========================
@@ -543,6 +546,13 @@ smap <C-k>     <Plug>(neosnippet_expand_or_jump)
 xmap <C-k>     <Plug>(neosnippet_expand_target)
 "}}}
 
+"{{{ 外部からファイル更新があったら再読み込み
+augroup vimrc-checktime
+  autocmd!
+  autocmd WinEnter * checktime
+augroup END
+"}}}
+
 "{{{ 対応閉じ
 
 "}}}
@@ -550,7 +560,12 @@ xmap <C-k>     <Plug>(neosnippet_expand_target)
 "http://d.hatena.ne.jp/hirafoo/20120223/1329926505
 " let g:ruby_path = ""
 
+
 "{{{ vim-easy-align
 vmap <Enter> <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
+"}}}
+
+"{{{ filetype定義
+autocmd BufRead,BufNewFile *.slim setfiletype slim
 "}}}
