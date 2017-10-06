@@ -20,6 +20,8 @@
 	<false/>
 	<key>HideTab</key>
 	<false/>
+	<key>HotkeyMigratedFromSingleToMulti</key>
+	<true/>
 	<key>LoadPrefsFromCustomFolder</key>
 	<true/>
 	<key>NSNavLastRootDirectory</key>
@@ -58,15 +60,15 @@
 	<key>NSWindow Frame ProfilesPanel</key>
 	<string>345 624 735 382 0 0 1920 1080 </string>
 	<key>NSWindow Frame SUUpdateAlert</key>
-	<string>650 517 620 392 0 0 1920 1080 </string>
+	<string>330 306 620 392 0 0 1280 777 </string>
 	<key>NSWindow Frame SessionsPreferences</key>
-	<string>2829 139 606 456 2560 0 1920 1057 </string>
+	<string>269 144 606 456 0 0 1920 1080 </string>
 	<key>NSWindow Frame SharedPreferences</key>
 	<string>707 305 918 495 0 0 1920 1080 </string>
 	<key>NSWindow Frame UKCrashReporter</key>
 	<string>320 284 1280 773 0 0 1920 1057 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 4 665 523 0 0 1920 1057 </string>
+	<string>0 0 665 525 0 0 1280 777 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>150 327 585 473 0 0 1280 800 </string>
 	<key>New Bookmarks</key>
@@ -729,7 +731,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2017-04-25T12:08:58Z</date>
+	<date>2017-09-25T09:46:45Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>ShowFullScreenTabBar</key>
@@ -743,6 +745,6 @@
 	<key>findRegex_iTerm</key>
 	<false/>
 	<key>iTerm Version</key>
-	<string>3.0.15</string>
+	<string>3.1.1</string>
 </dict>
 </plist>
