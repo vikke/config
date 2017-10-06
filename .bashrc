@@ -611,5 +611,3 @@ export HADOOP_HOME=/usr/local/Cellar/hadoop/2.7.3
 
 export PATH=${PATH}:/Users/vikke/bin-nongit/gcc-arm-none-eabi-6-2017-q1-update/bin
 
-# for ansible 1.9
-export PATH="/usr/local/opt/ansible@1.9/bin:${PATH}"
