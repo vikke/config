@@ -13,6 +13,7 @@ call dein#begin(expand('~/.vim/dein'))
 call dein#add('Shougo/dein.vim')
 call dein#add('Shougo/deoplete.nvim')
 call dein#add('Shougo/denite.nvim')
+call dein#add('ozelentok/denite-gtags')
 
 " call dein#add('Shougo/vimproc.vim', {'build': 'make'})
 
@@ -54,6 +55,7 @@ call dein#add('aklt/plantuml-syntax')
 " necessary to run :GoInstallBinaries
 call dein#add('fatih/vim-go')
 call dein#add('zchee/deoplete-go', {'build': 'make'})
+
 
 " Theme
 call dein#add('w0ng/vim-hybrid')
@@ -340,6 +342,18 @@ call denite#custom#map('insert', '<C-o>', '<denite:do_action:vsplit>')
 ""}}}
 "
 
+"{{{ = denite-gtags
+nnoremap <leader>a :DeniteCursorWord -buffer-name=gtags_context gtags_context<cr>
+nnoremap <leader>d :DeniteCursorWord -buffer-name=gtags_def gtags_def<cr>
+nnoremap <leader>r :DeniteCursorWord -buffer-name=gtags_ref gtags_ref<cr>
+nnoremap <leader>g :DeniteCursorWord -buffer-name=gtags_grep gtags_grep<cr>
+nnoremap <leader>t :Denite -buffer-name=gtags_completion gtags_completion<cr>
+nnoremap <leader>f :Denite -buffer-name=gtags_file gtags_file<cr>
+nnoremap <leader>p :Denite -buffer-name=gtags_path gtags_path<cr>
+"}}}
+
+
+
 " = php debugger =====================
 " {{{
 let g:vdebug_options={
@@ -472,6 +486,9 @@ let g:yankring_history_file = 'tmpfs/yankring_history'
 " quickrun
 "{{{
 let g:quickrun_config = {}
+nmap <Leader><space> <Plug>(quickrun)
+"}}}
+"
 "}}}
 
 "{{{ jq http://qiita.com/tekkoc/items/324d736f68b0f27680b8
@@ -568,4 +585,3 @@ nmap ga <Plug>(EasyAlign)
 
 "{{{ filetype定義
 autocmd BufRead,BufNewFile *.slim setfiletype slim
-"}}}
