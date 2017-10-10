@@ -17,6 +17,7 @@
 	br = !git merge-base "$1" "$(git branch | gawk -e '{print $2}')"
 	delete-merged-branches-local = !git branch --merged | grep -vE '^\\*|master$|develop$' | xargs -I % git branch -d %
 	delete-merged-branches-remote = !git branch -r --merged | grep '/ichiro/' |sed -e 's% *origin/%%' | xargs -I % git push origin :%
+	show-base-branch = !git show-branch | grep '*' | grep -v "$(git rev-parse --abbrev-ref HEAD)" | head -1 | awk -F'[]~^[]' '{print $2}'
 	ac = commit -a --amend -C HEAD
 #	mas = "!f() { git branch  -v | awk -e '/^m.*/{ print; }';}; f"
 	#mas = "!f() { git branch  -v | awk -e '{print $1;}'; }; f"
