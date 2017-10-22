@@ -1,0 +1,28 @@
+{
+    "title": "skk",
+    "rules": [
+        {
+            "description": "ctrl-j to ctrl--0",
+            "manipulators": [
+                {
+                    "type": "basic",
+                    "from": {
+                        "key_code": "j",
+                        "modifiers": {
+                            "mandatory": ["control"]
+                        }
+                    },
+                    "to": [
+                        {
+                            "key_code": "0",
+                            "modifiers": [
+                                "control"
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
+
