@@ -206,6 +206,7 @@ fi
 stty stop undef
 
 # command履歴共有
+export HISTFILE=~/.HISTFILE
 export HISTSIZE=20000
 function share_history {
     history -a
@@ -327,6 +328,10 @@ if [ -e ${HOME}/.rbenv ]; then
 	export PATH=~/.rbenv/bin:${PATH}
 	eval "$(rbenv init -)"
 fi
+if [ -e /usr/local/bin/rbenv ]; then
+	eval "$(/usr/local/bin/rbenv init -)"
+fi
+
 
 if [ -e ${HOME}/.ndenv ]; then
 	export PATH=$PATH:$HOME/.ndenv/bin
