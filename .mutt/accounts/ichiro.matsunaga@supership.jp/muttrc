@@ -1,0 +1,22 @@
+# account
+set folder="~/Mail/ichiro.matsunaga@supership.jp"
+set spoolfile="+INBOX"
+set record="+[Gmail]/Sent Mail"
+set mbox_type=Maildir
+set use_from=yes
+set from="ichiro.maatsunaga@supership.jp"
+set realname="MATSUNAGA Ichiro"
+#set sendmail="/usr/bin/msmtp --account=ichiro.matsunaga"
+set sendmail="~/.mutt/bin/msmtp-enqueue.sh --account=ichiro.matsunaga"
+
+unmy_hdr cc bcc
+
+# signature
+set signature=~/.mutt/accounts/ichiro.matsunaga@supership.jp/signature
+
+# ML
+unsubscribe *
+
+set pgp_sign_as=39144BED
+set pgp_autosign
+#set pgp_autoencrypt
