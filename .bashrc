@@ -60,6 +60,9 @@ case $OSTYPE in
 #		export MAVEN_HOME=/opt/local/share/java/maven2
 		MYSQL_BASE=/opt/local
 
+		# brewで入れたpostgresのpath.
+		export PATH=${PATH}:/usr/local/opt/postgresql\@9.5/bin
+
 		if [ -f $(brew --prefix)/etc/bash_completion ]; then
 			. $(brew --prefix)/etc/bash_completion
 		fi
@@ -557,7 +560,7 @@ gdel() {
   local branches branch
   branches=$(git branch --all | grep -v HEAD) &&
   branch=$(echo "$branches" |
-           fzf-tmux -d $(( 2 + $(wc -l <<< "$branches") )) +m) &&
+           fzf-tmux -m -d $(( 2 + $(wc -l <<< "$branches") )) +m) &&
   git branch -d $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
 }
 
