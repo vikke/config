@@ -13,6 +13,7 @@ call dein#begin(expand('~/.vim/dein'))
 call dein#add('Shougo/dein.vim')
 call dein#add('Shougo/deoplete.nvim')
 call dein#add('Shougo/denite.nvim')
+call dein#add('ozelentok/denite-gtags')
 
 " call dein#add('Shougo/vimproc.vim', {'build': 'make'})
 
@@ -47,11 +48,14 @@ call dein#add('sunaku/vim-dasht')
 "call dein#add('statox/vim-compare-lines')
 call dein#add('vim-scripts/Align')
 call dein#add('vim-scripts/SQLUtilities')
-
+call dein#add('tyru/open-browser.vim')
+call dein#add('kazuph/previm', { 'rev': 'feature/add-plantuml-plugin' })
+call dein#add('aklt/plantuml-syntax')
 
 " necessary to run :GoInstallBinaries
 call dein#add('fatih/vim-go')
 call dein#add('zchee/deoplete-go', {'build': 'make'})
+
 
 " Theme
 call dein#add('w0ng/vim-hybrid')
@@ -311,18 +315,19 @@ call denite#custom#var('grep', 'final_opts', [])
 call denite#custom#var('grep', 'separator', ['--'])
 call denite#custom#var('grep', 'final_opts', [])
 
-nnoremap <silent> fs :Denite buffer<CR>
-nnoremap <silent> ff :Denite file_rec<CR>
-nnoremap <silent> fm :Denite file_mru<CR>
-nnoremap <silent> FF :DeniteBufferDir file_rec<CR>
-nnoremap <silent> FG :Denite grep<CR>
-nnoremap <silent> fg :<C-u>DeniteCursorWord grep:.<CR>
+nnoremap <silent> fs :Denite buffer -highlight-mode-insert=Search<CR>
+nnoremap <silent> ff :Denite file_rec -highlight-mode-insert=Search<CR>
+nnoremap <silent> fm :Denite file_mru -highlight-mode-insert=Search<CR>
+nnoremap <silent> FF :DeniteBufferDir file_rec -highlight-mode-insert=Search<CR>
+nnoremap <silent> FG :Denite grep -highlight-mode-insert=Search<CR>
+nnoremap <silent> fg :<C-u>DeniteCursorWord grep:. -highlight-mode-insert=Search<CR>
 " pattern_optを--matchにしたので、一端正規表現を外してみる。
 "nnoremap <silent> fj :<C_u>DeniteCursorWord grep:.<CR>
-nnoremap <silent> fj :DeniteCursorWord grep:.<CR>
+nnoremap <silent> fj :DeniteCursorWord grep:. -highlight-mode-insert=Search<CR>
 "nnoremap <silent> fj :Denite grep<cr><C-R><C-W><CR>
-nnoremap <silent> fr :Denite -resume<CR>
-nnoremap <silent> fo :Denite unite:outline<CR>
+nnoremap <silent> fr :Denite -resume -highlight-mode-insert=Search<CR>
+nnoremap <silent> fo :Denite unite:outline -highlight-mode-insert=Search<CR>
+nnoremap <silent> ] :<C-u>DeniteCursorWord unite:tag -highlight-mode-insert=Search<CR>
 
 " くそ重い
 " call denite#custom#option('default', 'auto_preview', 1)
@@ -337,6 +342,18 @@ call denite#custom#map('insert', '<C-o>', '<denite:do_action:vsplit>')
 ""}}}
 "
 
+"{{{ = denite-gtags
+nnoremap <leader>a :DeniteCursorWord -buffer-name=gtags_context gtags_context<cr>
+nnoremap <leader>d :DeniteCursorWord -buffer-name=gtags_def gtags_def<cr>
+nnoremap <leader>r :DeniteCursorWord -buffer-name=gtags_ref gtags_ref<cr>
+nnoremap <leader>g :DeniteCursorWord -buffer-name=gtags_grep gtags_grep<cr>
+nnoremap <leader>t :Denite -buffer-name=gtags_completion gtags_completion<cr>
+nnoremap <leader>f :Denite -buffer-name=gtags_file gtags_file<cr>
+nnoremap <leader>p :Denite -buffer-name=gtags_path gtags_path<cr>
+"}}}
+
+
+
 " = php debugger =====================
 " {{{
 let g:vdebug_options={
@@ -347,7 +364,7 @@ let g:vdebug_options={
 
 " = unite-tag =========================
 "{{{
-nnoremap <buffer> <C-]> :<C-u>:Denite unite:tag<CR>
+" nnoremap <buffer> <C-]> <C-u>:UniteWithCursorWord -buffer-name=tags -immediately -start-insert tag<CR>
 "}}}
 
 " = lingr-vim =========================
@@ -469,6 +486,9 @@ let g:yankring_history_file = 'tmpfs/yankring_history'
 " quickrun
 "{{{
 let g:quickrun_config = {}
+nmap <Leader><space> <Plug>(quickrun)
+"}}}
+"
 "}}}
 
 "{{{ jq http://qiita.com/tekkoc/items/324d736f68b0f27680b8
@@ -543,6 +563,13 @@ smap <C-k>     <Plug>(neosnippet_expand_or_jump)
 xmap <C-k>     <Plug>(neosnippet_expand_target)
 "}}}
 
+"{{{ 外部からファイル更新があったら再読み込み
+augroup vimrc-checktime
+  autocmd!
+  autocmd WinEnter * checktime
+augroup END
+"}}}
+
 "{{{ 対応閉じ
 
 "}}}
@@ -550,7 +577,11 @@ xmap <C-k>     <Plug>(neosnippet_expand_target)
 "http://d.hatena.ne.jp/hirafoo/20120223/1329926505
 " let g:ruby_path = ""
 
+
 "{{{ vim-easy-align
 vmap <Enter> <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 "}}}
+
+"{{{ filetype定義
+autocmd BufRead,BufNewFile *.slim setfiletype slim

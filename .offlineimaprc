@@ -1,6 +1,6 @@
 [general]
 #accounts = vikke.bsd@gmail.com,vikke@mars95.to
-accounts = vikke.bsd@gmail.com
+accounts = vikke.bsd@gmail.com,ichiro.matsunaga@supership.jp
 maxsyncaccounts = 3
 ui = Blinkenlights
 
@@ -24,7 +24,38 @@ realdelete = no
 #cert_fingerprint=f3043dd689a2e7dddfbef82703a6c65ea9b634c1
 #cert_fingerprint=6d1b5b5ee0180ab493b71d3b94534b5ab937d042
 #cert_fingerprint=b0ba392bba326e6feb1add4d04fa0fb86cd173fa
-cert_fingerprint=89091347184d41768bfc0da9fad94bfe882dd358
+#cert_fingerprint=674e02c6c9b1ed44398a0e7ed4abae1b9c9f8b7c
+cert_fingerprint=dc68de0e0567db1e83215317093081df7bda9fc7
+
+################################################################
+[Account ichiro.matsunaga@supership.jp]
+localrepository = Local_ichiro.matsunaga@supership.jp
+remoterepository = Remote_ichiro.matsunaga@supership.jp
+autorefresh = 5
+
+[Repository Local_ichiro.matsunaga@supership.jp]
+type = Maildir
+localfolders = ~/Mail/ichiro.matsunaga@supership.jp
+sep = /
+
+[Repository Remote_ichiro.matsunaga@supership.jp]
+type = Gmail
+remoteuser = ichiro.matsunaga@supership.jp
+remotepassfile = ~/.offlineimap/ichiro.matsunaga@supership.jp_pass
+maxconnections = 6
+realdelete = no
+#cert_fingerprint=f3043dd689a2e7dddfbef82703a6c65ea9b634c1
+#cert_fingerprint=6d1b5b5ee0180ab493b71d3b94534b5ab937d042
+#cert_fingerprint=b0ba392bba326e6feb1add4d04fa0fb86cd173fa
+#cert_fingerprint=674e02c6c9b1ed44398a0e7ed4abae1b9c9f8b7c
+cert_fingerprint=dc68de0e0567db1e83215317093081df7bda9fc7
+
+
+
+
+
+
+
 
 ################################################################
 [Account vikke@mars95.to]

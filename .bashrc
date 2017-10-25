@@ -60,6 +60,9 @@ case $OSTYPE in
 #		export MAVEN_HOME=/opt/local/share/java/maven2
 		MYSQL_BASE=/opt/local
 
+		# brewで入れたpostgresのpath.
+		export PATH=${PATH}:/usr/local/opt/postgresql\@9.5/bin
+
 		if [ -f $(brew --prefix)/etc/bash_completion ]; then
 			. $(brew --prefix)/etc/bash_completion
 		fi
@@ -206,6 +209,7 @@ fi
 stty stop undef
 
 # command履歴共有
+export HISTFILE=~/.HISTFILE
 export HISTSIZE=20000
 function share_history {
     history -a
@@ -327,6 +331,10 @@ if [ -e ${HOME}/.rbenv ]; then
 	export PATH=~/.rbenv/bin:${PATH}
 	eval "$(rbenv init -)"
 fi
+if [ -e /usr/local/bin/rbenv ]; then
+	eval "$(/usr/local/bin/rbenv init -)"
+fi
+
 
 if [ -e ${HOME}/.ndenv ]; then
 	export PATH=$PATH:$HOME/.ndenv/bin
@@ -552,7 +560,7 @@ gdel() {
   local branches branch
   branches=$(git branch --all | grep -v HEAD) &&
   branch=$(echo "$branches" |
-           fzf-tmux -d $(( 2 + $(wc -l <<< "$branches") )) +m) &&
+           fzf-tmux -m -d $(( 2 + $(wc -l <<< "$branches") )) +m) &&
   git branch -d $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
 }
 
@@ -611,5 +619,3 @@ export HADOOP_HOME=/usr/local/Cellar/hadoop/2.7.3
 
 export PATH=${PATH}:/Users/vikke/bin-nongit/gcc-arm-none-eabi-6-2017-q1-update/bin
 
-# for ansible 1.9
-export PATH="/usr/local/opt/ansible@1.9/bin:${PATH}"

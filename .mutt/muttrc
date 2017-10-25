@@ -33,14 +33,7 @@ set send_charset="iso-2022-jp:UTF-8"
 set assumed_charset="iso-2022-jp:euc-jp:shift_jis:utf-8"
 # 添付テキストファイルの文字コードを指定。
 set attach_charset="iso-2022-jp:euc-jp:shift_jis:utf-8"
-# 機種依存文字による化けを避ける
-set sanitize_ja_chars
 
-set cjk_width
-
-# 日本語ファイル名のファイルを添付する際に、ファイル名が変になるのに対応。
-# 要jp patch
-set create_rfc2047_parameters
 set rfc2047_parameters
 
 #
@@ -138,7 +131,7 @@ macro generic,index,pager xx "<shell-escape> ~/.mutt/bin/mkmbmailboxes\n\n" "res
 macro generic,index,pager xz ":set my_tmpfolder=$folder\n:set ?my_tmpfolder:set folder=~/Mail\n"
 
 # sidebar関係 #########################################
-#set sidebar_visible=no
+#set sidebar_visible=yes
 #mailboxes =INBOX
 #bind index \CP sidebar-prev
 #bind index \CN sidebar-next
@@ -164,6 +157,7 @@ set envelope_from=yes
 folder-hook "vikke\.bsd@gmail\.com" "source ~/.mutt/accounts/vikke.bsd@gmail.com/muttrc"
 folder-hook "vikke@mars95\.to" "source ~/.mutt/accounts/vikke@mars95.to/muttrc"
 folder-hook "matsunaga\@livesense.co.jp" "source ~/.mutt/accounts/matsunaga@livesense.co.jp/muttrc"
+folder-hook "ichiro.matsunaga\@supership.jp" "source ~/.mutt/accounts/ichiro.matsunaga@supership.jp/muttrc"
 # 移動先がアカウントディレクトリの直下の場合のみ、!へ強制移動させる。これをやらないと、INBOXでは無い為、メールが表示されない。
 # ちなみに上の各アカウント毎のfolder hookより後に実行される必要がある。folder-hookの優先度は記述順かな？そうでないとすると、たまたま動いている可能性有り。
 folder-hook "Mail/[^\/]+/*$" "push \"c!<enter>\""
@@ -188,4 +182,4 @@ folder-hook "\[Gmail\][\./]Trash" "macro index,pager d \"<delete-message>\""
 
 # 起動直後のdefault
 #source "~/.mutt/accounts/vikke.bsd@gmail.com/muttrc"
-source "~/.mutt/accounts/matsunaga@livesense.co.jp/muttrc"
+source "~/.mutt/accounts/ichiro.matsunaga@supership.jp/muttrc"

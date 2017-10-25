@@ -38,7 +38,6 @@ no_cache 0
 noproxy_netaddr 0
 no_proxy 
 ftp_proxy 
-gopher_proxy 
 https_proxy 
 http_proxy 
 use_proxy 1
@@ -56,7 +55,6 @@ accept_encoding gzip, compress, bzip, bzip2, deflate
 accept_language ja;q=1.0, en;q=0.5
 no_referer 0
 user_agent 
-siteconf_file ~/.w3m/siteconf
 pre_form_file ~/.w3m/pre_form
 ftppass_hostnamegen 0
 ftppasswd anonymous@
@@ -66,7 +64,7 @@ use_lessopen 0
 bgextviewer 1
 extbrowser3 
 extbrowser2 
-extbrowser /usr/bin/mozilla
+extbrowser open
 mailer 
 mailto_options 1
 editor sensible-editor
@@ -87,8 +85,6 @@ relative_wheel_scroll_ratio 30
 relative_wheel_scroll 0
 reverse_mouse 0
 use_mouse 1
-migemo_command migemo -t egrep /usr/share/migemo/migemo-dict
-use_migemo 1
 ignorecase_search 1
 wrap_search 0
 mark_all_pages 0
@@ -117,19 +113,12 @@ label_topline 0
 show_srch_str 1
 show_lnum 0
 fold_line 0
-image_map_list 1
-imgdisplay /usr/lib/w3m/w3mimgdisplay
-image_scale 100
-ext_image_viewer 1
-max_load_image 4
-auto_image 1
 pseudo_inlines 1
 display_image 1
 view_unseenobject 1
 ignore_null_img_alt 1
 display_ins_del 1
 fold_textarea 0
-display_borders 0
 graphic_char 0
 alt_entity 0
 multicol 0
@@ -145,7 +134,6 @@ open_tab_dl_list 0
 open_tab_blank 0
 target_self 0
 frame 0
-pixel_per_line 15
 pixel_per_char 7
 indent_incr 4
 tabstop 8
