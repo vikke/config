@@ -19,6 +19,7 @@
 	delete-merged-branches-remote = !git branch -r --merged | grep '/ichiro/' |sed -e 's% *origin/%%' | xargs -I % git push origin :%
 	show-base-branch = !git show-branch | grep '*' | grep -v "$(git rev-parse --abbrev-ref HEAD)" | head -1 | awk -F'[]~^[]' '{print $2}'
 	ac = commit -a --amend -C HEAD
+	diff-commit-obj = log --graph --date=short --decorate=short --pretty=format:'%Cgreen%h %Creset%cd %Cblue%cn %Cred%d %Creset%s'
 #	mas = "!f() { git branch  -v | awk -e '/^m.*/{ print; }';}; f"
 	#mas = "!f() { git branch  -v | awk -e '{print $1;}'; }; f"
 #	m = merge --squash
