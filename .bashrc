@@ -61,7 +61,7 @@ case $OSTYPE in
 		MYSQL_BASE=/opt/local
 
 		# brewで入れたpostgresのpath.
-		export PATH=${PATH}:/usr/local/opt/postgresql\@9.5/bin
+		export PATH=${PATH}:/usr/local/opt/postgresql@9.5/bin
 
 		if [ -f $(brew --prefix)/etc/bash_completion ]; then
 			. $(brew --prefix)/etc/bash_completion
@@ -473,7 +473,7 @@ alias rspec='bundle exec rspec'
 alias rake='bundle exec rake'
 alias rails='bundle exec rails'
 alias ssh_copy_id='ssh-copy-id -i ~/.ssh/id_rsa.pub '
-alias vim='nvim'
+# alias vim='nvim'
 
 if [ -e /usr/share/doc/tig-1.0/contrib/tig-completion.bash ]; then
 	. /usr/share/doc/tig-1.0/contrib/tig-completion.bash
