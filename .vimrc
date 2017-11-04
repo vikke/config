@@ -11,7 +11,14 @@ set runtimepath+=~/.vim/dein/repos/github.com/Shougo/dein.vim
 
 call dein#begin(expand('~/.vim/dein'))
 call dein#add('Shougo/dein.vim')
+
 call dein#add('Shougo/deoplete.nvim')
+if !has('nvim')
+  call dein#add('roxma/nvim-yarp')
+  call dein#add('roxma/vim-hug-neovim-rpc')
+endif
+
+
 call dein#add('Shougo/denite.nvim')
 call dein#add('ozelentok/denite-gtags')
 
@@ -20,12 +27,12 @@ call dein#add('ozelentok/denite-gtags')
 call dein#add('Shougo/unite.vim')
 call dein#add('tsukkee/unite-tag')
 call dein#add('Shougo/unite-outline')
-call dein#add('Shougo/unite.vim')
 call dein#add('Shougo/neomru.vim')
 
 call dein#add('Shougo/neosnippet')
 call dein#add('Shougo/neosnippet-snippets')
 
+call dein#add('pocke/iro.vim')
 call dein#add('tyru/current-func-info.vim')
 call dein#add('vim-scripts/matchit.zip')
 call dein#add('thinca/vim-quickrun')
@@ -51,14 +58,23 @@ call dein#add('vim-scripts/SQLUtilities')
 call dein#add('tyru/open-browser.vim')
 call dein#add('kazuph/previm', { 'rev': 'feature/add-plantuml-plugin' })
 call dein#add('aklt/plantuml-syntax')
+call dein#add('kana/vim-operator-user')
+call dein#add('haya14busa/vim-operator-flashy')
+
+" git client
+call dein#add('lambdalisue/gina.vim')
+
+" neovim compatible for vim8
+call dein#add('roxma/nvim-yarp')
+call dein#add('roxma/vim-hug-neovim-rpc')
 
 " necessary to run :GoInstallBinaries
 call dein#add('fatih/vim-go')
 call dein#add('zchee/deoplete-go', {'build': 'make'})
 
-
 " Theme
 call dein#add('w0ng/vim-hybrid')
+call dein#add('cocopon/iceberg.vim')
 
 call dein#end()
 filetype plugin indent on
@@ -111,7 +127,8 @@ set viminfo=:2000,'100,<50,s10,h
 " colorscheme xterm16
 " colorscheme jellybeans
 set background=dark
-colorscheme hybrid
+" colorscheme hybrid
+colorscheme iceberg
 
 "colorscheme gentooish
 "
@@ -276,6 +293,7 @@ set grepprg=ag\ -i
 "--------------------------------------------------------------------------------
 
 " {{{ = deoplete ==================================
+call deoplete#enable()
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#enable_ignore_case = 1
 let g:deoplete#enable_smart_case = 1
@@ -585,3 +603,10 @@ nmap ga <Plug>(EasyAlign)
 
 "{{{ filetype定義
 autocmd BufRead,BufNewFile *.slim setfiletype slim
+"}}}
+
+"{{{ vim-operator-flashy
+map y <Plug>(operator-flashy)
+nmap Y <Plug>(operator-flashy)$
+"}}}
+
