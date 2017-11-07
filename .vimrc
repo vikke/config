@@ -540,7 +540,7 @@ function! Rtrim()
     call setpos(".", s:now)
 endfunction
 
-autocmd BufWritePre * call Rtrim()
+" autocmd BufWritePre * call Rtrim()
 
 "}}}--------------------------------------------------------------------------------
 
