@@ -4,3 +4,10 @@ tags
 tags-ja
 *.exe.stackdump
 *.pyc
+
+GPATH
+GTAGS
+GRTAGS
+
+tags
+
