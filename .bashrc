@@ -130,6 +130,7 @@ case $OSTYPE in
 
 	linux*)
 		alias ls='ls --color=auto -F'
+		alias vim='~/Dropbox/bin/nvim.appimage'
 		export VIMPATH=nvim
 		export JDK_DIR=/usr/lib/jvm
 		export PAGER="lv -c"
@@ -616,8 +617,14 @@ export HIVE_HOME=~/vcswork/apache-hive-1.1.0-bin
 export PATH=${PATH}:${HIVE_HOME}/bin
 export HADOOP_HOME=/usr/local/Cellar/hadoop/2.7.3
 
-eval "$(nodenv init -)"
-eval "$(pyenv init -)"
+if [ -d ~/.nodenv ]; then
+	export PATH=${PATH}:~/.nodenv/bin
+	eval "$(~/.nodenv/bin/nodenv init -)"
+fi
 
+if [ -d ~/.pyenv ]; then
+	export PATH=${PATH}:~/.pyenv/bin
+	eval "$(pyenv init -)" 
+fi
 export PATH=${PATH}:/Users/vikke/bin-nongit/gcc-arm-none-eabi-6-2017-q1-update/bin
 
