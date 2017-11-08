@@ -58,8 +58,8 @@
 	smudge = git-lfs smudge -- %f
 
 [merge]
-  tool = vimdiff
+  tool = vim -d
 [mergetool]
   prompt = false
 [mergetool "vimdiff"]
-  cmd = nvim -d $BASE $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
+  cmd = vim -d $BASE $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
