@@ -2,6 +2,11 @@
 " $HeadURL: https://psb.vikke.mydns.jp/svn/vikke_env/.vimrc $
 "
 
+if has('python3')
+  " Python 3 を使うためのおまじない
+end
+
+set ttimeoutlen=0
 
 " {{{ dein
 if &compatible
@@ -32,7 +37,7 @@ call dein#add('Shougo/neomru.vim')
 call dein#add('Shougo/neosnippet')
 call dein#add('Shougo/neosnippet-snippets')
 
-call dein#add('pocke/iro.vim')
+" call dein#add('pocke/iro.vim')
 call dein#add('tyru/current-func-info.vim')
 call dein#add('vim-scripts/matchit.zip')
 call dein#add('thinca/vim-quickrun')
@@ -56,6 +61,7 @@ call dein#add('sunaku/vim-dasht')
 call dein#add('vim-scripts/Align')
 call dein#add('vim-scripts/SQLUtilities')
 call dein#add('tyru/open-browser.vim')
+" browser preview
 call dein#add('kazuph/previm', { 'rev': 'feature/add-plantuml-plugin' })
 call dein#add('aklt/plantuml-syntax')
 call dein#add('kana/vim-operator-user')
