@@ -616,6 +616,8 @@ export HIVE_HOME=~/vcswork/apache-hive-1.1.0-bin
 export PATH=${PATH}:${HIVE_HOME}/bin
 export HADOOP_HOME=/usr/local/Cellar/hadoop/2.7.3
 
+eval "$(nodenv init -)"
+eval "$(pyenv init -)"
 
 export PATH=${PATH}:/Users/vikke/bin-nongit/gcc-arm-none-eabi-6-2017-q1-update/bin
 
