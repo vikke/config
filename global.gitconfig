@@ -1,5 +1,5 @@
 [core]
-	excludesfile = /Users/ichiro.matsunaga/.gitignore
+	excludesfile = ~/.gitignore
 [user]
 	email = vikke.bsd@gmail.com
 	name = MATSUNAGA Ichiro
@@ -58,8 +58,8 @@
 	smudge = git-lfs smudge -- %f
 
 [merge]
-  tool = vim -d
+  tool = nvim -d
 [mergetool]
   prompt = false
 [mergetool "vimdiff"]
-  cmd = vim -d $BASE $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
+  cmd = nvim -d $BASE $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'

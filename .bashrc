@@ -262,6 +262,7 @@ export XDEBUG_SESSION_START=DBGP
 export XDG_CONFIG_HOME=${HOME}/.config
 
 # GO #############################
+export PATH=${PATH}:/usr/local/go//bin
 export GOPATH=${HOME}/go
 export GOOS=$(go env GOOS)
 export GOARCH=$(go env GOARCH)
