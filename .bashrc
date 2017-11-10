@@ -69,6 +69,7 @@ case $OSTYPE in
 
 		export LSCOLORS=gxfxcxdxbxegedabagacad
 		alias ls='ls -G'
+		export HADOOP_HOME=/usr/local/Cellar/hadoop/2.7.3
 
 		# eval "$(docker-machine env docker-host)"
 
@@ -144,6 +145,8 @@ case $OSTYPE in
 		export PATH=${PATH}:/usr/local/node-v4.6.0-linux-x64/bin
 		export MANPATH="${HOME}/.linuxbrew/share/man:$MANPATH"
 		export INFOPATH="${HOME}/.linuxbrew/share/info:$INFOPATH"
+
+		export HADOOP_HOME=/usr/lib/hadoop
 
 		;;
 
@@ -615,8 +618,7 @@ export MANPATH=${MANPATH}:${dash_dir}/man
 
 # hive
 export HIVE_HOME=~/vcswork/apache-hive-1.1.0-bin
-export PATH=${PATH}:${HIVE_HOME}/bin
-export HADOOP_HOME=/usr/local/Cellar/hadoop/2.7.3
+export PATH=${PATH}:${HIVE_HOME}/bin:${HADOOP_HOME}/bin
 
 if [ -d ~/.nodenv ]; then
 	export PATH=${PATH}:~/.nodenv/bin

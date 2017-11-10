@@ -82,6 +82,9 @@ call dein#add('zchee/deoplete-go', {'build': 'make'})
 call dein#add('w0ng/vim-hybrid')
 call dein#add('cocopon/iceberg.vim')
 
+" IDE
+call dein#add('vim-syntastic/syntastic.git')
+
 call dein#end()
 filetype plugin indent on
 " }}}
@@ -546,7 +549,9 @@ function! Rtrim()
     call setpos(".", s:now)
 endfunction
 
-" autocmd BufWritePre * call Rtrim()
+autocmd BufWritePre *.rb call Rtrim()
+autocmd BufWritePre *.sh call Rtrim()
+autocmd BufWritePre *.vim call Rtrim()
 
 "}}}--------------------------------------------------------------------------------
 
@@ -616,4 +621,16 @@ autocmd BufRead,BufNewFile *.slim setfiletype slim
 "nmap Y <Plug>(operator-flashy)$
 "}}}
 
-
+"{{{ vim-syntastic/syntastic.git
+let g:syntastic_enable_signs=1
+let g:syntastic_auto_loc_list=2
+let g:syntastic_mode_map = {'mode': 'passive'} 
+augroup AutoSyntastic
+    autocmd!
+    autocmd InsertLeave,TextChanged * call s:syntastic() 
+augroup END
+function! s:syntastic()
+"    w
+    SyntasticCheck
+endfunction
+"}}}
