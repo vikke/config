@@ -58,7 +58,7 @@
 	smudge = git-lfs smudge -- %f
 
 [merge]
-  tool = nvim -d
+  tool = vimdiff
 [mergetool]
   prompt = false
 [mergetool "vimdiff"]

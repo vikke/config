@@ -330,27 +330,6 @@ unset f
 
 export ANGBAND_X11_FONT_0="-*-ipamonagothic-medium-r-normal-*-14-*-*-*-*-*-jisx0208.1983-*"
 
-export PYTHONPATH=.
-
-if [ -e ${HOME}/.rbenv ]; then
-	export PATH=~/.rbenv/bin:${PATH}
-	eval "$(rbenv init -)"
-fi
-if [ -e /usr/local/bin/rbenv ]; then
-	eval "$(/usr/local/bin/rbenv init -)"
-fi
-
-
-if [ -e ${HOME}/.ndenv ]; then
-	export PATH=$PATH:$HOME/.ndenv/bin
-	eval "$(ndenv init -)"
-fi
-
-if [ -e ${vcsroot}/nvm/nvm.sh ]; then
-	. ${vcsroot}/nvm/nvm.sh
-	nvm use v0.7.8 > /dev/null
-	export NODE_PATH=${NVM_PATH}_modules
-fi
 
 if [ -f ${HOME}/.gpg-agent-info ] && \
 		ps axo 'pid' | grep -q `cut -d: -f 2 ${HOME}/.gpg-agent-info` ;then
@@ -506,7 +485,7 @@ fi
 export PATH="/usr/local/heroku/bin:$PATH"
 
 # brew-file
-if [ -f $(brew --prefix)/etc/brew-wrap ];then
+if [ -f $(brew --prefix)/etc/brew-wrap ]; then
 	source $(brew --prefix)/etc/brew-wrap
 fi
 
@@ -620,10 +599,10 @@ export MANPATH=${MANPATH}:${dash_dir}/man
 export HIVE_HOME=~/vcswork/apache-hive-1.1.0-bin
 export PATH=${PATH}:${HIVE_HOME}/bin:${HADOOP_HOME}/bin
 
-if [ -d ~/.nodenv ]; then
-	export PATH=${PATH}:~/.nodenv/bin
-	eval "$(~/.nodenv/bin/nodenv init -)"
-fi
+eval "$(nodenv init -)"
+export PYTHONPATH=.
+eval "$(pyenv init -)"
+eval "$(rbenv init -)"
 
 export PYENV_ROOT=~/.pyenv
 if [ -d ~/.pyenv ]; then
@@ -634,3 +613,6 @@ export PATH=${PATH}:/Users/vikke/bin-nongit/gcc-arm-none-eabi-6-2017-q1-update/b
 
 # rubyでspring off
 export DISABLE_SPRING=true
+
+export PATH="/usr/local/opt/gpg-agent/bin:$PATH"
+export PATH="/usr/local/opt/postgresql@9.5/bin:$PATH"
