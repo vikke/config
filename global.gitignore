@@ -5,6 +5,8 @@ tags-ja
 *.exe.stackdump
 *.pyc
 
+.DS_Store
+
 GPATH
 GTAGS
 GRTAGS
