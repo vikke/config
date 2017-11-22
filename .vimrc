@@ -37,7 +37,6 @@ call dein#add('Shougo/neomru.vim')
 call dein#add('Shougo/neosnippet')
 call dein#add('Shougo/neosnippet-snippets')
 
-" call dein#add('pocke/iro.vim')
 call dein#add('tyru/current-func-info.vim')
 call dein#add('vim-scripts/matchit.zip')
 call dein#add('thinca/vim-quickrun')
