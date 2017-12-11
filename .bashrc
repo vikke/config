@@ -544,8 +544,16 @@ gdel() {
   local branches branch
   branches=$(git branch --all | grep -v HEAD) &&
   branch=$(echo "$branches" |
-           fzf-tmux -m -d $(( 2 + $(wc -l <<< "$branches") )) +m) &&
+           fzf-tmux -m -d $(( 2 + $(wc -l <<< "$branches") )) ) &&
   git branch -d $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
+}
+
+gdeldel() {
+  local branches branch
+  branches=$(git branch --all | grep -v HEAD) &&
+  branch=$(echo "$branches" |
+           fzf-tmux -m -d $(( 2 + $(wc -l <<< "$branches") )) ) &&
+  git branch -D $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
 }
 
 # fco - checkout git branch/tag
