@@ -43,6 +43,8 @@ fi
 
 declare -r vcsroot=~/vcswork
 
+export TZ=Asia/Tokyo
+
 case $OSTYPE in
 	darwin*)
 		# macports installer addition on 2009-09-20_at_00:46:05: adding an appropriate path variable for use with macports.
@@ -147,6 +149,8 @@ case $OSTYPE in
 		export INFOPATH="${HOME}/.linuxbrew/share/info:$INFOPATH"
 
 		export HADOOP_HOME=/usr/lib/hadoop
+
+		export PATH=${PATH}:~/.rbenv/bin
 
 		;;
 
