@@ -519,6 +519,11 @@ fd() {
   dir=$(find ${1:-.} -type d 2> /dev/null | fzf-tmux +m) && cd "$dir"
 }
 
+fdel() {
+  local dirs
+  dirs=$(find ${1:-.} -type d 2> /dev/null | fzf-tmux -m) && rm -rf ${dirs}
+}
+
 fdi() {
 	local file
 	local dir
