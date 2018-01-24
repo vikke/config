@@ -75,6 +75,13 @@ case $OSTYPE in
 
 		# eval "$(docker-machine env docker-host)"
 
+		# google cloud platform
+		export PATH=${PATH}:~/Dropbox/apl/osx/google-cloud-sdk/bin
+		. /Users/vikke/Dropbox/apl/osx/google-cloud-sdk/completion.bash.inc
+		. /Users/vikke/Dropbox/apl/osx/google-cloud-sdk/path.bash.inc
+
+
+
 		;;
 
 	[cC][yY][gG][wW][iI][nN])
@@ -109,6 +116,7 @@ case $OSTYPE in
 
 		PATH=${VIMPATH%/gvim}:${HOME}/bin/windows:${PATH}
 		PATH=${PATH}:/cygdrive/c/Program\ Files/Microsoft\ Visual\ SourceSafe
+
 		;;
 
 	freebsd*)
