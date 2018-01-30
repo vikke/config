@@ -87,6 +87,9 @@ case $OSTYPE in
 	darwin*)
 		link_dotfile .Xmodmap.mac .Xmodmap
 
+		mkdir -p ~/Library/Preferences/kitty
+		kitty.conf ~/Library/Preferences/kitty/kitty.conf
+
 		ln -s ~/config/Library/Application\ Support/Karabiner ~/Library/Application\ Support/Karabiner
 		;;
 	freebsd*)
@@ -95,6 +98,8 @@ case $OSTYPE in
 
 	linux*)
 #		link_dotfile .Xmodmap.ubuntu .Xmodmap
+		mkdir -p ~/.config/kitty/
+		kitty.conf ~/.config/kitty/kitty.conf
 		;;
 
 	*)
@@ -136,6 +141,7 @@ mkdir -p ${HOME}/.config/karabiner/assets/complex_modifications
 for f in ./karabiner/*.json ; do
 	ln -s ${f} ${HOME}/.config/karabiner/assets/complex_modifications/
 done
+
 
 echo "
 .ssh \
