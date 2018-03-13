@@ -74,7 +74,7 @@ case $OSTYPE in
 		alias ls='ls -G'
 		export HADOOP_HOME=/usr/local/Cellar/hadoop/2.7.3
 
-		# eval "$(docker-machine env docker-host)"
+		eval "$(docker-machine env default)"
 
 		# google cloud platform
 		export PATH=${PATH}:~/Dropbox/apl/osx/google-cloud-sdk/bin
