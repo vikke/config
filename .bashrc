@@ -58,7 +58,7 @@ case $OSTYPE in
 		export VIMPATH=nvim
 		alias vim=nvim
 
-		export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
+		export JAVA_HOME=$(/usr/libexec/java_home -v 9)
 		export _JAVA_OPTIONS="-Dfile.encoding=UTF-8"
 #		export MAVEN_HOME=/opt/local/share/java/maven2
 		MYSQL_BASE=/opt/local
@@ -78,8 +78,8 @@ case $OSTYPE in
 
 		# google cloud platform
 		export PATH=${PATH}:~/Dropbox/apl/osx/google-cloud-sdk/bin
-		. /Users/vikke/Dropbox/apl/osx/google-cloud-sdk/completion.bash.inc
-		. /Users/vikke/Dropbox/apl/osx/google-cloud-sdk/path.bash.inc
+		. ~/Dropbox/apl/osx/google-cloud-sdk/completion.bash.inc
+		. ~/Dropbox/apl/osx/google-cloud-sdk/path.bash.inc
 
 
 
