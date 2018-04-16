@@ -84,6 +84,9 @@ call dein#add('cocopon/iceberg.vim')
 " IDE
 call dein#add('vim-syntastic/syntastic.git')
 
+" markdown toc
+call dein#add('mzlogin/vim-markdown-toc')
+
 call dein#end()
 filetype plugin indent on
 " }}}
