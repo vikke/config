@@ -63,9 +63,6 @@ case $OSTYPE in
 #		export MAVEN_HOME=/opt/local/share/java/maven2
 		MYSQL_BASE=/opt/local
 
-		# brewで入れたpostgresのpath.
-		export PATH=${PATH}:/usr/local/opt/postgresql@9.5/bin
-
 		if [ -f $(brew --prefix)/etc/bash_completion ]; then
 			. $(brew --prefix)/etc/bash_completion
 		fi
@@ -74,14 +71,24 @@ case $OSTYPE in
 		alias ls='ls -G'
 		export HADOOP_HOME=/usr/local/Cellar/hadoop/2.7.3
 
-		eval "$(docker-machine env default)"
-
 		# google cloud platform
 		export PATH=${PATH}:~/Dropbox/apl/osx/google-cloud-sdk/bin
 		. ~/Dropbox/apl/osx/google-cloud-sdk/completion.bash.inc
 		. ~/Dropbox/apl/osx/google-cloud-sdk/path.bash.inc
 
+		# brew
+		export PATH=${PATH}:$(brew --prefix)/opt/redis@3.2/bin
+		export PATH=${PATH}:/usr/local/opt/postgresql@9.5/bin
+		export PATH="/usr/local/opt/gettext/bin:$PATH"
+		export PATH="/usr/local/opt/gpg-agent/bin:$PATH"
+		export PATH="/usr/local/opt/postgresql@9.5/bin:$PATH"
+		export LDFLAGS="-L/usr/local/opt/openssl/lib"
+		export CPPFLAGS="-I/usr/local/opt/openssl/include"
+		export PKG_CONFIG_PATH="/usr/local/opt/openssl/lib/pkgconfig"
 
+
+# node
+export PATH="/usr/local/opt/node@8/bin:$PATH"
 
 		;;
 
@@ -640,5 +647,4 @@ export PATH=${PATH}:/Users/vikke/bin-nongit/gcc-arm-none-eabi-6-2017-q1-update/b
 # rubyでspring off
 export DISABLE_SPRING=true
 
-export PATH="/usr/local/opt/gpg-agent/bin:$PATH"
-export PATH="/usr/local/opt/postgresql@9.5/bin:$PATH"
+export ENV=dev
