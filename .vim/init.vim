@@ -1,1 +1,1 @@
-../../config/.vimrc
+/Users/ichiro_matsunaga/config/.vimrc

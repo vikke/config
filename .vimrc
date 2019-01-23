@@ -8,86 +8,91 @@ end
 
 set ttimeoutlen=0
 
-" {{{ dein
+" {{{ dein 
 if &compatible
       set nocompatible
 endif
-set runtimepath+=~/.vim/dein/repos/github.com/Shougo/dein.vim
+set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
 
-call dein#begin(expand('~/.vim/dein'))
-call dein#add('Shougo/dein.vim')
+if dein#load_state('~/.cache/dein')
+    call dein#begin('~/.cache/dein')
 
-call dein#add('Shougo/deoplete.nvim')
-if !has('nvim')
-  call dein#add('roxma/nvim-yarp')
-  call dein#add('roxma/vim-hug-neovim-rpc')
+    call dein#add('~/.cache/dein')
+    call dein#add('Shougo/deoplete.nvim')
+    if !has('nvim')
+      call dein#add('roxma/nvim-yarp')
+      call dein#add('roxma/vim-hug-neovim-rpc')
+    endif
+
+    call dein#add('Shougo/denite.nvim')
+    call dein#add('ozelentok/denite-gtags')
+
+    " call dein#add('Shougo/vimproc.vim', {'build': 'make'})
+
+    call dein#add('Shougo/unite.vim')
+    call dein#add('tsukkee/unite-tag')
+    call dein#add('Shougo/unite-outline')
+    call dein#add('Shougo/neomru.vim')
+
+    call dein#add('Shougo/neosnippet')
+    call dein#add('Shougo/neosnippet-snippets')
+
+    call dein#add('tyru/current-func-info.vim')
+    call dein#add('vim-scripts/matchit.zip')
+    call dein#add('thinca/vim-quickrun')
+    call dein#add('vim-jp/vimdoc-ja')
+    call dein#add('tpope/vim-rails')
+    call dein#add('tpope/vim-fugitive')
+    call dein#add('tmhedberg/matchit')
+    call dein#add('tyru/restart.vim')
+    call dein#add('scrooloose/nerdtree')
+    call dein#add('vim-scripts/taglist.vim')
+    call dein#add('junegunn/vim-easy-align')
+    call dein#add('kchmck/vim-coffee-script')
+    " call dein#add('koron/chalice')
+    call dein#add('mbbill/undotree')
+    call dein#add('osyo-manga/vim-monster')
+    call dein#add('easymotion/vim-easymotion')
+    call dein#add('wakatime/vim-wakatime')
+    call dein#add('sunaku/vim-dasht')
+    "call dein#add('vikke/BlockDiff')
+    "call dein#add('statox/vim-compare-lines')
+    call dein#add('vim-scripts/Align')
+    call dein#add('vim-scripts/SQLUtilities')
+    call dein#add('tyru/open-browser.vim')
+    " browser preview
+    call dein#add('kazuph/previm', { 'rev': 'feature/add-plantuml-plugin' })
+    call dein#add('aklt/plantuml-syntax')
+    call dein#add('kana/vim-operator-user')
+    call dein#add('haya14busa/vim-operator-flashy')
+
+    " git client
+    call dein#add('lambdalisue/gina.vim')
+
+    " neovim compatible for vim8
+    call dein#add('roxma/nvim-yarp')
+    call dein#add('roxma/vim-hug-neovim-rpc')
+
+    " necessary to run :GoInstallBinaries
+    call dein#add('fatih/vim-go')
+    call dein#add('zchee/deoplete-go', {'build': 'make'})
+
+    " Theme
+    call dein#add('w0ng/vim-hybrid')
+    call dein#add('cocopon/iceberg.vim')
+
+    " IDE
+    call dein#add('vim-syntastic/syntastic.git')
+    call dein#add('editorconfig/editorconfig-vim')
+
+    " markdown toc
+    call dein#add('mzlogin/vim-markdown-toc')
+    " plantuml
+    call dein#add('scrooloose/vim-slumlord')
+
+    call dein#end()
+    call dein#save_state()
 endif
-
-
-call dein#add('Shougo/denite.nvim')
-call dein#add('ozelentok/denite-gtags')
-
-" call dein#add('Shougo/vimproc.vim', {'build': 'make'})
-
-call dein#add('Shougo/unite.vim')
-call dein#add('tsukkee/unite-tag')
-call dein#add('Shougo/unite-outline')
-call dein#add('Shougo/neomru.vim')
-
-call dein#add('Shougo/neosnippet')
-call dein#add('Shougo/neosnippet-snippets')
-
-call dein#add('tyru/current-func-info.vim')
-call dein#add('vim-scripts/matchit.zip')
-call dein#add('thinca/vim-quickrun')
-call dein#add('vim-jp/vimdoc-ja')
-call dein#add('tpope/vim-rails')
-call dein#add('tpope/vim-fugitive')
-call dein#add('tmhedberg/matchit')
-call dein#add('tyru/restart.vim')
-call dein#add('scrooloose/nerdtree')
-call dein#add('vim-scripts/taglist.vim')
-call dein#add('junegunn/vim-easy-align')
-call dein#add('kchmck/vim-coffee-script')
-" call dein#add('koron/chalice')
-call dein#add('mbbill/undotree')
-call dein#add('osyo-manga/vim-monster')
-call dein#add('easymotion/vim-easymotion')
-call dein#add('wakatime/vim-wakatime')
-call dein#add('sunaku/vim-dasht')
-"call dein#add('vikke/BlockDiff')
-"call dein#add('statox/vim-compare-lines')
-call dein#add('vim-scripts/Align')
-call dein#add('vim-scripts/SQLUtilities')
-call dein#add('tyru/open-browser.vim')
-" browser preview
-call dein#add('kazuph/previm', { 'rev': 'feature/add-plantuml-plugin' })
-call dein#add('aklt/plantuml-syntax')
-call dein#add('kana/vim-operator-user')
-call dein#add('haya14busa/vim-operator-flashy')
-
-" git client
-call dein#add('lambdalisue/gina.vim')
-
-" neovim compatible for vim8
-call dein#add('roxma/nvim-yarp')
-call dein#add('roxma/vim-hug-neovim-rpc')
-
-" necessary to run :GoInstallBinaries
-call dein#add('fatih/vim-go')
-call dein#add('zchee/deoplete-go', {'build': 'make'})
-
-" Theme
-call dein#add('w0ng/vim-hybrid')
-call dein#add('cocopon/iceberg.vim')
-
-" IDE
-call dein#add('vim-syntastic/syntastic.git')
-
-" markdown toc
-call dein#add('mzlogin/vim-markdown-toc')
-
-call dein#end()
 filetype plugin indent on
 " }}}
 
@@ -337,12 +342,13 @@ call denite#custom#source('file_rec', 'matchers', ['matcher_fuzzy', 'matcher_pro
 " call denite#custom#var('grep', 'command', ['denite_grep.sh'])
 call denite#custom#var('grep', 'command', ['ag'])
 call denite#custom#var('grep', 'default_opts',
-    \ ['-i', '--vimgrep'])
+    \ ['--vimgrep'])
 call denite#custom#var('grep', 'recursive_opts', [])
 call denite#custom#var('grep', 'pattern_opt', [])
 call denite#custom#var('grep', 'final_opts', [])
 call denite#custom#var('grep', 'separator', ['--'])
 call denite#custom#var('grep', 'final_opts', [])
+call denite#custom#var('grep', 'args', ['', '!', '!'])
 
 nnoremap <silent> fs :Denite buffer -highlight-mode-insert=Search<CR>
 nnoremap <silent> ff :Denite file_rec -highlight-mode-insert=Search<CR>
@@ -551,7 +557,7 @@ function! Rtrim()
     call setpos(".", s:now)
 endfunction
 
-autocmd BufWritePre *.rb call Rtrim()
+" autocmd BufWritePre *.rb call Rtrim()
 autocmd BufWritePre *.sh call Rtrim()
 autocmd BufWritePre *.vim call Rtrim()
 
@@ -626,10 +632,10 @@ autocmd BufRead,BufNewFile *.slim setfiletype slim
 "{{{ vim-syntastic/syntastic.git
 "let g:syntastic_enable_signs=1
 "let g:syntastic_auto_loc_list=2
-"let g:syntastic_mode_map = {'mode': 'passive'} 
+"let g:syntastic_mode_map = {'mode': 'passive'}
 "augroup AutoSyntastic
 "    autocmd!
-"    autocmd InsertLeave,TextChanged * call s:syntastic() 
+"    autocmd InsertLeave,TextChanged * call s:syntastic()
 "augroup END
 "function! s:syntastic()
 ""    w
