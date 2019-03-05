@@ -71,11 +71,6 @@ case $OSTYPE in
 		alias ls='ls -G'
 		export HADOOP_HOME=/usr/local/Cellar/hadoop/2.7.3
 
-		# google cloud platform
-		export PATH=${PATH}:~/Dropbox/apl/osx/google-cloud-sdk/bin
-		. ~/Dropbox/apl/osx/google-cloud-sdk/completion.bash.inc
-		. ~/Dropbox/apl/osx/google-cloud-sdk/path.bash.inc
-
 		# brew
 		export PATH=${PATH}:$(brew --prefix)/opt/redis@3.2/bin
 		export PATH=${PATH}:/usr/local/opt/postgresql@9.5/bin
@@ -234,7 +229,7 @@ stty stop undef
 
 # command履歴共有
 export HISTFILE=~/.HISTFILE
-export HISTSIZE=20000
+export HISTSIZE=10000
 function share_history {
     history -a
     history -c
@@ -245,7 +240,7 @@ shopt -u histappend
 shopt -s globstar
 
 # 履歴で、空行の場合と、同じコマンドが続けて2回目の場合は履歴に入れないようにする。
-export HISTCONTROL=erasedups
+export HISTCONTROL=ignoredups
 
 #export RUBYLIB=/usr/lib/ruby/gems/1.8/gems/tidy-1.1.2/lib
 #export RUBYOPT=rubygems
