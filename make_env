@@ -47,6 +47,7 @@ for f in \
 	.bashrc \
 	.ctags \
 	.conkyrc \
+	.curlrc \
 	.fetchmailrc \
 	.gemrc \
 	.globalrc \
@@ -68,6 +69,7 @@ for f in \
 	.tmux.conf \
 	.vim \
 	.vimrc \
+	.wgetrc \
 	.w3m \
 	.xprofile \
 	.xsession \
