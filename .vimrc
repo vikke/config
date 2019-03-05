@@ -89,6 +89,8 @@ if dein#load_state('~/.cache/dein')
     call dein#add('mzlogin/vim-markdown-toc')
     " plantuml
     call dein#add('scrooloose/vim-slumlord')
+    " mark bookmark
+    call dein#add('mattesgroeger/vim-bookmarks')
 
     call dein#end()
     call dein#save_state()
