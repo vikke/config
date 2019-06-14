@@ -640,6 +640,6 @@ fi
 export PATH=${PATH}:/Users/vikke/bin-nongit/gcc-arm-none-eabi-6-2017-q1-update/bin
 
 # rubyでspring off
-export DISABLE_SPRING=true
+# export DISABLE_SPRING=true
 
 export ENV=dev

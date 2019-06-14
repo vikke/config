@@ -1,6 +1,5 @@
 " $Id: .vimrc 602 2011-02-17 16:54:21Z vikke $
-" $HeadURL: https://psb.vikke.mydns.jp/svn/vikke_env/.vimrc $
-"
+" $HeadURL: https://psb.vikke.mydns.jp/svn/vikke_env/.vimrc $ 
 
 if has('python3')
   " Python 3 を使うためのおまじない
@@ -643,4 +642,9 @@ autocmd BufRead,BufNewFile *.slim setfiletype slim
 ""    w
 "    SyntasticCheck
 "endfunction
+"}}}
+
+"{{{ vim-bookmarks
+let g:bookmark_auto_close = 0
+
 "}}}
