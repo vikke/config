@@ -337,10 +337,25 @@ let g:monster#completion#rcodetools#backend = "async_rct_complete"
 
 " = denite.vim ==========================
 "{{{
-call denite#custom#var('file_rec', 'command', ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
-call denite#custom#source('file_rec', 'matchers', ['matcher_fuzzy', 'matcher_project_files'])
+autocmd FileType denite call s:denite_my_settings()
+function! s:denite_my_settings() abort
+  nnoremap <silent><buffer><expr> <CR>
+  \ denite#do_map('do_action')
+  nnoremap <silent><buffer><expr> <ESC>
+  \ denite#do_map('quit')
+  nnoremap <silent><buffer><expr> <C-k>
+  \ denite#do_map('do_action', 'split')
+  nnoremap <silent><buffer><expr> <C-o>
+  \ denite#do_map('do_action', 'vsplit')
+endfunction
 
-" call denite#custom#var('grep', 'command', ['denite_grep.sh'])
+call denite#custom#var('file/rec', 'command',
+\ ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
+call denite#custom#source(
+\ 'file_mru', 'matchers', ['matcher/fuzzy', 'matcher/project_files'])
+call denite#custom#source(
+\ 'file/rec', 'matchers', ['matcher/cpsm'])
+
 call denite#custom#var('grep', 'command', ['ag'])
 call denite#custom#var('grep', 'default_opts',
     \ ['--vimgrep'])
@@ -351,27 +366,19 @@ call denite#custom#var('grep', 'separator', ['--'])
 call denite#custom#var('grep', 'final_opts', [])
 call denite#custom#var('grep', 'args', ['', '!', '!'])
 
-nnoremap <silent> fs :Denite buffer -highlight-mode-insert=Search<CR>
-nnoremap <silent> ff :Denite file_rec -highlight-mode-insert=Search<CR>
-nnoremap <silent> fm :Denite file_mru -highlight-mode-insert=Search<CR>
-nnoremap <silent> FF :DeniteBufferDir file_rec -highlight-mode-insert=Search<CR>
-nnoremap <silent> FG :Denite grep -highlight-mode-insert=Search<CR>
-nnoremap <silent> fg :<C-u>DeniteCursorWord grep:. -highlight-mode-insert=Search<CR>
+nnoremap <silent> fs :Denite buffer<CR>
+nnoremap <silent> ff :Denite file/rec<CR>
+nnoremap <silent> fm :Denite file_mru<CR>
+nnoremap <silent> FF :DeniteBufferDir file/rec<CR>
+nnoremap <silent> FG :Denite grep<CR>
+nnoremap <silent> fg :<C-u>DeniteCursorWord grep:.<CR>
 " pattern_optを--matchにしたので、一端正規表現を外してみる。
 "nnoremap <silent> fj :<C_u>DeniteCursorWord grep:.<CR>
-nnoremap <silent> fj :DeniteCursorWord grep:. -highlight-mode-insert=Search<CR>
+nnoremap <silent> fj :DeniteCursorWord grep:.<CR>
 "nnoremap <silent> fj :Denite grep<cr><C-R><C-W><CR>
-nnoremap <silent> fr :Denite -resume -highlight-mode-insert=Search<CR>
-nnoremap <silent> fo :Denite unite:outline -highlight-mode-insert=Search<CR>
-nnoremap <silent> ] :<C-u>DeniteCursorWord unite:tag -highlight-mode-insert=Search<CR>
-
-" くそ重い
-" call denite#custom#option('default', 'auto_preview', 1)
-
-call denite#custom#map('insert', '<C-p>', '<denite:move_to_previous_line>', 'noremap')
-call denite#custom#map('insert', '<C-n>', '<denite:move_to_next_line>', 'noremap')
-call denite#custom#map('insert', '<C-k>', '<denite:do_action:split>', 'noremap')
-call denite#custom#map('insert', '<C-o>', '<denite:do_action:vsplit>')
+nnoremap <silent> fr :Denite -resume<CR>
+nnoremap <silent> fo :Denite unite:outline<CR>
+nnoremap <silent> ] :<C-u>DeniteCursorWord unite:tag<CR>
 
 "" = unite-outline =====================
 ""{{{
