@@ -347,14 +347,21 @@ function! s:denite_my_settings() abort
   \ denite#do_map('do_action', 'split')
   nnoremap <silent><buffer><expr> <C-o>
   \ denite#do_map('do_action', 'vsplit')
+  nnoremap <silent><buffer><expr> i
+  \ denite#do_map('open_filter_buffer')
+endfunction
+
+autocmd FileType denite-filter call s:denite_filter_my_settings()
+function! s:denite_filter_my_settings() abort
+  imap <silent><buffer> <ESC> <Plug>(denite_filter_quit)
 endfunction
 
 call denite#custom#var('file/rec', 'command',
-\ ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
+    \ ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
 call denite#custom#source(
-\ 'file_mru', 'matchers', ['matcher/fuzzy', 'matcher/project_files'])
+    \ 'file_mru', 'matchers', ['matcher/fuzzy', 'matcher/project_files'])
 call denite#custom#source(
-\ 'file/rec', 'matchers', ['matcher/cpsm'])
+    \ 'file/rec', 'matchers', ['matcher/fuzzy'])
 
 call denite#custom#var('grep', 'command', ['ag'])
 call denite#custom#var('grep', 'default_opts',
@@ -366,15 +373,15 @@ call denite#custom#var('grep', 'separator', ['--'])
 call denite#custom#var('grep', 'final_opts', [])
 call denite#custom#var('grep', 'args', ['', '!', '!'])
 
-nnoremap <silent> fs :Denite buffer<CR>
-nnoremap <silent> ff :Denite file/rec<CR>
-nnoremap <silent> fm :Denite file_mru<CR>
-nnoremap <silent> FF :DeniteBufferDir file/rec<CR>
-nnoremap <silent> FG :Denite grep<CR>
-nnoremap <silent> fg :<C-u>DeniteCursorWord grep:.<CR>
+nnoremap <silent> fs :Denite buffer -start-filter<CR>
+nnoremap <silent> ff :Denite file/rec -start-filter<CR>
+nnoremap <silent> fm :Denite file_mru -start-filter<CR>
+nnoremap <silent> FF :DeniteBufferDir file/rec -start-filter<CR>
+nnoremap <silent> FG :Denite grep -start-filter<CR>
+nnoremap <silent> fg :<C-u>DeniteCursorWord grep:. -start-filter<CR>
 " pattern_optを--matchにしたので、一端正規表現を外してみる。
 "nnoremap <silent> fj :<C_u>DeniteCursorWord grep:.<CR>
-nnoremap <silent> fj :DeniteCursorWord grep:.<CR>
+nnoremap <silent> fj :DeniteCursorWord grep:. -start-filter<CR>
 "nnoremap <silent> fj :Denite grep<cr><C-R><C-W><CR>
 nnoremap <silent> fr :Denite -resume<CR>
 nnoremap <silent> fo :Denite unite:outline<CR>
