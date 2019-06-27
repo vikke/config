@@ -373,15 +373,15 @@ call denite#custom#var('grep', 'separator', ['--'])
 call denite#custom#var('grep', 'final_opts', [])
 call denite#custom#var('grep', 'args', ['', '!', '!'])
 
-nnoremap <silent> fs :Denite buffer -start-filter<CR>
-nnoremap <silent> ff :Denite file/rec -start-filter<CR>
-nnoremap <silent> fm :Denite file_mru -start-filter<CR>
-nnoremap <silent> FF :DeniteBufferDir file/rec -start-filter<CR>
-nnoremap <silent> FG :Denite grep -start-filter<CR>
-nnoremap <silent> fg :<C-u>DeniteCursorWord grep:. -start-filter<CR>
+nnoremap <silent> fs :Denite buffer<CR>
+nnoremap <silent> ff :Denite file/rec<CR>
+nnoremap <silent> fm :Denite file_mru<CR>
+nnoremap <silent> FF :DeniteBufferDir file/rec<CR>
+nnoremap <silent> FG :Denite grep<CR>
+nnoremap <silent> fg :<C-u>DeniteCursorWord grep:.<CR>
 " pattern_optを--matchにしたので、一端正規表現を外してみる。
 "nnoremap <silent> fj :<C_u>DeniteCursorWord grep:.<CR>
-nnoremap <silent> fj :DeniteCursorWord grep:. -start-filter<CR>
+nnoremap <silent> fj :DeniteCursorWord grep:.<CR>
 "nnoremap <silent> fj :Denite grep<cr><C-R><C-W><CR>
 nnoremap <silent> fr :Denite -resume<CR>
 nnoremap <silent> fo :Denite unite:outline<CR>
