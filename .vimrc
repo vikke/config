@@ -343,6 +343,8 @@ function! s:denite_my_settings() abort
   \ denite#do_map('do_action')
   nnoremap <silent><buffer><expr> <ESC>
   \ denite#do_map('quit')
+  nnoremap <silent><buffer><expr> q
+  \ denite#do_map('quit')
   nnoremap <silent><buffer><expr> <C-k>
   \ denite#do_map('do_action', 'split')
   nnoremap <silent><buffer><expr> <C-o>
