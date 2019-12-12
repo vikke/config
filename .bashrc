@@ -63,9 +63,7 @@ case $OSTYPE in
 #		export MAVEN_HOME=/opt/local/share/java/maven2
 		MYSQL_BASE=/opt/local
 
-		if [ -f $(brew --prefix)/etc/bash_completion ]; then
-			. $(brew --prefix)/etc/bash_completion
-		fi
+		[[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
 
 		export LSCOLORS=gxfxcxdxbxegedabagacad
 		alias ls='ls -G'
@@ -80,7 +78,7 @@ case $OSTYPE in
 		export LDFLAGS="-L/usr/local/opt/openssl/lib"
 		export CPPFLAGS="-I/usr/local/opt/openssl/include"
 		export PKG_CONFIG_PATH="/usr/local/opt/openssl/lib/pkgconfig"
-
+		export HOMEBREW_NO_ANALYTICS=1
 
 # node
 export PATH="/usr/local/opt/node@8/bin:$PATH"
