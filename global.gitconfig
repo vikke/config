@@ -37,8 +37,8 @@
 	default = current
 #	default = simple
 [pager]
-	diff = ~/bin-nongit/diff-highlight | less
-	log = ~/bin-nongit/diff-highlight | less
+	diff = diff-so-fancy | less
+	log = diff-so-fancy | less
 #	diff = /usr/local/opt/git/share/git-core/contrib/diff-highlight/diff-highlight | less
 #	log = /usr/local/opt/git/share/git-core/contrib/diff-highlight/diff-highlight | less
 #	show = /usr/local/opt/git/share/git-core/contrib/diff-highlight/diff-highlight | less
@@ -63,7 +63,4 @@
   prompt = false
 [mergetool "vimdiff"]
   cmd = nvim -d $BASE $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
-[http]
-	proxy = http://10.0.10.10:8080
-[https]
-	proxy = http://10.0.10.10:8080
+

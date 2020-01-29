@@ -1,6 +1,8 @@
 " $Id: .vimrc 602 2011-02-17 16:54:21Z vikke $
 " $HeadURL: https://psb.vikke.mydns.jp/svn/vikke_env/.vimrc $ 
 
+let g:python3_host_prog = '/usr/bin/python'
+
 if has('python3')
   " Python 3 を使うためのおまじない
 end
