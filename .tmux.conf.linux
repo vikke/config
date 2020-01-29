@@ -1,8 +1,11 @@
 # clipboard
-bind-key -t vi-copy v begin-selection
-bind-key -t vi-copy y copy-pipe "lemonade copy"
-unbind -t vi-copy Enter
-bind-key -t vi-copy Enter copy-pipe "lemonade copy"
+# lemonadeを使ったdocker内とのclipboard.
+# bind-key -t vi-copy v begin-selection
+# bind-key -t vi-copy y copy-pipe "lemonade copy"
+# unbind -t vi-copy Enter
+# bind-key -t vi-copy Enter copy-pipe "lemonade copy"
 
+bind-key -T copy-mode-vi y send-keys -X copy-pipe-and-cancel "xclip -i -sel clip > /dev/null"
+bind-key -T copy-mode-vi Enter send-keys -X copy-pipe-and-cancel "xclip -i -sel clip > /dev/null"
 # vim: ft=conf
 
