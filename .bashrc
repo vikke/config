@@ -79,7 +79,7 @@ case $OSTYPE in
 		export CPPFLAGS="-I/usr/local/opt/openssl/include"
 		export PKG_CONFIG_PATH="/usr/local/opt/openssl/lib/pkgconfig"
 		export HOMEBREW_NO_ANALYTICS=1
-
+		export PATH=${PATH}:/usr/local/opt/mysql-client/bin/
 # node
 export PATH="/usr/local/opt/node@8/bin:$PATH"
 
@@ -278,10 +278,6 @@ export XDEBUG_SESSION_START=DBGP
 export XDG_CONFIG_HOME=${HOME}/.config
 
 # GO #############################
-export PATH=${PATH}:/usr/local/go//bin
-export GOPATH=${HOME}/go
-export GOOS=$(go env GOOS)
-export GOARCH=$(go env GOARCH)
 
 #PATH=/usr/bin:/usr/sbin:/bin:/sbin:/usr/X11R6/bin:${HOME}/bin:/usr/local/bin
 PATH=${PATH}:${HOME}/cvswork/refeng/tools

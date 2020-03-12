@@ -63,7 +63,7 @@
   prompt = false
 [mergetool "vimdiff"]
   cmd = nvim -d $BASE $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
-[http]
-	proxy = http://10.0.10.10:8080
-[https]
-	proxy = http://10.0.10.10:8080
+#[http]
+#	proxy = http://10.0.10.10:8080
+#[https]
+#	proxy = http://10.0.10.10:8080
