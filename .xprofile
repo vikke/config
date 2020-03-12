@@ -4,8 +4,7 @@
 # 1. .xprofile
 # 2. /usr/bin/gnome-wm(ここでwindow manager起動)
 # 3. gnome-session開始
-# となる。
-# 
+# となる。 
 # なお、xsessionだと
 # 3が.xsessionとなる。
 # とりあえず、xprofileを使うように環境を寄せてみる。
@@ -16,8 +15,15 @@
 #/usr/bin/urxvtd -q -f -o
 #/usr/bin/uim-toolbar-gtk-systray &
 
-xmodmap ~/.Xmodmap
+# xmodmap ~/.Xmodmap
 #export WINDOW_MANAGER=metacity
 #export WINDOW_MANAGER=twm
 #export WINDOW_MANAGER=e16
 
+GTK_IM_MODULE=uim
+QT_IM_MODULE=uim
+XMODIFIERS=@im=uim
+
+nohup /usr/bin/uim-toolbar-gtk3 &
+nohup /usr/bin/dropbox &
+nohup /usr/bin/flameshot &

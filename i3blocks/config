@@ -1,0 +1,51 @@
+[uptime]
+label= 
+command=uptime | sed 's/.*up \([^,]*\),.*/\1/'
+color=#8fa1b3
+interval=60
+
+[memory]
+label= 
+command=~/.config/i3blocks/memory.py
+#command=free -h | awk 'match($0, /^Mem/){print $3 " / " $2}'
+color=#8fa1b3
+interval=1
+
+[load average]
+label= 
+command=echo "$(uptime | sed 's/.*load average: \(.*\)/\1/' | cut -d, -f1)/$(grep 'processor' /proc/cpuinfo | wc -l)"
+color=#8fa1b3
+interval=1
+
+[network]
+label= 
+command=[[ -n $(ip link show up dev wlp3s0) ]] && which wpa_cli &> /dev/null && echo "$({ echo 'status'; echo 'quit'; } | wpa_cli -i wlp3s0 | grep '^ssid=' | cut -d= -f2) : $(cat /proc/net/wireless | tail -1 | tr -s ' ' | cut -d' ' -f4 | sed 's/\./dBm/')"
+color=#8fa1b3
+interval=1
+
+[lightness]
+label=☀ 
+command=xbacklight -get | xargs printf '%.0f%%\n'
+color=#8fa1b3
+interval=once
+signal=2
+
+[volume]
+label= 
+command=~/.config/i3blocks/volume.sh
+interval=once
+signal=1
+
+[date]
+label=
+command=date +'%m/%d(%a) %H:%M'
+color=#8fa1b3
+interval=1
+
+[battery]
+command=~/.config/i3blocks/battery.sh
+format=json
+interval=persist
+
+[nm-applet]
+command=/usr/bin/nm-applet

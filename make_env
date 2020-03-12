@@ -127,6 +127,8 @@ mkdir -p ${HOME}/.config
 ln -snfv ${HOME}/config/.vim ${HOME}/.config/nvim
 ln -snfv ${HOME}/config/.vimrc ${HOME}/.config/nvim/init.vim
 
+ln -snfv ${HOME}/config/i3 ${HOME}/.config/i3
+
 # choice
 ln -snvf ${HOME}/config/lemonade_server.toml ${HOME}/.config/lemonade.toml
 ln -snvf ${HOME}/config/lemonade_client.toml ${HOME}/.config/lemonade.toml

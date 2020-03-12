@@ -176,19 +176,19 @@ if [ $? -ne 0 ];then
 	uim-xim &>/dev/null &
 fi
 
-#alias tmux='tmux -2 -S /tmp/tmux.session a'
-function tmx {
-	echo 'tmx'
-	cls=$(\tmux list-sessions)
-	if [ -z "${cls}" ]; then
-		echo 'create'
-		\tmux
-	else
-		echo 'attach'
-		\tmux  a
-	fi
-}
-alias tmux='tmx'
+# #alias tmux='tmux -2 -S /tmp/tmux.session a'
+# function tmx {
+# 	echo 'tmx'
+# 	cls=$(\tmux list-sessions)
+# 	if [ -z "${cls}" ]; then
+# 		echo 'create'
+# 		\tmux
+# 	else
+# 		echo 'attach'
+# 		\tmux  a
+# 	fi
+# }
+# alias tmux='tmx'
 
 if [ ! -e ~/tmpfs/header_cache ] && [ -e ~/.mutt/header_cache ]; then
 	cp -r ~/.mutt/header_cache ~/tmpfs
