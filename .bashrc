@@ -277,8 +277,7 @@ export XDEBUG_SESSION_START=DBGP
 
 export XDG_CONFIG_HOME=${HOME}/.config
 
-# GO #############################
-PATH=${PATH}:~/go/bin
+export PATH=${PATH}:~/go/bin
 
 #PATH=/usr/bin:/usr/sbin:/bin:/sbin:/usr/X11R6/bin:${HOME}/bin:/usr/local/bin
 PATH=${PATH}:${HOME}/cvswork/refeng/tools
@@ -508,6 +507,8 @@ function se(){
 # https://github.com/junegunn/fzf/issues/39
 set -o vi
 
+export PATH=${PATH}:~/.fzf/bin
+
 # fzf ######################################################
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 export FZF_DEFAULT_OPTS='-m --color dark'
@@ -618,9 +619,7 @@ export dash_dir=~/vcswork/dasht
 export PATH=${PATH}:${dash_dir}/bin
 export MANPATH=${MANPATH}:${dash_dir}/man
 
-# hive
-export HIVE_HOME=~/vcswork/apache-hive-1.1.0-bin
-export PATH=${PATH}:${HIVE_HOME}/bin:${HADOOP_HOME}/bin
+export PATH=${PATH}:~/.nodenv/bin
 
 eval "$(nodenv init -)"
 export PYTHONPATH=.
