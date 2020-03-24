@@ -278,6 +278,7 @@ export XDEBUG_SESSION_START=DBGP
 export XDG_CONFIG_HOME=${HOME}/.config
 
 # GO #############################
+PATH=${PATH}:~/go/bin
 
 #PATH=/usr/bin:/usr/sbin:/bin:/sbin:/usr/X11R6/bin:${HOME}/bin:/usr/local/bin
 PATH=${PATH}:${HOME}/cvswork/refeng/tools

@@ -1,6 +1,6 @@
 " $Id: .vimrc 602 2011-02-17 16:54:21Z vikke $
 " $HeadURL: https://psb.vikke.mydns.jp/svn/vikke_env/.vimrc $ 
-let g:python3_host_prog = '/usr/bin/python'
+let g:python3_host_prog = '/Users/vikke/.pyenv/shims/python3'
 if has('python3')
   " Python 3 を使うためのおまじない
 end
@@ -81,7 +81,7 @@ if dein#load_state('~/.cache/dein')
     call dein#add('cocopon/iceberg.vim')
 
     " IDE
-    call dein#add('vim-syntastic/syntastic.git')
+"    call dein#add('vim-syntastic/syntastic.git')
     call dein#add('editorconfig/editorconfig-vim')
 
     " markdown toc
@@ -90,6 +90,13 @@ if dein#load_state('~/.cache/dein')
     call dein#add('scrooloose/vim-slumlord')
     " mark bookmark
     call dein#add('mattesgroeger/vim-bookmarks')
+
+    call dein#add('prabirshrestha/async.vim')
+    call dein#add('prabirshrestha/vim-lsp')
+    call dein#add('mattn/vim-lsp-settings', {'merged': 0})
+    " call 'Shougo/deoplete.nvim'
+    call dein#add('lighttiger2505/deoplete-vim-lsp')
+    call dein#add('nsf/gocode')
 
     call dein#end()
     call dein#save_state()

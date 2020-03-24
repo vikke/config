@@ -1,2 +1,1 @@
-tar zcvf - all.dic skki1_0u.dic skk-uim-jisyo -C ~ .skk-jisyo .skk-uim-jisyo |gpg -e -r vikke.bsd@gmail.com > skk-dic.tgz.gpg
-
+tar zcvf - -C ~/skk-dic skk-uim-jisyo skk-jisyo | gpg -e -r vikke.bsd@gmail.com > skk-dic.tgz.gpg
