@@ -277,7 +277,11 @@ export XDEBUG_SESSION_START=DBGP
 
 export XDG_CONFIG_HOME=${HOME}/.config
 
-export PATH=${PATH}:~/go/bin
+#export GOROOT=~/go
+export GOPATH=~/go
+# export GOROOT=~/go
+export GOROOT=/usr/lib/go
+export PATH=${PATH}:${GOPATH}/bin:${GOROOT}/bin
 
 #PATH=/usr/bin:/usr/sbin:/bin:/sbin:/usr/X11R6/bin:${HOME}/bin:/usr/local/bin
 PATH=${PATH}:${HOME}/cvswork/refeng/tools
@@ -287,7 +291,6 @@ PATH=${PATH}:${CATALINA_HOME}/bin
 PATH=${PATH}:${ANT_HOME}/bin
 PATH=${PATH}:${M2_HOME}/bin
 PATH=${PATH}:${MYSQL_BASE}/bin
-PATH=${PATH}:${GOPATH}/bin
 PATH=${PATH}:~/wo_docker/bin
 PATH=${PATH}:./node_modules/.bin
 PATH=${PATH}:~/bin-nongit

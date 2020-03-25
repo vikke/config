@@ -1,6 +1,6 @@
 " $Id: .vimrc 602 2011-02-17 16:54:21Z vikke $
 " $HeadURL: https://psb.vikke.mydns.jp/svn/vikke_env/.vimrc $ 
-let g:python3_host_prog = '/Users/vikke/.pyenv/shims/python3'
+let g:python3_host_prog = '/home/vikke/.pyenv/shims/python3'
 if has('python3')
   " Python 3 を使うためのおまじない
 end
@@ -74,7 +74,7 @@ if dein#load_state('~/.cache/dein')
 
     " necessary to run :GoInstallBinaries
     call dein#add('fatih/vim-go')
-    call dein#add('zchee/deoplete-go', {'build': 'make'})
+    " call dein#add('zchee/deoplete-go', {'build': 'make'})
 
     " Theme
     call dein#add('w0ng/vim-hybrid')
@@ -96,7 +96,6 @@ if dein#load_state('~/.cache/dein')
     call dein#add('mattn/vim-lsp-settings', {'merged': 0})
     " call 'Shougo/deoplete.nvim'
     call dein#add('lighttiger2505/deoplete-vim-lsp')
-    call dein#add('nsf/gocode')
 
     call dein#end()
     call dein#save_state()
