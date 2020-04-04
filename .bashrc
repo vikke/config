@@ -639,4 +639,7 @@ export PATH=${PATH}:/Users/vikke/bin-nongit/gcc-arm-none-eabi-6-2017-q1-update/b
 # rubyでspring off
 # export DISABLE_SPRING=true
 
+# linux brew
+export PATH=${PATH}:/home/linuxbrew/.linuxbrew/bin
+
 export ENV=dev
