@@ -5,9 +5,10 @@ if has('python3')
   " Python 3 を使うためのおまじない
 end
 
+
 set ttimeoutlen=0
 
-" {{{ dein 
+" {{{ dein
 if &compatible
       set nocompatible
 endif
@@ -16,8 +17,7 @@ set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
 if dein#load_state('~/.cache/dein')
     call dein#begin('~/.cache/dein')
 
-    call dein#add('~/.cache/dein')
-    call dein#add('Shougo/deoplete.nvim')
+    " call dein#add('Shougo/deoplete.nvim')
     if !has('nvim')
       call dein#add('roxma/nvim-yarp')
       call dein#add('roxma/vim-hug-neovim-rpc')
@@ -80,6 +80,9 @@ if dein#load_state('~/.cache/dein')
     call dein#add('w0ng/vim-hybrid')
     call dein#add('cocopon/iceberg.vim')
 
+    " howm
+    call dein#add('fuenor/qfixhowm')
+
     " IDE
 "    call dein#add('vim-syntastic/syntastic.git')
     call dein#add('editorconfig/editorconfig-vim')
@@ -91,11 +94,16 @@ if dein#load_state('~/.cache/dein')
     " mark bookmark
     call dein#add('mattesgroeger/vim-bookmarks')
 
+    " vim-lsp-settings.
     call dein#add('prabirshrestha/async.vim')
     call dein#add('prabirshrestha/vim-lsp')
     call dein#add('mattn/vim-lsp-settings', {'merged': 0})
-    " call 'Shougo/deoplete.nvim'
+    call dein#add('Shougo/deoplete.nvim')
     call dein#add('lighttiger2505/deoplete-vim-lsp')
+
+    " coc.nvim
+    " call dein#add('neoclide/coc.nvim', {'merged':0, 'rev': 'release'})
+
 
     call dein#end()
     call dein#save_state()
@@ -316,13 +324,13 @@ set grepprg=ag\ -i
 "--------------------------------------------------------------------------------
 
 " {{{ = deoplete ==================================
-call deoplete#enable()
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#enable_ignore_case = 1
-let g:deoplete#enable_smart_case = 1
-let g:deoplete#auto_completion_start_length = 2
-let g:deoplete#lock_buffer_name_pattern = '\*ku\*'
-let g:deoplete#sources#tags#cache_limit_size = 8000000
+"call deoplete#enable()
+"let g:deoplete#enable_at_startup = 1
+"let g:deoplete#enable_ignore_case = 1
+"let g:deoplete#enable_smart_case = 1
+"let g:deoplete#auto_completion_start_length = 2
+"let g:deoplete#lock_buffer_name_pattern = '\*ku\*'
+"let g:deoplete#sources#tags#cache_limit_size = 8000000
 " }}}
 
 " {{{ = deoplete-go ===============================
@@ -668,5 +676,39 @@ autocmd BufRead,BufNewFile *.slim setfiletype slim
 
 "{{{ vim-bookmarks
 let g:bookmark_auto_close = 0
+"}}}
+
+function! CloseRemainedFloat()
+  for win_id in nvim_tabpage_list_wins(0)
+    let config = nvim_win_get_config(win_id)
+    if get(config, 'relative') isnot ''
+      call nvim_win_close(win_id, 1)
+    endif
+  endfor
+endfunction
+nnoremap <silent> <C-A> :<C-U>call CloseRemainedFloat()<CR><C-A>
+
+
+"{{{ qfixhowm
+" キーマップリーダー
+let QFixHowm_Key = 'g'
+
+" howm_dirはファイルを保存したいディレクトリを設定
+let howm_dir             = '~/Dropbox/doc/howm'
+let howm_filename        = '%Y/%m/%Y-%m-%d-%H%M%S.md'
+let howm_fileencoding    = 'utf-8'
+let howm_fileformat      = 'unix'
+" QFixHowmのファイルタイプ
+let QFixHowm_FileType = 'markdown'
+" タイトル記号を # に変更する
+let QFixHowm_Title = '#'
+let mygrepprg = 'ag'
+
+" キーコードやマッピングされたキー列が完了するのを待つ時間(ミリ秒)
+set timeout timeoutlen=3000 ttimeoutlen=100
+" プレビューや絞り込みをQuickFix/ロケーションリストの両方で有効化(デフォルト:2)
+let QFixWin_EnableMode = 1
 
 "}}}
+
+" source ~/.vim/coc.vim
