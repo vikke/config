@@ -5,7 +5,8 @@ if has('python3')
   " Python 3 を使うためのおまじない
 end
 
-
+let g:lsp_log_verbose = 1
+let g:lsp_log_file = expand('~/vim-lsp.log')
 set ttimeoutlen=0
 
 " {{{ dein
@@ -36,7 +37,7 @@ if dein#load_state('~/.cache/dein')
     call dein#add('Shougo/neosnippet')
     call dein#add('Shougo/neosnippet-snippets')
 
-    call dein#add('tyru/current-func-info.vim')
+   call dein#add('tyru/current-func-info.vim')
     call dein#add('vim-scripts/matchit.zip')
     call dein#add('thinca/vim-quickrun')
     call dein#add('vim-jp/vimdoc-ja')
@@ -47,10 +48,8 @@ if dein#load_state('~/.cache/dein')
     call dein#add('scrooloose/nerdtree')
     call dein#add('vim-scripts/taglist.vim')
     call dein#add('junegunn/vim-easy-align')
-    call dein#add('kchmck/vim-coffee-script')
     " call dein#add('koron/chalice')
     call dein#add('mbbill/undotree')
-    call dein#add('osyo-manga/vim-monster')
     call dein#add('easymotion/vim-easymotion')
     call dein#add('wakatime/vim-wakatime')
     call dein#add('sunaku/vim-dasht')
@@ -65,23 +64,16 @@ if dein#load_state('~/.cache/dein')
     call dein#add('kana/vim-operator-user')
     call dein#add('haya14busa/vim-operator-flashy')
 
-    " git client
-    call dein#add('lambdalisue/gina.vim')
-
-    " neovim compatible for vim8
-    call dein#add('roxma/nvim-yarp')
-    call dein#add('roxma/vim-hug-neovim-rpc')
-
     " necessary to run :GoInstallBinaries
-    call dein#add('fatih/vim-go')
+    " call dein#add('fatih/vim-go')
     " call dein#add('zchee/deoplete-go', {'build': 'make'})
 
     " Theme
     call dein#add('w0ng/vim-hybrid')
-    call dein#add('cocopon/iceberg.vim')
+   call dein#add('cocopon/iceberg.vim')
 
     " howm
-    call dein#add('fuenor/qfixhowm')
+    " call dein#add('fuenor/qfixhowm')
 
     " IDE
 "    call dein#add('vim-syntastic/syntastic.git')
@@ -98,17 +90,21 @@ if dein#load_state('~/.cache/dein')
     call dein#add('prabirshrestha/async.vim')
     call dein#add('prabirshrestha/vim-lsp')
     call dein#add('mattn/vim-lsp-settings', {'merged': 0})
-    call dein#add('Shougo/deoplete.nvim')
-    call dein#add('lighttiger2505/deoplete-vim-lsp')
 
-    " coc.nvim
-    " call dein#add('neoclide/coc.nvim', {'merged':0, 'rev': 'release'})
+    call dein#add('prabirshrestha/asyncomplete.vim')
+    call dein#add('prabirshrestha/asyncomplete-lsp.vim')
+
+    "call dein#add('Shougo/deoplete.nvim')
+    "call dein#add('lighttiger2505/deoplete-vim-lsp')
+
+"    coc.nvim
+"    call dein#add('neoclide/coc.nvim', {'merged':0, 'rev': 'release'})
 
 
     call dein#end()
     call dein#save_state()
 endif
-filetype plugin indent on
+let g:dein#auto_recache = 1
 " }}}
 
 "--------------------------------------------------------------------------------
@@ -169,7 +165,6 @@ hi Normal ctermfg=248 ctermbg=none
 highlight IncSearch term=bold ctermbg=54 guibg=LightMagenta
 
 "}}}--------------------------------------------------------------------------------
-
 
 "--------------------------------------------------------------------------------
 " キーアサイン変更
@@ -258,6 +253,7 @@ endfunc
 
 if winwidth(0) >= 80
     let &statusline='%<[%n]%m%r%h%w%{"[".(&fenc!=""?&fenc:&enc).":".&ff."]"}%y %F%=[%{GetB()}] %{cfi#format("[%s()]", "no function")} %l,%c%V%8P'
+
     " TODO: Hack #171(http://vim-users.jp/2010/09/hack171/): 編集している関数名を表示する
     "current-func-info.vim のテスト用
     "let &statusline='%{cfi#format("[%s()]", "no function")}'

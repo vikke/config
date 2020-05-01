@@ -280,7 +280,7 @@ export XDG_CONFIG_HOME=${HOME}/.config
 #export GOROOT=~/go
 export GOPATH=~/go
 # export GOROOT=~/go
-export GOROOT=/usr/lib/go
+# export GOROOT=/usr/lib/go
 export PATH=${PATH}:${GOPATH}/bin:${GOROOT}/bin
 
 #PATH=/usr/bin:/usr/sbin:/bin:/sbin:/usr/X11R6/bin:${HOME}/bin:/usr/local/bin
