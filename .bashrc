@@ -167,6 +167,7 @@ export PATH="/usr/local/opt/node@8/bin:$PATH"
 		;;
 esac
 
+xrdb -load ~/.Xdefaults
 
 ulimit -c unlimited
 
@@ -278,7 +279,7 @@ export XDEBUG_SESSION_START=DBGP
 export XDG_CONFIG_HOME=${HOME}/.config
 
 #export GOROOT=~/go
-export GOPATH=~/go
+#export GOPATH=~/go
 # export GOROOT=~/go
 # export GOROOT=/usr/lib/go
 export PATH=${PATH}:${GOPATH}/bin:${GOROOT}/bin
@@ -636,10 +637,19 @@ if [ -d ~/.pyenv ]; then
 fi
 export PATH=${PATH}:/Users/vikke/bin-nongit/gcc-arm-none-eabi-6-2017-q1-update/bin
 
+export GOENV_DISABLE_GOPATH=1
+export GOENV_ROOT="$HOME/.goenv"
+export GOPATH=~/go
+export PATH="$GOENV_ROOT/bin:$PATH"
+eval "$(goenv init -)"
+export PATH="$GOROOT/bin:$PATH"
+export PATH="$PATH:$GOPATH/bin"
+
 # rubyでspring off
 # export DISABLE_SPRING=true
 
 # linux brew
 export PATH=${PATH}:/home/linuxbrew/.linuxbrew/bin
 
-export ENV=dev
+# export ENV=dev
+eval "$(direnv hook bash)"
