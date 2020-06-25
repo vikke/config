@@ -8,7 +8,7 @@
 ! URxvt*font:		xft:MaruGoAA\-SR:antialias=true:autohint=true:pixelsize=12,\
 !				xft:MaruGoAA\-SR:pixelsize=12
 
-URxvt*font:		xft:Dejavu Sans Mono:antialias=true:autohint=true:pixelsize=16
+!URxvt*font:		xft:Dejavu Sans Mono:antialias=true:autohint=true:pixelsize=16
 !URxvt*font:		xft:Dejavu Sans Mono:antialias=true:autohint=true:pixelsize=12,\
 !				xft:VL ゴシック:pixelsize=12
 !URxvt*imFont:		xft:VL ゴシック:pixelsize=12
@@ -17,6 +17,7 @@ URxvt*font:		xft:Dejavu Sans Mono:antialias=true:autohint=true:pixelsize=16
 !				xft:ARISAKA:antialias=true:pixelsize=12
 !URxvt*imFont:	xft:ARISAKA:pixelsize=12
 
+URxvt*font:	xft:Cica:style=Regular:antialias=true:pixelsize=18
 
 URxvt*title:		urxvt
 !URxvt*termName:		xterm
