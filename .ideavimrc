@@ -1,3 +1,6 @@
 nnoremap ff :action GotoClass<CR>
 nnoremap FF :action GotoFile<CR>
 nnoremap K :action DashLauncherAction<CR>
+nnoremap <C-I> <C-O>
+nnoremap <C-O> <C-I>
+
