@@ -25,5 +25,3 @@ QT_IM_MODULE=uim
 XMODIFIERS=@im=uim
 
 nohup /usr/bin/uim-toolbar-gtk3 &
-nohup /usr/bin/dropbox &
-nohup /usr/bin/flameshot &
