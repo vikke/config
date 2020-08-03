@@ -55,8 +55,6 @@ case $OSTYPE in
 		export cocot="cocot"
 		export LANG=ja_JP.utf-8
 #		alias urxvt="urxvt -e \'/Library/Frameworks/UIM.framework/Versions/1.6.0/bin/uim-fep\'"
-		export VIMPATH=nvim
-		alias vim=nvim
 
 		export JAVA_HOME=$(/usr/libexec/java_home -v 9)
 		export _JAVA_OPTIONS="-Dfile.encoding=UTF-8"
@@ -142,8 +140,6 @@ export PATH="/usr/local/opt/node@8/bin:$PATH"
 
 	linux*)
 		alias ls='ls --color=auto -F'
-		alias vim='~/Dropbox/bin/nvim.appimage'
-		export VIMPATH=nvim
 		export JDK_DIR=/usr/lib/jvm
 		export PAGER="lv -c"
 
@@ -167,15 +163,18 @@ export PATH="/usr/local/opt/node@8/bin:$PATH"
 		;;
 esac
 
+export EDITOR=nvim
+alias vim=nvim
+
 xrdb -load ~/.Xdefaults
 
 ulimit -c unlimited
 
-export XMODIFIERS="@im=uim"
-ps auxww|grep -v "grep "|grep "uim-xim" -q
-if [ $? -ne 0 ];then
-	uim-xim &>/dev/null &
-fi
+# export XMODIFIERS="@im=uim"
+# ps auxww|grep -v "grep "|grep "uim-xim" -q
+# if [ $? -ne 0 ];then
+# 	uim-xim &>/dev/null &
+# fi
 
 # #alias tmux='tmux -2 -S /tmp/tmux.session a'
 # function tmx {
@@ -267,9 +266,6 @@ export ANT_OPTS="-Xmx500m -Xms128m"
 #export MAVEN_HOME=${HOME}/dev-tools/apache-maven-2.1.0
 export M2_HOME=${MAVEN_HOME}
 export MAVEN_OPTS="-Xmx500m -Xms128m -Dfile.encoding=UTF-8"
-export EDITOR=${VIMPATH}
-export CVSEDITOR=${EDITOR}
-export SVN_EDITOR=${EDITOR}
 export TEMP=${TMP}
 export SCHEME_LIBRARY_PATH="/usr/local/lib/slib/"
 
@@ -470,7 +466,6 @@ alias rspec='bundle exec rspec'
 alias rake='bundle exec rake'
 alias rails='bundle exec rails'
 alias ssh_copy_id='ssh-copy-id -i ~/.ssh/id_rsa.pub '
-alias vim='nvim'
 
 if [ -e /usr/share/doc/tig-1.0/contrib/tig-completion.bash ]; then
 	. /usr/share/doc/tig-1.0/contrib/tig-completion.bash
@@ -637,12 +632,13 @@ if [ -d ~/.pyenv ]; then
 fi
 export PATH=${PATH}:/Users/vikke/bin-nongit/gcc-arm-none-eabi-6-2017-q1-update/bin
 
-export GOENV_DISABLE_GOPATH=1
-export GOENV_ROOT="$HOME/.goenv"
+# # goenv
+# export GOENV_DISABLE_GOPATH=1
+# export GOENV_ROOT="$HOME/.goenv"
 export GOPATH=~/go
-export PATH="$GOENV_ROOT/bin:$PATH"
-eval "$(goenv init -)"
-export PATH="$GOROOT/bin:$PATH"
+# export PATH="$GOENV_ROOT/bin:$PATH"
+# eval "$(goenv init -)"
+# export PATH="$GOROOT/bin:$PATH"
 export PATH="$PATH:$GOPATH/bin"
 
 # rubyでspring off
@@ -653,3 +649,5 @@ export PATH=${PATH}:/home/linuxbrew/.linuxbrew/bin
 
 # export ENV=dev
 eval "$(direnv hook bash)"
+
+[[ -s "/home/vikke/.gvm/scripts/gvm" ]] && source "/home/vikke/.gvm/scripts/gvm"
