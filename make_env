@@ -120,8 +120,9 @@ ln -s ./Dropbox/env/livesense/dot.msmtprc ~/.msmtprc
 
 mv ~/.gitignore ${backup}/.gitignore
 ln -s ${PWD}/global.gitignore ~/.gitignore
-mv ~/.gitconfig ${backup}/.gitconfig
-ln -s ${PWD}/global.gitconfig ~/.gitconfig
+
+# mv ~/.gitconfig ${backup}/.gitconfig
+# ln -s ${PWD}/global.gitconfig ~/.gitconfig
 
 mkdir -p ${HOME}/.config
 ln -snfv ${HOME}/config/.vim ${HOME}/.config/nvim
