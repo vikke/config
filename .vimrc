@@ -25,66 +25,69 @@ if dein#load_state('~/.cache/dein')
     endif
 
     call dein#add('Shougo/denite.nvim')
-    call dein#add('ozelentok/denite-gtags')
-
-    " call dein#add('Shougo/vimproc.vim', {'build': 'make'})
-
+"    call dein#add('ozelentok/denite-gtags')
+"
+"    " call dein#add('Shougo/vimproc.vim', {'build': 'make'})
+"
     call dein#add('Shougo/unite.vim')
-    call dein#add('tsukkee/unite-tag')
+"    call dein#add('tsukkee/unite-tag')
     call dein#add('Shougo/unite-outline')
     call dein#add('Shougo/neomru.vim')
-
-    call dein#add('Shougo/neosnippet')
-    call dein#add('Shougo/neosnippet-snippets')
-
-   call dein#add('tyru/current-func-info.vim')
-    call dein#add('vim-scripts/matchit.zip')
-    call dein#add('thinca/vim-quickrun')
+"
+"    call dein#add('Shougo/neosnippet')
+"    call dein#add('Shougo/neosnippet-snippets')
+"
+    call dein#add('tyru/current-func-info.vim')
+"    call dein#add('vim-scripts/matchit.zip')
+"    call dein#add('thinca/vim-quickrun')
     call dein#add('vim-jp/vimdoc-ja')
-    call dein#add('tpope/vim-rails')
+"    call dein#add('tpope/vim-rails')
     call dein#add('tpope/vim-fugitive')
-    call dein#add('tmhedberg/matchit')
-    call dein#add('tyru/restart.vim')
-    call dein#add('scrooloose/nerdtree')
-    call dein#add('vim-scripts/taglist.vim')
-    call dein#add('junegunn/vim-easy-align')
-    " call dein#add('koron/chalice')
-    call dein#add('mbbill/undotree')
-    call dein#add('easymotion/vim-easymotion')
-    call dein#add('wakatime/vim-wakatime')
-    call dein#add('sunaku/vim-dasht')
-    "call dein#add('vikke/BlockDiff')
-    "call dein#add('statox/vim-compare-lines')
-    call dein#add('vim-scripts/Align')
-    call dein#add('vim-scripts/SQLUtilities')
-    call dein#add('tyru/open-browser.vim')
-    " browser preview
-    call dein#add('kazuph/previm', { 'rev': 'feature/add-plantuml-plugin' })
-    call dein#add('aklt/plantuml-syntax')
-    call dein#add('kana/vim-operator-user')
-    call dein#add('haya14busa/vim-operator-flashy')
-
-    " necessary to run :GoInstallBinaries
-    " call dein#add('fatih/vim-go')
-    " call dein#add('zchee/deoplete-go', {'build': 'make'})
-
-    " Theme
-    call dein#add('w0ng/vim-hybrid')
-   call dein#add('cocopon/iceberg.vim')
-
-    " howm
-    " call dein#add('fuenor/qfixhowm')
-
-    " IDE
-"    call dein#add('vim-syntastic/syntastic.git')
-    call dein#add('editorconfig/editorconfig-vim')
-
-    " markdown toc
-    call dein#add('mzlogin/vim-markdown-toc')
-    " plantuml
-    call dein#add('scrooloose/vim-slumlord')
-    " mark bookmark
-    call dein#add('mattesgroeger/vim-bookmarks')
+"    call dein#add('tmhedberg/matchit')
+"    call dein#add('tyru/restart.vim')
+"    call dein#add('scrooloose/nerdtree')
+"    call dein#add('vim-scripts/taglist.vim')
+"    call dein#add('junegunn/vim-easy-align')
+"    " call dein#add('koron/chalice')
+"    call dein#add('mbbill/undotree')
+"    call dein#add('easymotion/vim-easymotion')
+"    call dein#add('wakatime/vim-wakatime')
+"    call dein#add('sunaku/vim-dasht')
+"    "call dein#add('vikke/BlockDiff')
+"    "call dein#add('statox/vim-compare-lines')
+"    call dein#add('vim-scripts/Align')
+"    call dein#add('vim-scripts/SQLUtilities')
+"    call dein#add('tyru/open-browser.vim')
+"    " browser preview
+"    call dein#add('kazuph/previm', { 'rev': 'feature/add-plantuml-plugin' })
+"    call dein#add('aklt/plantuml-syntax')
+"    call dein#add('kana/vim-operator-user')
+"    call dein#add('haya14busa/vim-operator-flashy')
+"
+"    " necessary to run :GoInstallBinaries
+"    " call dein#add('fatih/vim-go')
+"    " call dein#add('zchee/deoplete-go', {'build': 'make'})
+"
+"    " Theme
+"    call dein#add('w0ng/vim-hybrid')
+    call dein#add('cocopon/iceberg.vim')
+"
+"    " howm
+"    " call dein#add('fuenor/qfixhowm')
+"
+"    " IDE
+""    call dein#add('vim-syntastic/syntastic.git')
+"    call dein#add('editorconfig/editorconfig-vim')
+"
+"    " markdown toc
+"    call dein#add('mzlogin/vim-markdown-toc')
+"    " plantuml
+"    call dein#add('scrooloose/vim-slumlord')
+"    " mark bookmark
+"    call dein#add('mattesgroeger/vim-bookmarks')
+"    " vdebug
+"    call dein#add('joonty/vdebug')
+"    call dein#add('puremourning/vimspector')
 
     " vim-lsp-settings.
     call dein#add('prabirshrestha/async.vim')
@@ -97,16 +100,17 @@ if dein#load_state('~/.cache/dein')
     "call dein#add('Shougo/deoplete.nvim')
     "call dein#add('lighttiger2505/deoplete-vim-lsp')
 
-"    coc.nvim
-"    call dein#add('neoclide/coc.nvim', {'merged':0, 'rev': 'release'})
+    call dein#add('lambdalisue/suda.vim')
 
 
     call dein#end()
     call dein#save_state()
 endif
 let g:dein#auto_recache = 1
-" }}}
 
+let g:vdebug_force_ascii = 1
+
+" }}}
 "--------------------------------------------------------------------------------
 " 全体設定
 " {{{--------------------------------------------------------------------------------
@@ -269,7 +273,7 @@ endif
 " /で検索した結果をquickfixで表示;
 " 元ネタは http://subtech.g.hatena.ne.jp/secondlife/
 "{{{--------------------------------------------------------------------------------
-nmap <unique> f/ :exec ':vimgrep /' . getreg('/') . '/j %\|cwin'<CR>
+"nmap <unique> f/ :exec ':vimgrep /' . getreg('/') . '/j %\|cwin'<CR>
 "}}}--------------------------------------------------------------------------------
 
 "{{{ C-I, C-O入れ替え --------------------------------------------------------------------------------
@@ -707,4 +711,10 @@ let QFixWin_EnableMode = 1
 
 "}}}
 
-" source ~/.vim/coc.vim
+"{{{ Lsp
+nnoremap <silent> fd :LspDefinition<CR>
+nnoremap <silent> fi :LspImplementation<CR>
+nnoremap <silent> fr :LspReferences<CR>
+
+
+"}}}
