@@ -1,6 +1,6 @@
 " $Id: .vimrc 602 2011-02-17 16:54:21Z vikke $
 " $HeadURL: https://psb.vikke.mydns.jp/svn/vikke_env/.vimrc $ 
-let g:python3_host_prog = '/home/vikke/.pyenv/shims/python3'
+let g:python3_host_prog = "~/.pyenv/shims/python3"
 if has('python3')
   " Python 3 を使うためのおまじない
 end
@@ -93,15 +93,14 @@ if dein#load_state('~/.cache/dein')
     call dein#add('prabirshrestha/async.vim')
     call dein#add('prabirshrestha/vim-lsp')
     call dein#add('mattn/vim-lsp-settings', {'merged': 0})
-
     call dein#add('prabirshrestha/asyncomplete.vim')
     call dein#add('prabirshrestha/asyncomplete-lsp.vim')
+    call dein#add('sebdah/vim-delve')
+    call dein#add('benmills/vimux')
 
-    "call dein#add('Shougo/deoplete.nvim')
-    "call dein#add('lighttiger2505/deoplete-vim-lsp')
 
     call dein#add('lambdalisue/suda.vim')
-
+    call dein#add('hashivim/vim-terraform')
 
     call dein#end()
     call dein#save_state()
@@ -716,5 +715,9 @@ nnoremap <silent> fd :LspDefinition<CR>
 nnoremap <silent> fi :LspImplementation<CR>
 nnoremap <silent> fr :LspReferences<CR>
 
+let g:lsp_log_verbose = 0
+let g:lsp_log_file = expand('~/vim-lsp.log')
+" let g:delve_use_vimux = 1
 
+autocmd FileType go nmap <silent> ;d :DlvToggleBreakpoint<CR>
 "}}}
