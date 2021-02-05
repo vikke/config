@@ -51,7 +51,6 @@ for f in \
 	.fetchmailrc \
 	.gemrc \
 	.globalrc \
-	.gitconfig \
 	.gitignore \
 	.gvimrc \
 	.ideavimrc \
