@@ -1,11 +1,7 @@
-#!/usr/bin/env bash
+#!/usr/bin/env bash 
 
 # $Id: .bashrc 582 2011-02-15 23:27:26Z vikke $
 # $HeadURL: https://psb.vikke.mydns.jp/svn/vikke_env/.bashrc $
-
-if [ -z "${PS1}" ]; then
-	return
-fi
 
 if [ -n "${SSH_TTY}" ]; then
 	echo .bashrc
@@ -56,7 +52,7 @@ case $OSTYPE in
 		export LANG=ja_JP.utf-8
 #		alias urxvt="urxvt -e \'/Library/Frameworks/UIM.framework/Versions/1.6.0/bin/uim-fep\'"
 
-		export JAVA_HOME=$(/usr/libexec/java_home -v 9)
+		# export JAVA_HOME=$(/usr/libexec/java_home -v 9)
 		export _JAVA_OPTIONS="-Dfile.encoding=UTF-8"
 #		export MAVEN_HOME=/opt/local/share/java/maven2
 		MYSQL_BASE=/opt/local
@@ -69,7 +65,7 @@ case $OSTYPE in
 
 		# brew
 		export PATH=${PATH}:$(brew --prefix)/opt/redis@3.2/bin
-		export PATH=${PATH}:/usr/local/opt/postgresql@9.5/bin
+		export PATH=${PATH}:/usr/local/opt/postgresql@12/bin
 		export PATH="/usr/local/opt/gettext/bin:$PATH"
 		export PATH="/usr/local/opt/gpg-agent/bin:$PATH"
 		export PATH="/usr/local/opt/postgresql@9.5/bin:$PATH"
@@ -77,9 +73,9 @@ case $OSTYPE in
 		export CPPFLAGS="-I/usr/local/opt/openssl/include"
 		export PKG_CONFIG_PATH="/usr/local/opt/openssl/lib/pkgconfig"
 		export HOMEBREW_NO_ANALYTICS=1
-		export PATH=${PATH}:/usr/local/opt/mysql-client/bin/
-# node
-export PATH="/usr/local/opt/node@8/bin:$PATH"
+		export PATH="/usr/local/opt/mysql-client@5.7/bin:$PATH"
+		# node
+		export PATH="/usr/local/opt/node@8/bin:$PATH"
 
 		;;
 
@@ -157,6 +153,7 @@ export PATH="/usr/local/opt/node@8/bin:$PATH"
 
 		export PATH=${PATH}:~/.rbenv/bin
 
+		xrdb -load ~/.Xdefaults
 		;;
 
 	*)
@@ -165,8 +162,6 @@ esac
 
 export EDITOR=nvim
 alias vim=nvim
-
-xrdb -load ~/.Xdefaults
 
 ulimit -c unlimited
 
@@ -274,12 +269,6 @@ export XDEBUG_SESSION_START=DBGP
 
 export XDG_CONFIG_HOME=${HOME}/.config
 
-#export GOROOT=~/go
-#export GOPATH=~/go
-# export GOROOT=~/go
-# export GOROOT=/usr/lib/go
-export PATH=${PATH}:${GOPATH}/bin:${GOROOT}/bin
-
 #PATH=/usr/bin:/usr/sbin:/bin:/sbin:/usr/X11R6/bin:${HOME}/bin:/usr/local/bin
 PATH=${PATH}:${HOME}/cvswork/refeng/tools
 PATH=${PATH}:${HOME}/bin/vim
@@ -350,8 +339,6 @@ else
 	export GPG_TTY=`tty`
 	export GPG_AGENT_INFO
 fi
-
-
 
 # SSHのagent周りの設定
 #if ssh-add -l >/dev/null 2>&1; then
@@ -613,24 +600,12 @@ fkill() {
 	ps aux | fzf | sed 's/  */ /g' | cut -d ' ' -f2 | xargs kill -KILL
 }
 
+
 # dasht ############################################
-export dash_dir=~/vcswork/dasht
-export PATH=${PATH}:${dash_dir}/bin
-export MANPATH=${MANPATH}:${dash_dir}/man
+# export PATH=$HOME/.nodebrew/current/bin:$PATH
 
-export PATH=${PATH}:~/.nodenv/bin
-
-eval "$(nodenv init -)"
-export PYTHONPATH=.
-eval "$(pyenv init -)"
-eval "$(rbenv init -)"
-
-export PYENV_ROOT=~/.pyenv
-if [ -d ~/.pyenv ]; then
-	export PATH=${PATH}:~/.pyenv/bin
-	eval "$(pyenv init -)" 
-fi
-export PATH=${PATH}:/Users/vikke/bin-nongit/gcc-arm-none-eabi-6-2017-q1-update/bin
+export GO111MODULE=on
+export GOPRIVATE="github.com/ca-crowdfunding/*,github.com/vikke/*"
 
 # # goenv
 # export GOENV_DISABLE_GOPATH=1
@@ -640,14 +615,11 @@ export GOPATH=~/go
 # eval "$(goenv init -)"
 # export PATH="$GOROOT/bin:$PATH"
 export PATH="$PATH:$GOPATH/bin"
-
+export PATH=${PATH}:/usr/local/go/bin
 # rubyでspring off
 # export DISABLE_SPRING=true
 
 # linux brew
 export PATH=${PATH}:/home/linuxbrew/.linuxbrew/bin
 
-# export ENV=dev
-eval "$(direnv hook bash)"
 
-[[ -s "/home/vikke/.gvm/scripts/gvm" ]] && source "/home/vikke/.gvm/scripts/gvm"
