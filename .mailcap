@@ -211,3 +211,21 @@ application/pdf; /usr/bin/xdg-open %s;copiousoutput;
 #audio/basic; /usr/lib/mime/playaudio '%s'; description=Basic uLaw Audio; nametemplate=%s.au
 # Java Web Start
 application/x-java-jnlp-file; /opt/jdk1.5.0_18/jre/bin/javaws %s
+x-content/win32-software; "/Users/s10479/Library/Application Support/CrossOver/desktopdata/CrossOver-0/cxassoc/Scripts/CrossOver-0:application_x-crossover-exe::install" '%s'; \
+    description="CrossOver (Install)"; \
+    test=test -n "$DISPLAY"
+application/x-crossover-exe; "/Users/s10479/Library/Application Support/CrossOver/desktopdata/CrossOver-0/cxassoc/Scripts/CrossOver-0:application_x-crossover-exe::install" '%s'; \
+    description="CrossOver (Install)"; \
+    test=test -n "$DISPLAY"
+application/x-crossover-lnk; "/Users/s10479/Library/Application Support/CrossOver/desktopdata/CrossOver-0/cxassoc/Scripts/CrossOver-0:application_x-crossover-lnk::run" '%s'; \
+    description="CrossOver (Run)"; \
+    test=test -n "$DISPLAY"
+application/x-ms-shortcut; "/Users/s10479/Library/Application Support/CrossOver/desktopdata/CrossOver-0/cxassoc/Scripts/CrossOver-0:application_x-crossover-lnk::run" '%s'; \
+    description="CrossOver (Run)"; \
+    test=test -n "$DISPLAY"
+application/x-win-lnk; "/Users/s10479/Library/Application Support/CrossOver/desktopdata/CrossOver-0/cxassoc/Scripts/CrossOver-0:application_x-crossover-lnk::run" '%s'; \
+    description="CrossOver (Run)"; \
+    test=test -n "$DISPLAY"
+application/x-crossover-msi; "/Users/s10479/Library/Application Support/CrossOver/desktopdata/CrossOver-0/cxassoc/Scripts/CrossOver-0:application_x-crossover-msi::install" '%s'; \
+    description="CrossOver (Install)"; \
+    test=test -n "$DISPLAY"
