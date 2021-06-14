@@ -62,6 +62,7 @@ for f in \
 	.mutt \
 	.offlineimaprc \
 	.pryrc \
+	.psqlrc \
 	.screenrc \
 	.termcap \
 	.tigrc \
