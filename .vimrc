@@ -1,12 +1,13 @@
 " $Id: .vimrc 602 2011-02-17 16:54:21Z vikke $
 " $HeadURL: https://psb.vikke.mydns.jp/svn/vikke_env/.vimrc $ 
+let g:lsp_log_verbose = 0
+let g:lsp_log_file = expand('~/vim-lsp.log')
+
 let g:python3_host_prog = "~/.pyenv/shims/python3"
 if has('python3')
   " Python 3 を使うためのおまじない
 end
 
-let g:lsp_log_verbose = 1
-let g:lsp_log_file = expand('~/vim-lsp.log')
 set ttimeoutlen=0
 
 " {{{ dein
@@ -77,7 +78,7 @@ if dein#load_state('~/.cache/dein')
 "
 "    " IDE
 ""    call dein#add('vim-syntastic/syntastic.git')
-"    call dein#add('editorconfig/editorconfig-vim')
+    call dein#add('editorconfig/editorconfig-vim')
 "
 "    " markdown toc
 "    call dein#add('mzlogin/vim-markdown-toc')
@@ -98,6 +99,7 @@ if dein#load_state('~/.cache/dein')
     call dein#add('sebdah/vim-delve')
     call dein#add('benmills/vimux')
 
+    call dein#add('mattn/vim-goimports')
 
     call dein#add('lambdalisue/suda.vim')
     call dein#add('hashivim/vim-terraform')
@@ -719,5 +721,4 @@ let g:lsp_log_verbose = 0
 let g:lsp_log_file = expand('~/vim-lsp.log')
 " let g:delve_use_vimux = 1
 
-autocmd FileType go nmap <silent> ;d :DlvToggleBreakpoint<CR>
 "}}}

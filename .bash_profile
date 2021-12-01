@@ -10,31 +10,19 @@ else
 echo "bash_profile"
 
 # export ENV=dev
-export dash_dir=~/vcswork/dasht
-export PATH=${PATH}:${dash_dir}/bin
-export MANPATH=${MANPATH}:${dash_dir}/man
+#export dash_dir=~/vcswork/dasht
+#export PATH=${PATH}:${dash_dir}/bin
+#export MANPATH=${MANPATH}:${dash_dir}/man
 
-eval "$(direnv hook bash)"
-
-export PYTHONPATH=.
-eval "$(pyenv init -)"
-eval "$(rbenv init -)"
-export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
-export PYENV_ROOT=~/.pyenv
-
-# export NODEBREW_ROOT=/usr/local/var/nodebrew
-export PATH=${PATH}:~/.nodenv/bin
-eval "$(nodenv init -)"
-
-if [ -d ~/.pyenv ]; then
-	export PATH=${PATH}:~/.pyenv/bin
-	eval "$(pyenv init -)" 
-fi
-
-export profile="yes"
-
-[[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
 
 . ~/.bashrc
 
 fi
+
+[[ -s "/Users/s10479/.gvm/scripts/gvm" ]] && source "/Users/s10479/.gvm/scripts/gvm"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/s10479/Dropbox/My Mac (CACF-181)/Downloads/tmp/google-cloud-sdk/path.bash.inc' ]; then . '/Users/s10479/Dropbox/My Mac (CACF-181)/Downloads/tmp/google-cloud-sdk/path.bash.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/s10479/Dropbox/My Mac (CACF-181)/Downloads/tmp/google-cloud-sdk/completion.bash.inc' ]; then . '/Users/s10479/Dropbox/My Mac (CACF-181)/Downloads/tmp/google-cloud-sdk/completion.bash.inc'; fi

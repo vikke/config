@@ -29,7 +29,7 @@ if [ -z "${WINPATH}" -a "$OSTYPE" == "cygwin" ]; then
 	export WINPATH=${PATH}
 fi
 
-PATH=${HOME}/bin:${HOME}/dbin:${HOME}/bin_local:${HOME}/local/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:/usr/X11R6/bin:/usr/games
+export PATH=${PATH}:${HOME}/bin:${HOME}/dbin:${HOME}/bin_local:${HOME}/local/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:/usr/X11R6/bin:/usr/games
 if [ -n $PERL_MM_OPT ]; then
 	unset PERL_LOCAL_LIB_ROOT
 	unset PERL_MM_OPT
@@ -46,7 +46,7 @@ case $OSTYPE in
 		# macports installer addition on 2009-09-20_at_00:46:05: adding an appropriate path variable for use with macports.
 		# こっちオリジナルだけど、pathが小文字なんでちょっと修正
 		# export path=/opt/local/bin:/opt/local/sbin:$path
-		export PATH=/opt/local/bin:/opt/local/sbin:$PATH:/Library/Frameworks/UIM.framework/Versions/1.6.0/bin
+		export PATH=${PATH}:/opt/local/bin:/opt/local/sbin:$PATH:/Library/Frameworks/UIM.framework/Versions/1.6.0/bin
 		# finished adapting your path environment variable for use with macports.
 		export cocot="cocot"
 		export LANG=ja_JP.utf-8
@@ -66,16 +66,16 @@ case $OSTYPE in
 		# brew
 		export PATH=${PATH}:$(brew --prefix)/opt/redis@3.2/bin
 		export PATH=${PATH}:/usr/local/opt/postgresql@12/bin
-		export PATH="/usr/local/opt/gettext/bin:$PATH"
-		export PATH="/usr/local/opt/gpg-agent/bin:$PATH"
-		export PATH="/usr/local/opt/postgresql@9.5/bin:$PATH"
+		export PATH="${PATH}:/usr/local/opt/gettext/bin"
+		export PATH="${PATH}:/usr/local/opt/gpg-agent/bin"
+		export PATH="${PATH}:/usr/local/opt/postgresql@9.5/bin"
 		export LDFLAGS="-L/usr/local/opt/openssl/lib"
 		export CPPFLAGS="-I/usr/local/opt/openssl/include"
 		export PKG_CONFIG_PATH="/usr/local/opt/openssl/lib/pkgconfig"
 		export HOMEBREW_NO_ANALYTICS=1
-		export PATH="/usr/local/opt/mysql-client@5.7/bin:$PATH"
+		export PATH="${PATH}:/usr/local/opt/mysql-client@5.7/bin"
 		# node
-		export PATH="/usr/local/opt/node@8/bin:$PATH"
+		export PATH="${PATH}:/usr/local/opt/node@8/bin"
 
 		;;
 
@@ -281,6 +281,8 @@ PATH=${PATH}:~/wo_docker/bin
 PATH=${PATH}:./node_modules/.bin
 PATH=${PATH}:~/bin-nongit
 PATH=${PATH}:~/vcswork/dsp-wo-doc/users/ichiro.matsunaga/bin
+PATH=${PATH}:~/.embulk/bin
+
 
 if [ -n "${WINPATH}" ]; then
 	PATH=${PATH}:${WINPATH}
@@ -477,7 +479,7 @@ fi
 # wmname LG3D
 
 ### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
+export PATH="${PATH}:/usr/local/heroku/bin"
 
 # brew-file
 if [ -f $(brew --prefix)/etc/brew-wrap ]; then
@@ -610,16 +612,38 @@ export GOPRIVATE="github.com/ca-crowdfunding/*,github.com/vikke/*"
 # # goenv
 # export GOENV_DISABLE_GOPATH=1
 # export GOENV_ROOT="$HOME/.goenv"
-export GOPATH=~/go
 # export PATH="$GOENV_ROOT/bin:$PATH"
 # eval "$(goenv init -)"
 # export PATH="$GOROOT/bin:$PATH"
-export PATH="$PATH:$GOPATH/bin"
-export PATH=${PATH}:/usr/local/go/bin
 # rubyでspring off
 # export DISABLE_SPRING=true
 
 # linux brew
 export PATH=${PATH}:/home/linuxbrew/.linuxbrew/bin
+
+
+eval "$(direnv hook bash)"
+
+export PYTHONPATH=.
+eval "$(pyenv init -)"
+eval "$(rbenv init -)"
+export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
+export PYENV_ROOT=~/.pyenv
+
+# export NODEBREW_ROOT=/usr/local/var/nodebrew
+export PATH=${PATH}:~/.nodenv/bin
+eval "$(nodenv init -)"
+
+if [ -d ~/.pyenv ]; then
+	export PATH=${PATH}:~/.pyenv/bin
+	eval "$(pyenv init -)" 
+fi
+
+export profile="yes"
+
+export AppData=${HOME}/AppData
+export TEMP=/tmp
+
+[[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
 
 
