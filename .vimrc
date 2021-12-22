@@ -178,6 +178,8 @@ highlight IncSearch term=bold ctermbg=54 guibg=LightMagenta
 nnoremap j gj
 nnoremap k gk
 
+unmap Y
+
 " clipboard
 "if has('macunix')
 "    vmap _ :w !pbcopy<CR><CR>
