@@ -2,10 +2,11 @@
 
 # $Id: .bashrc 582 2011-02-15 23:27:26Z vikke $
 # $HeadURL: https://psb.vikke.mydns.jp/svn/vikke_env/.bashrc $
+echo .bashrc
 
-if [ -n "${SSH_TTY}" ]; then
-	echo .bashrc
-fi
+# if [ -n "${SSH_TTY}" ]; then
+#	echo .bashrc
+# fi
 
 ## path周りの設定が、すべてunix styleで定義してあるので、
 ## classpath等が重要なjava,javac,javadocは、wrapper scrpitを
@@ -20,6 +21,7 @@ fi
 #	source ${HOME}/.bash_profile
 #fi
 
+
 if [ -e /etc/bash_completion ]; then
 	. /etc/bash_completion
 fi
@@ -30,14 +32,13 @@ if [ -z "${WINPATH}" -a "$OSTYPE" == "cygwin" ]; then
 fi
 
 export PATH=${PATH}:${HOME}/bin:${HOME}/dbin:${HOME}/bin_local:${HOME}/local/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:/usr/X11R6/bin:/usr/games
+
 if [ -n $PERL_MM_OPT ]; then
 	unset PERL_LOCAL_LIB_ROOT
 	unset PERL_MM_OPT
 	unset PERL_MB_OPT
 	unset PERL5LIB
 fi
-
-declare -r vcsroot=~/vcswork
 
 export TZ=Asia/Tokyo
 
@@ -46,7 +47,7 @@ case $OSTYPE in
 		# macports installer addition on 2009-09-20_at_00:46:05: adding an appropriate path variable for use with macports.
 		# こっちオリジナルだけど、pathが小文字なんでちょっと修正
 		# export path=/opt/local/bin:/opt/local/sbin:$path
-		export PATH=${PATH}:/opt/local/bin:/opt/local/sbin:$PATH:/Library/Frameworks/UIM.framework/Versions/1.6.0/bin
+		export PATH=${PATH}:/opt/local/bin:/opt/local/sbin:/opt/homebrew/bin
 		# finished adapting your path environment variable for use with macports.
 		export cocot="cocot"
 		export LANG=ja_JP.utf-8
@@ -57,7 +58,7 @@ case $OSTYPE in
 #		export MAVEN_HOME=/opt/local/share/java/maven2
 		MYSQL_BASE=/opt/local
 
-		[[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
+		[[ -r "$(brew --prefix)/etc/profile.d/bash_completion.sh" ]] && . "$(brew --prefix)/etc/profile.d/bash_completion.sh"
 
 		export LSCOLORS=gxfxcxdxbxegedabagacad
 		alias ls='ls -G'
@@ -105,7 +106,6 @@ case $OSTYPE in
 
 		export VIMPATH="${HOME}/apl/vim73-kaoriya-win64/gvim"
 
-#		export VIMPATH="vim"
 		export ECLIPSE_HOME=${HOME}/win32/eclipse3
 		cocot="cocot"
 
@@ -124,13 +124,10 @@ case $OSTYPE in
 
 		export VIMPATH=vim
 		export JDK_DIR=/usr/local/jdk1.5.0
-#		export JAVA_OS=native
-#		export JAVA_VENDOR=freebsd
-#		export JAVA_VERSION=1.5+
 		export ECLIPSE_HOME=${HOME}/win32/eclipse3
 		cocot="cocot -t UTF-8"
 		export TMP=/tmp
-		export PATH=/usr/local/sbin:${PATH}
+		export PATH=${PATH}:/usr/local/sbin
 		MYSQL_BASE=/usr/local/mysql
 		;;
 
@@ -140,11 +137,11 @@ case $OSTYPE in
 		export PAGER="lv -c"
 
 		export TMP=~/tmpfs
-		PATH=/usr/local/mysql/bin:${PATH}
+		PATH=${PATH}:/usr/local/mysql/bin
 		export MAVEN_HOME=${HOME}/dev-tools/apache-maven-3.0.3
 		export LANG=ja_JP.UTF-8
 
-		export PATH="${HOME}/.linuxbrew/bin:$PATH"
+		export PATH="${PATH}:${HOME}/.linuxbrew/bin"
 		export PATH=${PATH}:/usr/local/node-v4.6.0-linux-x64/bin
 		export MANPATH="${HOME}/.linuxbrew/share/man:$MANPATH"
 		export INFOPATH="${HOME}/.linuxbrew/share/info:$INFOPATH"
@@ -165,48 +162,9 @@ alias vim=nvim
 
 ulimit -c unlimited
 
-# export XMODIFIERS="@im=uim"
-# ps auxww|grep -v "grep "|grep "uim-xim" -q
-# if [ $? -ne 0 ];then
-# 	uim-xim &>/dev/null &
-# fi
-
-# #alias tmux='tmux -2 -S /tmp/tmux.session a'
-# function tmx {
-# 	echo 'tmx'
-# 	cls=$(\tmux list-sessions)
-# 	if [ -z "${cls}" ]; then
-# 		echo 'create'
-# 		\tmux
-# 	else
-# 		echo 'attach'
-# 		\tmux  a
-# 	fi
-# }
-# alias tmux='tmx'
-
-if [ ! -e ~/tmpfs/header_cache ] && [ -e ~/.mutt/header_cache ]; then
-	cp -r ~/.mutt/header_cache ~/tmpfs
-fi
-
 if [ -e ~/vcswork/bash-wakatime/bash-wakatime.sh ]; then
 	. ~/vcswork/bash-wakatime/bash-wakatime.sh
 fi
-
-#if [ "${TERM}" == "cygwin" ]; then
-#	export TERM=vt100
-#fi
-#if [ -z "${TERM}" ]; then
-	#export TERM=rxvt-256color
-#fi
-
-#export TERM=xterm-256color
-
-# http://forums.freebsd.org/showthread.php?t=13345 によると、環境変数TERMCAPに値を設定するようにと書いてあるが、不要？
-#if [ -e "${HOME}/.termcap" ];then
-#	TERMCAP=$(< ${HOME}/.termcap)
-#	export TERMCAP
-#fi
 
 if [ -n "${SSH_TTY}" ]; then
 
@@ -244,92 +202,19 @@ export TAGDIR=${HOME}/tags
 export PS1='\n\u@\h:\w\n$(branch=$(git branch -a 2>/dev/null | grep "^*" | tr -d "\\* "); if [ "${branch}" != "" ];then echo "[${branch}]"; fi)\$ '
 
 export RSYNC_RSH=ssh
-#export JAVA_HOME=${JDK_DIR}/j2sdk1.4.1_07
-#export JAVA_HOME=${JDK_DIR}/j2sdk1.4.2_08
-#export JAVA_HOME=${JDK_DIR}/j2sdk1.4.2_10
-#export JAVA_HOME=${JDK_DIR}/java-6-sun
-#export JAVA_HOME=${JDK_DIR}/java-1.5.0-sun
-#export JAVA_HOME=${JDK_DIR}/jdk1.5.0_06
-export J2EE_HOME=${JDK_DIR}/j2sdkee1.3.1
-export JAVADOC_HOME=${HOME}/doc/javadoc/1.4
-
-export CATALINA_OPTS="-Xms32m -Xmx128m"
-export CATALINA_PID=/var/run/catalina.pid
-export TOMCAT_OPTS="-Xms32m -Xmx128m"
-export ANT_HOME=${HOME}/dev-tools/apache-ant-1.6.5
-export ANT_OPTS="-Xmx500m -Xms128m"
-#export MAVEN_HOME=${HOME}/dev-tools/apache-maven-2.1.0
-export M2_HOME=${MAVEN_HOME}
-export MAVEN_OPTS="-Xmx500m -Xms128m -Dfile.encoding=UTF-8"
-export TEMP=${TMP}
-export SCHEME_LIBRARY_PATH="/usr/local/lib/slib/"
 
 export XDEBUG_CONFIG="idekey=DBGP"
 export XDEBUG_SESSION_START=DBGP
 
 export XDG_CONFIG_HOME=${HOME}/.config
 
-#PATH=/usr/bin:/usr/sbin:/bin:/sbin:/usr/X11R6/bin:${HOME}/bin:/usr/local/bin
-PATH=${PATH}:${HOME}/cvswork/refeng/tools
-PATH=${PATH}:${HOME}/bin/vim
-PATH=${PATH}:${JAVA_HOME}/bin:${J2EE_HOME}/bin
-PATH=${PATH}:${CATALINA_HOME}/bin
-PATH=${PATH}:${ANT_HOME}/bin
-PATH=${PATH}:${M2_HOME}/bin
-PATH=${PATH}:${MYSQL_BASE}/bin
-PATH=${PATH}:~/wo_docker/bin
-PATH=${PATH}:./node_modules/.bin
 PATH=${PATH}:~/bin-nongit
-PATH=${PATH}:~/vcswork/dsp-wo-doc/users/ichiro.matsunaga/bin
 PATH=${PATH}:~/.embulk/bin
-
 
 if [ -n "${WINPATH}" ]; then
 	PATH=${PATH}:${WINPATH}
 fi
 export PATH
-
-# PERL5 local::lib対応。
-if [ -e ~/perl5/lib/perl5/local/lib.pm ]; then
-	eval $(perl -I ~/perl5/lib/perl5 -Mlocal::lib)
-fi
-
-CLASSPATH=".:./build/classes"
-CLASSPATH="$CLASSPATH:$JAVA_HOME/lib/tools.jar"
-CLASSPATH="$CLASSPATH:$CATALINA_HOME/common/lib/servlet.jar"
-CLASSPATH="$CLASSPATH:$CATALINA_HOME/webapps/orgmgr/WEB-INF/classes"
-# javaLib直下のファイル群へclasspathを通す
-for f in ${HOME}/javaLib/*
-do
-	CLASSPATH="${CLASSPATH}:$f"
-done
-
-# cvswork配下の全プロジェクトのbinに対してclasspathをきる。
-for f in ${HOME}/cvswork/*
-do
-	CLASSPATH="${CLASSPATH}:$f/bin"
-done
-
-# eclipse compilerへのclasspath作成
-for f in ${ECLIPSE_HOME}/plugins/org.eclipse.jdt.core_*/*.jar;do
-	CLASSPATH="${CLASSPATH}:$f"
-done
-
-for f in ${ECLIPSE_HOME}/plugins/org.eclipse.core.runtime_*/*.jar;do
-	CLASSPATH="${CLASSPATH}:$f"
-done
-
-for f in ${ECLIPSE_HOME}/plugins/org.eclipse.core.resources_*/*.jar;do
-	CLASSPATH="${CLASSPATH}:$f"
-done
-
-# java runtimeへclasspathを通す
-CLASSPATH=${CLASSPATH}:${JAVA_HOME}/jre/lib/rt.jar
-export CLASSPATH
-unset f
-
-export ANGBAND_X11_FONT_0="-*-ipamonagothic-medium-r-normal-*-14-*-*-*-*-*-jisx0208.1983-*"
-
 
 if [ -f ${HOME}/.gpg-agent-info ] && \
 		ps axo 'pid' | grep -q `cut -d: -f 2 ${HOME}/.gpg-agent-info` ;then
@@ -342,113 +227,10 @@ else
 	export GPG_AGENT_INFO
 fi
 
-# SSHのagent周りの設定
-#if ssh-add -l >/dev/null 2>&1; then
-#	:
-#elif [ 2 == "$?" ]
-#then
-#	export SSH_AUTH_SOCK=${HOME}/.ssh/sock.`hostname`
-#	if ssh-add -l > /dev/null 2>&1
-#	then
-#		:
-#	elif [ 2 == "$?" -a ! "$SSH_CLIENT" ]
-#	then
-#		rm -f ${SSH_AUTH_SOCK}
-#		eval `ssh-agent -a ${SSH_AUTH_SOCK}`
-#	fi
-#fi
-
 if [ -n "${DESKTOP_SESSION}" ] && [ -n "${GNOME_KEYRING_PID}"  ]; then
 	eval $(gnome-keyring-daemon --start --components=gpg,ssh)
 	export SSH_AUTH_SOCK
 fi
-
-# ssh-agentへkeyを追加
-function keyadd {
-	ssh-add -l | grep "mars" > /dev/null
-	if [ 1 == "$?" ]
-	then
-		echo "ssh key add"
-		ssh-add -t 180m ~/.ssh/id_dsa_mars
-	fi
-}
-
-export keyadd
-
-# 各hostへの接続設定。
-# tunnelingとか。
-function mars {
-	eval ${cocot} -p UTF-8 -- ssh -AY -D 10080 -C -L 8143:localhost:143 -L 8025:localhost:25 vikke@www.mars95.to
-	echo -e ${xterm_title}
-}
-
-function psb {
-	keyadd
-	eval ${cocot} -p EUC-JP -- ssh -X -C -L 8389:192.168.1.201:3389 -L 1100:192.168.1.1:80 -L 5880:192.168.1.13:5900 vikke@psb.vikke.mydns.jp
-	echo -e ${xterm_title}
-}
-
-function mnt-eijudo {
-	smbmount //192.168.1.13/f ~/mnt-smb/office1-f/ -o iocharset=utf8,password=
-	smbmount //192.168.1.201/e ~/mnt-smb/nin-e/ -o iocharset=utf8,user=vikke
-	smbmount //psb/export ~/mnt-smb/psb/ -o iocharset=utf8,user=vikke,password=
-
-}
-
-function mnt-freebsddev {
-#	smbmount //freebsddev/vikke ~/mnt-smb/freebsddev/ -o iocharset=euc-jp,password=
-	sshfs -o idmap=user -o allow_other -o uid=1000 -o gid=1000 -o workaround=rename -o follow_symlinks vikke@freebsddev:/home/vikke ~/mnt-ssh/freebsddev
-}
-
-function umnt-eijudo {
-	smbumount ~/mnt-smb/office1-f
-	smbumount ~/mnt-smb/nin-e
-
-}
-
-function snow {
-	keyadd
-	# 13306: sonic platform
-	# 13308: sonic misc
-	# 23306: alex platform(replication)
-	# 23308: alex staging
-	eval ${cocot} -p UTF-8 -- ssh -g -A -L 13306:sonic.fsx.speee.jp:3306 -L 13308:sonic.fsx.speee.jp:3308 -L 23306:alex.fsx.speee.jp:3306 -L 23308:alex.fsx.speee.jp:3308 snow.fsx.speee.jp
-
-}
-
-function ssh_client {
-	ssh -AY $(echo $SSH_CLIENT | cut -f 1 -d \ ) -l ichiro
-}
-
-function pusher {
-	keyadd
-	eval ${cocot} -p UTF-8 -- ssh -AY pusher.vikke.name
-}
-function u-ziq {
-	keyadd
-	eval ${cocot} -p UTF-8 -- ssh -AY vikke@u-ziq.vikke.name -p 10022
-}
-
-function cipher {
-	keyadd
-	eval ${cocot} -p UTF-8 -- ssh -AY vikke@cipher.vikke.name
-}
-function mnt-cipher {
-	keyadd
-	sshfs vikke@cipher.vikke.name:/home/vikke ~/mnt/cipher
-}
-
-function kt {
-	keyadd
-	eval ${cocot} -p UTF-8 -- ssh -AY vikke@kt.vikke.name
-}
-function mnt-kt {
-	sshfs 	vikke@kt.vikke.name:/home/vikke ~/mnt/kt
-}
-function umnt-kt {
-	umount ~/mnt/kt
-}
-
 
 alias rcoverage='if [ -d coverage ]; then rm -rf coverage; fi; COVERAGE=boo bundle exec rspec --no-drb'
 alias rspec='bundle exec rspec'
@@ -474,17 +256,8 @@ if [ $? -eq 0 ]; then
 	done
 fi
 
-# awesome wm / java
-# https://bbs.archlinux.org/viewtopic.php?id=142063
-# wmname LG3D
-
 ### Added by the Heroku Toolbelt
 export PATH="${PATH}:/usr/local/heroku/bin"
-
-# brew-file
-if [ -f $(brew --prefix)/etc/brew-wrap ]; then
-	source $(brew --prefix)/etc/brew-wrap
-fi
 
 function se(){
 	fs=$(ag "$1" ~/vcswork/dsp-wo-doc | fzf-tmux)
@@ -602,6 +375,13 @@ fkill() {
 	ps aux | fzf | sed 's/  */ /g' | cut -d ' ' -f2 | xargs kill -KILL
 }
 
+# docker ###########################################
+docker_del_all_container() {
+	docker rm $(docker ps -a -q)	
+}
+docker_del_all_img() {
+	docker rmi $(docker images -q)
+}
 
 # dasht ############################################
 # export PATH=$HOME/.nodebrew/current/bin:$PATH
@@ -609,41 +389,24 @@ fkill() {
 export GO111MODULE=on
 export GOPRIVATE="github.com/ca-crowdfunding/*,github.com/vikke/*"
 
-# # goenv
-# export GOENV_DISABLE_GOPATH=1
-# export GOENV_ROOT="$HOME/.goenv"
-# export PATH="$GOENV_ROOT/bin:$PATH"
-# eval "$(goenv init -)"
-# export PATH="$GOROOT/bin:$PATH"
-# rubyでspring off
-# export DISABLE_SPRING=true
-
-# linux brew
-export PATH=${PATH}:/home/linuxbrew/.linuxbrew/bin
-
-
 eval "$(direnv hook bash)"
-
-export PYTHONPATH=.
-eval "$(pyenv init -)"
-eval "$(rbenv init -)"
-export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
-export PYENV_ROOT=~/.pyenv
 
 # export NODEBREW_ROOT=/usr/local/var/nodebrew
 export PATH=${PATH}:~/.nodenv/bin
 eval "$(nodenv init -)"
 
-if [ -d ~/.pyenv ]; then
-	export PATH=${PATH}:~/.pyenv/bin
-	eval "$(pyenv init -)" 
-fi
+
+eval $(/opt/homebrew/bin/pyenv init --path)
+eval "$(pyenv init -)" 
+export PYENV_ROOT=$(pyenv root)
 
 export profile="yes"
 
 export AppData=${HOME}/AppData
 export TEMP=/tmp
 
-[[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
+export PATH=${PATH}:$(brew --prefix)/opt/mysql-client/bin
+export PATH=$(brew --prefix)/bin:${PATH}
 
+[[ -r "$(brew --prefix)/etc/profile.d/bash_completion.sh" ]] && . "$(brew --prefix)/etc/profile.d/bash_completion.sh"
 
