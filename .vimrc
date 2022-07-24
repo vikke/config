@@ -376,11 +376,13 @@ function! s:denite_filter_my_settings() abort
 endfunction
 
 call denite#custom#var('file/rec', 'command',
-    \ ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
+    \ ['ag', '--follow', '--nocolor', '--nogroup', '-g', '' ])
 call denite#custom#source(
     \ 'file_mru', 'matchers', ['matcher/fuzzy', 'matcher/project_files'])
 call denite#custom#source(
     \ 'file/rec', 'matchers', ['matcher/fuzzy'])
+call denite#custom#filter('matcher/ignore_globs', 'ignore_globs',
+      \ [ '.git/', 'node_modules/'])
 
 call denite#custom#var('grep', 'command', ['ag'])
 call denite#custom#var('grep', 'default_opts',
@@ -718,6 +720,8 @@ let QFixWin_EnableMode = 1
 nnoremap <silent> fd :LspDefinition<CR>
 nnoremap <silent> fi :LspImplementation<CR>
 nnoremap <silent> fr :LspReferences<CR>
+nnoremap <silent> fh :LspHover<CR>
+nnoremap <silent> fk :LspPeekDefinition<CR>
 
 let g:lsp_log_verbose = 0
 let g:lsp_log_file = expand('~/vim-lsp.log')

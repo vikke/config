@@ -1,1 +1,1 @@
-/home/vikke/config/.vimrc
+../.vimrc
