@@ -648,7 +648,7 @@ augroup END
 "}}}
 
 "http://d.hatena.ne.jp/hirafoo/20120223/1329926505
-" let g:ruby_path = ""
+let g:ruby_path = "/Users/vikke/.rbenv/shims/ruby"
 
 
 "{{{ vim-easy-align

@@ -407,6 +407,7 @@ export TEMP=/tmp
 
 export PATH=${PATH}:$(brew --prefix)/opt/mysql-client/bin
 export PATH=$(brew --prefix)/bin:${PATH}
+eval "$(rbenv init -)"
 
 [[ -r "$(brew --prefix)/etc/profile.d/bash_completion.sh" ]] && . "$(brew --prefix)/etc/profile.d/bash_completion.sh"
 
