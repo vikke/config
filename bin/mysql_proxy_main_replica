@@ -1,1 +1,1 @@
-cloud_sql_proxy -instances=commmune-develop:asia-northeast1:main-replica=tcp:13306
+cloud_sql_proxy -instances=useful-theory-142502:asia-northeast1:production-1-read-replica=tcp:13306

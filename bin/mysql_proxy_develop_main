@@ -1,0 +1,1 @@
+cloud_sql_proxy -instances=commmune-develop:asia-northeast1:main=tcp:13306
