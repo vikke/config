@@ -10,3 +10,5 @@ if [ -f '/Users/vikke/bin/google-cloud-sdk/path.bash.inc' ]; then . '/Users/vikk
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/vikke/bin/google-cloud-sdk/completion.bash.inc' ]; then . '/Users/vikke/bin/google-cloud-sdk/completion.bash.inc'; fi
+
+source /Users/vikke/.docker/init-bash.sh || true # Added by Docker Desktop

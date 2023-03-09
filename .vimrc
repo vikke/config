@@ -16,6 +16,30 @@ if &compatible
 endif
 set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
 
+let g:lsp_settings = {
+\  'pylsp-all': {
+\    'workspace_config': {
+\      'pylsp-all': {
+\        'configurationSources': ['flake8'],
+\        'plugins': {
+\           'flake8': {
+\               'enabled': 1
+\           },
+\           'mccabe': {
+\               'enabled': 0
+\           },
+\           'pycodestyle': {
+\               'enabled': 0
+\           },
+\           'pyflakes': {
+\               'enabled': 0
+\           },
+\        }
+\      }
+\    }
+\  }
+\}
+
 if dein#load_state('~/.cache/dein')
     call dein#begin('~/.cache/dein')
 
@@ -31,7 +55,7 @@ if dein#load_state('~/.cache/dein')
 "    " call dein#add('Shougo/vimproc.vim', {'build': 'make'})
 "
     call dein#add('Shougo/unite.vim')
-"    call dein#add('tsukkee/unite-tag')
+    call dein#add('tsukkee/unite-tag')
     call dein#add('Shougo/unite-outline')
     call dein#add('Shougo/neomru.vim')
 "
@@ -103,10 +127,12 @@ if dein#load_state('~/.cache/dein')
 
     call dein#add('lambdalisue/suda.vim')
     call dein#add('hashivim/vim-terraform')
+    call dein#add('preservim/nerdtree')
 
     call dein#end()
     call dein#save_state()
 endif
+
 let g:dein#auto_recache = 1
 
 let g:vdebug_force_ascii = 1
@@ -458,10 +484,14 @@ let g:Tlist_Show_One_File = 1
 let g:Tlist_Exit_OnlyWindow = 1
 let g:Tlist_Auto_Update = 1
 
-nnoremap <Leader>t :Tlist<CR>
+" nnoremap <Leader>t :Tlist<CR>
 
 "}}}
 
+
+"=== NERDTree ===
+nnoremap <leader>n :NERDTreeFocus<CR>
+autocmd VimEnter * NERDTree
 
 "=== vcscommand ===
 let g:VCSCommandDiffSplit="w"
@@ -717,6 +747,7 @@ let QFixWin_EnableMode = 1
 "}}}
 
 "{{{ Lsp
+" 'pylsp_mypy': { 'enabled': 1 }
 nnoremap <silent> fd :LspDefinition<CR>
 nnoremap <silent> fi :LspImplementation<CR>
 nnoremap <silent> fr :LspReferences<CR>

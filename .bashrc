@@ -411,3 +411,8 @@ eval "$(rbenv init -)"
 
 [[ -r "$(brew --prefix)/etc/profile.d/bash_completion.sh" ]] && . "$(brew --prefix)/etc/profile.d/bash_completion.sh"
 
+source /Users/vikke/.docker/init-bash.sh || true # Added by Docker Desktop
+
+# asdf
+. "/opt/homebrew/opt/asdf/libexec/asdf.sh"
+. "/opt/homebrew/opt/asdf/etc/bash_completion.d/asdf.bash"
