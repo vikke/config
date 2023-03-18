@@ -77,7 +77,7 @@ case $OSTYPE in
 		export PATH="${PATH}:/usr/local/opt/mysql-client@5.7/bin"
 		# node
 		export PATH="${PATH}:/usr/local/opt/node@8/bin"
-
+		export PATH="${PATH}:/opt/homebrew/bin"
 		;;
 
 	[cC][yY][gG][wW][iI][nN])
@@ -149,6 +149,8 @@ case $OSTYPE in
 		export HADOOP_HOME=/usr/lib/hadoop
 
 		export PATH=${PATH}:~/.rbenv/bin
+
+		export PATH="${PATH}:${HOME}/.pyenv/bin"
 
 		xrdb -load ~/.Xdefaults
 		;;
@@ -396,7 +398,7 @@ export PATH=${PATH}:~/.nodenv/bin
 eval "$(nodenv init -)"
 
 
-eval $(/opt/homebrew/bin/pyenv init --path)
+eval $(pyenv init --path)
 eval "$(pyenv init -)" 
 export PYENV_ROOT=$(pyenv root)
 
