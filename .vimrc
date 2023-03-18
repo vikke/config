@@ -40,58 +40,38 @@ let g:lsp_settings = {
 \  }
 \}
 
+" Set Dein base path (required)
+let s:dein_base = '~/.cache/dein'
+
+" Set Dein source path (required)
+let s:dein_src = '~/.cache/dein/repos/github.com/Shougo/dein.vim'
+
+
 if dein#load_state('~/.cache/dein')
     call dein#begin('~/.cache/dein')
 
-    " call dein#add('Shougo/deoplete.nvim')
     if !has('nvim')
       call dein#add('roxma/nvim-yarp')
       call dein#add('roxma/vim-hug-neovim-rpc')
     endif
 
     call dein#add('Shougo/denite.nvim')
-"    call dein#add('ozelentok/denite-gtags')
-"
-"    " call dein#add('Shougo/vimproc.vim', {'build': 'make'})
-"
     call dein#add('Shougo/unite.vim')
     call dein#add('tsukkee/unite-tag')
     call dein#add('Shougo/unite-outline')
     call dein#add('Shougo/neomru.vim')
-"
-"    call dein#add('Shougo/neosnippet')
-"    call dein#add('Shougo/neosnippet-snippets')
-"
+
     call dein#add('tyru/current-func-info.vim')
-"    call dein#add('vim-scripts/matchit.zip')
-"    call dein#add('thinca/vim-quickrun')
     call dein#add('vim-jp/vimdoc-ja')
-"    call dein#add('tpope/vim-rails')
+    call dein#add('tpope/vim-rails')
     call dein#add('tpope/vim-fugitive')
-"    call dein#add('tmhedberg/matchit')
-"    call dein#add('tyru/restart.vim')
-"    call dein#add('scrooloose/nerdtree')
-"    call dein#add('vim-scripts/taglist.vim')
-"    call dein#add('junegunn/vim-easy-align')
-"    " call dein#add('koron/chalice')
-"    call dein#add('mbbill/undotree')
-"    call dein#add('easymotion/vim-easymotion')
 "    call dein#add('wakatime/vim-wakatime')
-"    call dein#add('sunaku/vim-dasht')
-"    "call dein#add('vikke/BlockDiff')
-"    "call dein#add('statox/vim-compare-lines')
-"    call dein#add('vim-scripts/Align')
-"    call dein#add('vim-scripts/SQLUtilities')
-"    call dein#add('tyru/open-browser.vim')
-"    " browser preview
+"    call dein#add('statox/vim-compare-lines')
 "    call dein#add('kazuph/previm', { 'rev': 'feature/add-plantuml-plugin' })
-"    call dein#add('aklt/plantuml-syntax')
-"    call dein#add('kana/vim-operator-user')
-"    call dein#add('haya14busa/vim-operator-flashy')
 "
-"    " necessary to run :GoInstallBinaries
-"    " call dein#add('fatih/vim-go')
-"    " call dein#add('zchee/deoplete-go', {'build': 'make'})
+"    necessary to run :GoInstallBinaries
+"    call dein#add('fatih/vim-go')
+"    call dein#add('zchee/deoplete-go', {'build': 'make'})
 "
 "    " Theme
 "    call dein#add('w0ng/vim-hybrid')
