@@ -3,7 +3,7 @@
 let g:lsp_log_verbose = 0
 let g:lsp_log_file = expand('~/vim-lsp.log')
 
-let g:python3_host_prog = "~/.pyenv/shims/python3"
+let g:python3_host_prog = "~/.pyenv/shims/python"
 if has('python3')
   " Python 3 を使うためのおまじない
 end
@@ -219,16 +219,6 @@ if has("win32unix")
     "set shq=\\"
     "set sxq=\\"
     set shellslash
-endif
-"}}}--------------------------------------------------------------------------------
-
-"--------------------------------------------------------------------------------
-" 印刷設定
-"{{{--------------------------------------------------------------------------------
-set printoptions=number:y
-set printheader=%<%f%h%m%=Page\ %N
-if has("win32")
-    set printfont=MS_Gothic:h10:cSHIFTJIS
 endif
 "}}}--------------------------------------------------------------------------------
 
