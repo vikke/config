@@ -212,6 +212,7 @@ export XDG_CONFIG_HOME=${HOME}/.config
 
 PATH=${PATH}:~/bin-nongit
 PATH=${PATH}:~/.embulk/bin
+PATH=${PATH}:/nvim-linux64/bin
 
 if [ -n "${WINPATH}" ]; then
 	PATH=${PATH}:${WINPATH}

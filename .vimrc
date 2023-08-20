@@ -107,7 +107,7 @@ if dein#load_state('~/.cache/dein')
 
     call dein#add('lambdalisue/suda.vim')
     call dein#add('hashivim/vim-terraform')
-    call dein#add('preservim/nerdtree')
+"    call dein#add('preservim/nerdtree')
 
     call dein#end()
     call dein#save_state()
@@ -470,8 +470,8 @@ let g:Tlist_Auto_Update = 1
 
 
 "=== NERDTree ===
-nnoremap <leader>n :NERDTreeFocus<CR>
-autocmd VimEnter * NERDTree
+" nnoremap <leader>n :NERDTreeFocus<CR>
+" autocmd VimEnter * NERDTree
 
 "=== vcscommand ===
 let g:VCSCommandDiffSplit="w"
