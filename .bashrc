@@ -386,6 +386,14 @@ docker_del_all_img() {
 	docker rmi $(docker images -q)
 }
 
+sp_test() {
+	docker compose exec web bin/rspec spec/services/mask_db/ spec/lib/utils/db_mask_util_spec.rb 
+}
+sp_reset_db() {
+	docker compose exec web script/local_reset_test_dbs.sh
+
+}
+
 # dasht ############################################
 # export PATH=$HOME/.nodebrew/current/bin:$PATH
 
