@@ -161,6 +161,7 @@ esac
 
 export EDITOR=nvim
 alias vim=nvim
+alias mysql=mycli
 
 ulimit -c unlimited
 
@@ -393,6 +394,12 @@ sp_reset_db() {
 	docker compose exec web script/local_reset_test_dbs.sh
 
 }
+sp_bundle_install() {
+	docker compose exec web bundle install
+}
+sp_rubocop_develop() {
+	git diff --name-only develop | grep -E '.*\.rb'| xargs rubocop  -A
+}
 
 # dasht ############################################
 # export PATH=$HOME/.nodebrew/current/bin:$PATH
@@ -419,6 +426,10 @@ export TEMP=/tmp
 export PATH=${PATH}:$(brew --prefix)/opt/mysql-client/bin
 export PATH=$(brew --prefix)/bin:${PATH}
 eval "$(rbenv init -)"
+
+if [ ${TERM} == 'xterm-256color' ]; then
+	eval $(ssh-agent)
+fi
 
 [[ -r "$(brew --prefix)/etc/profile.d/bash_completion.sh" ]] && . "$(brew --prefix)/etc/profile.d/bash_completion.sh"
 
