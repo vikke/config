@@ -15,7 +15,7 @@ if &compatible
       set nocompatible
 endif
 set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
-
+set runtimepath+=~/.cache/dein/repos/github.com/magicmonty/sonicpi.nvim
 let g:lsp_settings = {
 \  'pylsp-all': {
 \    'workspace_config': {
@@ -107,6 +107,15 @@ if dein#load_state('~/.cache/dein')
 
     call dein#add('lambdalisue/suda.vim')
     call dein#add('hashivim/vim-terraform')
+
+    call dein#add('neovim/nvim-lspconfig')
+    call dein#add('hrsh7th/nvim-cmp')
+    call dein#add('kyazdani42/nvim-web-devicons')
+    call dein#add('magicmonty/sonicpi.nvim', {
+    \ 'hook_post_source': 'lua require("sonicpi").setup()',
+    \})
+
+   
 "    call dein#add('preservim/nerdtree')
 
     call dein#end()
@@ -729,3 +738,32 @@ let g:lsp_log_file = expand('~/vim-lsp.log')
 " let g:delve_use_vimux = 1
 
 "}}}
+
+"{{{ sonic-pi
+lua << EOF
+-- `sonicpi.nvim`プラグインの設定
+require('sonicpi').setup({
+  -- ここに設定オプションを追加
+})
+
+-- LSP設定の例
+local lspconfig = require('lspconfig')
+
+local function on_init(client)
+  require('sonicpi').lsp_on_init(client, { server_dir = '/mnt/c/Program Files/Sonic Pi/app/server' })
+end
+
+-- LSPサーバーの設定に`on_init`関数を使用する
+lspconfig.solargraph.setup({
+  on_init = on_init,
+  single_file = true,
+})
+
+require('cmp').setup({
+    sources = {
+        { name = 'sonicpi' }
+    },
+})
+EOF
+"}}}
+
