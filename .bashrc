@@ -210,6 +210,7 @@ export XDEBUG_CONFIG="idekey=DBGP"
 export XDEBUG_SESSION_START=DBGP
 
 export XDG_CONFIG_HOME=${HOME}/.config
+export XDG_DATA_DIRS=${XDG_DATA_DIRS}:${HOME}/.local/share/flatpak/exports/share
 
 PATH=${PATH}:~/bin-nongit
 PATH=${PATH}:~/.embulk/bin
