@@ -52,6 +52,17 @@ require("lazy").setup({
 	{
 		'tyru/current-func-info.vim'
 	},
+	{
+		'magicmonty/sonicpi.nvim',
+		config = function()
+			require('sonicpi').setup()
+		end,
+		dependencies = {
+			'hrdh7th/nvim-cmp',
+			'kyazdani42/nvim-web-devicons',
+		},
+		single_file = true
+	},
 })
 
 require('mason').setup()
@@ -64,13 +75,6 @@ require('mason-lspconfig').setup_handlers({ function(server)
 	require('lspconfig')[server].setup(opt)
 end})
 
---[[
-nnoremap <silent> fd :LspDefinition<CR>
-nnoremap <silent> fi :LspImplementation<CR>
-nnoremap <silent> fr :LspReferences<CR>
-nnoremap <silent> fh :LspHover<CR>
-nnoremap <silent> fk :LspPeekDefinition<CR>
---]]
 vim.keymap.set('n', 'fk', '<cmd>lua vim.lsp.buf.definition()<CR>')
 vim.keymap.set('n', 'fi', '<cmd>lua vim.lsp.buf.implementation()<CR>')
 vim.keymap.set('n', 'fr', '<cmd>lua vim.lsp.buf.references()<CR>')
@@ -109,47 +113,6 @@ cmp.setup({
   },
 })
 
---[[
-local nvim_lsp = require('lspconfig')
-local handlers = {
-	["textDocument/publishDiagnostics"] = vim.lsp.with(
-		vim.lsp.diagnostic.on_publish_diagnostics, {
-			virtual_text = true
-		}
-	)
-}
-
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-nvim_lsp.solargraph.setup {
-	cmd = {
-		"solargraph",
-		"stdio"
-	},
-	filetypes = {
-		"ruby"
-	},
-	flags = {
-		debounce_text_changes = 150
-	},
-	-- on_attach = on_attach,
-	root_dir = nvim_lsp.util.root_pattern("Gemfile", ".git", "."),
-	capabilities = capabilities,
-	handlers = handlers,
-	settings = {
-		solargraph = {
-			autoformat = true,
-			completion = true,
-			diagnostic = true,
-			folding = true,
-			references = true,
-			rename = true,
-			symbols = true
-		}
-	}
-}
---]]
-
--- If you want insert `(` after select function or method item
 local cmp_autopairs = require('nvim-autopairs.completion.cmp')
 local cmp = require('cmp')
 cmp.event:on(
@@ -181,14 +144,11 @@ opt.list = true
 opt.hlsearch = false
 opt.background = 'dark'
 vim.cmd("colorscheme iceberg")
--- opt.listchars = 'trail:\ ,tab:\ \ ,'
 
 function GetB()
     local col = vim.api.nvim_win_get_cursor(0)[2]
     local line = vim.api.nvim_get_current_line()
     local char = line:sub(col, col)
-    -- 注意: Neovim APIではエンコーディングの変換が直接サポートされていません。
-    -- 必要に応じてLuaでエンコーディング変換を実装するか、外部ライブラリを利用してください。
     return String2Hex(char)
 end
 function Nr2Hex(nr)
@@ -210,4 +170,20 @@ vim.o.statusline = "%<[%n]%m%r%h%w%[" ..
 "%y %F%=" .. "[%{luaeval('GetB()')}]" ..
 " %{cfi#format('[%s()]', 'no function')} %l,%c%V%8P"
 --]]
---
+
+require('sonicpi').setup({
+  server_dir = '/var/lib/flatpak/app/net.sonic_pi.SonicPi/current/active/files/app/server',
+  mappings = {
+    { 'n', '<leader>s', require('sonicpi.remote').stop, default_mapping_opts },
+    { 'i', '<M-s>', require('sonicpi.remote').stop, default_mapping_opts },
+    { 'n', '<leader>r', require('sonicpi.remote').run_current_buffer, default_mapping_opts },
+    { 'i', '<M-r>', require('sonicpi.remote').run_current_buffer, default_mapping_opts },
+  },
+  single_file = true,
+})
+
+require('cmp').setup({
+	sources = {
+		{ name = 'sonicpi'}
+	}
+})
