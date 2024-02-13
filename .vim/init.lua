@@ -1,12 +1,29 @@
 vim.g.python3_host_prog = "~/.pyenv/shims/python"
 vim.g.lsp_log_verbose = 0
 vim.g.lsp_log_file = vim.fn.expand('~/vim-lsp.log')
+vim.g.mapleader = ','
 
 vim.api.nvim_del_keymap('n', 'Y')
 vim.keymap.set('n', '<C-I>', '<C-O>', { noremap = true })
 vim.keymap.set('n', '<C-O>', '<C-I>', { noremap = true })
 vim.keymap.set('n', 'j', 'gj', { noremap = true })
 vim.keymap.set('n', 'k', 'gk', { noremap = true })
+
+vim.opt.clipboard = "unnamedplus"
+if vim.fn.has('wsl') == 1 then
+  vim.g.clipboard = {
+  name = "win32yank-wsl",
+  copy = {
+    ["+"] = "win32yank.exe -i --crlf",
+    ["*"] = "win32yank.exe -i --crlf"
+    },
+  paste = {
+    ["+"] = "win32yank.exe -o --crlf",
+    ["*"] = "win32yank.exe -o --crlf"
+    },
+  cache_enable = 0,
+  }
+end
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -55,10 +72,10 @@ require("lazy").setup({
 	{
 		'magicmonty/sonicpi.nvim',
 		config = function()
-			require('sonicpi').setup()
+--			require('sonicpi').setup()
 		end,
 		dependencies = {
-			'hrdh7th/nvim-cmp',
+			'hrsh7th/nvim-cmp',
 			'kyazdani42/nvim-web-devicons',
 		},
 		single_file = true
@@ -172,7 +189,8 @@ vim.o.statusline = "%<[%n]%m%r%h%w%[" ..
 --]]
 
 require('sonicpi').setup({
-  server_dir = '/var/lib/flatpak/app/net.sonic_pi.SonicPi/current/active/files/app/server',
+  -- server_dir = '/var/lib/flatpak/app/net.sonic_pi.SonicPi/current/active/files/app/server',
+  server_dir = '/mnt/c/Program Files/Sonic Pi/app/server',
   mappings = {
     { 'n', '<leader>s', require('sonicpi.remote').stop, default_mapping_opts },
     { 'i', '<M-s>', require('sonicpi.remote').stop, default_mapping_opts },
