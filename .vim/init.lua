@@ -115,6 +115,7 @@ cmp.setup({
   },
   sources = {
     { name = "nvim_lsp" },
+	{ name = 'sonicpi'},
     -- { name = "buffer" },
     -- { name = "path" },
   },
@@ -200,8 +201,3 @@ require('sonicpi').setup({
   single_file = true,
 })
 
-require('cmp').setup({
-	sources = {
-		{ name = 'sonicpi'}
-	}
-})
