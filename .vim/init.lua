@@ -50,12 +50,38 @@ require("lazy").setup({
 	},
 	{
 		'nvim-telescope/telescope.nvim',
-		dependencies =  { 'nvim-lua/plenary.nvim' }
+		dependencies =  { 'nvim-lua/plenary.nvim' },
+		config = function()
+			local telescope_actions = require('telescope.actions')
+			local telescope_builtin = require('telescope.builtin')
+			require('telescope').setup {
+				defaults = {
+					mappings = {
+						i= {
+							["<C-k>"] = telescope_actions.select_horizontal,
+							["<C-o>"] = telescope_actions.select_vertical
+						},
+						n = {
+							["<C-k>"] = telescope_actions.select_horizontal,
+							["<C-o>"] = telescope_actions.select_vertical
+						}
+					}
+				}
+			}
+            local map = vim.api.nvim_set_keymap
+            local opts = { noremap = true, silent = true }
+            map('n', 'ff', '<cmd>Telescope find_files<CR>', opts)
+            map('n', 'FG', '<cmd>Telescope live_grep<CR>', opts)
+            map('n', 'fg', '<cmd>Telescope grep_string<CR>', opts)
+            map('n', 'fs', '<cmd>Telescope buffers<CR>', opts)
+            map('n', 'fh', '<cmd>Telescope help_tags<CR>', opts)
+		end
 	},
 	{
 	  "nvim-telescope/telescope-frecency.nvim",
 	  config = function()
 	    require("telescope").load_extension "frecency"
+		vim.keymap.set('n', 'fm', "<Cmd>Telescope frecency workspace=CWD<CR>", {noremap = true, silent = true})
 	  end,
 	},	
 	{
@@ -80,6 +106,9 @@ require("lazy").setup({
 		},
 		single_file = true
 	},
+	{
+		'tpope/vim-fugitive',
+	},
 })
 
 require('mason').setup()
@@ -97,14 +126,6 @@ vim.keymap.set('n', 'fi', '<cmd>lua vim.lsp.buf.implementation()<CR>')
 vim.keymap.set('n', 'fr', '<cmd>lua vim.lsp.buf.references()<CR>')
 vim.keymap.set('n', 'fd', '<cmd>lua vim.lsp.buf.hover()<CR>')
 vim.keymap.set('n', 'fn', '<cmd>lua vim.lsp.buf.rename()<CR>')
-
-local builtin = require('telescope.builtin')
-vim.keymap.set('n', 'ff', builtin.find_files, {})
-vim.keymap.set('n', 'FG', builtin.live_grep, {})
-vim.keymap.set('n', 'fg', builtin.grep_string, {})
-vim.keymap.set('n', 'fs', builtin.buffers, {})
-vim.keymap.set('n', 'fh', builtin.help_tags, {})
-vim.keymap.set('n', 'fm', "<Cmd>Telescope frecency workspace=CWD<CR>")
 
 local cmp = require("cmp")
 cmp.setup({
