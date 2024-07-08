@@ -410,9 +410,8 @@ export GOPRIVATE="github.com/ca-crowdfunding/*,github.com/vikke/*"
 
 eval "$(direnv hook bash)"
 
-# export NODEBREW_ROOT=/usr/local/var/nodebrew
-export PATH=${PATH}:~/.nodenv/bin
-eval "$(nodenv init -)"
+# export PATH=${PATH}:~/.nodenv/bin
+# eval "$(nodenv init -)"
 
 
 eval $(pyenv init --path)
@@ -435,7 +434,11 @@ fi
 [[ -r "$(brew --prefix)/etc/profile.d/bash_completion.sh" ]] && . "$(brew --prefix)/etc/profile.d/bash_completion.sh"
 
 source /Users/vikke/.docker/init-bash.sh || true # Added by Docker Desktop
+source ~/google-cloud-sdk/completion.bash.inc
 
+export PATH=${PATH}:~/google-cloud-sdk/bin
 # asdf
 . "/opt/homebrew/opt/asdf/libexec/asdf.sh"
 . "/opt/homebrew/opt/asdf/etc/bash_completion.d/asdf.bash"
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"
