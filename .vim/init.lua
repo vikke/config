@@ -40,6 +40,9 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
 	{
+		'vim-jp/vimdoc-ja',
+	},
+	{
 		'neovim/nvim-lspconfig',
 		dependencies = {
 			{'williamboman/mason.nvim'},
