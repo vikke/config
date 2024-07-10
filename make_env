@@ -77,7 +77,8 @@ for f in \
 	cronscripts \
 	skk-dic \
 	bin \
-	.config/awesome
+	.config/awesome \
+	.config/pgclid 
 do
 
 	link_dotfile ${f} ${f}

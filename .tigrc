@@ -10,3 +10,5 @@ bind generic G none
 bind generic D !git difftool --tool=nvim -d --no-prompt --trust-exit-code %(commit)^!
 
 set vertical-split = no
+
+set diff-options = -m --first-parent

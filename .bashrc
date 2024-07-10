@@ -435,7 +435,9 @@ fi
 [[ -r "$(brew --prefix)/etc/profile.d/bash_completion.sh" ]] && . "$(brew --prefix)/etc/profile.d/bash_completion.sh"
 
 source /Users/vikke/.docker/init-bash.sh || true # Added by Docker Desktop
+source ~/google-cloud-sdk/completion.bash.inc
 
+export PATH=${PATH}:~/google-cloud-sdk/bin
 # asdf
 . "/opt/homebrew/opt/asdf/libexec/asdf.sh"
 . "/opt/homebrew/opt/asdf/etc/bash_completion.d/asdf.bash"
