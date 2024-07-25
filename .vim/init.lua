@@ -71,13 +71,19 @@ require("lazy").setup({
 					}
 				}
 			}
-            local map = vim.api.nvim_set_keymap
-            local opts = { noremap = true, silent = true }
-            map('n', 'ff', '<cmd>Telescope find_files<CR>', opts)
-            map('n', 'FG', '<cmd>Telescope live_grep<CR>', opts)
-            map('n', 'fg', '<cmd>Telescope grep_string<CR>', opts)
-            map('n', 'fs', '<cmd>Telescope buffers<CR>', opts)
-            map('n', 'fh', '<cmd>Telescope help_tags<CR>', opts)
+			local map = vim.api.nvim_set_keymap
+			local opts = { noremap = true, silent = true }
+			local function find_files_from_current_dir()
+				local current_file = vim.fn.expand('%:p')
+				local current_dir = vim.fn.fnamemodify(current_file, ':h')
+				telescope_builtin.find_files({cwd = current_dir})
+			end
+			vim.keymap.set('n', 'FF', find_files_from_current_dir, opts)
+			map('n', 'ff', '<cmd>Telescope find_files<CR>', opts)
+			map('n', 'FG', '<cmd>Telescope live_grep<CR>', opts)
+			map('n', 'fg', '<cmd>Telescope grep_string<CR>', opts)
+			map('n', 'fs', '<cmd>Telescope buffers<CR>', opts)
+			map('n', 'fh', '<cmd>Telescope help_tags<CR>', opts)
 		end
 	},
 	{

@@ -410,6 +410,7 @@ export GOPRIVATE="github.com/ca-crowdfunding/*,github.com/vikke/*"
 
 eval "$(direnv hook bash)"
 
+# export NODEBREW_ROOT=/usr/local/var/nodebrew
 # export PATH=${PATH}:~/.nodenv/bin
 # eval "$(nodenv init -)"
 
@@ -440,5 +441,13 @@ export PATH=${PATH}:~/google-cloud-sdk/bin
 # asdf
 . "/opt/homebrew/opt/asdf/libexec/asdf.sh"
 . "/opt/homebrew/opt/asdf/etc/bash_completion.d/asdf.bash"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/vikke/google-cloud-sdk/path.bash.inc' ]; then . '/home/vikke/google-cloud-sdk/path.bash.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/vikke/google-cloud-sdk/completion.bash.inc' ]; then . '/home/vikke/google-cloud-sdk/completion.bash.inc'; fi
+
+export PATH=${PATH}:~/.tfenv/bin
 export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
