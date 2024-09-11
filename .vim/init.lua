@@ -9,6 +9,8 @@ vim.keymap.set('n', '<C-O>', '<C-I>', { noremap = true })
 vim.keymap.set('n', 'j', 'gj', { noremap = true })
 vim.keymap.set('n', 'k', 'gk', { noremap = true })
 
+vim.keymap.set('n', '<C-N>', ':Neotree filesystem reveal left<CR>')
+
 vim.opt.clipboard = "unnamedplus"
 if vim.fn.has('wsl') == 1 then
   vim.g.clipboard = {
@@ -117,6 +119,16 @@ require("lazy").setup({
 	},
 	{
 		'tpope/vim-fugitive',
+	},
+	{
+		"nvim-neo-tree/neo-tree.nvim",
+		branch = "v3.x",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+			"MunifTanjim/nui.nvim",
+			-- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
+		}
 	},
 })
 
