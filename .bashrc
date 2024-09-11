@@ -374,6 +374,10 @@ gshow() {
 FZF-EOF"
 }
 
+git_empty_commit() {
+	git commit --allow-empty -m "[WIP] Init."
+}
+
 plist() {
 	val=${1}
 	ps auxww | grep -v 'grep' | grep -e "${val}"
@@ -460,3 +464,4 @@ if [ -f '/home/vikke/google-cloud-sdk/completion.bash.inc' ]; then . '/home/vikk
 export PATH=${PATH}:~/.tfenv/bin
 export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
+

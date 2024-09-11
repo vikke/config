@@ -120,16 +120,22 @@ require("lazy").setup({
 	{
 		'tpope/vim-fugitive',
 	},
+	--[[
 	{
-		"nvim-neo-tree/neo-tree.nvim",
-		branch = "v3.x",
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-			"nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
-			"MunifTanjim/nui.nvim",
-			-- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
-		}
+		"nvim-treesitter/nvim-treesitter",
+		build = ":TSUpdate",
+		config = function () 
+			local configs = require("nvim-treesitter.configs")
+
+			configs.setup({
+				ensure_installed = { "lua", "vimdoc", "ruby", "markdown", "bash", "javascript", "typescript", "html", "css", "mermaid", "sql" },
+				sync_install = false,
+				highlight = { enable = true },
+				indent = { enable = true },  
+			})
+		end
 	},
+	]]
 })
 
 require('mason').setup()
@@ -195,7 +201,7 @@ opt.hidden = true
 opt.backspace='indent,eol,start'
 opt.diffopt='filler,iwhite'
 opt.foldenable = true
-opt.foldmethod = 'marker'
+opt.foldmethod = 'indent'
 opt.foldlevel = 3
 opt.foldlevelstart = 99
 opt.history= 2000
@@ -242,4 +248,3 @@ require('sonicpi').setup({
   },
   single_file = true,
 })
-
