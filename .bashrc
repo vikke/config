@@ -338,6 +338,15 @@ gdeldel() {
   git branch -D $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
 }
 
+gdelremeote(){
+  local branches branch
+  branches=$(git branch --all | grep -P "^\s+remotes\/" | sed "s#remotes/origin/##") &&
+  branch=$(echo "$branches" |
+           fzf-tmux -m -d $(( 2 + $(wc -l <<< "$branches") )) ) &&
+  git push origin --delete $branch
+
+}
+
 # fco - checkout git branch/tag
 gco() {
   local tags branches target
