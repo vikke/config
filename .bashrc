@@ -391,10 +391,6 @@ gshow() {
 FZF-EOF"
 }
 
-git_empty_commit() {
-	git commit --allow-empty -m "[WIP] Init."
-}
-
 plist() {
 	val=${1}
 	ps auxww | grep -v 'grep' | grep -e "${val}"
