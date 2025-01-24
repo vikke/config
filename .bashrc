@@ -277,6 +277,14 @@ function git_empty_commit(){
 		git commit --allow-empty -m "init new branch ( #$1 ) ."
 	fi
 }
+function git_empty_commit_jira(){
+	if [ $# -ne 1 ]; then
+		echo "Issue番号を引数に渡して。"	
+	else
+		git commit --allow-empty -m "init new branch ( $1 ) ."
+	fi
+}
+
 
 # for fzf
 # https://github.com/junegunn/fzf/issues/39

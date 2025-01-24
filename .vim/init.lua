@@ -1,5 +1,5 @@
 vim.g.python3_host_prog = "~/.pyenv/shims/python"
-vim.g.lsp_log_verbose = 0
+vim.g.lsp_log_verbose = 1
 vim.g.lsp_log_file = vim.fn.expand('~/vim-lsp.log')
 vim.g.mapleader = ','
 
