@@ -1,0 +1,23 @@
+{
+  "suggest.noselect":false,
+  "suggest.preferCompleteThanJumpPlaceholder":true,
+  "languageserver": {
+    "golang": {
+      "command": "gopls",
+      "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
+      "filetypes": ["go"]
+    }
+  },
+  "solargraph.diagnostics": true,
+  "solargraph.autoformat": true,
+  "solargraph.formatting": true,
+  "solargraph.hover": true,
+  "solargraph.checkGemVersion": true,
+  "solargraph.commandPath": "solargraph",
+  "solargraph.definitions": true,
+  "solargraph.completion": true,
+  "solargraph.references": true,
+  "solargraph.rename": true,
+  "solargraph.symbols": true,
+  "solargraph.useBundler": false
+}

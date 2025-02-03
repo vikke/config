@@ -1,0 +1,15 @@
+{
+  "coc.nvim": { "branch": "release", "commit": "b45563656be26e518992ffede778f918dc443012" },
+  "current-func-info.vim": { "branch": "master", "commit": "893c964f7d5692fe1ea114667869858503fc903a" },
+  "iceberg.vim": { "branch": "master", "commit": "23835d5ed696436f716cbfdb56a93a7850fe3b18" },
+  "lazy.nvim": { "branch": "main", "commit": "7527af40ddd4a93a02911be570b32609b9d4ea53" },
+  "nvim-autopairs": { "branch": "master", "commit": "3d02855468f94bf435db41b661b58ec4f48a06b7" },
+  "nvim-cmp": { "branch": "main", "commit": "12509903a5723a876abd65953109f926f4634c30" },
+  "nvim-web-devicons": { "branch": "master", "commit": "402377242b04be3f4f0f3720bd952df86e946c30" },
+  "plenary.nvim": { "branch": "master", "commit": "3707cdb1e43f5cea73afb6037e6494e7ce847a66" },
+  "sonicpi.nvim": { "branch": "main", "commit": "9204aec1461520ccb42deb6354a514ecf7eadad8" },
+  "telescope-frecency.nvim": { "branch": "master", "commit": "beb64492c825a8e42683949530bd086923e69b19" },
+  "telescope.nvim": { "branch": "master", "commit": "415af52339215926d705cccc08145f3782c4d132" },
+  "vim-fugitive": { "branch": "master", "commit": "d74a7cff4cfcf84f83cc7eccfa365488f3bbabc2" },
+  "vimdoc-ja": { "branch": "master", "commit": "520151e6fdf2cc366b03dab33370252e59dcc889" }
+}
