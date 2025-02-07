@@ -167,7 +167,7 @@ require("lazy").setup({
         -- max_files: 5000
 		"neoclide/coc.nvim",
 		branch = 'release',
-		build = 'npm ci',
+		build = 'npm install',
 		config = function()
 			-- Some servers have issues with backup files, see #649
 			vim.opt.backup = false
