@@ -8,16 +8,18 @@
       "filetypes": ["go"]
     }
   },
-  "solargraph.diagnostics": true,
-  "solargraph.autoformat": true,
-  "solargraph.formatting": true,
-  "solargraph.hover": true,
-  "solargraph.checkGemVersion": true,
-  "solargraph.commandPath": "solargraph",
-  "solargraph.definitions": true,
-  "solargraph.completion": true,
-  "solargraph.references": true,
-  "solargraph.rename": true,
-  "solargraph.symbols": true,
-  "solargraph.useBundler": false
+  "languageserver": {
+    "ruby": {
+      "command": "ruby-lsp",
+      "args": ["stdio"],
+      "filetypes": ["ruby"],
+      "initializationOptions": {},
+      "trace.server": "verbose",
+      "initializationOptions": {
+        "gemPaths": [
+          "/home/vikke/.rbenv/versions/3.3.7/lib/ruby/gems/3.3.0/gems"
+        ]
+      }
+    }
+  }
 }
