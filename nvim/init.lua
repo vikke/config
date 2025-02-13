@@ -128,43 +128,33 @@ require("lazy").setup({
 	},
 	]]
 	{
-		-- solargraphで設定。ruby-lspだと、rbenvで複数version使ったときに具合が出るので。
-		-- gem install solargraph
-		-- gem install solargraph-rails
-		--
-		-- projedt_root/.solargraph.yml
-		-- ---
-        -- include:
-        -- - "**/*.rb"
-        -- exclude:
-        -- - spec/**/*
-        -- - test/**/*
-        -- - vendor/**/*
-        -- - ".bundle/**/*"
-        -- require:
-        -- - actioncable
-        -- - actionmailer
-        -- - actionpack
-        -- - actionview
-        -- - activejob
-        -- - activemodel
-        -- - activerecord
-        -- - activestorage
-        -- - activesupport
-        -- 
-        -- domains: []
-        -- reporters:
-        -- - rubocop
-        -- - require_not_found
-        -- formatter:
-        --   rubocop:
-        --     cops: safe
-        --     except: []
-        --     only: []
-        --     extra_args: []
-        -- require_paths: []
-        -- plugins: []
-        -- max_files: 5000
+		-- CocConfig
+		--[[
+        {
+          "suggest.noselect": false,
+          "suggest.preferCompleteThanJumpPlaceholder": true,
+          "languageserver": {
+            "golang": {
+              "command": "gopls",
+              "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
+              "filetypes": ["go"]
+            },
+            "ruby": {
+              "command": "ruby-lsp",
+              "args": ["stdio"],
+              "filetypes": ["ruby"],
+              "trace.server": "verbose",
+              "rootPatterns": ["Gemfile", ".git/"],
+              "initializationOptions": {
+                "gemPaths": [
+                  "/home/vikke/.rbenv/versions/3.3.7/lib/ruby/gems/3.3.0/gems"
+                ],
+                "formatting": true
+              }
+            }
+          }
+        }
+		--]]
 		"neoclide/coc.nvim",
 		branch = 'release',
 		build = 'npm ci',
@@ -201,8 +191,8 @@ require("lazy").setup({
 			-- <C-g>u breaks current undo, please make your own choice
 			keyset("i", "<cr>", [[coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"]], opts)
 
-			-- Use <c-j> to trigger snippets
-			keyset("i", "<c-j>", "<Plug>(coc-snippets-expand-jump)")
+			-- Use <c-s> to trigger snippets
+			keyset("i", "<c-s>", "<Plug>(coc-snippets-expand-jump)")
 			-- Use <c-space> to trigger completion
 			keyset("i", "<c-space>", "coc#refresh()", {silent = true, expr = true})
 
