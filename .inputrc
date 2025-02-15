@@ -7,5 +7,9 @@ set keymap vi-insert
 # tab補完でignore case
 set completion-ignore-case
 
-"\C-p": history-search-backward
-"\C-n": history-search-forward
+# "\C-p": history-search-backward
+# "\C-n": history-search-forward
+
+"\C-p": menu-complete-backward
+"\C-n": menu-complete
+
