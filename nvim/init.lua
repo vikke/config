@@ -143,6 +143,16 @@ require("lazy").setup({
 			'nvim-telescope/telescope.nvim',
 		},
 	},
+	{
+		'hrsh7th/cmp-nvim-lsp',
+		config = function()
+			require('cmp_nvim_lsp').default_capabilities()
+		end,
+		dependencies = {
+			'hrsh7th/nvim-cmp',
+		}
+
+	},
 })
 
 -- Global mappings.
@@ -157,9 +167,6 @@ vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist)
 vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('UserLspConfig', {}),
   callback = function(ev)
-    -- Enable completion triggered by <c-x><c-o>
-    vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
-
     -- Buffer local mappings.
     -- See `:help vim.lsp.*` for documentation on any of the below functions
     local opts = { buffer = ev.buf }
@@ -193,13 +200,14 @@ cmp.setup({
 	},
 	sources = {
 		{ name = 'sonicpi'},
+		{ name = 'nvim_lsp'},
 		-- { name = "buffer" },
 		-- { name = "path" },
 	},
 	mapping = cmp.mapping.preset.insert({
 		["<C-p>"] = cmp.mapping.select_prev_item(),
 		["<C-n>"] = cmp.mapping.select_next_item(),
-		['<C-l>'] = cmp.mapping.complete(),
+		['<C-Space>'] = cmp.mapping.complete(),
 		['<C-e>'] = cmp.mapping.abort(),
 		["<CR>"] = cmp.mapping.confirm { select = true },
 	}),
