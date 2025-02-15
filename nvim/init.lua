@@ -111,7 +111,7 @@ require("lazy").setup({
 	{
 		'tpope/vim-fugitive',
 	},
-	--[[
+
 	{
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
@@ -126,7 +126,6 @@ require("lazy").setup({
 			})
 		end
 	},
-	]]
 	{
 		-- [[
 		-- https://neovim.io/doc/user/lsp.html#lsp-api
