@@ -80,11 +80,11 @@ require("lazy").setup({
 		end
 	},
 	{
-	  "nvim-telescope/telescope-frecency.nvim",
-	  config = function()
-	    require("telescope").load_extension "frecency"
-		vim.keymap.set('n', 'fm', "<Cmd>Telescope frecency workspace=CWD<CR>", {noremap = true, silent = true})
-	  end,
+		"nvim-telescope/telescope-frecency.nvim",
+		config = function()
+			require("telescope").load_extension "frecency"
+			vim.keymap.set('n', 'fm', "<Cmd>Telescope frecency workspace=CWD<CR>", {noremap = true, silent = true})
+		end,
 	},	
 	{
 		'windwp/nvim-autopairs',
@@ -100,7 +100,7 @@ require("lazy").setup({
 	{
 		'magicmonty/sonicpi.nvim',
 		config = function()
---			require('sonicpi').setup()
+			--			require('sonicpi').setup()
 		end,
 		dependencies = {
 			'hrsh7th/nvim-cmp',
@@ -170,6 +170,15 @@ require("lazy").setup({
 				max_tokens = 4096,
 				-- reasoning_effort = "high" -- only supported for "o" models
 			},
+			auto_suggestions_provider = "copilot",
+			behaviour = {
+				auto_suggestions = true,
+				auto_set_highlight_group = true,
+				auto_set_keymaps = true,
+				auto_apply_diff_after_generation = true,
+				support_paste_from_clipboard = true,
+			},
+
 		},
 		-- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
 		build = "make",
@@ -183,6 +192,7 @@ require("lazy").setup({
 			"nvim-telescope/telescope.nvim", -- for file_selector provider telescope
 			"hrsh7th/nvim-cmp", -- autocompletion for avante commands and mentions
 			"nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
+			"zbirenbaum/copilot.lua", -- for providers='copilot'
 			{
 				-- support for image pasting
 				"HakonHarnes/img-clip.nvim",
@@ -209,6 +219,16 @@ require("lazy").setup({
 				ft = { "markdown", "Avante" },
 			},
 		},
+	},
+	{
+		"zbirenbaum/copilot.lua",
+		event = "InsertEnter",
+		config = function()
+			require("copilot").setup({
+				suggestion = { enabled = true },
+				panel = { enabled = false },
+			})
+		end,
 	},
 })
 
