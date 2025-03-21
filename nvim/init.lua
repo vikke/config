@@ -230,6 +230,18 @@ require("lazy").setup({
 			})
 		end,
 	},
+	{
+		"https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+		event = "VeryLazy",  -- 起動後に読み込む（任意）
+		config = function()
+			require("lsp_lines").setup()
+			-- 通常の virtual_text をオフ、virtual_lines をオンにする
+			vim.diagnostic.config({
+				virtual_text = false,
+				virtual_lines = true,
+			})
+		end,
+	}
 })
 
 -- Global mappings.
