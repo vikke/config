@@ -481,3 +481,6 @@ export PATH=${PATH}:~/.tfenv/bin
 export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
 
+
+# uv
+export PATH="/home/vikke/.local/bin:$PATH"
