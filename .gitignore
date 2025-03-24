@@ -29,3 +29,4 @@ tags-ja
 /.DS_Store
 *~
 /.vim/dein
+.aider*
