@@ -22,11 +22,15 @@ return {
 			local function find_files_from_current_dir()
 				telescope_builtin.find_files({cwd = vim.fn.expand("%:p:h")})
 			end
-			vim.keymap.set('n', 'ff', telescope_builtin.find_files, {noremap = true, silent = true})
-			vim.keymap.set('n', 'fg', telescope_builtin.live_grep, {noremap = true, silent = true})
-			vim.keymap.set('n', 'fb', telescope_builtin.buffers, {noremap = true, silent = true})
-			vim.keymap.set('n', 'fh', telescope_builtin.help_tags, {noremap = true, silent = true})
-			vim.keymap.set('n', 'fc', find_files_from_current_dir, {noremap = true, silent = true})
+
+			local opts = { noremap = true, silent = true }
+			vim.keymap.set('n', 'FF', find_files_from_current_dir, opts)
+			vim.keymap.set('n', 'ff', telescope_builtin.find_files, opts)
+			vim.keymap.set('n', 'FG', telescope_builtin.live_grep, opts)
+			vim.keymap.set('n', 'fg', telescope_builtin.live_grep, opts)
+			vim.keymap.set('n', 'fb', telescope_builtin.buffers, opts)
+			vim.keymap.set('n', 'fh', telescope_builtin.help_tags, opts)
+			vim.keymap.set('n', 'fc', find_files_from_current_dir, opts)
 		end,
 	},
 	{
