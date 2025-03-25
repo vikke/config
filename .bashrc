@@ -227,7 +227,7 @@ if [ -f ${HOME}/.gpg-agent-info ] && \
 	export GPG_TTY=`tty`
 	export GPG_AGENT_INFO
 else
-	eval `gpg-agent --default-cache-ttl 7200 --daemon --no-grab --write-env-file $HOME/.gpg-agent-info`
+	eval `gpg-agent --daemon --no-grab --write-env-file $HOME/.gpg-agent-info`
 	export GPG_TTY=`tty`
 	export GPG_AGENT_INFO
 fi
