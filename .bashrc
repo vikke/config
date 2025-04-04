@@ -215,6 +215,7 @@ export XDG_DATA_DIRS=${XDG_DATA_DIRS}:${HOME}/.local/share/flatpak/exports/share
 PATH=${PATH}:~/bin-nongit
 PATH=${PATH}:~/.embulk/bin
 PATH=${PATH}:/nvim-linux64/bin
+PATH=${PATH}:~/bin/lua-language-server/bin
 
 if [ -n "${WINPATH}" ]; then
 	PATH=${PATH}:${WINPATH}
