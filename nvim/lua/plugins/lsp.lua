@@ -13,8 +13,11 @@ return {
 			}
 			lspconfig.ts_ls.setup {
 
-			} 
-			lspconfig.lualua_ls.setup{
+			}
+			lspconfig.lua_ls.setup {
+
+			}
+			lspconfig.bashls.setup {
 
 			}
 		end
@@ -30,7 +33,7 @@ return {
 	},
 	{
 		"https://git.sr.ht/~whynothugo/lsp_lines.nvim",
-		event = "VeryLazy",  -- 起動後に読み込む（任意）
+		event = "VeryLazy", -- 起動後に読み込む（任意）
 		config = function()
 			require("lsp_lines").setup()
 			-- 通常の virtual_text をオフ、virtual_lines をオンにする
