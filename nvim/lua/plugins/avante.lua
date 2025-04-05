@@ -16,7 +16,7 @@ return {
 				max_tokens = 4096,
 				-- reasoning_effort = "high" -- only supported for "o" models
 			},
-			-- auto_suggestions_provider = "copilot",
+			auto_suggestions_provider = "copilot",
 			behaviour = {
 				auto_suggestions = true,
 				auto_set_highlight_group = true,
