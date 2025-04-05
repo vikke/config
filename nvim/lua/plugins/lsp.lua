@@ -11,6 +11,12 @@ return {
 			lspconfig.ruby_lsp.setup {
 
 			}
+			lspconfig.ts_ls.setup {
+
+			} 
+			lspconfig.lualua_ls.setup{
+
+			}
 		end
 	},
 	{
