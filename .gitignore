@@ -30,3 +30,4 @@ tags-ja
 *~
 /.vim/dein
 .aider*
+/bin/lua-language-server/log
