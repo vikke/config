@@ -1,8 +1,8 @@
 #!/usr/bin/env bash 
 
+
 # $Id: .bashrc 582 2011-02-15 23:27:26Z vikke $
 # $HeadURL: https://psb.vikke.mydns.jp/svn/vikke_env/.bashrc $
-echo .bashrc
 
 # if [ -n "${SSH_TTY}" ]; then
 #	echo .bashrc
@@ -141,10 +141,7 @@ case $OSTYPE in
 		export MAVEN_HOME=${HOME}/dev-tools/apache-maven-3.0.3
 		export LANG=ja_JP.UTF-8
 
-		export PATH="${PATH}:${HOME}/.linuxbrew/bin"
 		export PATH=${PATH}:/usr/local/node-v4.6.0-linux-x64/bin
-		export MANPATH="${HOME}/.linuxbrew/share/man:$MANPATH"
-		export INFOPATH="${HOME}/.linuxbrew/share/info:$INFOPATH"
 
 		export HADOOP_HOME=/usr/lib/hadoop
 
@@ -152,7 +149,9 @@ case $OSTYPE in
 
 		export PATH="${PATH}:${HOME}/.pyenv/bin"
 
-		xrdb -load ~/.Xdefaults
+		if [ -e ~/.Xdefaults ]; then
+			xrdb -load ~/.Xdefaults
+		fi
 		;;
 
 	*)
@@ -222,21 +221,51 @@ if [ -n "${WINPATH}" ]; then
 fi
 export PATH
 
-if [ -f ${HOME}/.gpg-agent-info ] && \
-		ps axo 'pid' | grep -q `cut -d: -f 2 ${HOME}/.gpg-agent-info` ;then
-	. ${HOME}/.gpg-agent-info
-	export GPG_TTY=`tty`
-	export GPG_AGENT_INFO
+# GPG-agent の自動起動と環境変数設定
+if ! pgrep -x gpg-agent >/dev/null; then
+  # GPG-agent が実行されていない場合、デーモンモードで起動
+  gpg-agent --daemon >/dev/null 2>&1
 else
-	eval `gpg-agent --daemon --no-grab --write-env-file $HOME/.gpg-agent-info`
-	export GPG_TTY=`tty`
-	export GPG_AGENT_INFO
+  # すでに実行中の場合、TTYを更新して既存のgpg-agentと通信できるようにする
+  gpg-connect-agent UPDATESTARTUPTTY /bye >/dev/null 2>&1
 fi
 
-if [ -n "${DESKTOP_SESSION}" ] && [ -n "${GNOME_KEYRING_PID}"  ]; then
-	eval $(gnome-keyring-daemon --start --components=gpg,ssh)
-	export SSH_AUTH_SOCK
+# GPG-agent の環境変数を設定
+export GPG_TTY=$(tty)
+
+# gpg-agent情報を取得
+# gpgconf --list-dirsを使用して必要なソケット情報を取得
+export GPG_AGENT_INFO=$(gpgconf --list-dirs agent-socket)
+
+# SSH-agentの起動と共有
+SSH_AGENT_DIR="$HOME/.ssh/agent"
+SSH_AGENT_SOCK="$SSH_AGENT_DIR/ssh-agent.sock"
+
+if [ ! -d "$SSH_AGENT_DIR" ]; then
+  mkdir -p "$SSH_AGENT_DIR"
+  chmod 700 "$SSH_AGENT_DIR"
 fi
+
+if [ -S "$SSH_AGENT_SOCK" ]; then
+  export SSH_AUTH_SOCK="$SSH_AGENT_SOCK"
+  ssh-add -l &>/dev/null
+  if [ $? -eq 2 ]; then
+    rm -f "$SSH_AGENT_SOCK"
+    eval $(ssh-agent -a "$SSH_AGENT_SOCK")
+  fi
+else
+  # エージェントが存在しない場合は新しいエージェントを起動
+  eval $(ssh-agent -a "$SSH_AGENT_SOCK")
+fi
+
+ssh-add -l &>/dev/null
+
+# SSH_TTYを設定（一部のGUIでssh-askpassを避けるため）
+export SSH_TTY=$(tty)
+
+
+
+
 
 alias rcoverage='if [ -d coverage ]; then rm -rf coverage; fi; COVERAGE=boo bundle exec rspec --no-drb'
 alias rspec='bundle exec rspec'
@@ -454,23 +483,12 @@ export profile="yes"
 export AppData=${HOME}/AppData
 export TEMP=/tmp
 
-export PATH=${PATH}:$(brew --prefix)/opt/mysql-client/bin
-export PATH=$(brew --prefix)/bin:${PATH}
-eval "$(rbenv init -)"
+# export PATH=$(brew --prefix)/bin:${PATH}
+# eval "$(rbenv init -)"
 
-if [ ${TERM} == 'xterm-256color' ]; then
-	eval $(ssh-agent)
-fi
-
-[[ -r "$(brew --prefix)/etc/profile.d/bash_completion.sh" ]] && . "$(brew --prefix)/etc/profile.d/bash_completion.sh"
-
-source /Users/vikke/.docker/init-bash.sh || true # Added by Docker Desktop
 source ~/google-cloud-sdk/completion.bash.inc
 
 export PATH=${PATH}:~/google-cloud-sdk/bin
-# asdf
-. "/opt/homebrew/opt/asdf/libexec/asdf.sh"
-. "/opt/homebrew/opt/asdf/etc/bash_completion.d/asdf.bash"
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/home/vikke/google-cloud-sdk/path.bash.inc' ]; then . '/home/vikke/google-cloud-sdk/path.bash.inc'; fi
