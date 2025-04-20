@@ -60,7 +60,7 @@ case $OSTYPE in
 
 		[[ -r "$(brew --prefix)/etc/profile.d/bash_completion.sh" ]] && . "$(brew --prefix)/etc/profile.d/bash_completion.sh"
 
-		export LSCOLORS=gxfxcxdxbxegedabagacad
+		# export LSCOLORS=gxfxcxdxbxegedabagacad
 		alias ls='ls -G'
 		export HADOOP_HOME=/usr/local/Cellar/hadoop/2.7.3
 
@@ -146,8 +146,6 @@ case $OSTYPE in
 		export HADOOP_HOME=/usr/lib/hadoop
 
 		export PATH=${PATH}:~/.rbenv/bin
-
-		export PATH="${PATH}:${HOME}/.pyenv/bin"
 
 		if [ -e ~/.Xdefaults ]; then
 			xrdb -load ~/.Xdefaults
@@ -469,17 +467,11 @@ export GOPRIVATE="github.com/ca-crowdfunding/*,github.com/vikke/*"
 
 eval "$(direnv hook bash)"
 
-# export NODEBREW_ROOT=/usr/local/var/nodebrew
-# export PATH=${PATH}:~/.nodenv/bin
-# eval "$(nodenv init -)"
-
-
-eval $(pyenv init --path)
-eval "$(pyenv init -)" 
-export PYENV_ROOT=$(pyenv root)
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init - bash)"
 
 export profile="yes"
-
 export AppData=${HOME}/AppData
 export TEMP=/tmp
 

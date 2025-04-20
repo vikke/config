@@ -31,3 +31,12 @@ tags-ja
 /.vim/dein
 .aider*
 /bin/lua-language-server/log
+
+# aider関連ファイル
+/.aider/analytics.json
+/.aider/caches/
+/.aider/.aider.chat.history.md
+/.aider/.aider.input.history
+/.aider/installs.json
+
+
