@@ -476,7 +476,7 @@ export AppData=${HOME}/AppData
 export TEMP=/tmp
 
 # export PATH=$(brew --prefix)/bin:${PATH}
-# eval "$(rbenv init -)"
+eval "$(rbenv init -)"
 
 source ~/google-cloud-sdk/completion.bash.inc
 
