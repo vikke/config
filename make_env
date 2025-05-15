@@ -43,6 +43,7 @@ fi
 #	.msmtprc \
 for f in \
 	.agignore \
+	.aider.conf.yml \
 	.bash_profile \
 	.bashrc \
 	.ctags \

@@ -1,0 +1,7 @@
+git: true
+auto-commits: false
+dirty-commits: false
+model: anthropic/claude-3-7-sonnet-latest
+# list-models: anthropic
+cache-prompts: true 
+# upgrade: true
