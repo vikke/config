@@ -27,6 +27,9 @@ return {
 			lspconfig.bashls.setup {
 
 			}
+			lspconfig.pyright.setup {
+
+			}
 		end
 	},
 	{
