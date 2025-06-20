@@ -269,7 +269,7 @@ alias rcoverage='if [ -d coverage ]; then rm -rf coverage; fi; COVERAGE=boo bund
 alias rspec='bundle exec rspec'
 alias rake='bundle exec rake'
 alias rails='bundle exec rails'
-alias ssh_copy_id='ssh-copy-id -i ~/.ssh/id_rsa.pub '
+alias ssh_copy_id='ssh-copy-id -i ~/.ssh/id_ed25519.pub'
 
 if [ -e /usr/share/doc/tig-1.0/contrib/tig-completion.bash ]; then
 	. /usr/share/doc/tig-1.0/contrib/tig-completion.bash
@@ -492,6 +492,7 @@ export PATH=${PATH}:~/.tfenv/bin
 export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
 
+export XMODIFIERS="@im=uim"
 
 # uv
 export PATH="/home/vikke/.local/bin:$PATH"
