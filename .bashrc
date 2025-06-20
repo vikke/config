@@ -176,7 +176,10 @@ fi
 
 # ctrl-sでterminalがlockしないようにする。
 # stty -ixon
-stty stop undef
+# MCPサーバーなどの非対話的環境ではsttyを実行しない
+if [ -t 0 ]; then
+    stty stop undef
+fi
 
 # command履歴共有
 export HISTFILE=~/.HISTFILE
@@ -229,7 +232,9 @@ else
 fi
 
 # GPG-agent の環境変数を設定
-export GPG_TTY=$(tty)
+if [ -t 0 ]; then
+    export GPG_TTY=$(tty)
+fi
 
 # gpg-agent情報を取得
 # gpgconf --list-dirsを使用して必要なソケット情報を取得
@@ -259,7 +264,9 @@ fi
 ssh-add -l &>/dev/null
 
 # SSH_TTYを設定（一部のGUIでssh-askpassを避けるため）
-export SSH_TTY=$(tty)
+if [ -t 0 ]; then
+    export SSH_TTY=$(tty)
+fi
 
 
 

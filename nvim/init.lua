@@ -147,6 +147,12 @@ opt.hlsearch = false
 opt.background = 'dark'
 vim.cmd("colorscheme iceberg")
 opt.laststatus = 3
+opt.encoding = 'utf-8'
+vim.scriptencoding = 'utf-8'
+opt.fileencoding = 'utf-8'
+opt.fileencodings = 'ucs-bom,utf-8,euc-jp,cp932'
+opt.fileformats = 'unix,dos,mac'
+opt.ambiwidth = 'double'
 
 function GetB()
 	local col = vim.api.nvim_win_get_cursor(0)[2]
