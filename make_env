@@ -46,6 +46,7 @@ for f in \
 	.aider.conf.yml \
 	.bash_profile \
 	.bashrc \
+	.claude \
 	.ctags \
 	.conkyrc \
 	.curlrc \

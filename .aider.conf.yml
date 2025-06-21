@@ -1,7 +1,6 @@
 git: true
 auto-commits: false
 dirty-commits: false
-model: anthropic/claude-3-7-sonnet-latest
-# list-models: anthropic
+model: anthropic/claude-opus-4-20250514
 cache-prompts: true 
-# upgrade: true
+gitignore: false
