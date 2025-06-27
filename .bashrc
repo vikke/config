@@ -466,6 +466,11 @@ sp_rubocop_develop() {
 	git diff --name-only develop | grep -E '.*\.rb'| xargs rubocop  -A
 }
 
+# tailscale ########################################
+tailscale_reauth() {
+	echo "super user: tailscale up --force-reauth"
+}
+
 # dasht ############################################
 # export PATH=$HOME/.nodebrew/current/bin:$PATH
 
