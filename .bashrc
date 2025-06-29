@@ -176,7 +176,10 @@ fi
 
 # ctrl-sでterminalがlockしないようにする。
 # stty -ixon
-stty stop undef
+# MCPサーバーなどの非対話的環境ではsttyを実行しない
+if [ -t 0 ]; then
+    stty stop undef
+fi
 
 # command履歴共有
 export HISTFILE=~/.HISTFILE
@@ -229,7 +232,9 @@ else
 fi
 
 # GPG-agent の環境変数を設定
-export GPG_TTY=$(tty)
+if [ -t 0 ]; then
+    export GPG_TTY=$(tty)
+fi
 
 # gpg-agent情報を取得
 # gpgconf --list-dirsを使用して必要なソケット情報を取得
@@ -259,7 +264,9 @@ fi
 ssh-add -l &>/dev/null
 
 # SSH_TTYを設定（一部のGUIでssh-askpassを避けるため）
-export SSH_TTY=$(tty)
+if [ -t 0 ]; then
+    export SSH_TTY=$(tty)
+fi
 
 
 
@@ -269,7 +276,7 @@ alias rcoverage='if [ -d coverage ]; then rm -rf coverage; fi; COVERAGE=boo bund
 alias rspec='bundle exec rspec'
 alias rake='bundle exec rake'
 alias rails='bundle exec rails'
-alias ssh_copy_id='ssh-copy-id -i ~/.ssh/id_rsa.pub '
+alias ssh_copy_id='ssh-copy-id -i ~/.ssh/id_ed25519.pub'
 
 if [ -e /usr/share/doc/tig-1.0/contrib/tig-completion.bash ]; then
 	. /usr/share/doc/tig-1.0/contrib/tig-completion.bash
@@ -459,6 +466,11 @@ sp_rubocop_develop() {
 	git diff --name-only develop | grep -E '.*\.rb'| xargs rubocop  -A
 }
 
+# tailscale ########################################
+tailscale_reauth() {
+	echo "super user: tailscale up --force-reauth"
+}
+
 # dasht ############################################
 # export PATH=$HOME/.nodebrew/current/bin:$PATH
 
@@ -492,6 +504,7 @@ export PATH=${PATH}:~/.tfenv/bin
 export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
 
+export XMODIFIERS="@im=uim"
 
 # uv
 export PATH="/home/vikke/.local/bin:$PATH"
