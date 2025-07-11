@@ -29,7 +29,6 @@ tags-ja
 /.DS_Store
 *~
 /.vim/dein
-.aider*
 /bin/lua-language-server/log
 
 # aider関連ファイル
