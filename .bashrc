@@ -159,6 +159,7 @@ esac
 export EDITOR=nvim
 alias vim=nvim
 alias mysql=mycli
+alias ncc="npx ccusage@latest"
 
 ulimit -c unlimited
 
@@ -214,7 +215,7 @@ export XDG_DATA_DIRS=${XDG_DATA_DIRS}:${HOME}/.local/share/flatpak/exports/share
 
 PATH=${PATH}:~/bin-nongit
 PATH=${PATH}:~/.embulk/bin
-PATH=${PATH}:/nvim-linux64/bin
+PATH=${PATH}:/nvim-linux-x86_64/bin
 PATH=${PATH}:~/bin/lua-language-server/bin
 
 if [ -n "${WINPATH}" ]; then
