@@ -479,10 +479,6 @@ export GOPRIVATE="github.com/ca-crowdfunding/*,github.com/vikke/*"
 
 eval "$(direnv hook bash)"
 
-export PYENV_ROOT="$HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init - bash)"
-
 export profile="yes"
 export AppData=${HOME}/AppData
 export TEMP=/tmp
