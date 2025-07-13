@@ -14,3 +14,7 @@ if [ -f '/Users/vikke/bin/google-cloud-sdk/completion.bash.inc' ]; then . '/User
 
 # uv
 export PATH="/home/vikke/.local/bin:$PATH"
+
+
+# Added by `rbenv init` on 2025年  7月 13日 日曜日 09:10:03 JST
+eval "$(rbenv init - --no-rehash bash)"

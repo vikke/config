@@ -160,6 +160,7 @@ export EDITOR=nvim
 alias vim=nvim
 alias mysql=mycli
 alias ncc="npx ccusage@latest"
+alias ccman="npx ccmanager@latest"
 
 ulimit -c unlimited
 
