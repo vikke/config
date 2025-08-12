@@ -160,6 +160,7 @@ export EDITOR=nvim
 alias vim=nvim
 alias mysql=mycli
 alias ncc="npx ccusage@latest"
+alias ccsearch="npx ccsearch@latest"
 alias ccman="npx ccmanager@latest"
 
 ulimit -c unlimited
@@ -471,6 +472,14 @@ sp_rubocop_develop() {
 # tailscale ########################################
 tailscale_reauth() {
 	echo "super user: tailscale up --force-reauth"
+}
+
+# mcp ##############################################
+mcp_add_serena() {
+	claude mcp add serena -- uvx --from git+https://github.com/oraios/serena serena start-mcp-server --project $(pwd)
+}
+mcp_add_context7() {
+	claude mcp add context7 -- npx -y @upstash/context7-mcp
 }
 
 # dasht ############################################
