@@ -486,6 +486,9 @@ mcp_add_serena() {
 mcp_add_context7() {
 	claude mcp add context7 -- npx -y @upstash/context7-mcp
 }
+mcp_add_playwright() {
+	claude mcp add playwright npx @playwright/mcp@latest
+}
 
 # dasht ############################################
 # export PATH=$HOME/.nodebrew/current/bin:$PATH
