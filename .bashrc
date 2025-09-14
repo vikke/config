@@ -311,6 +311,11 @@ function se(){
 function git_empty_commit(){
 	git commit --allow-empty -m "init new branch."
 }
+
+function git_empty_commit_with_comment(){
+	git commit --allow-empty -m "${1}"
+}
+
 function git_empty_commit_git_issue(){
 	if [ $# -ne 1 ]; then
 		echo "Issue番号を引数に渡して。"	
@@ -512,6 +517,8 @@ export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
 
 export XMODIFIERS="@im=uim"
+
+export PATH=${PATH}:~/.cargo/bin
 
 # uv
 export PATH="/home/vikke/.local/bin:$PATH"
