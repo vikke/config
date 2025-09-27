@@ -1,42 +1,56 @@
 return {
 	{
-		-- [[
-		-- https://neovim.io/doc/user/lsp.html#lsp-api
-		-- https://coralpink.github.io/commentary/neovim/lsp/nvim-lspconfig.html
-		-- https://alpacat.com/posts/nvim-lspconfig-key-mappings#%E3%81%8A%E3%81%99%E3%81%99%E3%82%81%E3%
-		-- ]]
 		'neovim/nvim-lspconfig',
 		config = function()
-			local lspconfig = require("lspconfig")
-			lspconfig.ruby_lsp.setup {
+			local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
-			}
-			lspconfig.ts_ls.setup {
+			vim.lsp.config('ruby_lsp', {
+				cmd = { 'ruby-lsp' },
+				filetypes = { 'ruby', 'eruby' },
+				root_markers = { 'Gemfile', '.git' },
+				capabilities = capabilities,
+			})
 
-			}
-			lspconfig.lua_ls.setup {
+			vim.lsp.config('ts_ls', {
+				cmd = { 'typescript-language-server', '--stdio' },
+				filetypes = { 'javascript', 'javascriptreact', 'javascript.jsx', 'typescript', 'typescriptreact', 'typescript.tsx' },
+				root_markers = { 'package.json', 'tsconfig.json', 'jsconfig.json', '.git' },
+				capabilities = capabilities,
+			})
+
+			vim.lsp.config('lua_ls', {
+				cmd = { 'lua-language-server' },
+				filetypes = { 'lua' },
+				root_markers = { '.luarc.json', '.luarc.jsonc', '.luacheckrc', '.stylua.toml', 'stylua.toml', 'selene.toml', 'selene.yml', '.git' },
 				settings = {
 					Lua = {
 						diagnostics = {
-							globals = { "vim" }
+							globals = { 'vim' }
 						}
 					}
-				}
+				},
+				capabilities = capabilities,
+			})
 
-			}
-			lspconfig.bashls.setup {
+			vim.lsp.config('bashls', {
+				cmd = { 'bash-language-server', 'start' },
+				filetypes = { 'sh', 'bash' },
+				root_markers = { '.git' },
+				capabilities = capabilities,
+			})
 
-			}
-			lspconfig.pyright.setup {
+			vim.lsp.config('pyright', {
+				cmd = { 'pyright-langserver', '--stdio' },
+				filetypes = { 'python' },
+				root_markers = { 'pyproject.toml', 'setup.py', 'setup.cfg', 'requirements.txt', 'Pipfile', 'pyrightconfig.json', '.git' },
+				capabilities = capabilities,
+			})
 
-			}
+			vim.lsp.enable({ 'ruby_lsp', 'ts_ls', 'lua_ls', 'bashls', 'pyright' })
 		end
 	},
 	{
 		'hrsh7th/cmp-nvim-lsp',
-		config = function()
-			require('cmp_nvim_lsp').default_capabilities()
-		end,
 		dependencies = {
 			'hrsh7th/nvim-cmp',
 		}
