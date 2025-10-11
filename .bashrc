@@ -481,13 +481,13 @@ tailscale_reauth() {
 
 # mcp ##############################################
 mcp_add_serena() {
-	claude mcp add serena -- uvx --from git+https://github.com/oraios/serena serena start-mcp-server --project $(pwd)
+	claude mcp add serena --scope user -- uvx --from git+https://github.com/oraios/serena serena start-mcp-server
 }
 mcp_add_context7() {
-	claude mcp add context7 -- npx -y @upstash/context7-mcp
+	claude mcp add context7 --scope user -- npx -y @upstash/context7-mcp
 }
 mcp_add_playwright() {
-	claude mcp add playwright npx @playwright/mcp@latest
+	claude mcp add playwright --scope user npx @playwright/mcp@latest
 }
 
 # dasht ############################################
