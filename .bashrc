@@ -205,7 +205,11 @@ export TAGDIR=${HOME}/tags
 
 #export PS1='\n\u@\h:\w\n$(branch=$(git branch -a 2>/dev/null | grep "^*" | tr -d "\\* "); if [ "${branch}" != "" ];then echo "[\[\033[0;31m\]${branch}\[\033[0;00m\]] "; fi)\$ '
 #export PS1='\n\u@\h:\w\n$(branch=$(git branch -a 2>/dev/null | grep "^*" | tr -d "\\* "); if [ "${branch}" != "" ];then echo "[\e[0;31m\]${branch}\e[m]"; fi)\$ '
-export PS1='\n\u@\h:\w\n$(branch=$(git branch -a 2>/dev/null | grep "^*" | tr -d "\\* "); if [ "${branch}" != "" ];then echo "[${branch}]"; fi)\$ '
+function __venv_tag() {
+	[[ -n "$VIRTUAL_ENV" ]] && printf '(%s) ' "$(basename "$VIRTUAL_ENV")"
+}
+export VIRTUAL_ENV_DISABLE_PROMPT=1
+export PS1='\n\u$(__venv_tag)@\h:\w\n$(branch=$(git branch -a 2>/dev/null | grep "^*" | tr -d "\\* "); if [ "${branch}" != "" ];then echo "[${branch}]"; fi)\$ '
 
 export RSYNC_RSH=ssh
 
@@ -489,6 +493,19 @@ mcp_add_context7() {
 mcp_add_playwright() {
 	claude mcp add playwright --scope user npx @playwright/mcp@latest
 }
+mcp_add_dbhub() {
+      # local
+      claude mcp add --scope project --transport stdio dbhub-local -- @bytebase/dbhub --dsn mysql://root:@localhost:3306/kakeai
+
+      # qa
+      claude mcp add --scope project --transport stdio dbhub-qa -- @bytebase/dbhub --dsn mysql://operator:quasar-peccavi-elongate-country@localhost:13306/kakeai
+
+      # qa-x
+      claude mcp add --scope project --transport stdio dbhub-qax -- @bytebase/dbhub --dsn mysql://operator:quasar-peccavi-elongate-country@localhost:23306/kakeai
+
+      # duplicate
+      claude mcp add --scope project --transport stdio dbhub-duplicate -- @bytebase/dbhub --dsn mysql://operator:rupture-hope-alveolus-peacock@localhost:53306/kakeai
+}
 
 # dasht ############################################
 # export PATH=$HOME/.nodebrew/current/bin:$PATH
@@ -505,7 +522,7 @@ export TEMP=/tmp
 # export PATH=$(brew --prefix)/bin:${PATH}
 eval "$(rbenv init -)"
 
-source ~/google-cloud-sdk/completion.bash.inc
+# source ~/google-cloud-sdk/completion.bash.inc
 
 export PATH=${PATH}:~/google-cloud-sdk/bin
 
@@ -524,4 +541,8 @@ export XMODIFIERS="@im=uim"
 export PATH=${PATH}:~/.cargo/bin
 
 # uv
-export PATH="/home/vikke/.local/bin:$PATH"
+export PATH="${HOME}/.local/bin:$PATH"
+source ~/.venvs/global313/bin/activate
+
+# codex
+alias codex-w="codex --sandbox workspace-write --add-dir ${HOME}/.ssh/agent/"
