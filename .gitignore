@@ -30,6 +30,7 @@ tags-ja
 *~
 /.vim/dein
 /bin/lua-language-server/log
+/bash_misc_func
 
 # aider関連ファイル
 /.aider/analytics.json
