@@ -65,19 +65,10 @@ case $OSTYPE in
 		export HADOOP_HOME=/usr/local/Cellar/hadoop/2.7.3
 
 		# brew
-		export PATH=${PATH}:$(brew --prefix)/opt/redis@3.2/bin
-		export PATH=${PATH}:/usr/local/opt/postgresql@12/bin
-		export PATH="${PATH}:/usr/local/opt/gettext/bin"
-		export PATH="${PATH}:/usr/local/opt/gpg-agent/bin"
-		export PATH="${PATH}:/usr/local/opt/postgresql@9.5/bin"
-		export LDFLAGS="-L/usr/local/opt/openssl/lib"
-		export CPPFLAGS="-I/usr/local/opt/openssl/include"
 		export PKG_CONFIG_PATH="/usr/local/opt/openssl/lib/pkgconfig"
 		export HOMEBREW_NO_ANALYTICS=1
-		export PATH="${PATH}:/usr/local/opt/mysql-client@5.7/bin"
-		# node
-		export PATH="${PATH}:/usr/local/opt/node@8/bin"
-		export PATH="${PATH}:/opt/homebrew/bin"
+		export PATH="$(brew --prefix)/bin:${PATH}"
+
 		;;
 
 	[cC][yY][gG][wW][iI][nN])
@@ -187,14 +178,8 @@ fi
 # command履歴共有
 export HISTFILE=~/.HISTFILE
 export HISTSIZE=10000
-function share_history {
-    history -a
-    history -c
-    history -r
-}
-PROMPT_COMMAND='share_history'
-shopt -u histappend
-shopt -s globstar
+shopt -s histappend
+
 
 # 履歴で、空行の場合と、同じコマンドが続けて2回目の場合は履歴に入れないようにする。
 export HISTCONTROL=ignoredups
@@ -221,7 +206,7 @@ export XDG_DATA_DIRS=${XDG_DATA_DIRS}:${HOME}/.local/share/flatpak/exports/share
 
 PATH=${PATH}:~/bin-nongit
 PATH=${PATH}:~/.embulk/bin
-PATH=${PATH}:/nvim-linux-x86_64/bin
+PATH=${PATH}:~/nvim-macos-arm64/bin
 PATH=${PATH}:~/bin/lua-language-server/bin
 
 if [ -n "${WINPATH}" ]; then
@@ -544,5 +529,13 @@ export PATH=${PATH}:~/.cargo/bin
 export PATH="${HOME}/.local/bin:$PATH"
 source ~/.venvs/global313/bin/activate
 
+# prompt 編集
+eval "$(starship init bash)"
+
 # codex
 alias codex-w="codex --sandbox workspace-write --add-dir ${HOME}/.ssh/agent/"
+
+# zoxide
+eval "$(zoxide init bash)"
+
+
