@@ -17,7 +17,13 @@ return {
 							["<C-o>"] = telescope_actions.select_vertical
 						}
 					}
-				}
+				},
+				extensions = {
+					frecency = {
+						max_timestamps = 1000,
+						db_safe_mode = false,
+					},
+				},
 			}
 			local function find_files_from_current_dir()
 				telescope_builtin.find_files({cwd = vim.fn.expand("%:p:h")})
