@@ -11,11 +11,12 @@ return {
 		},
 		config = function()
 			local capabilities = require('cmp_nvim_lsp').default_capabilities()
+			local telescope_custom = require('plugins.telescope')
 			local on_attach = function(_, bufnr)
 				local opts = { buffer = bufnr }
 
 				vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
-				vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+				vim.keymap.set('n', 'gd', telescope_custom.lsp_definitions_pretty, opts)
 				vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
 				vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
 				vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)

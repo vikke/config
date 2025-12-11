@@ -1,4 +1,4 @@
-return {
+local M = {
 	{
 		'nvim-telescope/telescope.nvim',
 		dependencies = { 'nvim-lua/plenary.nvim' },
@@ -52,3 +52,14 @@ return {
 		dependencies = { "kkharji/sqlite.lua" }
 	},
 }
+
+function M.lsp_definitions_pretty()
+	-- LSP定義をTelescopeで表示するラッパー
+	require('telescope.builtin').lsp_definitions({
+		show_line = false,
+		fname_width = 60,
+		trim_text = true,
+	})
+end
+
+return M
