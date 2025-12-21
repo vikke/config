@@ -69,6 +69,9 @@ case $OSTYPE in
 		export HOMEBREW_NO_ANALYTICS=1
 		export PATH="$(brew --prefix)/bin:${PATH}"
 
+		# nvim
+		PATH=${PATH}:~/nvim-macos-arm64/bin
+
 		;;
 
 	[cC][yY][gG][wW][iI][nN])
@@ -141,6 +144,9 @@ case $OSTYPE in
 		if [ -e ~/.Xdefaults ]; then
 			xrdb -load ~/.Xdefaults
 		fi
+
+		# nvim
+		PATH=${PATH}:/nvim-linux-x86_64/bin
 		;;
 
 	*)
@@ -206,7 +212,6 @@ export XDG_DATA_DIRS=${XDG_DATA_DIRS}:${HOME}/.local/share/flatpak/exports/share
 
 PATH=${PATH}:~/bin-nongit
 PATH=${PATH}:~/.embulk/bin
-PATH=${PATH}:~/nvim-macos-arm64/bin
 PATH=${PATH}:~/bin/lua-language-server/bin
 
 if [ -n "${WINPATH}" ]; then
