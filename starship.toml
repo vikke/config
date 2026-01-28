@@ -1,0 +1,6 @@
+# Starship prompt configuration
+
+[directory]
+# ディレクトリパスの切り詰めを無効化して長く表示
+truncation_length = 0
+truncate_to_repo = false

@@ -1,4 +1,5 @@
 # main viewの左端にコミットIDを表示する
+# set main-view = id date:display=author author commit-title:graph=yes,refs=yes
 set main-view = id date author commit-title:graph=yes,refs=yes
 # デフォルト
 # set main-view = date author commit-title:graph=yes,refs=yes
@@ -12,3 +13,17 @@ bind generic D !git difftool --tool=nvim -d --no-prompt --trust-exit-code %(comm
 set vertical-split = no
 
 set diff-options = -m --first-parent
+
+# Diff view: D で delta、S で side-by-side
+bind diff D >sh -c "git show %(commit) | delta --paging always"
+bind diff S >sh -c "git show %(commit) | delta --side-by-side --paging always"
+
+# Stage view
+bind stage D >sh -c "git diff HEAD -- %(file) | delta --paging always"
+bind stage S >sh -c "git diff HEAD -- %(file) | delta --side-by-side --paging always"
+
+# Status view
+bind status D >sh -c "git diff HEAD -- %(file) | delta --paging always"
+bind status S >sh -c "git diff HEAD -- %(file) | delta --side-by-side --paging always"
+
+
