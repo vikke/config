@@ -1,6 +1,34 @@
-# Starship prompt configuration
+# Git branch - ブランチ名を表示
+[git_branch]
+format = "on [$branch]($style)"
+style = "bold purple"
 
-[directory]
-# ディレクトリパスの切り詰めを無効化して長く表示
-truncation_length = 0
-truncate_to_repo = false
+# Git commit - 短縮ハッシュを表示
+[git_commit]
+commit_hash_length = 7
+format = " [\\[$hash\\]]($style)"
+style = "green"
+
+only_detached = false  # detached HEADでなくても常に表示
+
+
+# Git status - インジケータを表示
+
+[git_status]
+
+format = "[\\[$all_status$ahead_behind\\]]($style) "
+
+style = "red"
+conflicted = "="
+ahead = "⇡${count}"
+behind = "⇣${count}"
+diverged = "⇕⇡${ahead_count}⇣${behind_count}"
+
+untracked = "?"
+stashed = "$"
+
+modified = "!"
+staged = "+"
+renamed = "»"
+
+deleted = "✘"
