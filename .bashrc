@@ -184,8 +184,9 @@ fi
 # command履歴共有
 export HISTFILE=~/.HISTFILE
 export HISTSIZE=10000
+export HISTFILESIZE=10000
 shopt -s histappend
-
+PROMPT_COMMAND="history -a; history -c; history -r"
 
 # 履歴で、空行の場合と、同じコマンドが続けて2回目の場合は履歴に入れないようにする。
 export HISTCONTROL=ignoredups
