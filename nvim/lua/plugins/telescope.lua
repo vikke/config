@@ -18,6 +18,11 @@ local M = {
 						}
 					}
 				},
+				pickers = {
+					find_files = {
+						follow = true
+					}
+				},
 				extensions = {
 					frecency = {
 						max_timestamps = 1000,
