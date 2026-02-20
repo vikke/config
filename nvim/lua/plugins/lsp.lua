@@ -81,7 +81,16 @@ return {
 				on_attach = on_attach,
 			})
 
-			vim.lsp.enable({ 'ruby_lsp', 'ts_ls', 'lua_ls', 'bashls', 'pyright' })
+			vim.lsp.config('marksman', {
+				cmd = { 'marksman', 'server' },
+				filetypes = { 'markdown' },
+				root_markers = { '.marksman.toml', '.git' },
+				single_file_support = true,
+				capabilities = capabilities,
+				on_attach = on_attach,
+			})
+
+			vim.lsp.enable({ 'ruby_lsp', 'ts_ls', 'lua_ls', 'bashls', 'pyright', 'marksman' })
 		end
 	},
 	{
