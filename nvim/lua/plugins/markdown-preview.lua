@@ -15,7 +15,7 @@ function! OpenMarkdownPreview(url)
     if has('wsl')
         silent! execute '!/usr/bin/wslview ' . shellescape(a:url) . ' &'
     elseif has('mac')
-        silent! execute '!open -a "/Applications/Comet.app" ' . shellescape(a:url)
+        silent! execute '!open -a "/Applications/Google Chrome.app" ' . shellescape(a:url)
     endif
 endfunction
 ]])
