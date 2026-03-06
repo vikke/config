@@ -48,6 +48,9 @@ require("lazy").setup({
 	{ import = "plugins" },
 }, {
 	-- Lazyの設定オプション
+	dev = {
+		path = "~/vcswork/mywork",
+	},
 	checker = {
 		enabled = true,
 		notify = false,

@@ -544,6 +544,6 @@ alias codex-w="codex --sandbox workspace-write --add-dir ${HOME}/.ssh/agent/"
 # zoxide
 eval "$(zoxide init bash)"
 
-
-
 alias claude-mem="${HOME}/.bun/bin/bun ${HOME}/.claude/plugins/marketplaces/thedotmack/plugin/scripts/worker-service.cjs"
+
+. "$HOME/.cargo/env"

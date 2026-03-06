@@ -111,4 +111,17 @@ return {
 			})
 		end,
 	},
+	{
+	  'vikke/lcvgc.nvim',
+	  dev = true,
+	  event = { 'BufReadPre *.cvg', 'BufNewFile *.cvg' },
+
+	  opts = {
+		port = 5555,
+		debounce = 300,
+		log_path = '/tmp/lcvgc.log',
+		auto_layout = true,
+		auto_connect = true,
+	  },
+	}
 }
