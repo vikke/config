@@ -1,3 +1,12 @@
+# OPENSPEC:START
+# OpenSpec shell completions configuration
+if [ -d "/Users/i.matsunaga/.local/share/bash-completion/completions" ]; then
+  for f in "/Users/i.matsunaga/.local/share/bash-completion/completions"/*; do
+    [ -f "$f" ] && . "$f"
+  done
+fi
+# OPENSPEC:END
+
 #!/usr/bin/env bash 
 
 
@@ -547,3 +556,4 @@ eval "$(zoxide init bash)"
 
 
 alias claude-mem="${HOME}/.bun/bin/bun ${HOME}/.claude/plugins/marketplaces/thedotmack/plugin/scripts/worker-service.cjs"
+. "$HOME/.cargo/env"

@@ -32,3 +32,12 @@ staged = "+"
 renamed = "»"
 
 deleted = "✘"
+
+# GitHub PR - 現在のブランチに紐づくPR番号をリポジトリ名付きで表示（bktでキャッシュ）
+[custom.github_pr]
+command = "bkt --ttl=5m --stale=1m --cwd -- gh pr view --json number,headRepository -q '(.headRepository.name) + \"#\" + (.number | tostring)' 2>/dev/null"
+when = "git rev-parse --is-inside-work-tree 2>/dev/null"
+format = "[($output)](bold cyan) "
+shell = ["bash", "--norc", "--noprofile"]
+description = "Show repo/PR number with caching"
+command_timeout = 3000

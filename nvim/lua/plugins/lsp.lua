@@ -5,8 +5,8 @@ return {
 		cmd = { 'LspInfo', 'LspStart', 'LspStop', 'LspRestart' },
 		keys = {
 			{ '<space>e', function() vim.diagnostic.open_float() end },
-			{ '[d', vim.diagnostic.goto_prev },
-			{ ']d', vim.diagnostic.goto_next },
+			{ '[d',       vim.diagnostic.goto_prev },
+			{ ']d',       vim.diagnostic.goto_next },
 			{ '<space>q', vim.diagnostic.setloclist },
 		},
 		config = function()
@@ -86,6 +86,14 @@ return {
 				filetypes = { 'markdown' },
 				root_markers = { '.marksman.toml', '.git' },
 				single_file_support = true,
+				capabilities = capabilities,
+				on_attach = on_attach,
+			})
+
+			vim.lsp.config('lcvgc', {
+				cmd = { 'lcvgc-lsp' },
+				filetypes = { 'cvg' },
+				root_markers = { '.git' },
 				capabilities = capabilities,
 				on_attach = on_attach,
 			})
