@@ -121,7 +121,7 @@ vim.cmd("colorscheme iceberg")
 opt.laststatus = 3
 opt.encoding = 'utf-8'
 vim.scriptencoding = 'utf-8'
-vim.o.fileencoding = 'utf-8'
+vim.opt.fileencoding = 'utf-8'
 opt.fileencodings = 'ucs-bom,utf-8,euc-jp,cp932'
 opt.fileformats = 'unix,dos,mac'
 opt.ambiwidth = 'double'

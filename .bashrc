@@ -555,3 +555,6 @@ eval "$(zoxide init bash)"
 
 alias claude-mem="${HOME}/.bun/bin/bun ${HOME}/.claude/plugins/marketplaces/thedotmack/plugin/scripts/worker-service.cjs"
 . "$HOME/.cargo/env"
+
+export LSP_DEV_MODE=TRUE
+export LSP_DEV_PATH=~/vcswork/lcvgc/lcvgc.nvim
