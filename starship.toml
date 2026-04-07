@@ -41,3 +41,8 @@ format = "[($output)](bold cyan) "
 shell = ["bash", "--norc", "--noprofile"]
 description = "Show repo/PR number with caching"
 command_timeout = 3000
+
+[directory]
+truncation_length = 3
+truncate_to_repo = false
+truncation_symbol = ".../"
