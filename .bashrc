@@ -1,7 +1,7 @@
 # OPENSPEC:START
 # OpenSpec shell completions configuration
-if [ -d "/Users/i.matsunaga/.local/share/bash-completion/completions" ]; then
-  for f in "/Users/i.matsunaga/.local/share/bash-completion/completions"/*; do
+if [ -d "~/.local/share/bash-completion/completions" ]; then
+  for f in "~/.local/share/bash-completion/completions"/*; do
     [ -f "$f" ] && . "$f"
   done
 fi
@@ -539,6 +539,10 @@ export PATH="$VOLTA_HOME/bin:$PATH"
 export XMODIFIERS="@im=uim"
 
 export PATH=${PATH}:~/.cargo/bin
+
+# luaenv
+export PATH="$HOME/.luaenv/bin:$PATH"
+eval "$(luaenv init -)"
 
 # uv
 export PATH="${HOME}/.local/bin:$PATH"
