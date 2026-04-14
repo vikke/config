@@ -8,6 +8,8 @@ return {
 			{ '[d',       vim.diagnostic.goto_prev },
 			{ ']d',       vim.diagnostic.goto_next },
 			{ '<space>q', vim.diagnostic.setloclist },
+		-- 診断表示のトグル（<leader>dd で切り替え）
+		{ '<leader>dd', function() vim.diagnostic.enable(not vim.diagnostic.is_enabled()) end, desc = 'Toggle diagnostics' },
 		},
 		config = function()
 			local capabilities = require('cmp_nvim_lsp').default_capabilities()
