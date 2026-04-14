@@ -540,6 +540,10 @@ export XMODIFIERS="@im=uim"
 
 export PATH=${PATH}:~/.cargo/bin
 
+# luaenv
+export PATH="$HOME/.luaenv/bin:$PATH"
+eval "$(luaenv init -)"
+
 # uv
 export PATH="${HOME}/.local/bin:$PATH"
 source ~/.venvs/global313/bin/activate
