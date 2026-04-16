@@ -1,7 +1,7 @@
 # OPENSPEC:START
 # OpenSpec shell completions configuration
-if [ -d "~/.local/share/bash-completion/completions" ]; then
-  for f in "~/.local/share/bash-completion/completions"/*; do
+if [ -d "${HOME}/.local/share/bash-completion/completions" ]; then
+  for f in "${HOME}/.local/share/bash-completion/completions"/*; do
     [ -f "$f" ] && . "$f"
   done
 fi
