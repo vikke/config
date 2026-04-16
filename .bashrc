@@ -562,3 +562,11 @@ alias claude-mem="${HOME}/.bun/bin/bun ${HOME}/.claude/plugins/marketplaces/thed
 
 export LSP_DEV_MODE=TRUE
 export LSP_DEV_PATH=~/vcswork/lcvgc/lcvgc.nvim
+
+export CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1
+
+# AsyncAPI CLI Autocomplete
+
+ASYNCAPI_AC_BASH_SETUP_PATH=/Users/i.matsunaga/Library/Caches/@asyncapi/cli/autocomplete/bash_setup && test -f $ASYNCAPI_AC_BASH_SETUP_PATH && source $ASYNCAPI_AC_BASH_SETUP_PATH; # asyncapi autocomplete setup
+
+
