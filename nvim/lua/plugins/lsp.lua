@@ -14,8 +14,12 @@ return {
 		config = function()
 			local capabilities = require('cmp_nvim_lsp').default_capabilities()
 			local telescope_custom = require('plugins.telescope')
-			local on_attach = function(_, bufnr)
-				local opts = { buffer = bufnr }
+			-- LSP がアタッチしたバッファ共通のキーマップ。
+			-- LspAttach オートコマンドで設定するため、jdtls（nvim-java）を含め
+			-- あらゆる LSP に自動適用される（各サーバーへ on_attach を渡す必要がない）。
+			vim.api.nvim_create_autocmd('LspAttach', {
+				callback = function(args)
+					local opts = { buffer = args.buf }
 
 				vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
 				vim.keymap.set('n', 'gd', telescope_custom.lsp_definitions_pretty, opts)
@@ -34,14 +38,14 @@ return {
 				vim.keymap.set('n', '<space>f', function()
 					vim.lsp.buf.format { async = true }
 				end, opts)
-			end
+				end,
+			})
 
 			vim.lsp.config('ruby_lsp', {
 				cmd = { 'ruby-lsp' },
 				filetypes = { 'ruby', 'eruby' },
 				root_markers = { 'Gemfile', '.git' },
 				capabilities = capabilities,
-				on_attach = on_attach,
 			})
 
 			vim.lsp.config('ts_ls', {
@@ -49,7 +53,6 @@ return {
 				filetypes = { 'javascript', 'javascriptreact', 'javascript.jsx', 'typescript', 'typescriptreact', 'typescript.tsx' },
 				root_markers = { 'package.json', 'tsconfig.json', 'jsconfig.json', '.git' },
 				capabilities = capabilities,
-				on_attach = on_attach,
 			})
 
 			vim.lsp.config('lua_ls', {
@@ -64,7 +67,6 @@ return {
 					}
 				},
 				capabilities = capabilities,
-				on_attach = on_attach,
 			})
 
 			vim.lsp.config('bashls', {
@@ -72,7 +74,6 @@ return {
 				filetypes = { 'sh', 'bash' },
 				root_markers = { '.git' },
 				capabilities = capabilities,
-				on_attach = on_attach,
 			})
 
 			vim.lsp.config('pyright', {
@@ -80,7 +81,6 @@ return {
 				filetypes = { 'python' },
 				root_markers = { 'pyproject.toml', 'setup.py', 'setup.cfg', 'requirements.txt', 'Pipfile', 'pyrightconfig.json', '.git' },
 				capabilities = capabilities,
-				on_attach = on_attach,
 			})
 
 			vim.lsp.config('marksman', {
@@ -89,7 +89,6 @@ return {
 				root_markers = { '.marksman.toml', '.git' },
 				single_file_support = true,
 				capabilities = capabilities,
-				on_attach = on_attach,
 			})
 
 			vim.lsp.config('lcvgc', {
@@ -97,11 +96,27 @@ return {
 				filetypes = { 'cvg' },
 				root_markers = { '.git' },
 				capabilities = capabilities,
-				on_attach = on_attach,
 			})
 
 			vim.lsp.enable({ 'ruby_lsp', 'ts_ls', 'lua_ls', 'bashls', 'pyright', 'marksman' })
 		end
+	},
+	{
+		-- Java 用 LSP（jdtls）を自動セットアップするプラグイン。
+		-- require('java').setup() が内部で jdtls の設定を仕込むため、
+		-- nvim-lspconfig より先に読み込まれる必要がある点に注意。
+		-- JDTLS / Lombok / JDK17 等は auto_install で自動取得される（Mason 不要）。
+		'nvim-java/nvim-java',
+		dependencies = {
+			'JavaHello/spring-boot.nvim',
+			'MunifTanjim/nui.nvim',
+			'mfussenegger/nvim-dap',
+		},
+		ft = { 'java' },
+		config = function()
+			require('java').setup()
+			vim.lsp.enable('jdtls')
+		end,
 	},
 	{
 		'hrsh7th/cmp-nvim-lsp',
