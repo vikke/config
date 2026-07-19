@@ -7,6 +7,8 @@ return {
 			{ '[d',       vim.diagnostic.goto_prev },
 			{ ']d',       vim.diagnostic.goto_next },
 			{ '<space>q', vim.diagnostic.setloclist },
+		-- 診断表示のトグル（<leader>dd で切り替え）
+		{ '<leader>dd', function() vim.diagnostic.enable(not vim.diagnostic.is_enabled()) end, desc = 'Toggle diagnostics' },
 		},
 		dependencies = {
 			'hrsh7th/nvim-cmp',
@@ -15,6 +17,9 @@ return {
 			local capabilities = require('cmp_nvim_lsp').default_capabilities()
 			local telescope_custom = require('plugins.telescope')
 
+			-- LSP がアタッチしたバッファ共通のキーマップ。
+			-- LspAttach オートコマンドで設定するため、jdtls（nvim-java）を含め
+			-- あらゆる LSP に自動適用される（各サーバーへ on_attach を渡す必要がない）。
 			vim.api.nvim_create_autocmd('LspAttach', {
 				callback = function(ev)
 					local opts = { buffer = ev.buf }
@@ -105,7 +110,30 @@ return {
 			})
 
 			vim.lsp.enable({ 'ruby_lsp', 'ts_ls', 'lua_ls', 'bashls', 'pyright', 'marksman', 'kotlin_lsp' })
+		end
+	},
+	{
+		-- Java 用 LSP（jdtls）を自動セットアップするプラグイン。
+		-- require('java').setup() が内部で jdtls の設定を仕込むため、
+		-- nvim-lspconfig より先に読み込まれる必要がある点に注意。
+		-- JDTLS / Lombok / JDK17 等は auto_install で自動取得される（Mason 不要）。
+		'nvim-java/nvim-java',
+		dependencies = {
+			'JavaHello/spring-boot.nvim',
+			'MunifTanjim/nui.nvim',
+			'mfussenegger/nvim-dap',
+		},
+		ft = { 'java' },
+		config = function()
+			require('java').setup()
+			vim.lsp.enable('jdtls')
 		end,
+	},
+	{
+		'hrsh7th/cmp-nvim-lsp',
+		dependencies = {
+			'hrsh7th/nvim-cmp',
+		}
 	},
 	{
 		"https://git.sr.ht/~whynothugo/lsp_lines.nvim",

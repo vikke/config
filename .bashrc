@@ -1,7 +1,7 @@
 # OPENSPEC:START
 # OpenSpec shell completions configuration
-if [ -d "~/.local/share/bash-completion/completions" ]; then
-  for f in "~/.local/share/bash-completion/completions"/*; do
+if [ -d "${HOME}/.local/share/bash-completion/completions" ]; then
+  for f in "${HOME}/.local/share/bash-completion/completions"/*; do
     [ -f "$f" ] && . "$f"
   done
 fi
@@ -329,12 +329,11 @@ function git_empty_commit_git_issue(){
 }
 function git_empty_commit_jira(){
 	if [ $# -ne 1 ]; then
-		echo "Issue番号を引数に渡して。"	
+		echo "Issue番号を引数に渡して。"
 	else
 		git commit --allow-empty -m "init new branch ( $1 ) ."
 	fi
 }
-
 
 # for fzf
 # https://github.com/junegunn/fzf/issues/39
@@ -563,10 +562,16 @@ alias claude-mem="${HOME}/.bun/bin/bun ${HOME}/.claude/plugins/marketplaces/thed
 export LSP_DEV_MODE=TRUE
 export LSP_DEV_PATH=~/vcswork/lcvgc/lcvgc.nvim
 
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+export CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1
+
+# AsyncAPI CLI Autocomplete
+
+ASYNCAPI_AC_BASH_SETUP_PATH=/Users/i.matsunaga/Library/Caches/@asyncapi/cli/autocomplete/bash_setup && test -f $ASYNCAPI_AC_BASH_SETUP_PATH && source $ASYNCAPI_AC_BASH_SETUP_PATH; # asyncapi autocomplete setup
 
 # Android SDK
 export ANDROID_HOME=$HOME/Android/Sdk
 export PATH=$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/platform-tools:$PATH
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
