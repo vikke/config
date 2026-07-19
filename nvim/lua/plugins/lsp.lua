@@ -1,45 +1,49 @@
 return {
 	{
-		'neovim/nvim-lspconfig',
+		'hrsh7th/cmp-nvim-lsp',
 		event = { 'BufReadPre', 'BufNewFile' },
-		cmd = { 'LspInfo', 'LspStart', 'LspStop', 'LspRestart' },
 		keys = {
 			{ '<space>e', function() vim.diagnostic.open_float() end },
 			{ '[d',       vim.diagnostic.goto_prev },
 			{ ']d',       vim.diagnostic.goto_next },
 			{ '<space>q', vim.diagnostic.setloclist },
 		},
+		dependencies = {
+			'hrsh7th/nvim-cmp',
+		},
 		config = function()
 			local capabilities = require('cmp_nvim_lsp').default_capabilities()
 			local telescope_custom = require('plugins.telescope')
-			local on_attach = function(_, bufnr)
-				local opts = { buffer = bufnr }
 
-				vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
-				vim.keymap.set('n', 'gd', telescope_custom.lsp_definitions_pretty, opts)
-				vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
-				vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
-				vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
-				vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, opts)
-				vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, opts)
-				vim.keymap.set('n', '<space>wl', function()
-					print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-				end, opts)
-				vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, opts)
-				vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, opts)
-				vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, opts)
-				vim.keymap.set('n', 'gr', require('telescope.builtin').lsp_references, opts)
-				vim.keymap.set('n', '<space>f', function()
-					vim.lsp.buf.format { async = true }
-				end, opts)
-			end
+			vim.api.nvim_create_autocmd('LspAttach', {
+				callback = function(ev)
+					local opts = { buffer = ev.buf }
+
+					vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
+					vim.keymap.set('n', 'gd', telescope_custom.lsp_definitions_pretty, opts)
+					vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+					vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
+					vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
+					vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, opts)
+					vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, opts)
+					vim.keymap.set('n', '<space>wl', function()
+						print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+					end, opts)
+					vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, opts)
+					vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, opts)
+					vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, opts)
+					vim.keymap.set('n', 'gr', require('telescope.builtin').lsp_references, opts)
+					vim.keymap.set('n', '<space>f', function()
+						vim.lsp.buf.format { async = true }
+					end, opts)
+				end,
+			})
 
 			vim.lsp.config('ruby_lsp', {
 				cmd = { 'ruby-lsp' },
 				filetypes = { 'ruby', 'eruby' },
 				root_markers = { 'Gemfile', '.git' },
 				capabilities = capabilities,
-				on_attach = on_attach,
 			})
 
 			vim.lsp.config('ts_ls', {
@@ -47,7 +51,6 @@ return {
 				filetypes = { 'javascript', 'javascriptreact', 'javascript.jsx', 'typescript', 'typescriptreact', 'typescript.tsx' },
 				root_markers = { 'package.json', 'tsconfig.json', 'jsconfig.json', '.git' },
 				capabilities = capabilities,
-				on_attach = on_attach,
 			})
 
 			vim.lsp.config('lua_ls', {
@@ -62,7 +65,6 @@ return {
 					}
 				},
 				capabilities = capabilities,
-				on_attach = on_attach,
 			})
 
 			vim.lsp.config('bashls', {
@@ -70,7 +72,6 @@ return {
 				filetypes = { 'sh', 'bash' },
 				root_markers = { '.git' },
 				capabilities = capabilities,
-				on_attach = on_attach,
 			})
 
 			vim.lsp.config('pyright', {
@@ -78,7 +79,6 @@ return {
 				filetypes = { 'python' },
 				root_markers = { 'pyproject.toml', 'setup.py', 'setup.cfg', 'requirements.txt', 'Pipfile', 'pyrightconfig.json', '.git' },
 				capabilities = capabilities,
-				on_attach = on_attach,
 			})
 
 			vim.lsp.config('marksman', {
@@ -87,7 +87,14 @@ return {
 				root_markers = { '.marksman.toml', '.git' },
 				single_file_support = true,
 				capabilities = capabilities,
-				on_attach = on_attach,
+			})
+
+			vim.lsp.config('kotlin_lsp', {
+				cmd = { 'kotlin-lsp', '--stdio' },
+				filetypes = { 'kotlin' },
+				root_markers = { 'build.gradle', 'build.gradle.kts', 'pom.xml', '.git' },
+				single_file_support = true,
+				capabilities = capabilities,
 			})
 
 			vim.lsp.config('lcvgc', {
@@ -95,17 +102,10 @@ return {
 				filetypes = { 'cvg' },
 				root_markers = { '.git' },
 				capabilities = capabilities,
-				on_attach = on_attach,
 			})
 
-			vim.lsp.enable({ 'ruby_lsp', 'ts_ls', 'lua_ls', 'bashls', 'pyright', 'marksman' })
-		end
-	},
-	{
-		'hrsh7th/cmp-nvim-lsp',
-		dependencies = {
-			'hrsh7th/nvim-cmp',
-		}
+			vim.lsp.enable({ 'ruby_lsp', 'ts_ls', 'lua_ls', 'bashls', 'pyright', 'marksman', 'kotlin_lsp' })
+		end,
 	},
 	{
 		"https://git.sr.ht/~whynothugo/lsp_lines.nvim",

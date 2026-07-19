@@ -546,7 +546,7 @@ eval "$(luaenv init -)"
 
 # uv
 export PATH="${HOME}/.local/bin:$PATH"
-source ~/.venvs/global313/bin/activate
+# source ~/.venvs/global313/bin/activate
 
 # prompt 編集
 eval "$(starship init bash)"
@@ -562,3 +562,11 @@ alias claude-mem="${HOME}/.bun/bin/bun ${HOME}/.claude/plugins/marketplaces/thed
 
 export LSP_DEV_MODE=TRUE
 export LSP_DEV_PATH=~/vcswork/lcvgc/lcvgc.nvim
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+# Android SDK
+export ANDROID_HOME=$HOME/Android/Sdk
+export PATH=$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/platform-tools:$PATH
