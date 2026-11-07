@@ -352,23 +352,6 @@ fe() {
   [[ -n "$files" ]] && ${EDITOR:-vim} "${files[@]}"
 }
 
-# fd - cd to selected directory. including hidden directories
-fd() {
-  local dir
-  dir=$(find ${1:-.} -type d 2> /dev/null | fzf-tmux +m) && cd "$dir"
-}
-
-fdel() {
-  local dirs
-  dirs=$(find ${1:-.} -type d 2> /dev/null | fzf-tmux -m) && rm -rf ${dirs}
-}
-
-fdi() {
-	local file
-	local dir
-	file=$(fzf-tmux +m -q "$1") && dir=$(dirname "$file") && cd "$dir"
-}
-
 # fkill - kill process
 fkill() {
   pid=$(ps -ef | sed 1d | fzf-tmux -m | awk '{print $2}')
