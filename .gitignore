@@ -39,4 +39,6 @@ tags-ja
 /.aider/.aider.input.history
 /.aider/installs.json
 
+# serena関連ファイル(プロジェクト設定・メモリ・キャッシュ)
+/.serena/
 
