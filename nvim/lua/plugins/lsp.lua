@@ -1,8 +1,7 @@
 return {
 	{
-		'neovim/nvim-lspconfig',
+		'hrsh7th/cmp-nvim-lsp',
 		event = { 'BufReadPre', 'BufNewFile' },
-		cmd = { 'LspInfo', 'LspStart', 'LspStop', 'LspRestart' },
 		keys = {
 			{ '<space>e', function() vim.diagnostic.open_float() end },
 			{ '[d',       vim.diagnostic.goto_prev },
@@ -11,33 +10,37 @@ return {
 		-- 診断表示のトグル（<leader>dd で切り替え）
 		{ '<leader>dd', function() vim.diagnostic.enable(not vim.diagnostic.is_enabled()) end, desc = 'Toggle diagnostics' },
 		},
+		dependencies = {
+			'hrsh7th/nvim-cmp',
+		},
 		config = function()
 			local capabilities = require('cmp_nvim_lsp').default_capabilities()
 			local telescope_custom = require('plugins.telescope')
+
 			-- LSP がアタッチしたバッファ共通のキーマップ。
 			-- LspAttach オートコマンドで設定するため、jdtls（nvim-java）を含め
 			-- あらゆる LSP に自動適用される（各サーバーへ on_attach を渡す必要がない）。
 			vim.api.nvim_create_autocmd('LspAttach', {
-				callback = function(args)
-					local opts = { buffer = args.buf }
+				callback = function(ev)
+					local opts = { buffer = ev.buf }
 
-				vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
-				vim.keymap.set('n', 'gd', telescope_custom.lsp_definitions_pretty, opts)
-				vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
-				vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
-				vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
-				vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, opts)
-				vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, opts)
-				vim.keymap.set('n', '<space>wl', function()
-					print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-				end, opts)
-				vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, opts)
-				vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, opts)
-				vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, opts)
-				vim.keymap.set('n', 'gr', require('telescope.builtin').lsp_references, opts)
-				vim.keymap.set('n', '<space>f', function()
-					vim.lsp.buf.format { async = true }
-				end, opts)
+					vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
+					vim.keymap.set('n', 'gd', telescope_custom.lsp_definitions_pretty, opts)
+					vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+					vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
+					vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
+					vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, opts)
+					vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, opts)
+					vim.keymap.set('n', '<space>wl', function()
+						print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+					end, opts)
+					vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, opts)
+					vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, opts)
+					vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, opts)
+					vim.keymap.set('n', 'gr', require('telescope.builtin').lsp_references, opts)
+					vim.keymap.set('n', '<space>f', function()
+						vim.lsp.buf.format { async = true }
+					end, opts)
 				end,
 			})
 
@@ -91,6 +94,14 @@ return {
 				capabilities = capabilities,
 			})
 
+			vim.lsp.config('kotlin_lsp', {
+				cmd = { 'kotlin-lsp', '--stdio' },
+				filetypes = { 'kotlin' },
+				root_markers = { 'build.gradle', 'build.gradle.kts', 'pom.xml', '.git' },
+				single_file_support = true,
+				capabilities = capabilities,
+			})
+
 			vim.lsp.config('lcvgc', {
 				cmd = { 'lcvgc-lsp' },
 				filetypes = { 'cvg' },
@@ -98,7 +109,7 @@ return {
 				capabilities = capabilities,
 			})
 
-			vim.lsp.enable({ 'ruby_lsp', 'ts_ls', 'lua_ls', 'bashls', 'pyright', 'marksman' })
+			vim.lsp.enable({ 'ruby_lsp', 'ts_ls', 'lua_ls', 'bashls', 'pyright', 'marksman', 'kotlin_lsp' })
 		end
 	},
 	{

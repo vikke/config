@@ -352,23 +352,6 @@ fe() {
   [[ -n "$files" ]] && ${EDITOR:-vim} "${files[@]}"
 }
 
-# fd - cd to selected directory. including hidden directories
-fd() {
-  local dir
-  dir=$(find ${1:-.} -type d 2> /dev/null | fzf-tmux +m) && cd "$dir"
-}
-
-fdel() {
-  local dirs
-  dirs=$(find ${1:-.} -type d 2> /dev/null | fzf-tmux -m) && rm -rf ${dirs}
-}
-
-fdi() {
-	local file
-	local dir
-	file=$(fzf-tmux +m -q "$1") && dir=$(dirname "$file") && cd "$dir"
-}
-
 # fkill - kill process
 fkill() {
   pid=$(ps -ef | sed 1d | fzf-tmux -m | awk '{print $2}')
@@ -545,7 +528,7 @@ eval "$(luaenv init -)"
 
 # uv
 export PATH="${HOME}/.local/bin:$PATH"
-source ~/.venvs/global313/bin/activate
+# source ~/.venvs/global313/bin/activate
 
 # prompt 編集
 eval "$(starship init bash)"
@@ -568,4 +551,10 @@ export CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1
 
 ASYNCAPI_AC_BASH_SETUP_PATH=/Users/i.matsunaga/Library/Caches/@asyncapi/cli/autocomplete/bash_setup && test -f $ASYNCAPI_AC_BASH_SETUP_PATH && source $ASYNCAPI_AC_BASH_SETUP_PATH; # asyncapi autocomplete setup
 
+# Android SDK
+export ANDROID_HOME=$HOME/Android/Sdk
+export PATH=$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/platform-tools:$PATH
 
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
